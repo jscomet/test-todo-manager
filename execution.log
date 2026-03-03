@@ -2207,3 +2207,345 @@ python3 todo.py remove-tag 1 项目
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:31:07][0m ========== 阶段 4: Git 提交推送 ==========
+[main 078c24d] Feat: 添加任务分类/标签功能
+ 3 files changed, 2614 insertions(+), 3 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   2820a41..078c24d  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:31:13][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 4 已标记为完成
+[0;34m[2026-03-04 01:31:22][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:31:25][0m 
+[0;34m[2026-03-04 01:31:25][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:31:25][0m ║  第 5 轮执行                          ║
+[0;34m[2026-03-04 01:31:25][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:31:25][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 16
+[0;34m[2026-03-04 01:31:25][0m 获取到任务 ID=5: 添加数据导出功能（导出为 CSV 或 Markdown）
+[0;34m[2026-03-04 01:31:25][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 添加数据导出功能（导出为 CSV 或 Markdown）
+[0;34m[2026-03-04 01:31:25][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m✱ [0mGlob "*.py"[90m in . · 1 match[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m# [0mTodos
+[x] 分析导出功能需求，确定实现方案
+[ ] 实现 export_csv() 函数
+[ ] 实现 export_markdown() 函数
+[ ] 添加 export 命令行参数支持
+[ ] 测试导出功能
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -241,8 +241,101 @@
+             return
+     print(f"❌ 未找到任务 {task_id}")
+ 
+ 
++def export_csv(filename=None):
++    """
++    导出任务列表为 CSV 格式
++
++    Args:
++        filename (str): 输出文件名，默认为 tasks_export.csv
++
++    Returns:
++        None
++
++    Note:
++        CSV 包含列：ID, 内容，状态，优先级，创建时间，截止日期，标签
++    """
++    import csv
++
++    tasks = load_tasks()
++    if not tasks:
++        print("📭 暂无任务可导出")
++        return
++
++    if filename is None:
++        filename = "tasks_export.csv"
++
++    with open(filename, "w", encoding="utf-8-sig", newline="") as f:
++        writer = csv.writer(f)
++        writer.writerow(
++            ["ID", "内容", "状态", "优先级", "创建时间", "截止日期", "标签"]
++        )
++        for task in tasks:
++            status = "已完成" if task["done"] else "待完成"
++            tags = ", ".join(task.get("tags", []))
++            writer.writerow(
++                [
++                    task["id"],
++                    task["content"],
++                    status,
++                    task.get("priority", "中"),
++                    task.get("created_at", ""),
++                    task.get("due_date", ""),
++                    tags,
++                ]
++            )
++    print(f"✅ 已导出 {len(tasks)} 个任务到：{filename}")
++
++
++def export_markdown(filename=None):
++    """
++    导出任务列表为 Markdown 格式
++
++    Args:
++        filename (str): 输出文件名，默认为 tasks_export.md
++
++    Returns:
++        None
++
++    Note:
++        Markdown 包含任务表格和统计信息
++    """
++    tasks = load_tasks()
++    if not tasks:
++        print("📭 暂无任务可导出")
++        return
++
++    if filename is None:
++        filename = "tasks_export.md"
++
++    completed = sum(1 for t in tasks if t["done"])
++    pending = len(tasks) - completed
++
++    with open(filename, "w", encoding="utf-8") as f:
++        f.write("# 任务列表\n\n")
++        f.write(
++            f"**总计**: {len(tasks)} 个任务 | **已完成**: {completed} | **待完成**: {pending}\n\n"
++        )
++        f.write("## 任务详情\n\n")
++        f.write("| ID | 状态 | 优先级 | 内容 | 截止日期 | 标签 |\n")
++        f.write("|---|---|---|---|---|---|\n")
++        for task in tasks:
++            status = "✅" if task["done"] else "⭕"
++            due = task.get("due_date", "-")
++            tags = " ".join([f"#{t}" for t in task.get("tags", [])]) or "-"
++            content = task["content"].replace("|", "\\|")
++            f.write(
++                f"| {task['id']} | {status} | {task.get('priority', '中')} | {content} | {due} | {tags} |\n"
++            )
++        f.write("\n## 统计信息\n\n")
++        f.write(
++            f"- 完成进度：{completed}/{len(tasks)} ({completed * 100 // len(tasks) if len(tasks) > 0 else 0}%)\n"
++        )
++        f.write(f"- 导出时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
++    print(f"✅ 已导出 {len(tasks)} 个任务到：{filename}")
++
++
+ def main():
+     """
+     程序主入口函数
+ 
+@@ -298,9 +391,8 @@
+     # delete 命令
+     delete_parser = subparsers.add_parser("delete", help="删除任务")
+     delete_parser.add_argument("id", type=int, help="任务ID")
+ 
+-
+     # add-tag 命令
+     add_tag_parser = subparsers.add_parser("add-tag", help="为任务添加标签")
+     add_tag_parser.add_argument("id", type=int, help="任务 ID")
+     add_tag_parser.add_argument("tag", help="标签名称")
+@@ -313,9 +405,9 @@
+ 
+     if args.command == "add":
+         tags = None
+         if args.tags:
+-            tags = [t.strip() for t in args.tags.replace('，', ',').split(',')]
++            tags = [t.strip() for t in args.tags.replace("，", ",").split(",")]
+         add_task(args.content, args.priority, args.due, tags)
+     elif args.command == "list":
+         list_tasks(args.tag)
+     elif args.command == "done":
+
+[0m
+[0m# [0mTodos
+[x] 分析导出功能需求，确定实现方案
+[x] 实现 export_csv() 函数
+[x] 实现 export_markdown() 函数
+[ ] 添加 export 命令行参数支持
+[ ] 测试导出功能
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -400,8 +400,23 @@
+ # remove-tag 命令
+ remove_tag_parser = subparsers.add_parser("remove-tag", help="从任务移除标签")
+ remove_tag_parser.add_argument("id", type=int, help="任务 ID")
+ remove_tag_parser.add_argument("tag", help="标签名称")
++
++# export 命令
++export_parser = subparsers.add_parser("export", help="导出任务列表")
++export_parser.add_argument(
++    "--format",
++    "-f",
++    choices=["csv", "markdown"],
++    default="csv",
++    help="导出格式（csv/markdown），默认为 csv",
++)
++export_parser.add_argument(
++    "--output",
++    "-o",
++    help="输出文件名（默认：tasks_export.csv 或 tasks_export.md）",
++)
+ args = parser.parse_args()
+ 
+ if args.command == "add":
+     tags = None
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -432,8 +432,13 @@
+ elif args.command == "add-tag":
+     add_tag(args.id, args.tag)
+ elif args.command == "remove-tag":
+     remove_tag(args.id, args.tag)
++elif args.command == "export":
++    if args.format == "csv":
++        export_csv(args.output)
++    else:
++        export_markdown(args.output)
+ else:
+     parser.print_help()
+ 
+ 
+
+[0m
+[0m# [0mTodos
+[x] 分析导出功能需求，确定实现方案
+[x] 实现 export_csv() 函数
+[x] 实现 export_markdown() 函数
+[x] 添加 export 命令行参数支持
+[ ] 测试导出功能
+[0m
+[0m$ [0mpython todo.py export --format csv
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython todo.py export --format markdown
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 todo.py export --format csv
+✅ 已导出 20 个任务到：tasks_export.csv
+[0m
+[0m$ [0mpython3 todo.py export --format markdown
+✅ 已导出 20 个任务到：tasks_export.md
+[0m
+[0m→ [0mRead tasks_export.csv
+[0m→ [0mRead tasks_export.md
+[0m
+[0m$ [0mpython3 todo.py export --format csv --output my_tasks.csv
+✅ 已导出 20 个任务到：my_tasks.csv
+[0m
+[0m$ [0mpython3 todo.py export --help
+usage: todo export [-h] [--format {csv,markdown}] [--output OUTPUT]
+
+options:
+  -h, --help            show this help message and exit
+  --format {csv,markdown}, -f {csv,markdown}
+                        导出格式（csv/markdown），默认为 csv
+  --output OUTPUT, -o OUTPUT
+                        输出文件名（默认：tasks_export.csv 或 tasks_export.md）
+[0m
+[0m# [0mTodos
+[x] 分析导出功能需求，确定实现方案
+[x] 实现 export_csv() 函数
+[x] 实现 export_markdown() 函数
+[x] 添加 export 命令行参数支持
+[x] 测试导出功能
+[0m
+[0m$ [0mrm -f tasks_export.csv tasks_export.md my_tasks.csv
+## ✅ 任务完成
+
+### 完成的功能
+
+1. **CSV 导出** - `export_csv()` 函数
+   - 导出字段：ID、内容、状态、优先级、创建时间、截止日期、标签
+   - 默认文件名：`tasks_export.csv`
+   - 支持自定义输出文件名
+
+2. **Markdown 导出** - `export_markdown()` 函数
+   - 包含任务详情表格
+   - 显示统计信息（总数、已完成、待完成）
+   - 显示完成进度百分比
+   - 默认文件名：`tasks_export.md`
+   - 支持自定义输出文件名
+
+### 修改的文件
+
+- `todo.py` - 添加 2 个导出函数和 export 命令支持
+
+### 使用方法
+
+```bash
+# 导出为 CSV（默认）
+python3 todo.py export
+
+# 导出为 Markdown
+python3 todo.py export --format markdown
+
+# 自定义文件名
+python3 todo.py export -f csv -o my_tasks.csv
+python3 todo.py export -f markdown -o report.md
+```
+
+### 测试验证
+
+- ✅ CSV 导出成功（20 个任务）
+- ✅ Markdown 导出成功（20 个任务）
+- ✅ 自定义文件名功能正常
+- ✅ 帮助信息正确显示
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 01:32:21][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772559141
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+⭕ [11] 🟡 测试任务_1772558260
+⭕ [12] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [13] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [14] 🟡 添加修改任务优先级功能
+⭕ [15] 🟡 测试截止日期功能 📅 2026-03-10
+⭕ [16] 🟡 测试无截止日期任务
+⭕ [17] 🟡 测试任务_1772558695
+⭕ [18] 🟡 测试标签分割 🔖 #工作，紧急
+⭕ [19] 🟡 英文逗号测试 🔖 #test #urgent
+⭕ [20] 🟡 测试任务_1772559067
+⭕ [21] 🟡 测试任务_1772559141
+--------------------------------------------------
+总计：21 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 01:32:21][0m ========== 阶段 4: Git 提交推送 ==========

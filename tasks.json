@@ -26,10 +26,11 @@
   {
     "id": 4,
     "content": "添加任务分类/标签功能",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:00:03",
     "priority": "中",
-    "tags": []
+    "tags": [],
+    "completed_at": "2026-03-04 01:31:13"
   },
   {
     "id": 5,
@@ -150,5 +151,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:31:07"
+  },
+  {
+    "id": 21,
+    "content": "测试任务_1772559141",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:32:21"
   }
 ]
