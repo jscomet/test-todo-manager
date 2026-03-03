@@ -260,6 +260,32 @@ def remove_tag(task_id, tag):
     print(f"❌ 未找到任务 {task_id}")
 
 
+def set_priority(task_id, new_priority):
+    """
+    修改指定任务的优先级
+
+    Args:
+        task_id (int): 任务 ID
+        new_priority (str): 新的优先级，可选值：高/中/低
+
+    Returns:
+        None
+
+    Note:
+        如果任务不存在，会打印错误提示
+    """
+    tasks = load_tasks()
+    for task in tasks:
+        if task["id"] == task_id:
+            old_priority = task.get("priority", "中")
+            task["priority"] = new_priority
+            save_tasks(tasks)
+            print(f"✅ 任务 {task_id} 优先级已修改：{old_priority} → {new_priority}")
+            print(f"   内容：{task['content']}")
+            return
+    print(f"❌ 未找到任务 {task_id}")
+
+
 def export_csv(filename=None):
     """
     导出任务列表为 CSV 格式
@@ -433,6 +459,15 @@ def main():
     remove_tag_parser.add_argument("id", type=int, help="任务 ID")
     remove_tag_parser.add_argument("tag", help="标签名称")
 
+    # set-priority 命令
+    set_priority_parser = subparsers.add_parser("set-priority", help="修改任务优先级")
+    set_priority_parser.add_argument("id", type=int, help="任务 ID")
+    set_priority_parser.add_argument(
+        "priority",
+        choices=["高", "中", "低"],
+        help="新的优先级（高/中/低）",
+    )
+
     # export 命令
     export_parser = subparsers.add_parser("export", help="导出任务列表")
     export_parser.add_argument(
@@ -464,6 +499,8 @@ def main():
         add_tag(args.id, args.tag)
     elif args.command == "remove-tag":
         remove_tag(args.id, args.tag)
+    elif args.command == "set-priority":
+        set_priority(args.id, args.priority)
     elif args.command == "export":
         if args.format == "csv":
             export_csv(args.output)
