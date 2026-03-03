@@ -666,3 +666,253 @@ python3 todo.py add --help
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:17:40][0m ========== 阶段 4: Git 提交推送 ==========
+[main f6d04cb] Feat: 添加任务优先级功能（高/中/低）
+ 3 files changed, 1064 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   3455ed2..f6d04cb  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:17:46][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 2 已标记为完成
+[0;36m[INFO][0m 创建新任务: 添加按优先级排序功能（高优先级任务排在前面）
+[0;36m[INFO][0m 创建新任务: 添加按优先级过滤功能（支持 --priority 参数筛选）
+[0;36m[INFO][0m 创建新任务: 添加修改任务优先级功能
+
+========================================
+📊 当前任务状态
+========================================
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+⭕ [3] 🟡 添加任务截止日期功能
+⭕ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+⭕ [11] 🟡 测试任务_1772558260
+⭕ [12] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [13] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [14] 🟡 添加修改任务优先级功能
+--------------------------------------------------
+总计：14 个任务
+
+
+总计: 14 | 完成: 2 | 待办: 12
+========================================
+
+[0;34m[2026-03-04 01:17:58][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:18:01][0m 
+[0;34m[2026-03-04 01:18:01][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:18:01][0m ║  第 3 轮执行                          ║
+[0;34m[2026-03-04 01:18:01][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:18:01][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 12
+[0;34m[2026-03-04 01:18:01][0m 获取到任务 ID=3: 添加任务截止日期功能
+[0;34m[2026-03-04 01:18:01][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 添加任务截止日期功能
+[0;34m[2026-03-04 01:18:01][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我将开始执行添加任务截止日期功能的任务。首先分析项目结构和现有代码。
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 140
+drwxr-xr-x 5 root root  4096 Mar  4 01:17 .
+drwxr-xr-x 3 root root  4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root     0 Mar  4 01:08 1
+-rw-r--r-- 1 root root  3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root  8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 23472 Mar  4 01:18 execution.log
+-rw-r--r-- 1 root root     6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root 12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root  4096 Mar  4 01:17 .git
+-rw-r--r-- 1 root root   170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root  4096 Mar  4 01:17 __pycache__
+-rw-r--r-- 1 root root  3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root  4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root   630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 25615 Mar  4 01:18 runtime.log
+-rw-r--r-- 1 root root  2739 Mar  4 01:17 tasks.json
+-rw-r--r-- 1 root root  5496 Mar  4 01:17 todo.py
+[0m
+## 任务分析
+
+**需求理解**:
+- 为任务添加截止日期字段
+- 支持在添加任务时指定截止日期
+- 在列表显示时展示截止日期
+- 保持向后兼容性
+
+**技术方案**:
+1. 修改 `add_task()` 添加截止日期参数
+2. 修改 `list_tasks()` 显示截止日期
+3. 修改 `main()` 添加命令行参数
+4. 在 `load_tasks()` 确保向后兼容
+
+现在开始实现：
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -48,15 +48,16 @@
+     with open(TASKS_FILE, "w", encoding="utf-8") as f:
+         json.dump(tasks, f, ensure_ascii=False, indent=2)
+ 
+ 
+-def add_task(content, priority="中"):
++def add_task(content, priority="中", due_date=None):
+     """
+     添加新任务到任务列表
+ 
+     Args:
+         content (str): 任务内容描述
+         priority (str): 任务优先级，可选值：高/中/低，默认为"中"
++        due_date (str): 任务截止日期，格式：YYYY-MM-DD，可选
+ 
+     Returns:
+         None
+ 
+@@ -70,8 +71,10 @@
+         "done": False,
+         "priority": priority,
+         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+     }
++    if due_date:
++        task["due_date"] = due_date
+     tasks.append(task)
+     save_tasks(tasks)
+     print(f"✅ 已添加任务：{content}")
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -105,9 +105,11 @@
+ for task in tasks:
+     status = "✅" if task["done"] else "⭕"
+     priority = task.get("priority", "中")
+     priority_icon = priority_icons.get(priority, "🟡")
+-    print(f"{status} [{task['id']}] {priority_icon} {task['content']}")
++    due_date = task.get("due_date")
++    due_str = f" 📅 {due_date}" if due_date else ""
++    print(f"{status} [{task['id']}] {priority_icon} {task['content']}{due_str}")
+ print("-" * 50)
+ print(f"总计：{len(tasks)} 个任务\n")
+ 
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -193,8 +193,13 @@
+     choices=["高", "中", "低"],
+     default="中",
+     help="任务优先级（高/中/低），默认为中",
+ )
++add_parser.add_argument(
++    "--due",
++    "-d",
++    help="任务截止日期（格式：YYYY-MM-DD）",
++)
+ 
+ # list 命令
+ subparsers.add_parser("list", help="列出所有任务")
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -213,9 +213,9 @@
+ 
+ args = parser.parse_args()
+ 
+ if args.command == "add":
+-    add_task(args.content, args.priority)
++    add_task(args.content, args.priority, args.due)
+ elif args.command == "list":
+     list_tasks()
+ elif args.command == "done":
+     done_task(args.id)
+
+[0m
+现在测试功能：
+[0m$ [0mpython3 todo.py add "测试截止日期功能" --due 2026-03-10
+✅ 已添加任务：测试截止日期功能
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+⭕ [3] 🟡 添加任务截止日期功能
+⭕ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+⭕ [11] 🟡 测试任务_1772558260
+⭕ [12] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [13] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [14] 🟡 添加修改任务优先级功能
+⭕ [15] 🟡 测试截止日期功能 📅 2026-03-10
+--------------------------------------------------
+总计：15 个任务
+[0m
+[0m$ [0mpython3 todo.py add "测试无截止日期任务"
+✅ 已添加任务：测试无截止日期任务
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+⭕ [3] 🟡 添加任务截止日期功能
+⭕ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+⭕ [11] 🟡 测试任务_1772558260
+⭕ [12] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [13] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [14] 🟡 添加修改任务优先级功能
+⭕ [15] 🟡 测试截止日期功能 📅 2026-03-10
+⭕ [16] 🟡 测试无截止日期任务
+--------------------------------------------------
+总计：16 个任务
+[0m
+[0m$ [0mpython3 todo.py add --help
+usage: todo add [-h] [--priority {高,中,低}] [--due DUE] content
+
+positional arguments:
+  content               任务内容
+
+options:
+  -h, --help            show this help message and exit
+  --priority {高,中,低}, -p {高,中,低}
+                        任务优先级（高/中/低），默认为中
+  --due DUE, -d DUE     任务截止日期（格式：YYYY-MM-DD）
+[0m
+功能测试通过。现在提交代码：

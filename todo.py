@@ -49,13 +49,14 @@ def save_tasks(tasks):
         json.dump(tasks, f, ensure_ascii=False, indent=2)
 
 
-def add_task(content, priority="中"):
+def add_task(content, priority="中", due_date=None):
     """
     添加新任务到任务列表
 
     Args:
         content (str): 任务内容描述
         priority (str): 任务优先级，可选值：高/中/低，默认为"中"
+        due_date (str): 任务截止日期，格式：YYYY-MM-DD，可选
 
     Returns:
         None
@@ -71,6 +72,8 @@ def add_task(content, priority="中"):
         "priority": priority,
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
+    if due_date:
+        task["due_date"] = due_date
     tasks.append(task)
     save_tasks(tasks)
     print(f"✅ 已添加任务：{content}")
@@ -103,7 +106,9 @@ def list_tasks():
         status = "✅" if task["done"] else "⭕"
         priority = task.get("priority", "中")
         priority_icon = priority_icons.get(priority, "🟡")
-        print(f"{status} [{task['id']}] {priority_icon} {task['content']}")
+        due_date = task.get("due_date")
+        due_str = f" 📅 {due_date}" if due_date else ""
+        print(f"{status} [{task['id']}] {priority_icon} {task['content']}{due_str}")
     print("-" * 50)
     print(f"总计：{len(tasks)} 个任务\n")
 
@@ -189,6 +194,11 @@ def main():
         default="中",
         help="任务优先级（高/中/低），默认为中",
     )
+    add_parser.add_argument(
+        "--due",
+        "-d",
+        help="任务截止日期（格式：YYYY-MM-DD）",
+    )
 
     # list 命令
     subparsers.add_parser("list", help="列出所有任务")
@@ -204,7 +214,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "add":
-        add_task(args.content, args.priority)
+        add_task(args.content, args.priority, args.due)
     elif args.command == "list":
         list_tasks()
     elif args.command == "done":
