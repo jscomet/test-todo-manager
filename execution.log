@@ -15521,3 +15521,297 @@ python3 todo.py export --format csv
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:00:32][0m ========== 阶段 4: Git 提交推送 ==========
+[main 7ff5368] Feat: CLI 测试任务
+ 2 files changed, 619 insertions(+), 1 deletion(-)
+[0;32m[✓][0m Git 提交成功
+ERROR: no healthy upstream
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:00:36][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 41 已标记为完成
+[0;34m[2026-03-04 03:00:39][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:00:42][0m 
+[0;34m[2026-03-04 03:00:42][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:00:42][0m ║  第 45 轮执行                          ║
+[0;34m[2026-03-04 03:00:42][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:00:42][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 65
+[0;34m[2026-03-04 03:00:42][0m 获取到任务 ID=42: 测试任务_1772560561
+[0;34m[2026-03-04 03:00:42][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772560561
+[0;34m[2026-03-04 03:00:42][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 1192
+drwxr-xr-x 5 root root   4096 Mar  4 03:00 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 720266 Mar  4 03:00 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 03:00 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 03:00 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  21522 Mar  4 03:00 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+[0m✱ [0mGrep "1772560561"[90m in . · 38 matches[0m
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 测试任务 1
+✅ [3] 🔴 测试高优先级任务
+✅ [9] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [17] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+✅ [32] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [41] 🔴 CLI 测试任务
+⭕ [63] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [65] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [68] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [73] 🔴 统计测试
+⭕ [74] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [79] 🔴 统计测试
+⭕ [80] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [85] 🔴 统计测试
+⭕ [87] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [92] 🔴 统计测试
+⭕ [94] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [99] 🔴 统计测试
+⭕ [104] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+✅ [4] 🟡 测试默认优先级任务
+✅ [5] 🟡 测试任务_1772558260
+✅ [6] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [7] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [10] 🟡 测试无截止日期任务
+✅ [11] 🟡 测试任务_1772558695
+✅ [12] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [13] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [14] 🟡 测试任务_1772559067
+✅ [15] 🟡 测试任务_1772559141
+✅ [16] 🟡 添加导出功能的单元测试
+✅ [18] 🟡 测试任务_1772559221
+✅ [21] 🟡 测试任务_1772559260
+✅ [22] 🟡 测试任务_1772559323
+✅ [23] 🟡 测试默认优先级 - 新任务
+✅ [24] 🟡 测试任务_1772559366
+✅ [25] 🟡 测试任务_1772559411
+✅ [26] 🟡 NONE
+✅ [27] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [28] 🟡 测试任务_1772559626
+✅ [29] 🟡 测试任务_1772559821
+✅ [30] 🟡 优先级统计功能
+✅ [31] 🟡 测试任务_1772559903
+✅ [34] 🟡 测试任务_1772559976
+✅ [35] 🟡 测试任务_1772560148
+✅ [36] 🟡 测试任务_1772560188
+✅ [37] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [38] 🟡 测试任务_1772560261
+✅ [39] 🟡 测试任务_1772560300
+✅ [40] 🟡 测试任务_1772560348
+⭕ [42] 🟡 测试任务_1772560561
+⭕ [43] 🟡 测试任务_1772560713
+⭕ [44] 🟡 运行测试验证覆盖情况：
+⭕ [45] 🟡 NONE
+⭕ [46] 🟡 测试任务_1772560897
+⭕ [47] 🟡 测试任务_1772560937
+⭕ [48] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+⭕ [49] 🟡 NONE
+⭕ [50] 🟡 测试任务_1772560995
+⭕ [51] 🟡 测试任务_1772561467
+⭕ [52] 🟡 测试任务_1772561636
+⭕ [53] 🟡 测试任务_1772561872
+⭕ [54] 🟡 NONE
+⭕ [55] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+⭕ [56] 🟡 测试任务_1772562060
+⭕ [57] 🟡 测试任务_1772562098
+⭕ [58] 🟡 测试任务_1772562125
+⭕ [59] 🟡 测试任务_1772562169
+⭕ [60] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+⭕ [61] 🟡 测试任务_1772562229
+⭕ [62] 🟡 测试任务_1772562601
+⭕ [64] 🟡 测试任务_1772562920
+⭕ [66] 🟡 测试任务_1772563000
+⭕ [67] 🟡 测试任务_1772563059
+⭕ [69] 🟡 CLI 删除测试
+⭕ [70] 🟡 CLI 完成测试
+⭕ [71] 🟡 导出测试
+⭕ [72] 🟡 优先级测试
+⭕ [75] 🟡 CLI 删除测试
+⭕ [76] 🟡 CLI 完成测试
+⭕ [77] 🟡 导出测试
+⭕ [78] 🟡 优先级测试
+⭕ [81] 🟡 CLI 删除测试
+⭕ [82] 🟡 CLI 完成测试
+⭕ [83] 🟡 导出测试
+⭕ [84] 🟡 优先级测试
+⭕ [86] 🟡 测试任务_1772563690
+⭕ [88] 🟡 CLI 删除测试
+⭕ [89] 🟡 CLI 完成测试
+⭕ [90] 🟡 导出测试
+⭕ [91] 🟡 优先级测试
+⭕ [93] 🟡 测试任务_1772563758
+⭕ [95] 🟡 CLI 删除测试
+⭕ [96] 🟡 CLI 完成测试
+⭕ [97] 🟡 导出测试
+⭕ [98] 🟡 优先级测试
+⭕ [100] 🟡 测试任务_1772563866
+⭕ [101] 🟡 测试任务_1772563922
+⭕ [102] 🟡 测试任务_1772564218
+⭕ [103] 🟡 测试任务_1772564294
+⭕ [105] 🟡 测试任务_1772564371
+⭕ [106] 🟡 测试任务_1772564431
+✅ [2] 🟢 测试低优先级任务
+✅ [8] 🟢 添加修改任务优先级功能
+✅ [19] 🟢 低优先级测试任务
+✅ [20] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [33] 🟢 测试无截止日期
+--------------------------------------------------
+总计：106 个任务
+[0m
+[0m$ [0mgrep -B 10 -A 10 "1772560561" /root/.openclaw/workspace/test/todo-manager/execution.log | head -50
+```bash
+python3 test_task_1772559141.py
+```
+
+**测试结果：** 21/21 测试通过 ✅
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 01:56:01][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772560561
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+✅ [14] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [46] 🔴 CLI 测试任务
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+--
+⭕ [34] 🟡 测试任务_1772559821
+⭕ [35] 🟡 优先级统计功能
+⭕ [36] 🟡 测试任务_1772559903
+⭕ [39] 🟡 测试任务_1772559976
+⭕ [40] 🟡 测试任务_1772560148
+⭕ [41] 🟡 测试任务_1772560188
+⭕ [42] 🟡 测试标签分割功能 🔖 #工作 #紧急
+⭕ [43] 🟡 测试任务_1772560261
+⭕ [44] 🟡 测试任务_1772560300
+⭕ [45] 🟡 测试任务_1772560348
+⭕ [47] 🟡 测试任务_1772560561
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+⭕ [38] 🟢 测试无截止日期
+--------------------------------------------------
+总计：47 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+--
+⭕ [34] 🟡 测试任务_1772559821
+⭕ [35] 🟡 优先级统计功能
+⭕ [36] 🟡 测试任务_1772559903
+⭕ [39] 🟡 测试任务_1772559976
+⭕ [40] 🟡 测试任务_1772560148
+⭕ [41] 🟡 测试任务_1772560188
+[0m
+[0m→ [0mRead test_task_1772559141.py
+[0m
+[0m$ [0mpython3 -m pytest test_task_1772559141.py -v 2>&1 | head -50
+/usr/bin/python3: No module named pytest
+[0m
+[0m$ [0mpython3 test_task_1772559141.py 2>&1 | tail -30
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：重复标签测试
+✅ 已添加任务：CSV 测试任务
+✅ 已导出 1 个任务到：test_1772559141_export.csv
+✅ 已添加任务：MD 测试任务
+✅ 已导出 1 个任务到：test_1772559141_export.md
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+🗑️  已删除任务：任务 2
+✅ 已添加任务：高优先任务
+✅ 已添加任务：中优先任务
+✅ 已添加任务：低优先任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：标签移除任务
+✅ 已从任务 1 移除标签：#标签 1
+✅ 已添加任务：优先级修改任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：优先级修改任务
+✅ 已添加任务：低优先
+✅ 已添加任务：高优先
+✅ 已添加任务：中优先
+[0m
+[0m$ [0mpython3 test_task_1772559141.py 2>&1 | grep -E "(OK|FAILED|ERROR|test_|Ran)"
+test_add_via_cli (__main__.TestCommandLineInterface.test_add_via_cli)
+test_help_command (__main__.TestCommandLineInterface.test_help_command)
+test_add_tag (__main__.TestCoreFunctionality.test_add_tag)
+test_add_task_basic (__main__.TestCoreFunctionality.test_add_task_basic)
+test_add_task_with_all_fields (__main__.TestCoreFunctionality.test_add_task_with_all_fields)
+test_backward_compatibility (__main__.TestCoreFunctionality.test_backward_compatibility)
+test_delete_nonexistent_task (__main__.TestCoreFunctionality.test_delete_nonexistent_task)
+test_delete_task (__main__.TestCoreFunctionality.test_delete_task)
+test_done_nonexistent_task (__main__.TestCoreFunctionality.test_done_nonexistent_task)
+test_done_task (__main__.TestCoreFunctionality.test_done_task)
+test_duplicate_tag_prevention (__main__.TestCoreFunctionality.test_duplicate_tag_prevention)
+test_export_csv (__main__.TestCoreFunctionality.test_export_csv)
+test_export_markdown (__main__.TestCoreFunctionality.test_export_markdown)
+test_id_renumber_after_delete (__main__.TestCoreFunctionality.test_id_renumber_after_delete)
+test_list_filter_by_priority (__main__.TestCoreFunctionality.test_list_filter_by_priority)
+test_list_filter_by_tag (__main__.TestCoreFunctionality.test_list_filter_by_tag)
+test_list_tasks_empty (__main__.TestCoreFunctionality.test_list_tasks_empty)
+test_list_tasks_with_items (__main__.TestCoreFunctionality.test_list_tasks_with_items)
+test_remove_tag (__main__.TestCoreFunctionality.test_remove_tag)
+test_set_priority (__main__.TestCoreFunctionality.test_set_priority)
+test_sort_by_priority (__main__.TestCoreFunctionality.test_sort_by_priority)
+Ran 21 tests in 0.058s
+OK
+✅ 已导出 1 个任务到：test_1772559141_export.csv
+✅ 已导出 1 个任务到：test_1772559141_export.md
+[0m
+[0m$ [0mpython3 todo.py done 42
+✅ 任务 42 已完成: 测试任务_1772560561
+[0m
