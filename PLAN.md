@@ -47,7 +47,7 @@
 |--------|------|------|--------|----------|----------|
 | 🔴 高 | 创建 core/storage.py 实现 JSONStorage | 🔄 进行中 | AI | 2h | |
 | 🔴 高 | 创建 commands/base.py 定义 Command 基类 | 🔄 进行中 | AI | 1h | |
-| 🔴 高 | 拆分 commands/task_commands.py 实现增删改查 | ⏳ 待开始 | AI | 2h | |
+| 🔴 高 | 拆分 commands/task_commands.py 实现增删改查 | 🔄 进行中 | AI | 2h | |
 | 🔴 高 | 拆分 commands/query_commands.py 实现 list/stats/due | ⏳ 待开始 | AI | 2h | |
 | 🔴 高 | 重构 todo.py 入口 | ⏳ 待开始 | AI | 2h | |
 | 🟡 中 | 数据迁移脚本 | ⏳ 待开始 | AI | 1h | |
