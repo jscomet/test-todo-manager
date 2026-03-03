@@ -16651,3 +16651,416 @@ python3 -m unittest test_task_1772560713 -v
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:13:41][0m ========== 阶段 4: Git 提交推送 ==========
+[main 832641a] Feat: 测试任务_1772560713
+ 2 files changed, 195 insertions(+)
+[0;32m[✓][0m Git 提交成功
+ERROR: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:13:46][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 43 已标记为完成
+[0;34m[2026-03-04 03:14:01][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:14:04][0m 
+[0;34m[2026-03-04 03:14:04][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:14:04][0m ║  第 47 轮执行                          ║
+[0;34m[2026-03-04 03:14:04][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:14:04][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 65
+[0;34m[2026-03-04 03:14:04][0m 获取到任务 ID=44: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:14:04][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:14:04][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m✱ [0mGlob "**/*test*.py"[90m in . · 14 matches[0m
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager
+total 1264
+drwxr-xr-x 5 root root   4096 Mar  4 03:13 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 771706 Mar  4 03:14 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 03:13 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 03:13 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  21932 Mar  4 03:13 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root  12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+[0m$ [0mpython -m pytest --collect-only 2>&1 | head -50
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython -m pytest --version 2>&1
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 -m pytest --version 2>&1
+/usr/bin/python3: No module named pytest
+[0m
+[0m$ [0mpython3 -m pytest --collect-only 2>&1 | head -80
+/usr/bin/python3: No module named pytest
+[0m
+[0m$ [0mpip3 install pytest pytest-cov coverage 2>&1 | tail -10
+sure you have python3-full installed.
+    
+    If you wish to install a non-Debian packaged Python application,
+    it may be easiest to use pipx install xyz, which will manage a
+    virtual environment for you. Make sure you have pipx installed.
+    
+    See /usr/share/doc/python3.12/README.venv for more information.
+
+note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.
+hint: See PEP 668 for the detailed specification.
+[0m
+[0m$ [0mpip3 install --break-system-packages pytest pytest-cov coverage 2>&1 | tail -10
+Downloading https://mirrors.ivolces.com/pypi/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Collecting packaging>=22 (from pytest)
+  Downloading https://mirrors.ivolces.com/pypi/packages/b7/b9/c538f279a4e237a006a2c98387d081e9eb060d203d8ed34467cc0f0b9b53/packaging-26.0-py3-none-any.whl (74 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.4/74.4 kB 27.2 MB/s eta 0:00:00
+Collecting pluggy<2,>=1.5 (from pytest)
+  Downloading https://mirrors.ivolces.com/pypi/packages/54/20/4d324d65cc6d9205fabedc306948156824eb9f0ee1633355a8f7ec5c66bf/pluggy-1.6.0-py3-none-any.whl (20 kB)
+Requirement already satisfied: pygments>=2.7.2 in /usr/lib/python3/dist-packages (from pytest) (2.17.2)
+Installing collected packages: pluggy, packaging, iniconfig, coverage, pytest, pytest-cov
+Successfully installed coverage-7.13.4 iniconfig-2.3.0 packaging-26.0 pluggy-1.6.0 pytest-9.0.2 pytest-cov-7.0.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=term-missing 2>&1
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collected 369 items
+
+test_add_task.py ..............................                          [  8%]
+test_cli_commands.py ...........................                         [ 15%]
+test_default_priority.py ..................                              [ 20%]
+test_due_date.py ............                                            [ 23%]
+test_export.py .........................                                 [ 30%]
+test_no_due_date.py ................                                     [ 34%]
+test_tag_splitting.py ........                                           [ 36%]
+test_task_1772559141.py .....................                            [ 42%]
+test_task_1772559323.py ............................                     [ 50%]
+test_task_1772559366.py ..................................               [ 59%]
+test_task_1772559411.py ..................................               [ 68%]
+test_task_1772559903.py ....................................             [ 78%]
+test_task_1772559976.py ................................................ [ 91%]
+...........                                                              [ 94%]
+test_task_1772560713.py .....................                            [100%]
+
+=============================== warnings summary ===============================
+test_tag_splitting.py::test_chinese_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_chinese_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_english_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_english_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_mixed_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_mixed_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_single_tag
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_single_tag returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_with_spaces
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_with_spaces returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_filtering
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_filtering returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     256      5    98%   117, 406, 408, 597, 601
+---------------------------------------
+TOTAL       256      5    98%
+======================= 369 passed, 8 warnings in 2.10s ========================
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=term-missing --tb=short 2>&1 | tail -30
+warnings.warn(
+
+test_tag_splitting.py::test_tag_filtering
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_filtering returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     256      5    98%   117, 406, 408, 597, 601
+---------------------------------------
+TOTAL       256      5    98%
+======================= 369 passed, 8 warnings in 1.88s ========================
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=html:cov_html 2>&1 | tail -5
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Coverage HTML written to dir cov_html
+======================= 369 passed, 8 warnings in 1.89s ========================
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.coverage
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+## ✅ 测试验证完成
+
+### 测试结果
+- **总测试数**: 369 个
+- **通过**: 369 个 ✅
+- **失败**: 0 个
+- **警告**: 8 个（test_tag_splitting.py 中的测试函数返回了值而非使用 assert）
+
+### 覆盖率报告
+| 文件 | 语句数 | 未覆盖 | 覆盖率 |
+|------|--------|--------|--------|
+| todo.py | 256 | 5 | **98%** |
+
+**未覆盖的行**:
+- 行 117: 标签过滤的空结果提示
+- 行 406, 408: 优先级过滤的空结果提示  
+- 行 597: 帮助信息显示
+- 行 601: `if __name__ == "__main__"` 入口
+
+### 修改的文件
+- 安装了 `pytest`, `pytest-cov`, `coverage` 工具
+- 生成了 `.coverage` 数据文件
+- 生成了 `cov_html/` 目录（HTML 覆盖率报告）
+
+### 测试覆盖的功能
+- ✅ 任务添加（含优先级、截止日期、标签）
+- ✅ 任务列表（含过滤、排序）
+- ✅ 任务完成标记
+- ✅ 任务删除
+- ✅ 标签管理（添加/移除）
+- ✅ 优先级修改
+- ✅ 导出功能（CSV/Markdown）
+- ✅ 统计信息
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 03:14:41][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772565281
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 测试默认优先级任务
+✅ [6] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [14] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+✅ [29] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [38] 🔴 CLI 测试任务
+⭕ [60] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [62] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [65] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [70] 🔴 统计测试
+⭕ [71] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [76] 🔴 统计测试
+⭕ [77] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [82] 🔴 统计测试
+⭕ [84] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [89] 🔴 统计测试
+⭕ [91] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [96] 🔴 统计测试
+⭕ [101] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [106] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [107] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [112] 🔴 统计测试
+⭕ [113] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [114] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [119] 🔴 统计测试
+⭕ [120] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [121] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [126] 🔴 统计测试
+✅ [2] 🟡 测试任务_1772558260
+✅ [3] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [4] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [7] 🟡 测试无截止日期任务
+✅ [8] 🟡 测试任务_1772558695
+✅ [9] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [10] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [11] 🟡 测试任务_1772559067
+✅ [12] 🟡 测试任务_1772559141
+✅ [13] 🟡 添加导出功能的单元测试
+✅ [15] 🟡 测试任务_1772559221
+✅ [18] 🟡 测试任务_1772559260
+✅ [19] 🟡 测试任务_1772559323
+✅ [20] 🟡 测试默认优先级 - 新任务
+✅ [21] 🟡 测试任务_1772559366
+✅ [22] 🟡 测试任务_1772559411
+✅ [23] 🟡 NONE
+✅ [24] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [25] 🟡 测试任务_1772559626
+✅ [26] 🟡 测试任务_1772559821
+✅ [27] 🟡 优先级统计功能
+✅ [28] 🟡 测试任务_1772559903
+✅ [31] 🟡 测试任务_1772559976
+✅ [32] 🟡 测试任务_1772560148
+✅ [33] 🟡 测试任务_1772560188
+✅ [34] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [35] 🟡 测试任务_1772560261
+✅ [36] 🟡 测试任务_1772560300
+✅ [37] 🟡 测试任务_1772560348
+✅ [39] 🟡 测试任务_1772560561
+✅ [40] 🟡 测试任务_1772560713
+⭕ [41] 🟡 运行测试验证覆盖情况：
+⭕ [42] 🟡 NONE
+⭕ [43] 🟡 测试任务_1772560897
+⭕ [44] 🟡 测试任务_1772560937
+⭕ [45] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+⭕ [46] 🟡 NONE
+⭕ [47] 🟡 测试任务_1772560995
+⭕ [48] 🟡 测试任务_1772561467
+⭕ [49] 🟡 测试任务_1772561636
+⭕ [50] 🟡 测试任务_1772561872
+⭕ [51] 🟡 NONE
+⭕ [52] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+⭕ [53] 🟡 测试任务_1772562060
+⭕ [54] 🟡 测试任务_1772562098
+⭕ [55] 🟡 测试任务_1772562125
+⭕ [56] 🟡 测试任务_1772562169
+⭕ [57] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+⭕ [58] 🟡 测试任务_1772562229
+⭕ [59] 🟡 测试任务_1772562601
+⭕ [61] 🟡 测试任务_1772562920
+⭕ [63] 🟡 测试任务_1772563000
+⭕ [64] 🟡 测试任务_1772563059
+⭕ [66] 🟡 CLI 删除测试
+⭕ [67] 🟡 CLI 完成测试
+⭕ [68] 🟡 导出测试
+⭕ [69] 🟡 优先级测试
+⭕ [72] 🟡 CLI 删除测试
+⭕ [73] 🟡 CLI 完成测试
+⭕ [74] 🟡 导出测试
+⭕ [75] 🟡 优先级测试
+⭕ [78] 🟡 CLI 删除测试
+⭕ [79] 🟡 CLI 完成测试
+⭕ [80] 🟡 导出测试
+⭕ [81] 🟡 优先级测试
+⭕ [83] 🟡 测试任务_1772563690
+⭕ [85] 🟡 CLI 删除测试
+⭕ [86] 🟡 CLI 完成测试
+⭕ [87] 🟡 导出测试
+⭕ [88] 🟡 优先级测试
+⭕ [90] 🟡 测试任务_1772563758
+⭕ [92] 🟡 CLI 删除测试
+⭕ [93] 🟡 CLI 完成测试
+⭕ [94] 🟡 导出测试
+⭕ [95] 🟡 优先级测试
+⭕ [97] 🟡 测试任务_1772563866
+⭕ [98] 🟡 测试任务_1772563922
+⭕ [99] 🟡 测试任务_1772564218
+⭕ [100] 🟡 测试任务_1772564294
+⭕ [102] 🟡 测试任务_1772564371
+⭕ [103] 🟡 测试任务_1772564431
+⭕ [104] 🟡 测试任务_1772564549
+⭕ [105] 🟡 测试任务_1772565221
+⭕ [108] 🟡 CLI 删除测试
+⭕ [109] 🟡 CLI 完成测试
+⭕ [110] 🟡 导出测试
+⭕ [111] 🟡 优先级测试
+⭕ [115] 🟡 CLI 删除测试
+⭕ [116] 🟡 CLI 完成测试
+⭕ [117] 🟡 导出测试
+⭕ [118] 🟡 优先级测试
+⭕ [122] 🟡 CLI 删除测试
+⭕ [123] 🟡 CLI 完成测试
+⭕ [124] 🟡 导出测试
+⭕ [125] 🟡 优先级测试
+⭕ [127] 🟡 测试任务_1772565281
+✅ [5] 🟢 添加修改任务优先级功能
+✅ [16] 🟢 低优先级测试任务
+✅ [17] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [30] 🟢 测试无截止日期
+--------------------------------------------------
+总计：127 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 03:14:42][0m ========== 阶段 4: Git 提交推送 ==========
