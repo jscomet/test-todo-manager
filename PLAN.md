@@ -124,7 +124,7 @@
 | 🔴 高 | 创建文档驱动执行器 | ✅ 已完成 | AI | 2h | 1.5h |
 | 🔴 高 | 创建 core/models.py | ✅ 已完成 | AI | 1h | 1h |
 | 创建 core/storage.py | 🔄 进行中 | AI | 2h | |
-| 🔴 高 | 拆分 commands 模块 | ⏳ 待开始 | AI | 3h | |
+| 拆分 commands 模块 | 🔄 进行中 | AI | 3h | |
 | 🔴 高 | 重构 todo.py 入口 | ⏳ 待开始 | AI | 2h | |
 | 🟡 中 | 数据迁移脚本 | ⏳ 待开始 | AI | 1h | |
 | 🟡 中 | 修复 task_parser | ⏳ 待开始 | AI | 1h | |
