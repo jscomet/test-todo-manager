@@ -1,150 +1,150 @@
 [
   {
     "id": 1,
-    "content": "优化 todo.py 的代码结构，添加函数注释",
+    "content": "\u4f18\u5316 todo.py \u7684\u4ee3\u7801\u7ed3\u6784\uff0c\u6dfb\u52a0\u51fd\u6570\u6ce8\u91ca",
     "done": true,
     "created_at": "2026-03-04 01:00:00",
     "completed_at": "2026-03-04 01:13:21",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 2,
-    "content": "添加任务优先级功能（高/中/低）",
+    "content": "\u6dfb\u52a0\u4efb\u52a1\u4f18\u5148\u7ea7\u529f\u80fd\uff08\u9ad8/\u4e2d/\u4f4e\uff09",
     "done": true,
     "created_at": "2026-03-04 01:00:01",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:17:46"
   },
   {
     "id": 3,
-    "content": "添加任务截止日期功能",
+    "content": "\u6dfb\u52a0\u4efb\u52a1\u622a\u6b62\u65e5\u671f\u529f\u80fd",
     "done": true,
     "created_at": "2026-03-04 01:00:02",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:24:59"
   },
   {
     "id": 4,
-    "content": "添加任务分类/标签功能",
+    "content": "\u6dfb\u52a0\u4efb\u52a1\u5206\u7c7b/\u6807\u7b7e\u529f\u80fd",
     "done": true,
     "created_at": "2026-03-04 01:00:03",
-    "priority": "中",
+    "priority": "\u4e2d",
     "tags": [],
     "completed_at": "2026-03-04 01:31:13"
   },
   {
     "id": 5,
-    "content": "添加数据导出功能（导出为 CSV 或 Markdown）",
+    "content": "\u6dfb\u52a0\u6570\u636e\u5bfc\u51fa\u529f\u80fd\uff08\u5bfc\u51fa\u4e3a CSV \u6216 Markdown\uff09",
     "done": true,
     "created_at": "2026-03-04 01:00:04",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:32:28"
   },
   {
     "id": 6,
-    "content": "测试任务 1",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1 1",
     "done": true,
     "created_at": "2026-03-04 01:13:10",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:33:46"
   },
   {
     "id": 7,
-    "content": "测试低优先级任务",
+    "content": "\u6d4b\u8bd5\u4f4e\u4f18\u5148\u7ea7\u4efb\u52a1",
     "done": true,
-    "priority": "低",
+    "priority": "\u4f4e",
     "created_at": "2026-03-04 01:17:10",
     "completed_at": "2026-03-04 01:34:25"
   },
   {
     "id": 8,
-    "content": "测试高优先级任务",
+    "content": "\u6d4b\u8bd5\u9ad8\u4f18\u5148\u7ea7\u4efb\u52a1",
     "done": true,
-    "priority": "高",
+    "priority": "\u9ad8",
     "created_at": "2026-03-04 01:17:10",
     "completed_at": "2026-03-04 01:35:28"
   },
   {
     "id": 9,
-    "content": "测试默认优先级任务",
+    "content": "\u6d4b\u8bd5\u9ed8\u8ba4\u4f18\u5148\u7ea7\u4efb\u52a1",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:17:10",
     "completed_at": "2026-03-04 01:36:10"
   },
   {
     "id": 10,
-    "content": "测试任务_1772558260",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772558260",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:17:40",
     "completed_at": "2026-03-04 01:36:56"
   },
   {
     "id": 11,
-    "content": "添加按优先级排序功能（高优先级任务排在前面）",
+    "content": "\u6dfb\u52a0\u6309\u4f18\u5148\u7ea7\u6392\u5e8f\u529f\u80fd\uff08\u9ad8\u4f18\u5148\u7ea7\u4efb\u52a1\u6392\u5728\u524d\u9762\uff09",
     "done": true,
     "created_at": "2026-03-04 01:17:58",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:40:30"
   },
   {
     "id": 12,
-    "content": "添加按优先级过滤功能（支持 --priority 参数筛选）",
+    "content": "\u6dfb\u52a0\u6309\u4f18\u5148\u7ea7\u8fc7\u6ee4\u529f\u80fd\uff08\u652f\u6301 --priority \u53c2\u6570\u7b5b\u9009\uff09",
     "done": true,
     "created_at": "2026-03-04 01:17:58",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:43:46"
   },
   {
     "id": 13,
-    "content": "添加修改任务优先级功能",
+    "content": "\u6dfb\u52a0\u4fee\u6539\u4efb\u52a1\u4f18\u5148\u7ea7\u529f\u80fd",
     "done": true,
     "created_at": "2026-03-04 01:17:58",
-    "priority": "低",
+    "priority": "\u4f4e",
     "completed_at": "2026-03-04 01:45:07"
   },
   {
     "id": 14,
-    "content": "测试截止日期功能",
+    "content": "\u6d4b\u8bd5\u622a\u6b62\u65e5\u671f\u529f\u80fd",
     "done": true,
-    "priority": "高",
+    "priority": "\u9ad8",
     "created_at": "2026-03-04 01:24:42",
     "due_date": "2026-03-10",
     "completed_at": "2026-03-04 01:46:20"
   },
   {
     "id": 15,
-    "content": "测试无截止日期任务",
+    "content": "\u6d4b\u8bd5\u65e0\u622a\u6b62\u65e5\u671f\u4efb\u52a1",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:24:43",
     "completed_at": "2026-03-04 01:49:12"
   },
   {
     "id": 16,
-    "content": "测试任务_1772558695",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772558695",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:24:55",
     "completed_at": "2026-03-04 01:49:53"
   },
   {
     "id": 17,
-    "content": "测试标签分割",
+    "content": "\u6d4b\u8bd5\u6807\u7b7e\u5206\u5272",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:28:09",
     "tags": [
-      "工作，紧急"
+      "\u5de5\u4f5c\uff0c\u7d27\u6025"
     ],
     "completed_at": "2026-03-04 01:51:06"
   },
   {
     "id": 18,
-    "content": "英文逗号测试",
+    "content": "\u82f1\u6587\u9017\u53f7\u6d4b\u8bd5",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:29:50",
     "tags": [
       "test",
@@ -154,100 +154,101 @@
   },
   {
     "id": 19,
-    "content": "测试任务_1772559067",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559067",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:31:07",
     "completed_at": "2026-03-04 01:52:33"
   },
   {
     "id": 20,
-    "content": "测试任务_1772559141",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559141",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:32:21"
   },
   {
     "id": 21,
-    "content": "添加导出功能的单元测试",
+    "content": "\u6dfb\u52a0\u5bfc\u51fa\u529f\u80fd\u7684\u5355\u5143\u6d4b\u8bd5",
     "done": true,
     "created_at": "2026-03-04 01:32:41",
-    "priority": "中",
+    "priority": "\u4e2d",
     "completed_at": "2026-03-04 01:58:38"
   },
   {
     "id": 22,
-    "content": "测试添加功能",
+    "content": "\u6d4b\u8bd5\u6dfb\u52a0\u529f\u80fd",
     "done": true,
-    "priority": "高",
+    "priority": "\u9ad8",
     "created_at": "2026-03-04 01:32:58",
     "due_date": "2026-03-15",
     "tags": [
-      "测试",
-      "验证"
+      "\u6d4b\u8bd5",
+      "\u9a8c\u8bc1"
     ],
     "completed_at": "2026-03-04 02:01:41"
   },
   {
     "id": 23,
-    "content": "测试任务_1772559221",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559221",
     "done": true,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:33:41",
     "completed_at": "2026-03-04 02:02:22"
   },
   {
     "id": 24,
-    "content": "低优先级测试任务",
+    "content": "\u4f4e\u4f18\u5148\u7ea7\u6d4b\u8bd5\u4efb\u52a1",
     "done": true,
-    "priority": "低",
+    "priority": "\u4f4e",
     "created_at": "2026-03-04 01:33:59"
   },
   {
     "id": 25,
-    "content": "带截止日期的低优先级任务",
+    "content": "\u5e26\u622a\u6b62\u65e5\u671f\u7684\u4f4e\u4f18\u5148\u7ea7\u4efb\u52a1",
     "done": true,
-    "priority": "低",
+    "priority": "\u4f4e",
     "created_at": "2026-03-04 01:34:03",
     "due_date": "2026-03-20",
     "tags": [
-      "测试",
-      "验证"
+      "\u6d4b\u8bd5",
+      "\u9a8c\u8bc1"
     ]
   },
   {
     "id": 26,
-    "content": "测试任务_1772559260",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559260",
     "done": true,
-    "priority": "中",
-    "created_at": "2026-03-04 01:34:20"
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:34:20",
+    "completed_at": "2026-03-04 02:03:21"
   },
   {
     "id": 27,
-    "content": "测试任务_1772559323",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559323",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:35:23"
   },
   {
     "id": 28,
-    "content": "测试默认优先级 - 新任务",
+    "content": "\u6d4b\u8bd5\u9ed8\u8ba4\u4f18\u5148\u7ea7 - \u65b0\u4efb\u52a1",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:35:44"
   },
   {
     "id": 29,
-    "content": "测试任务_1772559366",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559366",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:36:06"
   },
   {
     "id": 30,
-    "content": "测试任务_1772559411",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559411",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:36:51"
   },
   {
@@ -255,179 +256,179 @@
     "content": "NONE",
     "done": false,
     "created_at": "2026-03-04 01:37:30",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 32,
-    "content": "\"测试任务_1772558260\"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。",
+    "content": "\"\u6d4b\u8bd5\u4efb\u52a1_1772558260\"\u662f\u4e00\u4e2a\u9a8c\u8bc1\u6d4b\u8bd5\u4efb\u52a1\uff0c\u7528\u4e8e\u6d4b\u8bd5\u4efb\u52a1\u4f18\u5148\u7ea7\u529f\u80fd\u3002\u8be5\u4efb\u52a1\u5df2\u5b8c\u6210\uff0c\u5176\u9a8c\u8bc1\u7684\u529f\u80fd\uff08\u4efb\u52a1\u4f18\u5148\u7ea7\uff09\u5df2\u5728\u4efb\u52a1 2 \u4e2d\u5b9e\u73b0\u3002\u76f8\u5173\u7684\u540e\u7eed\u6539\u8fdb\u4efb\u52a1\uff08\u6309\u4f18\u5148\u7ea7\u6392\u5e8f\u3001\u8fc7\u6ee4\u3001\u4fee\u6539\u4f18\u5148\u7ea7\uff09\u5df2\u5728\u4efb\u52a1 2 \u5b8c\u6210\u65f6\u81ea\u52a8\u521b\u5efa\uff08\u4efb\u52a1 ID 11, 12, 13\uff09\u3002\u65e0\u9700\u521b\u5efa\u65b0\u4efb\u52a1\u3002",
     "done": false,
     "created_at": "2026-03-04 01:37:30",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 33,
-    "content": "测试任务_1772559626",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559626",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:40:26"
   },
   {
     "id": 34,
-    "content": "测试任务_1772559821",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559821",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:43:41"
   },
   {
     "id": 35,
-    "content": "优先级统计功能",
+    "content": "\u4f18\u5148\u7ea7\u7edf\u8ba1\u529f\u80fd",
     "done": false,
     "created_at": "2026-03-04 01:44:03",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 36,
-    "content": "测试任务_1772559903",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559903",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:45:03"
   },
   {
     "id": 37,
-    "content": "测试截止日期功能",
+    "content": "\u6d4b\u8bd5\u622a\u6b62\u65e5\u671f\u529f\u80fd",
     "done": false,
-    "priority": "高",
+    "priority": "\u9ad8",
     "created_at": "2026-03-04 01:45:29",
     "due_date": "2026-03-10"
   },
   {
     "id": 38,
-    "content": "测试无截止日期",
+    "content": "\u6d4b\u8bd5\u65e0\u622a\u6b62\u65e5\u671f",
     "done": false,
-    "priority": "低",
+    "priority": "\u4f4e",
     "created_at": "2026-03-04 01:45:29"
   },
   {
     "id": 39,
-    "content": "测试任务_1772559976",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559976",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:46:16"
   },
   {
     "id": 40,
-    "content": "测试任务_1772560148",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560148",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:49:08"
   },
   {
     "id": 41,
-    "content": "测试任务_1772560188",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560188",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:49:48"
   },
   {
     "id": 42,
-    "content": "测试标签分割功能",
+    "content": "\u6d4b\u8bd5\u6807\u7b7e\u5206\u5272\u529f\u80fd",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:50:12",
     "tags": [
-      "工作",
-      "紧急"
+      "\u5de5\u4f5c",
+      "\u7d27\u6025"
     ]
   },
   {
     "id": 43,
-    "content": "测试任务_1772560261",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560261",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:51:01"
   },
   {
     "id": 44,
-    "content": "测试任务_1772560300",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560300",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:51:40"
   },
   {
     "id": 45,
-    "content": "测试任务_1772560348",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560348",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:52:28"
   },
   {
     "id": 46,
-    "content": "CLI 测试任务",
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
     "done": false,
-    "priority": "高",
+    "priority": "\u9ad8",
     "created_at": "2026-03-04 01:54:09"
   },
   {
     "id": 47,
-    "content": "测试任务_1772560561",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560561",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:56:01"
   },
   {
     "id": 48,
-    "content": "测试任务_1772560713",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560713",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 01:58:33"
   },
   {
     "id": 49,
-    "content": "运行测试验证覆盖情况：",
+    "content": "\u8fd0\u884c\u6d4b\u8bd5\u9a8c\u8bc1\u8986\u76d6\u60c5\u51b5\uff1a",
     "done": false,
     "created_at": "2026-03-04 01:59:00",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 50,
     "content": "NONE",
     "done": false,
     "created_at": "2026-03-04 01:59:00",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 51,
-    "content": "测试任务_1772560897",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560897",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 02:01:37"
   },
   {
     "id": 52,
-    "content": "测试任务_1772560937",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560937",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 02:02:17"
   },
   {
     "id": 53,
-    "content": "我需要先了解已完成任务的内容和项目当前状态。",
+    "content": "\u6211\u9700\u8981\u5148\u4e86\u89e3\u5df2\u5b8c\u6210\u4efb\u52a1\u7684\u5185\u5bb9\u548c\u9879\u76ee\u5f53\u524d\u72b6\u6001\u3002",
     "done": false,
     "created_at": "2026-03-04 02:02:38",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 54,
     "content": "NONE",
     "done": false,
     "created_at": "2026-03-04 02:02:38",
-    "priority": "中"
+    "priority": "\u4e2d"
   },
   {
     "id": 55,
-    "content": "测试任务_1772560995",
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560995",
     "done": false,
-    "priority": "中",
+    "priority": "\u4e2d",
     "created_at": "2026-03-04 02:03:15"
   }
 ]
