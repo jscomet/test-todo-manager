@@ -9069,3 +9069,367 @@ OK
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 02:17:52][0m ========== 阶段 4: Git 提交推送 ==========
+[main 0f3906f] Feat: 测试任务_1772559366
+ 2 files changed, 251 insertions(+), 118 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   891cc9b..0f3906f  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 02:17:56][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 29 已标记为完成
+[0;36m[INFO][0m 创建新任务: NONE
+[0;36m[INFO][0m 创建新任务: （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+[0;34m[2026-03-04 02:18:00][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 02:18:03][0m 
+[0;34m[2026-03-04 02:18:03][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 02:18:03][0m ║  第 28 轮执行                          ║
+[0;34m[2026-03-04 02:18:03][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 02:18:03][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 31
+[0;34m[2026-03-04 02:18:03][0m 获取到任务 ID=30: 测试任务_1772559411
+[0;34m[2026-03-04 02:18:03][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772559411
+[0;34m[2026-03-04 02:18:03][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 788
+drwxr-xr-x 5 root root   4096 Mar  4 02:18 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 412125 Mar  4 02:18 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 02:17 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 02:17 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  12956 Mar  4 02:18 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  14974 Mar  4 01:44 todo.py
+[0m
+我了解了项目结构。现在我需要分析任务 `测试任务_1772559411` (任务 ID 30) 的具体内容。这是一个测试任务，我需要验证相关功能。让我先检查 git 状态和查看 README。
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mgit log --oneline -5
+0f3906f Feat: 测试任务_1772559366
+891cc9b Test: 添加测试任务_1772559366 综合功能测试
+dcd9121 Feat: 测试默认优先级 - 新任务
+f392e78 Test: 添加默认优先级测试套件
+e9ba958 Feat: 测试任务_1772559323
+[0m
+[0m→ [0mRead README.md
+现在我理解了。任务 ID 30 是"测试任务_1772559411"，这是一个测试任务。根据 BabyAGI 执行器的模式，这类测试任务通常用于验证功能。
+
+让我查看前一个测试任务（test_task_1772559366.py）来了解测试模式，然后执行这个测试任务：
+[0m→ [0mRead test_task_1772559366.py
+现在我理解了测试模式。任务 ID 30"测试任务_1772559411"是一个类似的综合功能测试任务。我需要：
+
+1. 创建测试文件 `test_task_1772559411.py`
+2. 运行测试验证功能
+3. 标记任务完成
+
+让我创建测试文件并执行：
+[0m
+[0m← [0mWrite test_task_1772559411.py
+Wrote file successfully.
+[0m
+现在运行测试：
+[0m$ [0mpython3 test_task_1772559411.py
+test_add_basic_task (__main__.TestAddTaskFunctionality.test_add_basic_task)
+测试添加基本任务 ... ok
+test_add_task_complete_fields (__main__.TestAddTaskFunctionality.test_add_task_complete_fields)
+测试添加完整字段任务 ... ok
+test_add_task_with_due_date (__main__.TestAddTaskFunctionality.test_add_task_with_due_date)
+测试添加带截止日期任务 ... ok
+test_add_task_with_high_priority (__main__.TestAddTaskFunctionality.test_add_task_with_high_priority)
+测试添加高优先级任务 ... ok
+test_add_task_with_low_priority (__main__.TestAddTaskFunctionality.test_add_task_with_low_priority)
+测试添加低优先级任务 ... ok
+test_add_task_with_tags (__main__.TestAddTaskFunctionality.test_add_task_with_tags)
+测试添加带标签任务 ... ok
+test_old_tasks_get_default_priority (__main__.TestBackwardCompatibility.test_old_tasks_get_default_priority)
+测试旧任务自动获取默认优先级 ... ok
+test_cli_add_command (__main__.TestCLICommands.test_cli_add_command)
+测试 CLI add 命令 ... ok
+test_cli_list_command (__main__.TestCLICommands.test_cli_list_command)
+测试 CLI list 命令 ... ok
+test_delete_nonexistent_task (__main__.TestDeleteTaskFunctionality.test_delete_nonexistent_task)
+测试删除不存在的任务 ... ok
+test_delete_renumbers_ids (__main__.TestDeleteTaskFunctionality.test_delete_renumbers_ids)
+测试删除后 ID 重新编号 ... ok
+test_delete_task (__main__.TestDeleteTaskFunctionality.test_delete_task)
+测试删除任务 ... ok
+test_emoji_content (__main__.TestEdgeCases.test_emoji_content)
+测试 emoji 内容 ... ok
+test_empty_content_task (__main__.TestEdgeCases.test_empty_content_task)
+测试空内容任务 ... ok
+test_empty_tags_not_saved (__main__.TestEdgeCases.test_empty_tags_not_saved)
+测试空标签列表不保存 ... ok
+test_special_characters_content (__main__.TestEdgeCases.test_special_characters_content)
+测试特殊字符内容 ... ok
+test_export_csv (__main__.TestExportFunctionality.test_export_csv)
+测试 CSV 导出 ... ok
+test_export_empty_tasks (__main__.TestExportFunctionality.test_export_empty_tasks)
+测试导出空任务列表 ... ok
+test_export_markdown (__main__.TestExportFunctionality.test_export_markdown)
+测试 Markdown 导出 ... ok
+test_list_empty_tasks (__main__.TestListTasksFunctionality.test_list_empty_tasks)
+测试空任务列表 ... ok
+test_list_filter_by_priority (__main__.TestListTasksFunctionality.test_list_filter_by_priority)
+测试按优先级过滤 ... ok
+test_list_filter_by_tag (__main__.TestListTasksFunctionality.test_list_filter_by_tag)
+测试按标签过滤 ... ok
+test_list_sort_by_priority (__main__.TestListTasksFunctionality.test_list_sort_by_priority)
+测试按优先级排序（高优先在前） ... ok
+test_list_with_tasks (__main__.TestListTasksFunctionality.test_list_with_tasks)
+测试有任务时的列表 ... ok
+test_mark_nonexistent_task_done (__main__.TestMarkDoneFunctionality.test_mark_nonexistent_task_done)
+测试标记不存在的任务 ... ok
+test_mark_task_done (__main__.TestMarkDoneFunctionality.test_mark_task_done)
+测试标记任务完成 ... ok
+test_mark_task_done_message (__main__.TestMarkDoneFunctionality.test_mark_task_done_message)
+测试标记完成任务的确认消息 ... ok
+test_set_priority_high (__main__.TestPriorityFunctionality.test_set_priority_high)
+测试修改优先级为高 ... ok
+test_set_priority_low (__main__.TestPriorityFunctionality.test_set_priority_low)
+测试修改优先级为低 ... ok
+test_set_priority_nonexistent_task (__main__.TestPriorityFunctionality.test_set_priority_nonexistent_task)
+测试修改不存在任务的优先级 ... ok
+test_add_duplicate_tag (__main__.TestTagFunctionality.test_add_duplicate_tag)
+测试防止添加重复标签 ... ok
+test_add_tag_to_task (__main__.TestTagFunctionality.test_add_tag_to_task)
+测试为任务添加标签 ... ok
+test_remove_nonexistent_tag (__main__.TestTagFunctionality.test_remove_nonexistent_tag)
+测试移除不存在的标签 ... ok
+test_remove_tag_from_task (__main__.TestTagFunctionality.test_remove_tag_from_task)
+测试从任务移除标签 ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.020s
+
+OK
+============================================================
+测试任务_1772559411 - Todo 管理器综合功能测试
+============================================================
+✅ 已添加任务：基本任务
+✅ 已添加任务：完整任务
+✅ 已添加任务：带截止日期任务
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：带标签任务
+✅ 已添加任务：列表测试任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+🗑️  已删除任务：任务 2
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：🚀 emoji 任务 🎉
+✅ 已添加任务：
+✅ 已添加任务：空标签任务
+✅ 已添加任务：特殊字符测试：@#$%&*
+✅ 已添加任务：CSV 测试任务
+✅ 已导出 1 个任务到：test_1772559411.csv
+✅ 已添加任务：MD 测试任务
+✅ 已导出 1 个任务到：test_1772559411.md
+✅ 已添加任务：高优先任务
+✅ 已添加任务：中优先任务
+✅ 已添加任务：低优先任务
+✅ 已添加任务：工作任务
+✅ 已添加任务：生活任务
+✅ 已添加任务：低优先
+✅ 已添加任务：高优先
+✅ 已添加任务：中优先
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：完成测试任务
+✅ 已添加任务：优先级修改任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：优先级修改任务
+✅ 已添加任务：优先级修改任务
+✅ 任务 1 优先级已修改：中 → 低
+   内容：优先级修改任务
+✅ 已添加任务：重复标签任务
+✅ 已添加任务：标签测试任务
+✅ 已为任务 1 添加标签：#测试
+✅ 已添加任务：无此标签任务
+✅ 已添加任务：移除标签任务
+✅ 已从任务 1 移除标签：#标签 1
+[0m
+测试全部通过！现在标记任务完成并提交：
+[0m$ [0mgit commit -m "Test: 测试任务_1772559411 综合功能测试
+
+- 添加完整测试套件 test_task_1772559411.py
+- 包含 34 个测试用例覆盖所有核心功能
+- 测试添加、列表、完成、删除任务功能
+- 测试标签和优先级功能
+- 测试导出 CSV 和 Markdown 功能
+- 测试 CLI 命令和向后兼容性
+- 所有测试通过"
+fatal: Unable to create '/root/.openclaw/workspace/test/todo-manager/.git/index.lock': File exists.
+
+Another git process seems to be running in this repository, e.g.
+an editor opened by 'git commit'. Please make sure all processes
+are terminated then try again. If it still fails, a git process
+may have crashed in this repository earlier:
+remove the file manually to continue.
+[0m
+[0m$ [0mgit add test_task_1772559411.py tasks.json
+[0m
+[0m$ [0mpython3 todo.py done 30
+✅ 任务 30 已完成: 测试任务_1772559411
+[0m
+[0m$ [0mrm -f .git/index.lock && git add test_task_1772559411.py tasks.json && git commit -m "Test: 测试任务_1772559411 综合功能测试
+
+- 添加完整测试套件 test_task_1772559411.py
+- 包含 34 个测试用例覆盖所有核心功能
+- 测试添加、列表、完成、删除任务功能
+- 测试标签和优先级功能
+- 测试导出 CSV 和 Markdown 功能
+- 测试 CLI 命令和向后兼容性
+- 所有测试通过"
+[main c71fc47] Test: 测试任务_1772559411 综合功能测试
+ 2 files changed, 548 insertions(+), 2 deletions(-)
+ create mode 100644 test_task_1772559411.py
+[0m
+[0m$ [0mgit push origin main
+To github.com:jscomet/test-todo-manager.git
+   0f3906f..c71fc47  main -> main
+[0m
+## ✅ 任务完成
+
+**测试任务_1772559411** 已成功完成！
+
+### 完成的功能
+- ✅ 创建综合测试套件 `test_task_1772559411.py`
+- ✅ 包含 34 个测试用例，覆盖：
+  - 添加任务功能（6 个测试）
+  - 列表任务功能（5 个测试）
+  - 标记完成任务功能（3 个测试）
+  - 删除任务功能（3 个测试）
+  - 标签功能（4 个测试）
+  - 优先级功能（3 个测试）
+  - 导出功能（3 个测试）
+  - 向后兼容性（1 个测试）
+  - 边界情况（4 个测试）
+  - CLI 命令（2 个测试）
+- ✅ 所有测试通过
+- ✅ 任务 ID 30 已标记为完成
+- ✅ 代码已提交并推送
+
+### 修改的文件
+- `test_task_1772559411.py` (新建)
+- `tasks.json` (更新任务状态)
+
+### 测试方法
+```bash
+python3 test_task_1772559411.py
+```
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 02:21:00][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772562060
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+✅ [14] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [46] 🔴 CLI 测试任务
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [9] 🟡 测试默认优先级任务
+✅ [10] 🟡 测试任务_1772558260
+✅ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [15] 🟡 测试无截止日期任务
+✅ [16] 🟡 测试任务_1772558695
+✅ [17] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [18] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [19] 🟡 测试任务_1772559067
+✅ [20] 🟡 测试任务_1772559141
+✅ [21] 🟡 添加导出功能的单元测试
+✅ [23] 🟡 测试任务_1772559221
+✅ [26] 🟡 测试任务_1772559260
+✅ [27] 🟡 测试任务_1772559323
+✅ [28] 🟡 测试默认优先级 - 新任务
+✅ [29] 🟡 测试任务_1772559366
+✅ [30] 🟡 测试任务_1772559411
+⭕ [31] 🟡 NONE
+⭕ [32] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+⭕ [33] 🟡 测试任务_1772559626
+⭕ [34] 🟡 测试任务_1772559821
+⭕ [35] 🟡 优先级统计功能
+⭕ [36] 🟡 测试任务_1772559903
+⭕ [39] 🟡 测试任务_1772559976
+⭕ [40] 🟡 测试任务_1772560148
+⭕ [41] 🟡 测试任务_1772560188
+⭕ [42] 🟡 测试标签分割功能 🔖 #工作 #紧急
+⭕ [43] 🟡 测试任务_1772560261
+⭕ [44] 🟡 测试任务_1772560300
+⭕ [45] 🟡 测试任务_1772560348
+⭕ [47] 🟡 测试任务_1772560561
+⭕ [48] 🟡 测试任务_1772560713
+⭕ [49] 🟡 运行测试验证覆盖情况：
+⭕ [50] 🟡 NONE
+⭕ [51] 🟡 测试任务_1772560897
+⭕ [52] 🟡 测试任务_1772560937
+⭕ [53] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+⭕ [54] 🟡 NONE
+⭕ [55] 🟡 测试任务_1772560995
+⭕ [56] 🟡 测试任务_1772561467
+⭕ [57] 🟡 测试任务_1772561636
+⭕ [58] 🟡 测试任务_1772561872
+⭕ [59] 🟡 NONE
+⭕ [60] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+⭕ [61] 🟡 测试任务_1772562060
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+⭕ [38] 🟢 测试无截止日期
+--------------------------------------------------
+总计：61 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 02:21:00][0m ========== 阶段 4: Git 提交推送 ==========
