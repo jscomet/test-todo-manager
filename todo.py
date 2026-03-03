@@ -13,7 +13,13 @@ from datetime import datetime
 TASKS_FILE = "tasks.json"
 
 def load_tasks():
-    """加载任务列表"""
+    """
+    从 JSON 文件加载任务列表
+    
+    Returns:
+        list: 任务列表，每个任务为字典格式
+              如果文件不存在则返回空列表
+    """
     if os.path.exists(TASKS_FILE):
         with open(TASKS_FILE, 'r', encoding='utf-8') as f:
             return json.load(f)
