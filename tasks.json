@@ -107,10 +107,11 @@
   {
     "id": 14,
     "content": "测试截止日期功能",
-    "done": false,
+    "done": true,
     "priority": "高",
     "created_at": "2026-03-04 01:24:42",
-    "due_date": "2026-03-10"
+    "due_date": "2026-03-10",
+    "completed_at": "2026-03-04 01:46:20"
   },
   {
     "id": 15,
@@ -304,5 +305,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:46:16"
+  },
+  {
+    "id": 40,
+    "content": "测试任务_1772560148",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:49:08"
   }
 ]
