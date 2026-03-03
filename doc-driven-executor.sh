@@ -193,8 +193,8 @@ Start working on this task now.
 PROMPT_EOF
     
     # 替换变量
-    sed -i "s/TASK_NAME_PLACEHOLDER/$task_name/g" "$prompt_file"
-    sed -i "s|PROJECT_DIR_PLACEHOLDER|$PROJECT_DIR|g" "$prompt_file"
+    sed -i "s#TASK_NAME_PLACEHOLDER#$task_name#g" "$prompt_file"
+    sed -i "s#PROJECT_DIR_PLACEHOLDER#$PROJECT_DIR#g" "$prompt_file"
     
     # 执行 OpenCode
     local output_file="$PROJECT_DIR/.output_$$.txt"
