@@ -1,6 +1,6 @@
 #!/bin/bash
 # 文档驱动的 BabyAGI 执行器 v2.2
-# 使用 .opencode/config.json 配置权限
+# 使用项目目录下的 opencode.json 配置权限
 
 set -e
 
@@ -11,9 +11,6 @@ PLAN_FILE="$PROJECT_DIR/PLAN.md"
 DATA_TASKS_FILE="$PROJECT_DIR/data/tasks.json"
 LOG_FILE="$PROJECT_DIR/logs/executor.log"
 LOCK_FILE="/tmp/doc-driven-executor.lock"
-
-# 设置 OpenCode 配置目录
-export OPENCODE_CONFIG_DIR="$PROJECT_DIR/.opencode"
 
 # ==================== 配置 ====================
 PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
