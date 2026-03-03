@@ -379,6 +379,96 @@ def export_markdown(filename=None):
     print(f"✅ 已导出 {len(tasks)} 个任务到：{filename}")
 
 
+def due(days=None, sort_by="date"):
+    """
+    显示即将到期的任务
+
+    Args:
+        days (int): 可选，显示多少天内到期的任务，不指定则显示所有有截止日期的任务
+        sort_by (str): 排序方式，可选值：date（按日期）/ priority（按优先级），默认为 date
+
+    Returns:
+        None
+
+    Note:
+        显示任务的截止日期和剩余天数
+    """
+    from datetime import datetime, timedelta
+
+    tasks = load_tasks()
+
+    if not tasks:
+        print("📭 暂无任务")
+        return
+
+    today = datetime.now().date()
+
+    due_tasks = []
+    for task in tasks:
+        due_date_str = task.get("due_date")
+        if due_date_str:
+            try:
+                due_date = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+                if days is not None:
+                    end_date = today + timedelta(days=days)
+                    if due_date <= end_date:
+                        days_left = (due_date - today).days
+                        due_tasks.append((task, due_date, days_left))
+                else:
+                    days_left = (due_date - today).days
+                    due_tasks.append((task, due_date, days_left))
+            except ValueError:
+                continue
+
+    if not due_tasks:
+        if days is not None:
+            print(f"📭 没有 {days} 天内到期的任务")
+        else:
+            print("📭 没有带截止日期的任务")
+        return
+
+    if sort_by == "priority":
+        priority_order = {"高": 0, "中": 1, "低": 2}
+        due_tasks.sort(
+            key=lambda x: (x[2], priority_order.get(x[0].get("priority", "中"), 1))
+        )
+    else:
+        due_tasks.sort(key=lambda x: x[2])
+
+    print("\n📅 即将到期的任务")
+    if days is not None:
+        print(f"时间范围：{days} 天内")
+    print("-" * 60)
+
+    priority_icons = {"高": "🔴", "中": "🟡", "低": "🟢"}
+    overdue_count = 0
+
+    for task, due_date, days_left in due_tasks:
+        status = "✅" if task["done"] else "⭕"
+        priority = task.get("priority", "中")
+        priority_icon = priority_icons.get(priority, "🟡")
+
+        if days_left < 0:
+            due_str = f"已过期 {abs(days_left)} 天"
+            overdue_count += 1
+        elif days_left == 0:
+            due_str = "今天到期 ⚠️"
+        elif days_left == 1:
+            due_str = "明天到期 ⚠️"
+        else:
+            due_str = f"剩余 {days_left} 天"
+
+        print(
+            f"{status} [{task['id']}] {priority_icon} {task['content']} 📅 {task['due_date']} ({due_str})"
+        )
+
+    print("-" * 60)
+    print(f"总计：{len(due_tasks)} 个任务", end="")
+    if overdue_count > 0:
+        print(f" | ⚠️ 已过期：{overdue_count} 个", end="")
+    print()
+
+
 def stats(tag_filter=None, priority_filter=None):
     """
     显示任务优先级统计信息
@@ -567,6 +657,22 @@ def main():
         choices=["高", "中", "低"],
         help="按优先级过滤统计",
     )
+
+    # due 命令
+    due_parser = subparsers.add_parser("due", help="显示即将到期的任务")
+    due_parser.add_argument(
+        "--days",
+        "-d",
+        type=int,
+        help="显示多少天内到期的任务（如：7 表示 7 天内）",
+    )
+    due_parser.add_argument(
+        "--sort",
+        "-s",
+        choices=["date", "priority"],
+        default="date",
+        help="排序方式（date/priority），默认为 date",
+    )
     args = parser.parse_args()
 
     if args.command == "add":
@@ -593,6 +699,8 @@ def main():
             export_markdown(args.output)
     elif args.command == "stats":
         stats(args.tag, args.priority)
+    elif args.command == "due":
+        due(args.days, args.sort)
     else:
         parser.print_help()
 
