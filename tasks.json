@@ -416,9 +416,10 @@
   {
     "id": 49,
     "content": "CLI 完成测试",
-    "done": false,
+    "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 02:47:35"
+    "created_at": "2026-03-04 02:47:35",
+    "completed_at": "2026-03-04 05:00:11"
   },
   {
     "id": 50,
@@ -3106,5 +3107,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:00:07"
+  },
+  {
+    "id": 384,
+    "content": "测试任务_1772571691",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:01:31"
   }
 ]
