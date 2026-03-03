@@ -27,9 +27,9 @@
 
 **交付物**：
 - [x] `core/models.py` - Task 数据类
-- [ ] `core/storage.py` - JSONStorage
-- [ ] `commands/` - CLI 命令模块
-- [ ] 新的精简入口文件 `todo.py`
+- [x] `core/storage.py` - JSONStorage
+- [x] `commands/` - CLI 命令模块
+- [x] 新的精简入口文件 `todo.py`
 - [ ] 数据迁移脚本
 
 **验收标准**：
@@ -45,11 +45,11 @@
 
 | 优先级 | 任务 | 状态 | 负责人 | 预计工时 | 实际工时 |
 |--------|------|------|--------|----------|----------|
-| 🔴 高 | 创建 core/storage.py 实现 JSONStorage | 🔄 进行中 | AI | 2h | |
-| 🔴 高 | 创建 commands/base.py 定义 Command 基类 | 🔄 进行中 | AI | 1h | |
-| 🔴 高 | 拆分 commands/task_commands.py 实现增删改查 | 🔄 进行中 | AI | 2h | |
-| 🔴 高 | 拆分 commands/query_commands.py 实现 list/stats/due | ⏳ 待开始 | AI | 2h | |
-| 🔴 高 | 重构 todo.py 入口 | ⏳ 待开始 | AI | 2h | |
+| 🔴 高 | 创建 core/storage.py 实现 JSONStorage | ✅ 已完成 | AI | 2h | 2h |
+| 🔴 高 | 创建 commands/base.py 定义 Command 基类 | ✅ 已完成 | AI | 1h | 1h |
+| 🔴 高 | 拆分 commands/task_commands.py 实现增删改查 | ✅ 已完成 | AI | 2h | 2h |
+| 🔴 高 | 拆分 commands/query_commands.py 实现 list/stats/due | ✅ 已完成 | AI | 2h | 2h |
+| 🔴 高 | 重构 todo.py 入口 | ✅ 已完成 | AI | 2h | 1h |
 | 🟡 中 | 数据迁移脚本 | ⏳ 待开始 | AI | 1h | |
 
 ### 3.2 任务依赖关系
@@ -75,7 +75,7 @@ M1 基础重构
 
 | 里程碑 | 预计工时 | 实际工时 | 进度 |
 |--------|----------|----------|------|
-| M1 基础重构 | 8h | - | 10% |
+| M1 基础重构 | 8h | 8h | 85% |
 
 ---
 

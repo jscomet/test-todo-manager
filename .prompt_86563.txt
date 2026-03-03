@@ -1,4 +1,4 @@
-Task: TASK_NAME_PLACEHOLDER
+Task: 拆分 commands/query_commands.py 实现 list/stats/due
 
 Project: /root/.openclaw/workspace/test/todo-manager
 
