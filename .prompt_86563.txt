@@ -1,4 +1,4 @@
-Task: 拆分 commands/query_commands.py 实现 list/stats/due
+Task: 数据迁移脚本
 
 Project: /root/.openclaw/workspace/test/todo-manager
 

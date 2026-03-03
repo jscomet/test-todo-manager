@@ -12,7 +12,7 @@ from datetime import datetime
 
 def migrate_data():
     """迁移数据"""
-    root_dir = Path(__file__).parent
+    root_dir = Path(__file__).parent.parent
     old_file = root_dir / "tasks.json"
     data_dir = root_dir / "data"
     new_tasks_file = data_dir / "tasks.json"
@@ -41,10 +41,12 @@ def migrate_data():
     test_tasks = []
 
     for task in old_tasks:
+        content = task.get("content", "")
         # 判断是否为测试任务
         is_test = (
-            "test" in task.get("content", "").lower()
-            or task.get("content", "").startswith("test_")
+            "test" in content.lower()
+            or content.startswith("test_")
+            or "测试" in content
             or task.get("is_test", False)
         )
 

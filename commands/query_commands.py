@@ -39,7 +39,7 @@ class ListCommand(Command):
 
     def execute(self, args: Namespace) -> None:
         storage = JSONStorage()
-        tasks = storage.load(include_test=True)
+        tasks = storage.load(include_test=False)
 
         # 按标签过滤
         if args.tag:
@@ -109,7 +109,7 @@ class StatsCommand(Command):
 
     def execute(self, args: Namespace) -> None:
         storage = JSONStorage()
-        tasks = storage.load(include_test=True)
+        tasks = storage.load(include_test=False)
 
         # 按标签过滤
         if args.tag:
@@ -191,7 +191,7 @@ class DueCommand(Command):
 
     def execute(self, args: Namespace) -> None:
         storage = JSONStorage()
-        tasks = storage.load(include_test=True)
+        tasks = storage.load(include_test=False)
 
         if not tasks:
             print("📭 暂无任务")
