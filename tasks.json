@@ -170,9 +170,10 @@
   {
     "id": 21,
     "content": "添加导出功能的单元测试",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:32:41",
-    "priority": "中"
+    "priority": "中",
+    "completed_at": "2026-03-04 01:58:38"
   },
   {
     "id": 22,
@@ -377,5 +378,26 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:58:33"
+  },
+  {
+    "id": 49,
+    "content": "运行测试验证覆盖情况：",
+    "done": false,
+    "created_at": "2026-03-04 01:59:00",
+    "priority": "中"
+  },
+  {
+    "id": 50,
+    "content": "NONE",
+    "done": false,
+    "created_at": "2026-03-04 01:59:00",
+    "priority": "中"
+  },
+  {
+    "id": 51,
+    "content": "测试任务_1772560897",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 02:01:37"
   }
 ]
