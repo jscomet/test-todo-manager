@@ -7,6 +7,7 @@ Simple Todo Manager - 简单任务管理器
 import argparse
 import json
 import os
+import csv
 from pathlib import Path
 from datetime import datetime
 
@@ -118,15 +119,52 @@ COMMANDS.append(CoverageCommand())
 
 TASKS_FILE = "data/tasks.json"
 
+# 全局存储实例（用于测试覆盖）
+_storage_instance = None
+
 
 def _get_storage():
     """获取存储实例（支持测试覆盖）"""
     import sys
 
+    # 如果已有存储实例，直接返回（用于测试）
+    if _storage_instance is not None:
+        return _storage_instance
+
+    # 支持新的测试模式：设置 _test_data_dir
     test_data_dir = getattr(sys.modules[__name__], "_test_data_dir", None)
     if test_data_dir:
         return JSONStorage(Path(test_data_dir))
+
+    # 支持旧的测试模式：直接设置 TASKS_FILE 变量为单个文件
+    # 测试中设置 todo.TASKS_FILE = "test_file.json"
+    if TASKS_FILE != "data/tasks.json":
+        # 使用自定义文件路径（旧模式）
+        file_path = Path(TASKS_FILE)
+        # 如果文件路径没有目录部分，使用当前目录
+        if file_path.parent == Path("."):
+            # 直接使用该文件作为 tasks 文件
+            return JSONStorage(
+                Path("."),
+                tasks_file_name=file_path.name,
+                test_tasks_file_name=f"test_{file_path.name}",
+            )
+        else:
+            # 有目录路径
+            return JSONStorage(
+                file_path.parent,
+                tasks_file_name=file_path.name,
+                test_tasks_file_name=f"test_{file_path.name}",
+            )
+
+    # 默认模式
     return JSONStorage()
+
+
+def set_storage(storage):
+    """设置存储实例（用于测试）"""
+    global _storage_instance
+    _storage_instance = storage
 
 
 def load_tasks(include_test=False):
@@ -160,7 +198,11 @@ def add_task(content, priority="中", due_date=None, tags=None):
 def delete_task(task_id):
     """删除任务（向后兼容函数）"""
     storage = _get_storage()
-    return storage.delete_task(task_id)
+    if storage.delete_task(task_id):
+        return True
+    else:
+        print(f"❌ 未找到任务 ID: {task_id}")
+        return False
 
 
 def complete_task(task_id):
@@ -209,6 +251,84 @@ def set_task_priority(task_id, priority):
             storage.update_task(task)
             return True
     return False
+
+
+def done_task(task_id):
+    """标记任务完成（向后兼容函数，别名）"""
+    return complete_task(task_id)
+
+
+def export_csv(filename=None):
+    """导出 CSV（向后兼容函数）"""
+    storage = _get_storage()
+    tasks = storage.load(include_test=True)
+
+    if not tasks:
+        print("暂无任务可导出")
+        return
+
+    if filename is None:
+        filename = "tasks_export.csv"
+
+    with open(filename, "w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            ["ID", "内容", "状态", "优先级", "创建时间", "截止日期", "标签"]
+        )
+        for task in tasks:
+            status = "已完成" if task.done else "待完成"
+            tags = ", ".join(task.tags)
+            writer.writerow(
+                [
+                    task.id,
+                    task.content,
+                    status,
+                    task.priority.value,
+                    task.created_at,
+                    task.due_date or "",
+                    tags,
+                ]
+            )
+    print(f"已导出 {len(tasks)} 个任务到：{filename}")
+
+
+def export_markdown(filename=None):
+    """导出 Markdown（向后兼容函数）"""
+    storage = _get_storage()
+    tasks = storage.load(include_test=True)
+
+    if not tasks:
+        print("暂无任务可导出")
+        return
+
+    if filename is None:
+        filename = "tasks_export.md"
+
+    completed = sum(1 for t in tasks if t.done)
+    pending = len(tasks) - completed
+
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write("# 任务列表\n\n")
+        f.write(
+            f"**总计**: {len(tasks)} 个任务 | **已完成**: {completed} | **待完成**: {pending}\n\n"
+        )
+        f.write("## 任务详情\n\n")
+        f.write("| ID | 状态 | 优先级 | 内容 | 截止日期 | 标签 |\n")
+        f.write("|---|---|---|---|---|---|\n")
+        for task in tasks:
+            status = "✅" if task.done else "⭕"
+            due = task.due_date or "-"
+            tags = " ".join([f"#{t}" for t in task.tags]) or "-"
+            content = task.content.replace("|", "\\|")
+            f.write(
+                f"| {task.id} | {status} | {task.priority.value} | {content} | {due} | {tags} |\n"
+            )
+        f.write("\n## 统计信息\n\n")
+        f.write(
+            f"- 完成进度：{completed}/{len(tasks)} ({completed * 100 // len(tasks) if len(tasks) > 0 else 0}%)\n"
+        )
+        f.write(f"- 导出时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    print(f"已导出 {len(tasks)} 个任务到：{filename}")
 
 
 def main():

@@ -47,11 +47,18 @@ class JSONStorage(Storage):
     - 缓存失效：数据变更时自动刷新
     """
 
-    def __init__(self, data_dir: Path | None = None):
+    def __init__(
+        self,
+        data_dir: Path | None = None,
+        tasks_file_name: str = "tasks.json",
+        test_tasks_file_name: str = "test-tasks.json",
+    ):
         """初始化存储
 
         Args:
             data_dir: 数据目录路径，默认为项目根目录下的 data/
+            tasks_file_name: 任务文件名，默认 tasks.json
+            test_tasks_file_name: 测试任务文件名，默认 test-tasks.json
         """
         if data_dir is None:
             data_dir = Path(__file__).parent.parent / "data"
@@ -59,8 +66,9 @@ class JSONStorage(Storage):
         self.data_dir = data_dir
         self.data_dir.mkdir(parents=True, exist_ok=True)
 
-        self.tasks_file = self.data_dir / "tasks.json"
-        self.test_tasks_file = self.data_dir / "test-tasks.json"
+        # 支持自定义文件名（用于测试）
+        self.tasks_file = self.data_dir / tasks_file_name
+        self.test_tasks_file = self.data_dir / test_tasks_file_name
 
         # 性能优化：内存缓存
         self._tasks_cache: List[Task] | None = None
@@ -217,13 +225,13 @@ class JSONStorage(Storage):
 
         Returns:
             是否删除成功
-            
+
         性能优化：直接使用缓存，避免重复 load
         """
         # 先在真实任务中查找
         if self._tasks_cache is None:
             self.load()
-        
+
         if self._tasks_cache is not None:
             for i, t in enumerate(self._tasks_cache):
                 if t.id == task_id:
@@ -234,7 +242,7 @@ class JSONStorage(Storage):
         # 再在测试任务中查找
         if self._test_tasks_cache is None:
             self.load_test_tasks()
-        
+
         if self._test_tasks_cache is not None:
             for i, t in enumerate(self._test_tasks_cache):
                 if t.id == task_id:

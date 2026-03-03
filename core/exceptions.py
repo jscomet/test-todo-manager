@@ -4,6 +4,8 @@
 符合 SPEC.md 第 10 章异常处理规范。
 """
 
+from typing import Optional
+
 
 class TodoException(Exception):
     """基础异常类
@@ -11,7 +13,7 @@ class TodoException(Exception):
     所有自定义异常的基类
     """
 
-    def __init__(self, message: str, error_code: int = None):
+    def __init__(self, message: str, error_code: Optional[int] = None):
         self.message = message
         self.error_code = error_code
         super().__init__(self.message)
@@ -35,11 +37,11 @@ class TaskNotFoundError(TodoException):
 class InvalidTaskError(TodoException):
     """无效任务内容异常
 
-    错误码：1002
+    错误码：1004
     """
 
-    def __init__(self, message: str, field: str = None):
-        super().__init__(message, error_code=1002)
+    def __init__(self, message: str, error_code: int = 1004, field: Optional[str] = None):
+        super().__init__(message, error_code=error_code)
         self.field = field
 
 
@@ -110,8 +112,8 @@ class EmptyContentError(TaskContentError):
     错误码：1004
     """
 
-    def __init__(self):
-        super().__init__("任务内容不能为空")
+    def __init__(self, content: str = None):
+        super().__init__("任务内容不能为空", content=content)
 
 
 class ContentTooLongError(TaskContentError):
