@@ -2897,3 +2897,147 @@ python3 todo.py export -f markdown  # 导出 Markdown
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:33:41][0m ========== 阶段 4: Git 提交推送 ==========
+[main 47dab0f] Feat: 测试任务 1
+ 3 files changed, 739 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   403954b..47dab0f  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:33:46][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 6 已标记为完成
+[0;34m[2026-03-04 01:33:49][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:33:52][0m 
+[0;34m[2026-03-04 01:33:52][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:33:52][0m ║  第 7 轮执行                          ║
+[0;34m[2026-03-04 01:33:52][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:33:52][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 17
+[0;34m[2026-03-04 01:33:52][0m 获取到任务 ID=7: 测试低优先级任务
+[0;34m[2026-03-04 01:33:52][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试低优先级任务
+[0;34m[2026-03-04 01:33:52][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我将开始执行测试低优先级任务的任务。首先让我分析项目结构和现有代码。
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 324
+drwxr-xr-x 5 root root   4096 Mar  4 01:33 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 105467 Mar  4 01:33 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 01:33 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 01:33 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 113003 Mar  4 01:33 runtime.log
+-rw-r--r-- 1 root root   1782 Mar  4 01:32 tasks_export.csv
+-rw-r--r-- 1 root root   1727 Mar  4 01:32 tasks_export.md
+-rw-r--r-- 1 root root   4759 Mar  4 01:33 tasks.json
+-rw-r--r-- 1 root root  12570 Mar  4 01:32 todo.py
+[0m
+我了解了项目结构。任务是测试低优先级任务功能。我看到已有低优先级任务（ID 7）。让我执行测试验证低优先级功能。
+[0m$ [0mpython3 todo.py add "低优先级测试任务" --priority 低
+✅ 已添加任务：低优先级测试任务
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+⭕ [7] 🟢 测试低优先级任务
+⭕ [8] 🔴 测试高优先级任务
+⭕ [9] 🟡 测试默认优先级任务
+⭕ [10] 🟡 测试任务_1772558260
+⭕ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [13] 🟡 添加修改任务优先级功能
+⭕ [14] 🟡 测试截止日期功能 📅 2026-03-10
+⭕ [15] 🟡 测试无截止日期任务
+⭕ [16] 🟡 测试任务_1772558695
+⭕ [17] 🟡 测试标签分割 🔖 #工作，紧急
+⭕ [18] 🟡 英文逗号测试 🔖 #test #urgent
+⭕ [19] 🟡 测试任务_1772559067
+⭕ [20] 🟡 测试任务_1772559141
+⭕ [21] 🟡 添加导出功能的单元测试
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [23] 🟡 测试任务_1772559221
+⭕ [24] 🟢 低优先级测试任务
+--------------------------------------------------
+总计：24 个任务
+[0m
+低优先级任务功能正常。继续测试标记完成和其他功能。
+[0m$ [0mpython3 todo.py done 7
+✅ 任务 7 已完成: 测试低优先级任务
+[0m
+[0m$ [0mpython3 todo.py add "带截止日期的低优先级任务" --priority 低 --due 2026-03-20 --tags 测试，验证
+✅ 已添加任务：带截止日期的低优先级任务
+[0m
+功能正常。验证显示和导出功能。
+[0m$ [0mpython3 todo.py export --format markdown --output test_low_priority.md
+✅ 已导出 25 个任务到：test_low_priority.md
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [7] 🟢 测试低优先级任务
+⭕ [8] 🔴 测试高优先级任务
+⭕ [9] 🟡 测试默认优先级任务
+⭕ [10] 🟡 测试任务_1772558260
+⭕ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+⭕ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [13] 🟡 添加修改任务优先级功能
+⭕ [14] 🟡 测试截止日期功能 📅 2026-03-10
+⭕ [15] 🟡 测试无截止日期任务
+⭕ [16] 🟡 测试任务_1772558695
+⭕ [17] 🟡 测试标签分割 🔖 #工作，紧急
+⭕ [18] 🟡 英文逗号测试 🔖 #test #urgent
+⭕ [19] 🟡 测试任务_1772559067
+⭕ [20] 🟡 测试任务_1772559141
+⭕ [21] 🟡 添加导出功能的单元测试
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [23] 🟡 测试任务_1772559221
+⭕ [24] 🟢 低优先级测试任务
+⭕ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+--------------------------------------------------
+总计：25 个任务
+[0m
+测试全部通过。清理测试文件并提交。
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   runtime.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mrm test_low_priority.md
+[0m
+[0m$ [0mpython3 todo.py done 24 && python3 todo.py done 25
+✅ 任务 24 已完成: 低优先级测试任务
+✅ 任务 25 已完成: 带截止日期的低优先级任务
+[0m
