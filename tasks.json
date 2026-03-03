@@ -319,12 +319,13 @@
     "content": "测试任务_1772560261",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:51:01"
+    "created_at": "2026-03-04 01:51:01",
+    "completed_at": "2026-03-04 02:57:05"
   },
   {
     "id": 39,
     "content": "测试任务_1772560300",
-    "done": false,
+    "done": true,
     "priority": "中",
     "created_at": "2026-03-04 01:51:40"
   },
