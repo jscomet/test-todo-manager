@@ -10402,3 +10402,263 @@ python3 todo.py add "内容" --priority 中
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 02:23:49][0m ========== 阶段 4: Git 提交推送 ==========
+[main ecd2efa] Feat: 测试任务_1772559821
+ 2 files changed, 126 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   c0ea463..ecd2efa  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 02:23:53][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 34 已标记为完成
+[0;34m[2026-03-04 02:24:07][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 02:24:10][0m 
+[0;34m[2026-03-04 02:24:10][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 02:24:10][0m ║  第 33 轮执行                          ║
+[0;34m[2026-03-04 02:24:10][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 02:24:10][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 32
+[0;34m[2026-03-04 02:24:10][0m 获取到任务 ID=35: 优先级统计功能
+[0;34m[2026-03-04 02:24:10][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 优先级统计功能
+[0;34m[2026-03-04 02:24:10][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager
+total 872
+drwxr-xr-x 5 root root   4096 Mar  4 02:23 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 477298 Mar  4 02:24 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 02:23 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 02:23 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  14555 Mar  4 02:23 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  14974 Mar  4 01:44 todo.py
+[0m
+## 任务分析
+
+**需求**: 添加优先级统计功能，显示各优先级任务的分布情况
+
+**实现方案**:
+1. 添加 `stats()` 函数统计优先级分布和完成情况
+2. 在 `main()` 中添加 `stats` 命令
+3. 支持按标签和优先级过滤统计
+
+现在开始实现：
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -378,8 +378,74 @@
+         f.write(f"- 导出时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+     print(f"✅ 已导出 {len(tasks)} 个任务到：{filename}")
+ 
+ 
++def stats(tag_filter=None, priority_filter=None):
++    """
++    显示任务优先级统计信息
++
++    Args:
++        tag_filter (str): 可选，只显示包含此标签的任务统计
++        priority_filter (str): 可选，只显示指定优先级的统计
++
++    Returns:
++        None
++
++    Note:
++        显示各优先级任务数量、完成情况和百分比
++    """
++    tasks = load_tasks()
++
++    if tag_filter:
++        tasks = [t for t in tasks if tag_filter in t.get("tags", [])]
++
++    if priority_filter:
++        tasks = [t for t in tasks if t.get("priority", "中") == priority_filter]
++
++    if not tasks:
++        if tag_filter:
++            print(f"📭 没有找到带标签 '{tag_filter}' 的任务")
++        elif priority_filter:
++            print(f"📭 没有找到优先级为 '{priority_filter}' 的任务")
++        else:
++            print("📭 暂无任务")
++        return
++
++    total = len(tasks)
++    completed = sum(1 for t in tasks if t["done"])
++    pending = total - completed
++
++    high_priority = [t for t in tasks if t.get("priority", "中") == "高"]
++    medium_priority = [t for t in tasks if t.get("priority", "中") == "中"]
++    low_priority = [t for t in tasks if t.get("priority", "中") == "低"]
++
++    high_completed = sum(1 for t in high_priority if t["done"])
++    medium_completed = sum(1 for t in medium_priority if t["done"])
++    low_completed = sum(1 for t in low_priority if t["done"])
++
++    print("\n📊 任务统计")
++    if tag_filter:
++        print(f"标签：#{tag_filter}")
++    if priority_filter:
++        print(f"优先级：{priority_filter}")
++    print("-" * 50)
++
++    print(f"\n📌 总体情况:")
++    print(f"   总计：{total} 个任务")
++    print(f"   ✅ 已完成：{completed} ({completed * 100 // total}%)")
++    print(f"   ⭕ 待完成：{pending} ({pending * 100 // total}%)")
++
++    print(f"\n📌 优先级分布:")
++    if high_priority:
++        print(f"   🔴 高优先级：{len(high_priority)} 个 (完成：{high_completed}/{len(high_priority)})")
++    if medium_priority:
++        print(f"   🟡 中优先级：{len(medium_priority)} 个 (完成：{medium_completed}/{len(medium_priority)})")
++    if low_priority:
++        print(f"   🟢 低优先级：{len(low_priority)} 个 (完成：{low_completed}/{len(low_priority)})")
++
++    print()
++
++
+ def main():
+     """
+     程序主入口函数
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -547,8 +547,21 @@
+     "--output",
+     "-o",
+     help="输出文件名（默认：tasks_export.csv 或 tasks_export.md）",
+ )
++
++# stats 命令
++stats_parser = subparsers.add_parser("stats", help="显示任务优先级统计")
++stats_parser.add_argument(
++    "--tag",
++    help="按标签过滤统计",
++)
++stats_parser.add_argument(
++    "--priority",
++    "-p",
++    choices=["高", "中", "低"],
++    help="按优先级过滤统计",
++)
+ args = parser.parse_args()
+ 
+ if args.command == "add":
+     tags = None
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -435,13 +435,19 @@
+ print(f"   ⭕ 待完成：{pending} ({pending * 100 // total}%)")
+ 
+ print(f"\n📌 优先级分布:")
+ if high_priority:
+-    print(f"   🔴 高优先级：{len(high_priority)} 个 (完成：{high_completed}/{len(high_priority)})")
++    print(
++        f"   🔴 高优先级：{len(high_priority)} 个 (完成：{high_completed}/{len(high_priority)})"
++    )
+ if medium_priority:
+-    print(f"   🟡 中优先级：{len(medium_priority)} 个 (完成：{medium_completed}/{len(medium_priority)})")
++    print(
++        f"   🟡 中优先级：{len(medium_priority)} 个 (完成：{medium_completed}/{len(medium_priority)})"
++    )
+ if low_priority:
+-    print(f"   🟢 低优先级：{len(low_priority)} 个 (完成：{low_completed}/{len(low_priority)})")
++    print(
++        f"   🟢 低优先级：{len(low_priority)} 个 (完成：{low_completed}/{len(low_priority)})"
++    )
+ 
+ print()
+ 
+ 
+@@ -584,8 +590,10 @@
+     if args.format == "csv":
+         export_csv(args.output)
+     else:
+         export_markdown(args.output)
++elif args.command == "stats":
++    stats(args.tag, args.priority)
+ else:
+     parser.print_help()
+ 
+ 
+
+[0m
+现在测试功能：
+[0m$ [0mpython3 todo.py stats --priority 高
+📊 任务统计
+优先级：高
+--------------------------------------------------
+
+📌 总体情况:
+   总计：5 个任务
+   ✅ 已完成：3 (60%)
+   ⭕ 待完成：2 (40%)
+
+📌 优先级分布:
+   🔴 高优先级：5 个 (完成：3/5)
+[0m
+[0m$ [0mpython3 todo.py stats
+📊 任务统计
+--------------------------------------------------
+
+📌 总体情况:
+   总计：66 个任务
+   ✅ 已完成：34 (51%)
+   ⭕ 待完成：32 (48%)
+
+📌 优先级分布:
+   🔴 高优先级：5 个 (完成：3/5)
+   🟡 中优先级：56 个 (完成：27/56)
+   🟢 低优先级：5 个 (完成：4/5)
+[0m
+[0m$ [0mpython3 todo.py stats --tag 测试
+📊 任务统计
+标签：#测试
+--------------------------------------------------
+
+📌 总体情况:
+   总计：2 个任务
+   ✅ 已完成：2 (100%)
+   ⭕ 待完成：0 (0%)
+
+📌 优先级分布:
+   🔴 高优先级：1 个 (完成：1/1)
+   🟢 低优先级：1 个 (完成：1/1)
+[0m
+功能测试通过。现在提交代码：

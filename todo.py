@@ -379,6 +379,78 @@ def export_markdown(filename=None):
     print(f"✅ 已导出 {len(tasks)} 个任务到：{filename}")
 
 
+def stats(tag_filter=None, priority_filter=None):
+    """
+    显示任务优先级统计信息
+
+    Args:
+        tag_filter (str): 可选，只显示包含此标签的任务统计
+        priority_filter (str): 可选，只显示指定优先级的统计
+
+    Returns:
+        None
+
+    Note:
+        显示各优先级任务数量、完成情况和百分比
+    """
+    tasks = load_tasks()
+
+    if tag_filter:
+        tasks = [t for t in tasks if tag_filter in t.get("tags", [])]
+
+    if priority_filter:
+        tasks = [t for t in tasks if t.get("priority", "中") == priority_filter]
+
+    if not tasks:
+        if tag_filter:
+            print(f"📭 没有找到带标签 '{tag_filter}' 的任务")
+        elif priority_filter:
+            print(f"📭 没有找到优先级为 '{priority_filter}' 的任务")
+        else:
+            print("📭 暂无任务")
+        return
+
+    total = len(tasks)
+    completed = sum(1 for t in tasks if t["done"])
+    pending = total - completed
+
+    high_priority = [t for t in tasks if t.get("priority", "中") == "高"]
+    medium_priority = [t for t in tasks if t.get("priority", "中") == "中"]
+    low_priority = [t for t in tasks if t.get("priority", "中") == "低"]
+
+    high_completed = sum(1 for t in high_priority if t["done"])
+    medium_completed = sum(1 for t in medium_priority if t["done"])
+    low_completed = sum(1 for t in low_priority if t["done"])
+
+    print("\n📊 任务统计")
+    if tag_filter:
+        print(f"标签：#{tag_filter}")
+    if priority_filter:
+        print(f"优先级：{priority_filter}")
+    print("-" * 50)
+
+    print(f"\n📌 总体情况:")
+    print(f"   总计：{total} 个任务")
+    print(f"   ✅ 已完成：{completed} ({completed * 100 // total}%)")
+    print(f"   ⭕ 待完成：{pending} ({pending * 100 // total}%)")
+
+    print(f"\n📌 优先级分布:")
+    if high_priority:
+        print(
+            f"   🔴 高优先级：{len(high_priority)} 个 (完成：{high_completed}/{len(high_priority)})"
+        )
+    if medium_priority:
+        print(
+            f"   🟡 中优先级：{len(medium_priority)} 个 (完成：{medium_completed}/{len(medium_priority)})"
+        )
+    if low_priority:
+        print(
+            f"   🟢 低优先级：{len(low_priority)} 个 (完成：{low_completed}/{len(low_priority)})"
+        )
+
+    print()
+
+
 def main():
     """
     程序主入口函数
@@ -482,6 +554,19 @@ def main():
         "-o",
         help="输出文件名（默认：tasks_export.csv 或 tasks_export.md）",
     )
+
+    # stats 命令
+    stats_parser = subparsers.add_parser("stats", help="显示任务优先级统计")
+    stats_parser.add_argument(
+        "--tag",
+        help="按标签过滤统计",
+    )
+    stats_parser.add_argument(
+        "--priority",
+        "-p",
+        choices=["高", "中", "低"],
+        help="按优先级过滤统计",
+    )
     args = parser.parse_args()
 
     if args.command == "add":
@@ -506,6 +591,8 @@ def main():
             export_csv(args.output)
         else:
             export_markdown(args.output)
+    elif args.command == "stats":
+        stats(args.tag, args.priority)
     else:
         parser.print_help()
 
