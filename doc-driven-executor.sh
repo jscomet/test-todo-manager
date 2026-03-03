@@ -187,11 +187,11 @@ phase_2_to_5_execute() {
 6. 阶段 5: Git 提交，格式: "Feat: 任务名"
 7. 阶段 6: 更新 PLAN.md 标记完成
 
-【输出】
-- 完成代码编写
-- 报告完成功能
-- 列出修改文件
-- 说明测试方法
+【重要】
+- 必须实际编写代码文件
+- 必须运行测试验证
+- 只有真正完成任务后才返回成功
+- 禁止虚假完成
 
 请开始执行任务。
 PROMPT_EOF
@@ -200,7 +200,7 @@ PROMPT_EOF
     sed -i "s#TASK_NAME_PLACEHOLDER#$task_name#g" "$prompt_file"
     sed -i "s#PROJECT_DIR_PLACEHOLDER#$PROJECT_DIR#g" "$prompt_file"
     
-    # 执行 OpenCode（前台模式，通过输出文件通信）
+    # 执行 OpenCode
     local output_file=$(mktemp)
     local exit_code=0
     
@@ -217,13 +217,21 @@ PROMPT_EOF
         return 1
     fi
     
-    # 检查输出是否包含成功标志
-    if grep -q "完成\|success\|✓" "$output_file" 2>/dev/null; then
-        success "OpenCode 执行成功"
+    # 检查输出是否包含成功标志和实际完成证据
+    local has_success=$(grep -c "完成\|success\|✓\|已创建\|已添加" "$output_file" 2>/dev/null || echo "0")
+    local has_files=$(grep -c "\.py\|文件" "$output_file" 2>/dev/null || echo "0")
+    
+    cat "$output_file" | tail -50 >> "$LOG_FILE"
+    rm -f "$prompt_file" "$output_file"
+    
+    # 严格验证：必须有成功标志 AND 有文件操作
+    if [ "$has_success" -lt 1 ] || [ "$has_files" -lt 1 ]; then
+        error "OpenCode 未实际完成任务（缺少成功标志或文件操作）"
+        error "成功标志: $has_success, 文件操作: $has_files"
+        return 1
     fi
     
-    cat "$output_file" | tail -30 >> "$LOG_FILE"
-    rm -f "$prompt_file" "$output_file"
+    success "OpenCode 执行成功"
     
     local end_time=$(date +%s)
     local duration=$(( (end_time - start_time) / 60 ))
