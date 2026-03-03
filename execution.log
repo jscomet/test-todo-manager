@@ -11679,3 +11679,298 @@ python3 test_due_date.py
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 02:36:40][0m ========== 阶段 4: Git 提交推送 ==========
+[main 78fc18b] Feat: 测试截止日期功能
+ 2 files changed, 343 insertions(+), 1 deletion(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   901c9f2..78fc18b  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 02:36:46][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 37 已标记为完成
+[0;34m[2026-03-04 02:36:49][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 02:36:52][0m 
+[0;34m[2026-03-04 02:36:52][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 02:36:52][0m ║  第 36 轮执行                          ║
+[0;34m[2026-03-04 02:36:52][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 02:36:52][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 34
+[0;34m[2026-03-04 02:36:52][0m 获取到任务 ID=38: 测试无截止日期
+[0;34m[2026-03-04 02:36:52][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试无截止日期
+[0;34m[2026-03-04 02:36:52][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 948
+drwxr-xr-x 5 root root   4096 Mar  4 02:36 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 529349 Mar  4 02:36 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 02:36 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 02:36 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  15668 Mar  4 02:36 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+[0m→ [0mRead test_no_due_date.py
+[0m
+[0m$ [0mpython3 -m pytest --version 2>&1 || python3 -m unittest --version 2>&1
+/usr/bin/python3: No module named pytest
+usage: python3 -m unittest [-h] [-v] [-q] [--locals] [--durations N] [-f] [-c]
+                           [-b] [-k TESTNAMEPATTERNS]
+                           [tests ...]
+python3 -m unittest: error: unrecognized arguments: --version
+[0m
+[0m$ [0mpython3 -m unittest test_no_due_date -v
+test_add_multiple_no_due_date_tasks (test_no_due_date.TestNoDueDateTasks.test_add_multiple_no_due_date_tasks)
+测试添加多个无截止日期任务 ... ok
+test_add_task_without_due_date (test_no_due_date.TestNoDueDateTasks.test_add_task_without_due_date)
+测试添加无截止日期任务 ... ok
+test_backward_compatibility_old_tasks (test_no_due_date.TestNoDueDateTasks.test_backward_compatibility_old_tasks)
+测试向后兼容性：加载旧格式任务（无 due_date 字段） ... ok
+test_list_no_due_date_tasks (test_no_due_date.TestNoDueDateTasks.test_list_no_due_date_tasks)
+测试列表显示无截止日期任务 ... ok
+test_mix_due_and_no_due_date_tasks (test_no_due_date.TestNoDueDateTasks.test_mix_due_and_no_due_date_tasks)
+测试混合带截止日期和无截止日期的任务 ... ok
+test_no_due_date_export_csv (test_no_due_date.TestNoDueDateTasks.test_no_due_date_export_csv)
+测试无截止日期任务导出 CSV ... ok
+test_no_due_date_export_markdown (test_no_due_date.TestNoDueDateTasks.test_no_due_date_export_markdown)
+测试无截止日期任务导出 Markdown ... ok
+test_no_due_date_list_display_format (test_no_due_date.TestNoDueDateTasks.test_no_due_date_list_display_format)
+测试无截止日期任务列表显示格式（不显示日期图标） ... ok
+test_no_due_date_task_add_tag (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_add_tag)
+测试为无截止日期任务添加标签 ... ok
+test_no_due_date_task_delete (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_delete)
+测试删除无截止日期任务 ... ok
+test_no_due_date_task_done (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_done)
+测试标记无截止日期任务为完成 ... ok
+test_no_due_date_task_modify_priority (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_modify_priority)
+测试修改无截止日期任务的优先级 ... ok
+test_no_due_date_task_priority_filter (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_priority_filter)
+测试无截止日期任务按优先级过滤 ... ok
+test_no_due_date_task_remove_tag (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_remove_tag)
+测试从无截止日期任务移除标签 ... ok
+test_no_due_date_task_sorting_by_priority (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_sorting_by_priority)
+测试无截止日期任务按优先级排序 ... ok
+test_no_due_date_task_with_tags (test_no_due_date.TestNoDueDateTasks.test_no_due_date_task_with_tags)
+测试无截止日期任务带标签 ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.013s
+
+OK
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：无截止日期任务
+✅ 已添加任务：无截止日期任务
+✅ 已添加任务：另一个无截止日期任务
+✅ 已添加任务：有截止日期
+✅ 已添加任务：无截止日期 1
+✅ 已添加任务：无截止日期 2
+✅ 已添加任务：有截止日期 2
+✅ 已添加任务：无截止日期任务
+✅ 已导出 1 个任务到：test_no_due.csv
+✅ 已添加任务：无截止日期任务
+✅ 已导出 1 个任务到：test_no_due.md
+✅ 已添加任务：无截止日期
+✅ 已添加任务：有截止日期
+✅ 已添加任务：添加标签任务
+✅ 已为任务 1 添加标签：#新标签
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：修改优先级任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：修改优先级任务
+✅ 已添加任务：高优先任务
+✅ 已添加任务：中优先任务
+✅ 已添加任务：低优先任务
+✅ 已添加任务：移除标签任务
+✅ 已从任务 1 移除标签：#标签 1
+✅ 已添加任务：低优先级
+✅ 已添加任务：高优先级
+✅ 已添加任务：中优先级
+✅ 已添加任务：带标签无截止日期
+[0m
+[0m$ [0mpython3 todo.py list --priority 低
+📋 任务列表:
+优先级：低
+--------------------------------------------------
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+⭕ [38] 🟢 测试无截止日期
+--------------------------------------------------
+总计：5 个任务
+[0m
+[0m$ [0mpython3 todo.py done 38
+✅ 任务 38 已完成: 测试无截止日期
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mgit add tasks.json && git commit -m "Test: 完成无截止日期任务测试
+
+- 运行 test_no_due_date.py 专项测试
+- 16 项测试全部通过
+- 验证无截止日期任务的添加、列表、过滤、排序功能
+- 验证导出 CSV 和 Markdown 功能
+- 验证标签添加和移除功能
+- 验证向后兼容性"
+[main 3bb327c] Test: 完成无截止日期任务测试
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+[0m
+## ✅ 任务完成
+
+### 功能验证
+运行 `test_no_due_date.py` 专项测试，**16 项测试全部通过**：
+
+| 测试项 | 状态 |
+|--------|------|
+| 添加无截止日期任务 | ✅ |
+| 添加多个无截止日期任务 | ✅ |
+| 混合带/无截止日期任务 | ✅ |
+| 列表显示无截止日期任务 | ✅ |
+| 按优先级排序 | ✅ |
+| 按优先级过滤 | ✅ |
+| 带标签无截止日期任务 | ✅ |
+| 标记完成 | ✅ |
+| 删除任务 | ✅ |
+| 修改优先级 | ✅ |
+| 导出 CSV | ✅ |
+| 导出 Markdown | ✅ |
+| 添加标签 | ✅ |
+| 移除标签 | ✅ |
+| 向后兼容性 | ✅ |
+| 列表显示格式 | ✅ |
+
+### 修改的文件
+- `tasks.json` - 标记任务 38 为已完成
+
+### 测试方法
+```bash
+python3 -m unittest test_no_due_date -v
+```
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 02:37:39][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772563059
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+✅ [14] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+✅ [37] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [46] 🔴 CLI 测试任务
+⭕ [68] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [70] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [9] 🟡 测试默认优先级任务
+✅ [10] 🟡 测试任务_1772558260
+✅ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [15] 🟡 测试无截止日期任务
+✅ [16] 🟡 测试任务_1772558695
+✅ [17] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [18] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [19] 🟡 测试任务_1772559067
+✅ [20] 🟡 测试任务_1772559141
+✅ [21] 🟡 添加导出功能的单元测试
+✅ [23] 🟡 测试任务_1772559221
+✅ [26] 🟡 测试任务_1772559260
+✅ [27] 🟡 测试任务_1772559323
+✅ [28] 🟡 测试默认优先级 - 新任务
+✅ [29] 🟡 测试任务_1772559366
+✅ [30] 🟡 测试任务_1772559411
+✅ [31] 🟡 NONE
+✅ [32] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [33] 🟡 测试任务_1772559626
+✅ [34] 🟡 测试任务_1772559821
+✅ [35] 🟡 优先级统计功能
+✅ [36] 🟡 测试任务_1772559903
+⭕ [39] 🟡 测试任务_1772559976
+⭕ [40] 🟡 测试任务_1772560148
+⭕ [41] 🟡 测试任务_1772560188
+⭕ [42] 🟡 测试标签分割功能 🔖 #工作 #紧急
+⭕ [43] 🟡 测试任务_1772560261
+⭕ [44] 🟡 测试任务_1772560300
+⭕ [45] 🟡 测试任务_1772560348
+⭕ [47] 🟡 测试任务_1772560561
+⭕ [48] 🟡 测试任务_1772560713
+⭕ [49] 🟡 运行测试验证覆盖情况：
+⭕ [50] 🟡 NONE
+⭕ [51] 🟡 测试任务_1772560897
+⭕ [52] 🟡 测试任务_1772560937
+⭕ [53] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+⭕ [54] 🟡 NONE
+⭕ [55] 🟡 测试任务_1772560995
+⭕ [56] 🟡 测试任务_1772561467
+⭕ [57] 🟡 测试任务_1772561636
+⭕ [58] 🟡 测试任务_1772561872
+⭕ [59] 🟡 NONE
+⭕ [60] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+⭕ [61] 🟡 测试任务_1772562060
+⭕ [62] 🟡 测试任务_1772562098
+⭕ [63] 🟡 测试任务_1772562125
+⭕ [64] 🟡 测试任务_1772562169
+⭕ [65] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+⭕ [66] 🟡 测试任务_1772562229
+⭕ [67] 🟡 测试任务_1772562601
+⭕ [69] 🟡 测试任务_1772562920
+⭕ [71] 🟡 测试任务_1772563000
+⭕ [72] 🟡 测试任务_1772563059
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [38] 🟢 测试无截止日期
+--------------------------------------------------
+总计：72 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 02:37:39][0m ========== 阶段 4: Git 提交推送 ==========
