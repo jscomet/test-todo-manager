@@ -1,8 +1,20 @@
 #!/bin/bash
-# 文档驱动的 BabyAGI 执行器 v2.1
-# 修复: 使用更可靠的方式调用 OpenCode
+# 文档驱动的 BabyAGI 执行器 v2.2
+# 修复: 添加 OpenCode 权限配置
 
 set -e
+
+# ==================== 配置 ====================
+PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
+SPEC_FILE="$PROJECT_DIR/SPEC.md"
+PLAN_FILE="$PROJECT_DIR/PLAN.md"
+DATA_TASKS_FILE="$PROJECT_DIR/data/tasks.json"
+LOG_FILE="$PROJECT_DIR/logs/executor.log"
+LOCK_FILE="/tmp/doc-driven-executor.lock"
+
+# ==================== OpenCode 权限配置 ====================
+# 允许所有工具访问项目目录
+export OPENCODE_PERMISSION="{\n  \"write\": \"allow\",\n  \"edit\": \"allow\",\n  \"bash\": \"allow\",\n  \"read\": \"allow\",\n  \"glob\": \"allow\",\n  \"list\": \"allow\",\n  \"grep\": \"allow\"\n}"
 
 # ==================== 配置 ====================
 PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
