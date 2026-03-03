@@ -135,7 +135,7 @@
 | 🔴 高 | 创建测试目录结构 | ✅ 已完成 | AI | 1h | 0.5h |
 | 🔴 高 | 更新 AGENTS.md 执行流程 | ✅ 已完成 | AI | 1h | 1h |
 | 🔴 高 | 创建文档驱动执行器 | ✅ 已完成 | AI | 2h | 1.5h |
-| 🔴 高 | 创建 core/models.py | ⏳ 待开始 | AI | 1h | |
+| 🔴 高 | 创建 core/models.py | ✅ 已完成 | AI | 1h | 1h |
 | 🔴 高 | 创建 core/storage.py | ⏳ 待开始 | AI | 2h | |
 | 🔴 高 | 拆分 commands 模块 | ⏳ 待开始 | AI | 3h | |
 | 🔴 高 | 重构 todo.py 入口 | ⏳ 待开始 | AI | 2h | |
