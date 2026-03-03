@@ -379,7 +379,7 @@
   {
     "id": 45,
     "content": "CLI 完成测试",
-    "done": false,
+    "done": true,
     "priority": "中",
     "created_at": "2026-03-04 02:44:57"
   },
