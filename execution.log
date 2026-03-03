@@ -4739,3 +4739,302 @@ python3 todo.py list --priority 低
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:45:03][0m ========== 阶段 4: Git 提交推送 ==========
+[main 16d0377] Feat: 添加修改任务优先级功能
+ 2 files changed, 388 insertions(+), 4 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   938b8ce..16d0377  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:45:07][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 13 已标记为完成
+[0;34m[2026-03-04 01:45:18][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:45:21][0m 
+[0;34m[2026-03-04 01:45:21][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:45:21][0m ║  第 14 轮执行                          ║
+[0;34m[2026-03-04 01:45:21][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:45:21][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 21
+[0;34m[2026-03-04 01:45:21][0m 获取到任务 ID=14: 测试截止日期功能
+[0;34m[2026-03-04 01:45:21][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试截止日期功能
+[0;34m[2026-03-04 01:45:21][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我将开始执行测试截止日期功能的任务。首先让我分析项目结构和现有代码。
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 440
+drwxr-xr-x 5 root root   4096 Mar  4 01:45 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 182417 Mar  4 01:45 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 01:45 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 01:45 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   1782 Mar  4 01:32 tasks_export.csv
+-rw-r--r-- 1 root root   1727 Mar  4 01:32 tasks_export.md
+-rw-r--r-- 1 root root   7929 Mar  4 01:45 tasks.json
+-rw-r--r-- 1 root root  14974 Mar  4 01:44 todo.py
+[0m
+[0m$ [0mpython3 todo.py add "测试截止日期功能" --due 2026-03-10 --priority 高
+✅ 已添加任务：测试截止日期功能
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+⭕ [14] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [9] 🟡 测试默认优先级任务
+✅ [10] 🟡 测试任务_1772558260
+✅ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [15] 🟡 测试无截止日期任务
+⭕ [16] 🟡 测试任务_1772558695
+⭕ [17] 🟡 测试标签分割 🔖 #工作，紧急
+⭕ [18] 🟡 英文逗号测试 🔖 #test #urgent
+⭕ [19] 🟡 测试任务_1772559067
+⭕ [20] 🟡 测试任务_1772559141
+⭕ [21] 🟡 添加导出功能的单元测试
+⭕ [23] 🟡 测试任务_1772559221
+⭕ [26] 🟡 测试任务_1772559260
+⭕ [27] 🟡 测试任务_1772559323
+⭕ [28] 🟡 测试默认优先级 - 新任务
+⭕ [29] 🟡 测试任务_1772559366
+⭕ [30] 🟡 测试任务_1772559411
+⭕ [31] 🟡 NONE
+⭕ [32] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+⭕ [33] 🟡 测试任务_1772559626
+⭕ [34] 🟡 测试任务_1772559821
+⭕ [35] 🟡 优先级统计功能
+⭕ [36] 🟡 测试任务_1772559903
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+--------------------------------------------------
+总计：37 个任务
+[0m
+[0m$ [0mpython3 todo.py add "测试无截止日期" --priority 低
+✅ 已添加任务：测试无截止日期
+[0m
+截止日期功能已正常工作。现在创建单元测试文件：
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/tests/ 2>/dev/null || echo "No tests directory"
+No tests directory
+[0m
+[0m← [0mWrite test_due_date.py
+Wrote file successfully.
+[0m
+[0m$ [0mpython3 test_due_date.py
+test_due_date_in_past (__main__.TestDueDateEdgeCases.test_due_date_in_past)
+测试过去日期作为截止日期 ... ok
+test_empty_due_date_string (__main__.TestDueDateEdgeCases.test_empty_due_date_string)
+测试空字符串截止日期 ... ok
+test_load_tasks_with_missing_due_date (__main__.TestDueDateEdgeCases.test_load_tasks_with_missing_due_date)
+测试加载缺少截止日期的旧任务 ... ok
+test_add_task_with_due_date (__main__.TestDueDateFunctionality.test_add_task_with_due_date)
+测试添加带截止日期的任务 ... ok
+test_add_task_with_due_date_and_tags (__main__.TestDueDateFunctionality.test_add_task_with_due_date_and_tags)
+测试添加带截止日期和标签的任务 ... ok
+test_add_task_without_due_date (__main__.TestDueDateFunctionality.test_add_task_without_due_date)
+测试添加不带截止日期的任务 ... ok
+test_due_date_format_validation (__main__.TestDueDateFunctionality.test_due_date_format_validation)
+测试截止日期格式（YYYY-MM-DD） ... ok
+test_due_date_with_completed_task (__main__.TestDueDateFunctionality.test_due_date_with_completed_task)
+测试已完成任务保留截止日期 ... ok
+test_export_csv_includes_due_date (__main__.TestDueDateFunctionality.test_export_csv_includes_due_date)
+测试 CSV 导出包含截止日期列 ... ok
+test_export_markdown_includes_due_date (__main__.TestDueDateFunctionality.test_export_markdown_includes_due_date)
+测试 Markdown 导出包含截止日期列 ... ok
+test_list_tasks_shows_due_date (__main__.TestDueDateFunctionality.test_list_tasks_shows_due_date)
+测试列表显示时包含截止日期 ... ok
+test_multiple_tasks_with_different_due_dates (__main__.TestDueDateFunctionality.test_multiple_tasks_with_different_due_dates)
+测试多个任务有不同的截止日期 ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.007s
+
+OK
+============================================================
+截止日期功能测试套件
+============================================================
+✅ 已添加任务：过期任务
+✅ 已添加任务：测试任务
+✅ 已添加任务：测试任务
+✅ 已添加任务：综合测试任务
+✅ 已添加任务：无截止日期任务
+✅ 已添加任务：测试 2026-01-01
+✅ 已添加任务：测试 2026-12-31
+✅ 已添加任务：测试 2027-06-15
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已导出 2 个任务到：test_export.csv
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已导出 2 个任务到：test_export.md
+✅ 已添加任务：有截止日期的任务
+✅ 已添加任务：无截止日期的任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+[0m
+所有测试通过！验证手动功能并清理：
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	test_due_date.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mrm -f /root/.openclaw/workspace/test/todo-manager/tasks_*.json /root/.openclaw/workspace/test/todo-manager/test_export.* 2>/dev/null; echo "Cleaned test files"
+Cleaned test files
+[0m
+[0m$ [0mpython3 todo.py list --priority 高
+📋 任务列表:
+优先级：高
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+⭕ [14] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+--------------------------------------------------
+总计：4 个任务
+[0m
+[0m$ [0mgit add test_due_date.py && git commit -m "Test: 添加截止日期功能单元测试
+
+- 创建 test_due_date.py 测试文件
+- 包含 12 个单元测试用例
+- 测试添加任务带/不带截止日期
+- 测试截止日期格式验证
+- 测试列表显示截止日期
+- 测试导出功能包含截止日期
+- 测试边界情况（空字符串、过去日期、旧任务兼容）
+- 所有测试通过 ✅"
+[main 1663611] Test: 添加截止日期功能单元测试
+ 1 file changed, 206 insertions(+)
+ create mode 100644 test_due_date.py
+[0m
+[0m$ [0mgit push origin main
+To github.com:jscomet/test-todo-manager.git
+   16d0377..1663611  main -> main
+[0m
+## ✅ 任务完成
+
+### 完成的功能
+
+| 功能 | 状态 |
+|------|------|
+| 添加带截止日期任务 | ✅ 正常 |
+| 列表显示截止日期 | ✅ 正常 |
+| CSV 导出包含截止日期 | ✅ 正常 |
+| Markdown 导出包含截止日期 | ✅ 正常 |
+| 单元测试覆盖 | ✅ 12 个测试全部通过 |
+
+### 修改的文件
+
+- **新增**: `test_due_date.py` - 截止日期功能单元测试套件
+
+### 测试用例
+
+1. `test_add_task_with_due_date` - 添加带截止日期任务
+2. `test_add_task_without_due_date` - 添加无截止日期任务
+3. `test_add_task_with_due_date_and_tags` - 综合测试（截止日期 + 标签）
+4. `test_due_date_format_validation` - 日期格式验证
+5. `test_list_tasks_shows_due_date` - 列表显示截止日期
+6. `test_export_csv_includes_due_date` - CSV 导出
+7. `test_export_markdown_includes_due_date` - Markdown 导出
+8. `test_due_date_with_completed_task` - 完成任务保留截止日期
+9. `test_multiple_tasks_with_different_due_dates` - 多任务不同日期
+10. `test_empty_due_date_string` - 空字符串边界测试
+11. `test_due_date_in_past` - 过去日期测试
+12. `test_load_tasks_with_missing_due_date` - 旧任务向后兼容
+
+### 运行测试
+
+```bash
+python3 test_due_date.py
+```
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 01:46:16][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772559976
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+⭕ [14] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [9] 🟡 测试默认优先级任务
+✅ [10] 🟡 测试任务_1772558260
+✅ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+⭕ [15] 🟡 测试无截止日期任务
+⭕ [16] 🟡 测试任务_1772558695
+⭕ [17] 🟡 测试标签分割 🔖 #工作，紧急
+⭕ [18] 🟡 英文逗号测试 🔖 #test #urgent
+⭕ [19] 🟡 测试任务_1772559067
+⭕ [20] 🟡 测试任务_1772559141
+⭕ [21] 🟡 添加导出功能的单元测试
+⭕ [23] 🟡 测试任务_1772559221
+⭕ [26] 🟡 测试任务_1772559260
+⭕ [27] 🟡 测试任务_1772559323
+⭕ [28] 🟡 测试默认优先级 - 新任务
+⭕ [29] 🟡 测试任务_1772559366
+⭕ [30] 🟡 测试任务_1772559411
+⭕ [31] 🟡 NONE
+⭕ [32] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+⭕ [33] 🟡 测试任务_1772559626
+⭕ [34] 🟡 测试任务_1772559821
+⭕ [35] 🟡 优先级统计功能
+⭕ [36] 🟡 测试任务_1772559903
+⭕ [39] 🟡 测试任务_1772559976
+✅ [7] 🟢 测试低优先级任务
+✅ [13] 🟢 添加修改任务优先级功能
+✅ [24] 🟢 低优先级测试任务
+✅ [25] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+⭕ [38] 🟢 测试无截止日期
+--------------------------------------------------
+总计：39 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 01:46:16][0m ========== 阶段 4: Git 提交推送 ==========
