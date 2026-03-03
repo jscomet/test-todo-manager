@@ -300,7 +300,8 @@
     "content": "测试任务_1772559903",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:45:03"
+    "created_at": "2026-03-04 01:45:03",
+    "completed_at": "2026-03-04 02:35:24"
   },
   {
     "id": 37,
@@ -542,5 +543,24 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:35:20"
+  },
+  {
+    "id": 70,
+    "content": "测试截止日期 CLI",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 02:35:54",
+    "due_date": "2026-04-15",
+    "tags": [
+      "测试",
+      "验证"
+    ]
+  },
+  {
+    "id": 71,
+    "content": "测试任务_1772563000",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 02:36:40"
   }
 ]
