@@ -335,7 +335,8 @@
     "content": "测试任务_1772560348",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:52:28"
+    "created_at": "2026-03-04 01:52:28",
+    "completed_at": "2026-03-04 02:59:35"
   },
   {
     "id": 41,
@@ -831,5 +832,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:59:31"
+  },
+  {
+    "id": 106,
+    "content": "测试任务_1772564431",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 03:00:31"
   }
 ]
