@@ -5902,3 +5902,130 @@ python3 test_tag_splitting.py
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:51:01][0m ========== 阶段 4: Git 提交推送 ==========
+[main 8b03c2c] Feat: 测试标签分割
+ 2 files changed, 266 insertions(+), 1 deletion(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   6bdad90..8b03c2c  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:51:06][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 17 已标记为完成
+[0;34m[2026-03-04 01:51:09][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:51:12][0m 
+[0;34m[2026-03-04 01:51:12][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:51:12][0m ║  第 18 轮执行                          ║
+[0;34m[2026-03-04 01:51:12][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:51:12][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 24
+[0;34m[2026-03-04 01:51:12][0m 获取到任务 ID=18: 英文逗号测试
+[0;34m[2026-03-04 01:51:12][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 英文逗号测试
+[0;34m[2026-03-04 01:51:12][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager
+total 524
+drwxr-xr-x 5 root root   4096 Mar  4 01:51 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 235331 Mar  4 01:51 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 01:51 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 01:51 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   1782 Mar  4 01:32 tasks_export.csv
+-rw-r--r-- 1 root root   1727 Mar  4 01:32 tasks_export.md
+-rw-r--r-- 1 root root   9358 Mar  4 01:51 tasks.json
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  14974 Mar  4 01:44 todo.py
+[0m
+[0m→ [0mRead test_tag_splitting.py
+我理解了任务。需要测试英文逗号分割标签的功能。现有代码已支持（第 491 行），且有测试文件。让我运行测试验证：
+[0m
+[0m$ [0mpython3 test_tag_splitting.py
+============================================================
+标签分割功能测试
+============================================================
+
+测试 1: 中文逗号分割标签
+  输出：✅ 已添加任务：测试中文逗号标签
+  期望标签：['工作', '紧急', '重要']
+  实际标签：['工作', '紧急', '重要']
+  ✅ 测试通过
+
+测试 2: 英文逗号分割标签
+  输出：✅ 已添加任务：测试英文逗号标签
+  期望标签：['work', 'urgent', 'important']
+  实际标签：['work', 'urgent', 'important']
+  ✅ 测试通过
+
+测试 3: 混合逗号分割标签
+  输出：✅ 已添加任务：测试混合逗号标签
+  期望标签：['工作', 'urgent', '重要', 'test']
+  实际标签：['工作', 'urgent', '重要', 'test']
+  ✅ 测试通过
+
+测试 4: 单个标签（无逗号）
+  输出：✅ 已添加任务：测试单个标签
+  期望标签：['single']
+  实际标签：['single']
+  ✅ 测试通过
+
+测试 5: 带空格的标签（应自动去除）
+  输出：✅ 已添加任务：测试空格标签
+  期望标签：['工作', '紧急', '重要']
+  实际标签：['工作', '紧急', '重要']
+  ✅ 测试通过
+
+测试 6: 标签过滤功能
+  过滤结果:
+
+📋 任务列表:
+标签：#过滤测试
+--------------------------------------------------
+⭕ [44] 🟡 过滤测试任务 1 🔖 #过滤测试
+⭕ [46] 🟡 过滤测试任务 3 🔖 #过滤测试 #重要
+--------------------------------------------------
+总计：2 个任务
+
+
+  ✅ 测试通过
+
+测试 7: add-tag 命令添加单个标签
+  实际标签：['工作', '紧急']
+  ✅ 测试通过
+
+测试 8: remove-tag 命令移除标签
+  移除后标签：['工作', '重要']
+  ✅ 测试通过
+
+============================================================
+测试结果：8/8 通过
+============================================================
+🎉 所有测试通过!
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
