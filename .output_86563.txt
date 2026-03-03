@@ -711,3 +711,39 @@ Index: /root/.openclaw/workspace/test/todo-manager/PLAN.md
 
 [0m
 现在让我提交代码变更：
+[0m$ [0mgit add -A && git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   .output_86563.txt
+	modified:   .prompt_86563.txt
+	modified:   PLAN.md
+	modified:   commands/query_commands.py
+	modified:   data/tasks.json
+	modified:   data/test-tasks.json
+	modified:   logs/executor.log
+	modified:   scripts/migrate_data.py
+	new file:   tasks.json.backup.20260304_061216
+	new file:   tasks.json.backup.20260304_061435[0m
+
+[0m$ [0mgit log -1 --format='%an %ae'[0m
+OpenClaw User user@openclaw.local
+
+[0m$ [0mgit commit -m "Feat: 数据迁移脚本及测试任务隔离
+
+- 修复 migrate_data.py 路径逻辑，正确查找根目录的 tasks.json
+- 增强测试任务识别逻辑，包含'测试'关键词的任务标记为测试任务
+- 修改 query_commands 默认不加载测试任务（include_test=False）
+- 迁移 420 个测试任务到 data/test-tasks.json
+- 迁移 19 个真实任务到 data/tasks.json
+- 更新 PLAN.md 标记 M1 里程碑完成
+
+关联 SPEC: 3.3, 4.1, 7.1
+完成 PLAN: M1.数据迁移脚本"
+[0m
+[main 9a99886] Feat: 数据迁移脚本及测试任务隔离
+ 10 files changed, 13367 insertions(+), 393 deletions(-)
+ create mode 100644 tasks.json.backup.20260304_061216
+ create mode 100644 tasks.json.backup.20260304_061435
