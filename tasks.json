@@ -2,43 +2,72 @@
   {
     "id": 1,
     "content": "优化 todo.py 的代码结构，添加函数注释",
-    "done": false,
-    "created_at": "2026-03-04 01:00:00"
+    "done": true,
+    "created_at": "2026-03-04 01:00:00",
+    "completed_at": "2026-03-04 01:13:21",
+    "priority": "中"
   },
   {
     "id": 2,
     "content": "添加任务优先级功能（高/中/低）",
     "done": false,
-    "created_at": "2026-03-04 01:00:01"
+    "created_at": "2026-03-04 01:00:01",
+    "priority": "中"
   },
   {
     "id": 3,
     "content": "添加任务截止日期功能",
     "done": false,
-    "created_at": "2026-03-04 01:00:02"
+    "created_at": "2026-03-04 01:00:02",
+    "priority": "中"
   },
   {
     "id": 4,
     "content": "添加任务分类/标签功能",
     "done": false,
-    "created_at": "2026-03-04 01:00:03"
+    "created_at": "2026-03-04 01:00:03",
+    "priority": "中"
   },
   {
     "id": 5,
     "content": "添加数据导出功能（导出为 CSV 或 Markdown）",
     "done": false,
-    "created_at": "2026-03-04 01:00:04"
+    "created_at": "2026-03-04 01:00:04",
+    "priority": "中"
   },
   {
     "id": 6,
     "content": "测试任务 1",
     "done": false,
-    "created_at": "2026-03-04 01:13:10"
+    "created_at": "2026-03-04 01:13:10",
+    "priority": "中"
   },
   {
     "id": 7,
     "content": "测试任务_1772557996",
     "done": false,
-    "created_at": "2026-03-04 01:13:16"
+    "created_at": "2026-03-04 01:13:16",
+    "priority": "中"
+  },
+  {
+    "id": 8,
+    "content": "测试低优先级任务",
+    "done": false,
+    "priority": "低",
+    "created_at": "2026-03-04 01:17:10"
+  },
+  {
+    "id": 9,
+    "content": "测试高优先级任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 01:17:10"
+  },
+  {
+    "id": 10,
+    "content": "测试默认优先级任务",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:17:10"
   }
 ]

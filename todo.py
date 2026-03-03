@@ -23,7 +23,12 @@ def load_tasks():
     """
     if os.path.exists(TASKS_FILE):
         with open(TASKS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            tasks = json.load(f)
+            # 向后兼容：为现有任务添加默认优先级
+            for task in tasks:
+                if "priority" not in task:
+                    task["priority"] = "中"
+            return tasks
     return []
 
 
@@ -44,12 +49,13 @@ def save_tasks(tasks):
         json.dump(tasks, f, ensure_ascii=False, indent=2)
 
 
-def add_task(content):
+def add_task(content, priority="中"):
     """
     添加新任务到任务列表
 
     Args:
         content (str): 任务内容描述
+        priority (str): 任务优先级，可选值：高/中/低，默认为"中"
 
     Returns:
         None
@@ -62,19 +68,21 @@ def add_task(content):
         "id": len(tasks) + 1,
         "content": content,
         "done": False,
+        "priority": priority,
         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
     }
     tasks.append(task)
     save_tasks(tasks)
-    print(f"✅ 已添加任务: {content}")
+    print(f"✅ 已添加任务：{content}")
 
 
 def list_tasks():
     """
     列出所有任务及其状态
 
-    按顺序显示所有任务的 ID、状态和内容
+    按顺序显示所有任务的 ID、状态、优先级和内容
     任务状态用图标表示：✅ 已完成，⭕ 待完成
+    优先级用图标表示：🔴 高，🟡 中，🟢 低
 
     Returns:
         None
@@ -87,13 +95,17 @@ def list_tasks():
         print("📭 暂无任务")
         return
 
+    priority_icons = {"高": "🔴", "中": "🟡", "低": "🟢"}
+
     print("\n📋 任务列表:")
-    print("-" * 40)
+    print("-" * 50)
     for task in tasks:
         status = "✅" if task["done"] else "⭕"
-        print(f"{status} [{task['id']}] {task['content']}")
-    print("-" * 40)
-    print(f"总计: {len(tasks)} 个任务\n")
+        priority = task.get("priority", "中")
+        priority_icon = priority_icons.get(priority, "🟡")
+        print(f"{status} [{task['id']}] {priority_icon} {task['content']}")
+    print("-" * 50)
+    print(f"总计：{len(tasks)} 个任务\n")
 
 
 def done_task(task_id):
@@ -170,6 +182,13 @@ def main():
     # add 命令
     add_parser = subparsers.add_parser("add", help="添加任务")
     add_parser.add_argument("content", help="任务内容")
+    add_parser.add_argument(
+        "--priority",
+        "-p",
+        choices=["高", "中", "低"],
+        default="中",
+        help="任务优先级（高/中/低），默认为中",
+    )
 
     # list 命令
     subparsers.add_parser("list", help="列出所有任务")
@@ -185,7 +204,7 @@ def main():
     args = parser.parse_args()
 
     if args.command == "add":
-        add_task(args.content)
+        add_task(args.content, args.priority)
     elif args.command == "list":
         list_tasks()
     elif args.command == "done":
