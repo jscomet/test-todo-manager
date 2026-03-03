@@ -65,9 +65,116 @@ check_documents() {
     info "PLAN.md: $(wc -l < "$PLAN_FILE") 行"
 }
 
-# ==================== 从 PLAN 获取任务 ====================
+# ==================== 从 tasks.json 同步任务到 PLAN ====================
 
-get_next_task_from_plan() {
+sync_tasks_to_plan() {
+    log "检查 tasks.json 中的遗留任务..."
+    
+    if [ ! -f "$TASKS_FILE" ]; then
+        info "tasks.json 不存在，跳过同步"
+        return
+    fi
+    
+    # 获取未完成的非测试任务
+    local pending_tasks=$(python3 << EOF
+import json
+import sys
+
+try:
+    with open('$TASKS_FILE', 'r') as f:
+        tasks = json.load(f)
+    
+    pending = []
+    for t in tasks:
+        if not t.get('done', False) and not t.get('is_test', False):
+            # 过滤掉测试任务和无效内容
+            content = t.get('content', '').strip()
+            if content and len(content) > 2:
+                # 排除明显是测试或无效的任务
+                invalid_prefixes = ['测试任务_', 'test_', '根据分析', '我需要', '**', '1.', '2.', '3.']
+                if not any(content.startswith(p) for p in invalid_prefixes):
+                    pending.append(content)
+    
+    for task in pending[:20]:  # 最多同步20个
+        print(task)
+except Exception as e:
+    print(f"错误: {e}", file=sys.stderr)
+    sys.exit(0)
+EOF
+)
+    
+    if [ -z "$pending_tasks" ]; then
+        info "tasks.json 中没有需要同步的有效任务"
+        return
+    fi
+    
+    info "发现 tasks.json 中的遗留任务，同步到 PLAN.md"
+    
+    # 将任务添加到 PLAN.md
+    local tmp_file=$(mktemp)
+    local inserted=false
+    
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^\|.*任务.*\|.*状态.*\| ]] && [ "$inserted" = false ]; then
+            # 找到任务表格头部，在下面插入任务
+            echo "$line" >> "$tmp_file"
+            # 输出分隔行
+            IFS= read -r sep_line
+            echo "$sep_line" >> "$tmp_file"
+            # 插入 tasks.json 的任务
+            echo "$pending_tasks" | while IFS= read -r task_content; do
+                if [ -n "$task_content" ]; then
+                    echo "| 🟡 中 | $task_content | ⏳ 待开始 | AI | 2h | |" >> "$tmp_file"
+                fi
+            done
+            inserted=true
+        else
+            echo "$line" >> "$tmp_file"
+        fi
+    done < "$PLAN_FILE"
+    
+    mv "$tmp_file" "$PLAN_FILE"
+    success "已同步 $(echo "$pending_tasks" | wc -l) 个任务到 PLAN.md"
+    
+    # Git 提交
+    git add "$PLAN_FILE"
+    git commit -m "Docs: 从 tasks.json 同步遗留任务到 PLAN" || true
+}
+
+# ==================== 标记 tasks.json 任务完成 ====================
+
+mark_task_json_done() {
+    local task_content="$1"
+    
+    if [ ! -f "$TASKS_FILE" ]; then
+        return
+    fi
+    
+    python3 << EOF
+import json
+import sys
+
+try:
+    with open('$TASKS_FILE', 'r') as f:
+        tasks = json.load(f)
+    
+    updated = False
+    for t in tasks:
+        if t.get('content') == '$task_content' and not t.get('done'):
+            t['done'] = True
+            from datetime import datetime
+            t['completed_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            updated = True
+            break
+    
+    if updated:
+        with open('$TASKS_FILE', 'w') as f:
+            json.dump(tasks, f, ensure_ascii=False, indent=2)
+        print(f"✅ tasks.json 中标记完成: {task_content[:50]}")
+except Exception as e:
+    print(f"警告: 更新 tasks.json 失败: {e}", file=sys.stderr)
+EOF
+}
     # 解析 PLAN.md 获取第一个 ⏳ 待开始的任务
     local task_info=$(grep "|.*⏳ 待开始" "$PLAN_FILE" | head -1)
     
@@ -232,13 +339,14 @@ phase_6_update_plan() {
     # 检查 PLAN 是否已被更新
     if grep -q "$task_name.*✅ 已完成" "$PLAN_FILE"; then
         success "PLAN 已标记为完成"
-        return 0
+    else
+        # 更新 PLAN
+        update_plan_status "$task_name" "✅ 已完成" "${duration}m"
+        success "PLAN 更新完成"
     fi
     
-    # 更新 PLAN
-    update_plan_status "$task_name" "✅ 已完成" "${duration}m"
-    
-    success "PLAN 更新完成"
+    # 同时更新 tasks.json（如果存在该任务）
+    mark_task_json_done "$task_name"
 }
 
 # ==================== 主循环 ====================
@@ -250,6 +358,9 @@ main_loop() {
     
     # 检查文档
     check_documents
+    
+    # 同步 tasks.json 中的遗留任务到 PLAN
+    sync_tasks_to_plan
     
     local iteration=0
     local max_iterations="${MAX_ITERATIONS:-100}"
