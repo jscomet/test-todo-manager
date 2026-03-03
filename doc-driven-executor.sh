@@ -100,7 +100,7 @@ update_plan_status() {
     
     log "更新 PLAN.md: $task_name → $new_status"
     
-    local tmp_file=$(mktemp)
+    local tmp_file="$PROJECT_DIR/.plan_tmp_$$.txt"
     
     # 使用 awk 安全地替换状态
     awk -F '|' -v task="$task_name" -v status="$new_status" -v time="$actual_time" '
@@ -147,7 +147,7 @@ phase_1_analyze() {
     info "任务: $task_name"
     
     # 标记为进行中
-    local tmp_file=$(mktemp)
+    local tmp_file="$PROJECT_DIR/.plan_tmp_$$.txt"
     awk -F '|' -v task="$task_name" '
     BEGIN { OFS="|" }
     {
