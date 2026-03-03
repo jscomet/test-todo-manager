@@ -82,7 +82,7 @@ def add_task(content, priority="中", due_date=None, tags=None):
     print(f"✅ 已添加任务：{content}")
 
 
-def list_tasks(tag_filter=None, sort_by="priority"):
+def list_tasks(tag_filter=None, sort_by="priority", priority_filter=None):
     """
     列出所有任务及其状态
 
@@ -94,6 +94,7 @@ def list_tasks(tag_filter=None, sort_by="priority"):
         tag_filter (str): 可选，只显示包含此标签的任务
         sort_by (str): 排序方式，可选值：priority（优先级）/ created（创建时间）/ none（不排序）
                       默认为 priority
+        priority_filter (str): 可选，只显示指定优先级的任务（高/中/低）
 
     Returns:
         None
@@ -107,9 +108,15 @@ def list_tasks(tag_filter=None, sort_by="priority"):
     if tag_filter:
         tasks = [t for t in tasks if tag_filter in t.get("tags", [])]
 
+    # 按优先级过滤
+    if priority_filter:
+        tasks = [t for t in tasks if t.get("priority", "中") == priority_filter]
+
     if not tasks:
         if tag_filter:
             print(f"📭 没有找到带标签 '{tag_filter}' 的任务")
+        elif priority_filter:
+            print(f"📭 没有找到优先级为 '{priority_filter}' 的任务")
         else:
             print("📭 暂无任务")
         return
@@ -126,6 +133,8 @@ def list_tasks(tag_filter=None, sort_by="priority"):
     print("\n📋 任务列表:")
     if tag_filter:
         print(f"标签：#{tag_filter}")
+    if priority_filter:
+        print(f"优先级：{priority_filter}")
     print("-" * 50)
     for task in tasks:
         status = "✅" if task["done"] else "⭕"
@@ -393,6 +402,12 @@ def main():
         help="按标签过滤",
     )
     list_parser.add_argument(
+        "--priority",
+        "-p",
+        choices=["高", "中", "低"],
+        help="按优先级过滤（高/中/低）",
+    )
+    list_parser.add_argument(
         "--sort",
         "-s",
         choices=["priority", "created", "none"],
@@ -440,7 +455,7 @@ def main():
             tags = [t.strip() for t in args.tags.replace("，", ",").split(",")]
         add_task(args.content, args.priority, args.due, tags)
     elif args.command == "list":
-        list_tasks(args.tag, args.sort)
+        list_tasks(args.tag, args.sort, args.priority)
     elif args.command == "done":
         done_task(args.id)
     elif args.command == "delete":
