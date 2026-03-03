@@ -116,14 +116,15 @@
   {
     "id": 15,
     "content": "测试无截止日期任务",
-    "done": false,
+    "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:24:43"
+    "created_at": "2026-03-04 01:24:43",
+    "completed_at": "2026-03-04 01:49:12"
   },
   {
     "id": 16,
     "content": "测试任务_1772558695",
-    "done": false,
+    "done": true,
     "priority": "中",
     "created_at": "2026-03-04 01:24:55"
   },
