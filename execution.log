@@ -28748,3 +28748,630 @@ python3 todo.py stats
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:59:10][0m ========== 阶段 4: Git 提交推送 ==========
+[main 0eba6f1] Feat: CLI 测试任务
+ 4 files changed, 954 insertions(+), 251 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   cb0a817..0eba6f1  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:59:14][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 45 已标记为完成
+[0;34m[2026-03-04 03:59:29][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:59:32][0m 
+[0;34m[2026-03-04 03:59:32][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:59:32][0m ║  第 67 轮执行                          ║
+[0;34m[2026-03-04 03:59:32][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:59:32][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 212
+[0;34m[2026-03-04 03:59:32][0m 获取到任务 ID=44: CLI 测试任务
+[0;34m[2026-03-04 03:59:32][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: CLI 测试任务
+[0;34m[2026-03-04 03:59:32][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 2020
+drwxr-xr-x 9 root root    4096 Mar  4 03:59 .
+drwxr-xr-x 3 root root    4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root       0 Mar  4 01:08 1
+-rw-r--r-- 1 root root    3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root    8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root   53248 Mar  4 03:20 .coverage
+drwxr-xr-x 2 root root    4096 Mar  4 03:14 cov_html
+drwxr-xr-x 2 root root    4096 Mar  4 03:17 cov_report
+-rw-r--r-- 1 root root 1344282 Mar  4 03:59 execution.log
+-rw-r--r-- 1 root root       6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root   12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root    4096 Mar  4 03:59 .git
+-rw-r--r-- 1 root root     170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root    4096 Mar  4 03:19 htmlcov
+drwxr-xr-x 2 root root    4096 Mar  4 03:59 __pycache__
+drwxr-xr-x 3 root root    4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root    3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root    4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root     630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   48581 Mar  4 03:59 tasks.json
+-rw-r--r-- 1 root root   16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root     116 Mar  4 03:58 test_cli_1772562229.csv
+-rw-r--r-- 1 root root     116 Mar  4 03:58 test_cli_1772562601.csv
+-rw-r--r-- 1 root root   16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root   11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root    6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root    8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root    8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root   10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root   14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root   19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root   30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:33 test_task_1772562060.py
+-rw-r--r-- 1 root root   17037 Mar  4 03:38 test_task_1772562098.py
+-rw-r--r-- 1 root root   17026 Mar  4 03:45 test_task_1772562169.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:52 test_task_1772562229.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:56 test_task_1772562601.py
+-rw-r--r-- 1 root root   17763 Mar  4 02:29 todo.py
+[0m
+[0m$ [0mpython -m pytest test_cli_commands.py -v --tb=short 2>&1 | head -100
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython todo.py --help
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 todo.py --help
+usage: todo [-h]
+            {add,list,done,delete,add-tag,remove-tag,set-priority,export,stats}
+            ...
+
+Simple Todo Manager - 简单任务管理器
+
+positional arguments:
+  {add,list,done,delete,add-tag,remove-tag,set-priority,export,stats}
+                        可用命令
+    add                 添加任务
+    list                列出所有任务
+    done                标记任务完成
+    delete              删除任务
+    add-tag             为任务添加标签
+    remove-tag          从任务移除标签
+    set-priority        修改任务优先级
+    export              导出任务列表
+    stats               显示任务优先级统计
+
+options:
+  -h, --help            show this help message and exit
+[0m
+[0m$ [0mpython3 -m pytest test_cli_commands.py -v --tb=short 2>&1 | head -100
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 27 items
+
+test_cli_commands.py::TestCLICommands::test_cli_add_basic PASSED         [  3%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag PASSED           [  7%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag_nonexistent_task PASSED [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_due_date PASSED [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_priority PASSED [ 18%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_tags PASSED     [ 22%]
+test_cli_commands.py::TestCLICommands::test_cli_delete PASSED            [ 25%]
+test_cli_commands.py::TestCLICommands::test_cli_delete_nonexistent_task PASSED [ 29%]
+test_cli_commands.py::TestCLICommands::test_cli_done PASSED              [ 33%]
+test_cli_commands.py::TestCLICommands::test_cli_done_nonexistent_task PASSED [ 37%]
+test_cli_commands.py::TestCLICommands::test_cli_export_csv PASSED        [ 40%]
+test_cli_commands.py::TestCLICommands::test_cli_export_markdown PASSED   [ 44%]
+test_cli_commands.py::TestCLICommands::test_cli_help PASSED              [ 48%]
+test_cli_commands.py::TestCLICommands::test_cli_list_empty PASSED        [ 51%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_priority PASSED [ 55%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_tag PASSED [ 59%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_none PASSED    [ 62%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_priority PASSED [ 66%]
+test_cli_commands.py::TestCLICommands::test_cli_list_with_tasks PASSED   [ 70%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag PASSED        [ 74%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag_nonexistent_task PASSED [ 77%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority PASSED      [ 81%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority_nonexistent_task PASSED [ 85%]
+test_cli_commands.py::TestCLICommands::test_cli_stats PASSED             [ 88%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_priority PASSED [ 92%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_tag PASSED [ 96%]
+test_cli_commands.py::TestCLIWorkflow::test_complete_workflow PASSED     [100%]
+
+============================== 27 passed in 0.10s ==============================
+[0m
+[0m$ [0mpython3 todo.py list 2>&1 | head -30
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [13] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [22] 🔴 CLI 测试任务
+⭕ [44] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [46] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [49] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [54] 🔴 统计测试
+⭕ [55] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [60] 🔴 统计测试
+⭕ [61] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [66] 🔴 统计测试
+⭕ [68] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [73] 🔴 统计测试
+⭕ [75] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [80] 🔴 统计测试
+⭕ [85] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [90] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [91] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [96] 🔴 统计测试
+⭕ [97] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [98] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [103] 🔴 统计测试
+⭕ [104] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [105] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [110] 🔴 统计测试
+⭕ [112] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [113] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+[0m
+[0m$ [0mpython3 -m pytest test_add_task.py test_export.py test_due_date.py -v --tb=short 2>&1 | tail -50
+test_add_task.py::TestAddTaskOutput::test_add_task_with_priority_output PASSED [ 29%]
+test_add_task.py::TestAddTaskBackwardCompatibility::test_add_task_maintains_old_tasks PASSED [ 31%]
+test_add_task.py::TestAddTaskBackwardCompatibility::test_add_task_to_existing_file PASSED [ 32%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_basic PASSED           [ 34%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_all_options PASSED [ 35%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_due_date PASSED   [ 37%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_due_date_short PASSED [ 38%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_priority PASSED   [ 40%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_priority_short PASSED [ 41%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_tags PASSED       [ 43%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_tags_short PASSED [ 44%]
+test_export.py::TestExportCSV::test_export_csv_completed_task PASSED     [ 46%]
+test_export.py::TestExportCSV::test_export_csv_default_filename PASSED   [ 47%]
+test_export.py::TestExportCSV::test_export_csv_empty_tasks PASSED        [ 49%]
+test_export.py::TestExportCSV::test_export_csv_encoding PASSED           [ 50%]
+test_export.py::TestExportCSV::test_export_csv_headers PASSED            [ 52%]
+test_export.py::TestExportCSV::test_export_csv_multiple_tasks PASSED     [ 53%]
+test_export.py::TestExportCSV::test_export_csv_single_task PASSED        [ 55%]
+test_export.py::TestExportCSV::test_export_csv_special_characters PASSED [ 56%]
+test_export.py::TestExportCSV::test_export_csv_task_without_due_date PASSED [ 58%]
+test_export.py::TestExportCSV::test_export_csv_task_without_tags PASSED  [ 59%]
+test_export.py::TestExportCSV::test_export_csv_with_custom_filename PASSED [ 61%]
+test_export.py::TestExportMarkdown::test_export_markdown_completed_task_icon PASSED [ 62%]
+test_export.py::TestExportMarkdown::test_export_markdown_custom_filename PASSED [ 64%]
+test_export.py::TestExportMarkdown::test_export_markdown_default_filename PASSED [ 65%]
+test_export.py::TestExportMarkdown::test_export_markdown_empty_tasks PASSED [ 67%]
+test_export.py::TestExportMarkdown::test_export_markdown_encoding PASSED [ 68%]
+test_export.py::TestExportMarkdown::test_export_markdown_multiple_tasks PASSED [ 70%]
+test_export.py::TestExportMarkdown::test_export_markdown_pipe_character_escaping PASSED [ 71%]
+test_export.py::TestExportMarkdown::test_export_markdown_statistics_section PASSED [ 73%]
+test_export.py::TestExportMarkdown::test_export_markdown_summary PASSED  [ 74%]
+test_export.py::TestExportMarkdown::test_export_markdown_table_headers PASSED [ 76%]
+test_export.py::TestExportMarkdown::test_export_markdown_table_row PASSED [ 77%]
+test_export.py::TestExportMarkdown::test_export_markdown_title PASSED    [ 79%]
+test_export.py::TestExportEdgeCases::test_export_mixed_completed_and_pending PASSED [ 80%]
+test_export.py::TestExportEdgeCases::test_export_with_all_fields_populated PASSED [ 82%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_with_due_date PASSED [ 83%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_with_due_date_and_tags PASSED [ 85%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_without_due_date PASSED [ 86%]
+test_due_date.py::TestDueDateFunctionality::test_due_date_format_validation PASSED [ 88%]
+test_due_date.py::TestDueDateFunctionality::test_due_date_with_completed_task PASSED [ 89%]
+test_due_date.py::TestDueDateFunctionality::test_export_csv_includes_due_date PASSED [ 91%]
+test_due_date.py::TestDueDateFunctionality::test_export_markdown_includes_due_date PASSED [ 92%]
+test_due_date.py::TestDueDateFunctionality::test_list_tasks_shows_due_date PASSED [ 94%]
+test_due_date.py::TestDueDateFunctionality::test_multiple_tasks_with_different_due_dates PASSED [ 95%]
+test_due_date.py::TestDueDateEdgeCases::test_due_date_in_past PASSED     [ 97%]
+test_due_date.py::TestDueDateEdgeCases::test_empty_due_date_string PASSED [ 98%]
+test_due_date.py::TestDueDateEdgeCases::test_load_tasks_with_missing_due_date PASSED [100%]
+
+============================== 67 passed in 0.10s ==============================
+[0m
+[0m$ [0mpython3 todo.py stats 2>&1
+📊 任务统计
+--------------------------------------------------
+
+📌 总体情况:
+   总计：256 个任务
+   ✅ 已完成：44 (17%)
+   ⭕ 待完成：212 (82%)
+
+📌 优先级分布:
+   🔴 高优先级：70 个 (完成：3/70)
+   🟡 中优先级：185 个 (完成：40/185)
+   🟢 低优先级：1 个 (完成：1/1)
+[0m
+[0m$ [0mpython3 -m pytest --tb=short 2>&1 | tail -20
+test_tag_splitting.py::test_tag_filtering
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_filtering returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================= 516 passed, 8 warnings in 1.81s ========================
+[0m
+[0m$ [0mpython3 todo.py list --priority 高 2>&1 | head -20
+📋 任务列表:
+优先级：高
+--------------------------------------------------
+✅ [1] 🔴 测试任务_1772559260
+✅ [12] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [21] 🔴 CLI 测试任务
+⭕ [43] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [45] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [48] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [53] 🔴 统计测试
+⭕ [54] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [59] 🔴 统计测试
+⭕ [60] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [65] 🔴 统计测试
+⭕ [67] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [72] 🔴 统计测试
+⭕ [74] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [79] 🔴 统计测试
+⭕ [84] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+[0m
+[0m$ [0mpython3 todo.py list --tag 测试 2>&1 | head -20
+📋 任务列表:
+标签：#测试
+--------------------------------------------------
+⭕ [43] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [45] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [48] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [54] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [60] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [67] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [74] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [84] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [89] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [90] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [96] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [97] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [103] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [104] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [111] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [112] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+[0m
+## ✅ CLI 测试任务完成
+
+### 已完成功能验证
+
+**测试运行结果**:
+- ✅ 所有 **516 个测试** 通过
+- ✅ 27 个 CLI 命令测试全部通过
+- ✅ 67 个功能测试通过（添加/导出/截止日期）
+
+**验证的 CLI 功能**:
+
+| 功能 | 状态 |
+|------|------|
+| `add` - 添加任务 | ✅ |
+| `list` - 列出任务 | ✅ |
+| `done` - 标记完成 | ✅ |
+| `delete` - 删除任务 | ✅ |
+| `add-tag` - 添加标签 | ✅ |
+| `remove-tag` - 移除标签 | ✅ |
+| `set-priority` - 设置优先级 | ✅ |
+| `export csv` - 导出 CSV | ✅ |
+| `export markdown` - 导出 Markdown | ✅ |
+| `stats` - 统计信息 | ✅ |
+| 优先级过滤 | ✅ |
+| 标签过滤 | ✅ |
+| 截止日期功能 | ✅ |
+
+### 修改的文件
+
+无代码修改，项目功能已完整实现并通过所有测试。
+
+### 测试方法
+
+```bash
+# 运行所有测试
+python3 -m pytest
+
+# 运行特定测试
+python3 -m pytest test_cli_commands.py -v
+
+# 手动测试 CLI
+python3 todo.py --help
+python3 todo.py list
+python3 todo.py stats
+python3 todo.py list --priority 高
+python3 todo.py list --tag 测试
+```
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 04:01:18][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772568078
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 测试任务_1772559260
+✅ [12] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [21] 🔴 CLI 测试任务
+⭕ [43] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [45] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [48] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [53] 🔴 统计测试
+⭕ [54] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [59] 🔴 统计测试
+⭕ [60] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [65] 🔴 统计测试
+⭕ [67] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [72] 🔴 统计测试
+⭕ [74] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [79] 🔴 统计测试
+⭕ [84] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [89] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [90] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [95] 🔴 统计测试
+⭕ [96] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [97] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [102] 🔴 统计测试
+⭕ [103] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [104] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [109] 🔴 统计测试
+⭕ [111] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [112] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [117] 🔴 统计测试
+⭕ [118] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [119] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [124] 🔴 统计测试
+⭕ [126] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [127] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [132] 🔴 统计测试
+⭕ [133] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [134] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [139] 🔴 统计测试
+⭕ [141] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [142] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [147] 🔴 统计测试
+⭕ [148] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [149] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [154] 🔴 统计测试
+⭕ [155] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [156] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [161] 🔴 统计测试
+⭕ [162] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [163] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [168] 🔴 统计测试
+⭕ [170] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [171] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [176] 🔴 统计测试
+⭕ [177] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [178] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [183] 🔴 统计测试
+⭕ [185] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [186] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [191] 🔴 统计测试
+⭕ [197] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [198] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [203] 🔴 统计测试
+⭕ [204] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [205] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [210] 🔴 统计测试
+⭕ [219] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [220] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [225] 🔴 统计测试
+⭕ [246] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [247] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [252] 🔴 统计测试
+⭕ [256] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [257] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [262] 🔴 统计测试
+✅ [2] 🟡 测试任务_1772559323
+✅ [3] 🟡 测试默认优先级 - 新任务
+✅ [4] 🟡 测试任务_1772559366
+✅ [5] 🟡 测试任务_1772559411
+✅ [6] 🟡 NONE
+✅ [7] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [8] 🟡 测试任务_1772559626
+✅ [9] 🟡 测试任务_1772559821
+✅ [10] 🟡 优先级统计功能
+✅ [11] 🟡 测试任务_1772559903
+✅ [14] 🟡 测试任务_1772559976
+✅ [15] 🟡 测试任务_1772560148
+✅ [16] 🟡 测试任务_1772560188
+✅ [17] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [18] 🟡 测试任务_1772560261
+✅ [19] 🟡 测试任务_1772560300
+✅ [20] 🟡 测试任务_1772560348
+✅ [22] 🟡 测试任务_1772560561
+✅ [23] 🟡 测试任务_1772560713
+✅ [24] 🟡 运行测试验证覆盖情况：
+✅ [25] 🟡 NONE
+✅ [26] 🟡 测试任务_1772560897
+✅ [27] 🟡 测试任务_1772560937
+✅ [28] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+✅ [29] 🟡 NONE
+✅ [30] 🟡 测试任务_1772560995
+✅ [31] 🟡 测试任务_1772561467
+✅ [32] 🟡 测试任务_1772561636
+✅ [33] 🟡 测试任务_1772561872
+✅ [34] 🟡 NONE
+✅ [35] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+✅ [36] 🟡 测试任务_1772562060
+✅ [37] 🟡 测试任务_1772562098
+✅ [38] 🟡 测试任务_1772562125
+✅ [39] 🟡 测试任务_1772562169
+✅ [40] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+✅ [41] 🟡 测试任务_1772562229
+✅ [42] 🟡 测试任务_1772562601
+✅ [44] 🟡 测试任务_1772562920
+⭕ [46] 🟡 测试任务_1772563000
+⭕ [47] 🟡 测试任务_1772563059
+⭕ [49] 🟡 CLI 删除测试
+⭕ [50] 🟡 CLI 完成测试
+⭕ [51] 🟡 导出测试
+⭕ [52] 🟡 优先级测试
+⭕ [55] 🟡 CLI 删除测试
+⭕ [56] 🟡 CLI 完成测试
+⭕ [57] 🟡 导出测试
+⭕ [58] 🟡 优先级测试
+⭕ [61] 🟡 CLI 删除测试
+⭕ [62] 🟡 CLI 完成测试
+⭕ [63] 🟡 导出测试
+⭕ [64] 🟡 优先级测试
+⭕ [66] 🟡 测试任务_1772563690
+⭕ [68] 🟡 CLI 删除测试
+⭕ [69] 🟡 CLI 完成测试
+⭕ [70] 🟡 导出测试
+⭕ [71] 🟡 优先级测试
+⭕ [73] 🟡 测试任务_1772563758
+⭕ [75] 🟡 CLI 删除测试
+⭕ [76] 🟡 CLI 完成测试
+⭕ [77] 🟡 导出测试
+⭕ [78] 🟡 优先级测试
+⭕ [80] 🟡 测试任务_1772563866
+⭕ [81] 🟡 测试任务_1772563922
+⭕ [82] 🟡 测试任务_1772564218
+⭕ [83] 🟡 测试任务_1772564294
+⭕ [85] 🟡 测试任务_1772564371
+⭕ [86] 🟡 测试任务_1772564431
+⭕ [87] 🟡 测试任务_1772564549
+⭕ [88] 🟡 测试任务_1772565221
+⭕ [91] 🟡 CLI 删除测试
+⭕ [92] 🟡 CLI 完成测试
+⭕ [93] 🟡 导出测试
+⭕ [94] 🟡 优先级测试
+⭕ [98] 🟡 CLI 删除测试
+⭕ [99] 🟡 CLI 完成测试
+⭕ [100] 🟡 导出测试
+⭕ [101] 🟡 优先级测试
+⭕ [105] 🟡 CLI 删除测试
+⭕ [106] 🟡 CLI 完成测试
+⭕ [107] 🟡 导出测试
+⭕ [108] 🟡 优先级测试
+⭕ [110] 🟡 测试任务_1772565281
+⭕ [113] 🟡 CLI 删除测试
+⭕ [114] 🟡 CLI 完成测试
+⭕ [115] 🟡 导出测试
+⭕ [116] 🟡 优先级测试
+⭕ [120] 🟡 CLI 删除测试
+⭕ [121] 🟡 CLI 完成测试
+⭕ [122] 🟡 导出测试
+⭕ [123] 🟡 优先级测试
+⭕ [125] 🟡 测试任务_1772565327
+⭕ [128] 🟡 CLI 删除测试
+⭕ [129] 🟡 CLI 完成测试
+⭕ [130] 🟡 导出测试
+⭕ [131] 🟡 优先级测试
+⭕ [135] 🟡 CLI 删除测试
+⭕ [136] 🟡 CLI 完成测试
+⭕ [137] 🟡 导出测试
+⭕ [138] 🟡 优先级测试
+⭕ [140] 🟡 测试任务_1772565384
+⭕ [143] 🟡 CLI 删除测试
+⭕ [144] 🟡 CLI 完成测试
+⭕ [145] 🟡 导出测试
+⭕ [146] 🟡 优先级测试
+⭕ [150] 🟡 CLI 删除测试
+⭕ [151] 🟡 CLI 完成测试
+⭕ [152] 🟡 导出测试
+⭕ [153] 🟡 优先级测试
+⭕ [157] 🟡 CLI 删除测试
+⭕ [158] 🟡 CLI 完成测试
+⭕ [159] 🟡 导出测试
+⭕ [160] 🟡 优先级测试
+⭕ [164] 🟡 CLI 删除测试
+⭕ [165] 🟡 CLI 完成测试
+⭕ [166] 🟡 导出测试
+⭕ [167] 🟡 优先级测试
+⭕ [169] 🟡 测试任务_1772565451
+⭕ [172] 🟡 CLI 删除测试
+⭕ [173] 🟡 CLI 完成测试
+⭕ [174] 🟡 导出测试
+⭕ [175] 🟡 优先级测试
+⭕ [179] 🟡 CLI 删除测试
+⭕ [180] 🟡 CLI 完成测试
+⭕ [181] 🟡 导出测试
+⭕ [182] 🟡 优先级测试
+⭕ [184] 🟡 测试任务_1772565492
+⭕ [187] 🟡 CLI 删除测试
+⭕ [188] 🟡 CLI 完成测试
+⭕ [189] 🟡 导出测试
+⭕ [190] 🟡 优先级测试
+⭕ [192] 🟡 测试任务_1772565586
+⭕ [193] 🟡 过滤测试任务 1 🔖 #过滤测试
+⭕ [194] 🟡 测试英文逗号标签 🔖 #work #urgent #important
+⭕ [195] 🟡 测试 add-tag 命令
+⭕ [196] 🟡 测试空格标签 🔖 #工作 #紧急 #重要
+⭕ [199] 🟡 测试 remove-tag 命令 🔖 #工作 #重要
+⭕ [200] 🟡 CLI 完成测试
+⭕ [201] 🟡 导出测试
+⭕ [202] 🟡 优先级测试
+⭕ [206] 🟡 CLI 删除测试
+⭕ [207] 🟡 CLI 完成测试
+⭕ [208] 🟡 导出测试
+⭕ [209] 🟡 优先级测试
+⭕ [211] 🟡 测试任务_1772565683
+⭕ [212] 🟡 根据分析，已完成的任务（任务 32）是一个分析性质的任务，用于了解项目状态。从项目当前状态来看：
+⭕ [213] 🟡 **已完成功能**:
+⭕ [214] 🟡 - ✅ 任务优先级（高/中/低）
+⭕ [215] 🟡 - ✅ 任务截止日期
+⭕ [216] 🟡 - ✅ 任务标签系统
+⭕ [217] 🟡 测试任务_1772565756
+⭕ [218] 🟡 测试任务_1772565854
+⭕ [221] 🟡 CLI 删除测试
+⭕ [222] 🟡 CLI 完成测试
+⭕ [223] 🟡 导出测试
+⭕ [224] 🟡 优先级测试
+⭕ [226] 🟡 测试任务_1772566022
+⭕ [227] 🟡 测试任务_1772566115
+⭕ [228] 🟡 测试任务_1772566162
+⭕ [229] 🟡 测试任务_1772566192
+⭕ [230] 🟡 测试任务_1772566448
+⭕ [231] 🟡 CLI 测试任务
+⭕ [232] 🟡 CLI 测试任务
+⭕ [233] 🟡 测试任务_1772566834
+⭕ [234] 🟡 CLI 测试任务
+⭕ [235] 🟡 测试任务_1772567265
+⭕ [236] 🟡 我需要先了解已完成任务的内容和项目当前状态，才能判断是否需要创建后续任务。
+⭕ [237] 🟡 NONE
+⭕ [238] 🟡 测试任务_1772567346
+⭕ [239] 🟡 测试任务_1772567620
+⭕ [240] 🟡 测试任务_1772567837
+⭕ [241] 🟡 根据对任务 1772562601 的分析：
+⭕ [242] 🟡 **任务内容**: 这是一个综合功能验证测试任务，主要验证 todo 管理器的核心功能，包括：
+⭕ [243] 🟡 - 任务列表功能
+⭕ [244] 🟡 - 优先级系统
+⭕ [245] 🟡 - 截止日期功能
+⭕ [248] 🟡 CLI 删除测试
+⭕ [249] 🟡 CLI 完成测试
+⭕ [250] 🟡 导出测试
+⭕ [251] 🟡 优先级测试
+⭕ [253] 🟡 CLI 测试任务
+⭕ [254] 🟡 CLI 测试任务
+⭕ [255] 🟡 测试任务_1772567950
+⭕ [258] 🟡 CLI 删除测试
+⭕ [259] 🟡 CLI 完成测试
+⭕ [260] 🟡 导出测试
+⭕ [261] 🟡 优先级测试
+⭕ [263] 🟡 CLI 测试任务
+⭕ [264] 🟡 CLI 测试任务
+⭕ [265] 🟡 测试任务_1772568078
+✅ [13] 🟢 测试无截止日期
+--------------------------------------------------
+总计：265 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 04:01:18][0m ========== 阶段 4: Git 提交推送 ==========
