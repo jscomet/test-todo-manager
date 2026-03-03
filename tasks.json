@@ -306,15 +306,16 @@
   {
     "id": 37,
     "content": "测试截止日期功能",
-    "done": false,
+    "done": true,
     "priority": "高",
     "created_at": "2026-03-04 01:45:29",
-    "due_date": "2026-03-10"
+    "due_date": "2026-03-10",
+    "completed_at": "2026-03-04 02:36:46"
   },
   {
     "id": 38,
     "content": "测试无截止日期",
-    "done": false,
+    "done": true,
     "priority": "低",
     "created_at": "2026-03-04 01:45:29"
   },
