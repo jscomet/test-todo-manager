@@ -258,9 +258,10 @@
   {
     "id": 31,
     "content": "NONE",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:37:30",
-    "priority": "中"
+    "priority": "中",
+    "completed_at": "2026-03-04 02:21:42"
   },
   {
     "id": 32,
@@ -483,5 +484,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:21:38"
+  },
+  {
+    "id": 63,
+    "content": "测试任务_1772562125",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 02:22:05"
   }
 ]
