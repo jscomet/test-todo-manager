@@ -10771,3 +10771,455 @@ python3 todo.py stats --tag 测试    # 只看指定标签
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 02:30:01][0m ========== 阶段 4: Git 提交推送 ==========
+[main f75d477] Feat: 优先级统计功能
+ 2 files changed, 251 insertions(+), 135 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   d4d825b..f75d477  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 02:30:06][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 35 已标记为完成
+[0;34m[2026-03-04 02:30:24][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 02:30:27][0m 
+[0;34m[2026-03-04 02:30:27][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 02:30:27][0m ║  第 34 轮执行                          ║
+[0;34m[2026-03-04 02:30:27][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 02:30:27][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 32
+[0;34m[2026-03-04 02:30:27][0m 获取到任务 ID=36: 测试任务_1772559903
+[0;34m[2026-03-04 02:30:27][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772559903
+[0;34m[2026-03-04 02:30:27][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我将开始执行测试任务_1772559903。首先让我了解项目结构和当前代码。
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la
+total 892
+drwxr-xr-x 5 root root   4096 Mar  4 02:30 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 492140 Mar  4 02:30 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 02:30 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 02:30 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  14759 Mar  4 02:30 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+[0m$ [0mcat AGENTS.md 2>/dev/null || echo "No AGENTS.md found"
+# OpenCode Agent 工作流程规范
+
+本文档定义了 OpenCode Agent 执行任务的规范和流程。
+
+## 🎯 基本原则
+
+1. **一次只执行一个任务** - 专注于当前任务，不发散
+2. **测试驱动** - 每个功能必须有测试验证
+3. **持续集成** - 每个任务完成后立即提交
+4. **迭代改进** - 根据反馈不断优化
+
+---
+
+## 📋 工作流程
+
+### 阶段 1: 任务分析
+
+**执行步骤**:
+1. 读取任务描述
+2. 分析需求和技术方案
+3. 检查现有代码结构
+4. 确定实现策略
+
+**输出**:
+- 任务理解摘要
+- 技术方案概要
+- 可能遇到的问题预测
+
+---
+
+### 阶段 2: 代码实现
+
+**执行步骤**:
+1. 编写/修改代码
+2. 遵循项目代码规范
+3. 添加必要的注释
+4. 确保代码可读性
+
+**约束**:
+- 不要修改与当前任务无关的代码
+- 保持向后兼容性
+- 使用项目已有的技术栈
+
+---
+
+### 阶段 3: 功能测试
+
+**执行步骤**:
+1. 运行单元测试（如果有）
+2. 手动验证功能
+3. 检查边界情况
+4. 验证错误处理
+
+**通过标准**:
+- [ ] 功能按预期工作
+- [ ] 无明显 bug
+- [ ] 错误提示清晰
+
+---
+
+### 阶段 4: 文档更新
+
+**执行步骤**:
+1. 更新 README（如需要）
+2. 添加/更新代码注释
+3. 记录重要变更
+
+---
+
+### 阶段 5: Git 提交
+
+**执行步骤**:
+1. `git add -A`
+2. `git commit -m "描述信息"`
+3. `git push origin main`
+
+**提交信息格式**:
+```
+类型: 简短描述
+
+- 详细变更点 1
+- 详细变更点 2
+```
+
+类型包括:
+- `Feat`: 新功能
+- `Fix`: 修复
+- `Refactor`: 重构
+- `Docs`: 文档
+- `Test`: 测试
+
+---
+
+### 阶段 6: 任务更新
+
+**执行步骤**:
+1. 标记当前任务为完成
+2. 根据执行结果创建新任务（如需要）
+3. 更新任务优先级
+
+---
+
+## 🚫 禁止事项
+
+- ❌ 一次修改多个不相关的功能
+- ❌ 提交未经测试的代码
+- ❌ 提交带有敏感信息的代码
+- ❌ 破坏现有功能
+- ❌ 过度工程化
+
+---
+
+## ✅ 检查清单
+
+每个任务执行前确认:
+- [ ] 理解任务需求
+- [ ] 了解项目结构
+- [ ] 备份重要数据
+
+每个任务执行后确认:
+- [ ] 功能测试通过
+- [ ] 代码已提交
+- [ ] 文档已更新
+- [ ] 任务状态已更新
+
+---
+
+## 📝 示例工作流
+
+```
+任务: 添加用户登录功能
+
+1. 分析
+   - 需要用户认证
+   - 使用 JWT token
+   - 需要密码加密
+
+2. 实现
+   - 创建 auth.py
+   - 实现 login() 函数
+   - 实现密码验证
+
+3. 测试
+   - 测试正常登录
+   - 测试错误密码
+   - 测试 token 生成
+
+4. 文档
+   - 更新 API 文档
+   - 添加使用示例
+
+5. 提交
+   - git add .
+   - git commit -m "Feat: 添加用户登录功能"
+   - git push
+
+6. 更新任务
+   - 标记任务完成
+   - 创建新任务: "添加用户注册功能"
+```
+
+---
+
+## 🔄 反馈循环
+
+如果任务执行失败:
+1. 分析失败原因
+2. 修复问题
+3. 重新测试
+4. 再次提交
+5. 记录教训
+
+---
+
+## 📊 质量指标
+
+- 代码可读性
+- 测试覆盖率
+- 文档完整性
+- 提交规范性
+
+---
+
+*最后更新: 2026-03-04*
+[0m
+让我查看现有的测试文件模式，了解如何测试这个任务。
+[0m→ [0mRead test_task_1772559141.py
+[0m
+[0m$ [0mpython3 todo.py list 2>&1 | head -30
+📋 任务列表:
+--------------------------------------------------
+✅ [8] 🔴 测试高优先级任务
+✅ [14] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [22] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+⭕ [37] 🔴 测试截止日期功能 📅 2026-03-10
+⭕ [46] 🔴 CLI 测试任务
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+✅ [2] 🟡 添加任务优先级功能（高/中/低）
+✅ [3] 🟡 添加任务截止日期功能
+✅ [4] 🟡 添加任务分类/标签功能
+✅ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+✅ [6] 🟡 测试任务 1
+✅ [9] 🟡 测试默认优先级任务
+✅ [10] 🟡 测试任务_1772558260
+✅ [11] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [12] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [15] 🟡 测试无截止日期任务
+✅ [16] 🟡 测试任务_1772558695
+✅ [17] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [18] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [19] 🟡 测试任务_1772559067
+✅ [20] 🟡 测试任务_1772559141
+✅ [21] 🟡 添加导出功能的单元测试
+✅ [23] 🟡 测试任务_1772559221
+✅ [26] 🟡 测试任务_1772559260
+✅ [27] 🟡 测试任务_1772559323
+✅ [28] 🟡 测试默认优先级 - 新任务
+✅ [29] 🟡 测试任务_1772559366
+[0m
+现在我理解了任务模式。任务 36 是一个测试任务，需要创建测试文件来验证 Todo 管理器的功能。让我创建测试文件。
+[0m← [0mWrite test_task_1772559903.py
+Wrote file successfully.
+[0m
+现在运行测试验证功能。
+[0m$ [0mpython3 -m pytest test_task_1772559903.py -v 2>&1 | head -100
+/usr/bin/python3: No module named pytest
+[0m
+[0m$ [0mpython3 test_task_1772559903.py 2>&1
+test_old_tasks_get_default_priority (__main__.TestBackwardCompatibility.test_old_tasks_get_default_priority)
+测试旧任务自动获取默认优先级 ... ok
+test_cli_add_task (__main__.TestCLIIntegration.test_cli_add_task)
+测试 CLI 添加任务 ... ok
+test_cli_help (__main__.TestCLIIntegration.test_cli_help)
+测试 CLI 帮助 ... ok
+test_cli_list_help (__main__.TestCLIIntegration.test_cli_list_help)
+测试 CLI list 帮助 ... ok
+test_export_csv_basic (__main__.TestExportFunctionality.test_export_csv_basic)
+测试基本 CSV 导出 ... ok
+test_export_default_filename (__main__.TestExportFunctionality.test_export_default_filename)
+测试默认导出文件名 ... ok
+test_export_empty_tasks (__main__.TestExportFunctionality.test_export_empty_tasks)
+测试导出空任务列表 ... ok
+test_export_markdown_basic (__main__.TestExportFunctionality.test_export_markdown_basic)
+测试基本 Markdown 导出 ... ok
+test_set_priority_all_levels (__main__.TestPriorityManagement.test_set_priority_all_levels)
+测试设置所有优先级级别 ... ok
+test_set_priority_basic (__main__.TestPriorityManagement.test_set_priority_basic)
+测试基本修改优先级 ... ok
+test_set_priority_nonexistent_task (__main__.TestPriorityManagement.test_set_priority_nonexistent_task)
+测试修改不存在的任务优先级 ... ok
+test_stats_basic (__main__.TestStatistics.test_stats_basic)
+测试基本统计功能 ... ok
+test_stats_empty (__main__.TestStatistics.test_stats_empty)
+测试空任务统计 ... ok
+test_stats_with_completion (__main__.TestStatistics.test_stats_with_completion)
+测试带完成情况的统计 ... ok
+test_add_tag_basic (__main__.TestTagManagement.test_add_tag_basic)
+测试基本添加标签 ... ok
+test_add_tag_prevents_duplicates (__main__.TestTagManagement.test_add_tag_prevents_duplicates)
+测试防止重复添加标签 ... ok
+test_add_tag_to_nonexistent_task (__main__.TestTagManagement.test_add_tag_to_nonexistent_task)
+测试给不存在的任务添加标签 ... ok
+test_remove_nonexistent_tag (__main__.TestTagManagement.test_remove_nonexistent_tag)
+测试移除不存在的标签 ... ok
+test_remove_tag_basic (__main__.TestTagManagement.test_remove_tag_basic)
+测试基本移除标签 ... ok
+test_add_task_creates_timestamp (__main__.TestTaskAddition.test_add_task_creates_timestamp)
+测试添加任务时自动创建时间戳 ... ok
+test_add_task_default_priority (__main__.TestTaskAddition.test_add_task_default_priority)
+测试添加任务时默认优先级为中 ... ok
+test_add_task_with_due_date (__main__.TestTaskAddition.test_add_task_with_due_date)
+测试添加带截止日期的任务 ... ok
+test_add_task_with_priority (__main__.TestTaskAddition.test_add_task_with_priority)
+测试添加不同优先级的任务 ... ok
+test_add_task_with_tags (__main__.TestTaskAddition.test_add_task_with_tags)
+测试添加带标签的任务 ... ok
+test_done_nonexistent_task (__main__.TestTaskCompletion.test_done_nonexistent_task)
+测试标记不存在的任务 ... ok
+test_done_task_basic (__main__.TestTaskCompletion.test_done_task_basic)
+测试基本标记完成功能 ... ok
+test_done_task_message (__main__.TestTaskCompletion.test_done_task_message)
+测试完成任务的提示信息 ... ok
+test_delete_nonexistent_task (__main__.TestTaskDeletion.test_delete_nonexistent_task)
+测试删除不存在的任务 ... ok
+test_delete_renumbers_ids (__main__.TestTaskDeletion.test_delete_renumbers_ids)
+测试删除后 ID 重新编号 ... ok
+test_delete_task_basic (__main__.TestTaskDeletion.test_delete_task_basic)
+测试基本删除功能 ... ok
+test_list_empty_tasks (__main__.TestTaskListing.test_list_empty_tasks)
+测试空任务列表显示 ... ok
+test_list_empty_with_filter (__main__.TestTaskListing.test_list_empty_with_filter)
+测试过滤后无结果的提示 ... ok
+test_list_filter_by_priority (__main__.TestTaskListing.test_list_filter_by_priority)
+测试按优先级过滤 ... ok
+test_list_filter_by_tag (__main__.TestTaskListing.test_list_filter_by_tag)
+测试按标签过滤 ... ok
+test_list_priority_sorting (__main__.TestTaskListing.test_list_priority_sorting)
+测试按优先级排序 ... ok
+test_list_with_tasks (__main__.TestTaskListing.test_list_with_tasks)
+测试有任务时的列表显示 ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.100s
+
+OK
+============================================================
+测试任务_1772559903 - Todo 管理器功能验证测试
+============================================================
+✅ 已添加任务：CSV 导出测试
+✅ 已添加任务：CSV 测试 2
+✅ 已导出 2 个任务到：test_export.csv
+✅ 已添加任务：测试任务
+✅ 已导出 1 个任务到：tasks_export.csv
+✅ 已导出 1 个任务到：tasks_export.md
+✅ 已添加任务：MD 导出测试
+✅ 任务 1 已完成: MD 导出测试
+✅ 已导出 1 个任务到：test_export.md
+✅ 已添加任务：测试任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：测试任务
+✅ 任务 1 优先级已修改：高 → 中
+   内容：测试任务
+✅ 任务 1 优先级已修改：中 → 低
+   内容：测试任务
+✅ 已添加任务：优先级修改任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：优先级修改任务
+✅ 已添加任务：高优任务
+✅ 已添加任务：中优任务
+✅ 已添加任务：低优任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 任务 1 已完成: 任务 1
+✅ 已添加任务：标签测试任务
+✅ 已为任务 1 添加标签：#测试标签
+✅ 已添加任务：重复标签测试
+✅ 已添加任务：标签测试
+✅ 已添加任务：标签移除测试
+✅ 已从任务 1 移除标签：#标签 1
+✅ 已添加任务：时间戳任务
+✅ 已添加任务：默认优先级任务
+✅ 已添加任务：带截止日期任务
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：带标签任务
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：具体任务内容
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+🗑️  已删除任务：任务 2
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：高优 1
+✅ 已添加任务：中优 1
+✅ 已添加任务：高优 2
+✅ 已添加任务：工作 1
+✅ 已添加任务：生活 1
+✅ 已添加任务：工作 2
+✅ 已添加任务：低优先级
+✅ 已添加任务：高优先级
+✅ 已添加任务：中优先级
+✅ 已添加任务：任务 A
+✅ 已添加任务：任务 B
+✅ 已添加任务：任务 C
+[0m
+所有 36 个测试通过。现在清理临时文件并提交。
+[0m$ [0mrm -f test_1772559903.json test_list_1772559903.json test_done_1772559903.json test_delete_1772559903.json test_tags_1772559903.json test_priority_1772559903.json test_export_1772559903.json test_stats_1772559903.json test_compat_1772559903.json test_cli_1772559903.json
+[0m
+[0m$ [0mgit add -A && git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   execution.log
+	modified:   tasks.json
+	new file:   test_task_1772559903.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+[0m
+[0m$ [0mpython3 todo.py done 36
+✅ 任务 36 已完成: 测试任务_1772559903
+[0m
+[0m$ [0mgit log --oneline -5
+f75d477 Feat: 优先级统计功能
+d4d825b Feat: 添加优先级统计功能
+ecd2efa Feat: 测试任务_1772559821
+c0ea463 Test: 完成测试任务_1772559821（按优先级过滤功能验证）
+0a02249 Feat: 测试任务_1772559626
+[0m
