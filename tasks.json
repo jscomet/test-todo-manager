@@ -380,9 +380,10 @@
   {
     "id": 45,
     "content": "优先级测试",
-    "done": false,
+    "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 02:44:58"
+    "created_at": "2026-03-04 02:44:58",
+    "completed_at": "2026-03-04 04:42:55"
   },
   {
     "id": 46,
@@ -2774,5 +2775,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:42:51"
+  },
+  {
+    "id": 343,
+    "content": "测试任务_1772570734",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 04:45:34"
   }
 ]
