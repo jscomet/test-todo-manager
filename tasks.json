@@ -193,7 +193,8 @@
     "content": "测试任务_1772559221",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:33:41"
+    "created_at": "2026-03-04 01:33:41",
+    "completed_at": "2026-03-04 02:02:22"
   },
   {
     "id": 24,
@@ -217,7 +218,7 @@
   {
     "id": 26,
     "content": "测试任务_1772559260",
-    "done": false,
+    "done": true,
     "priority": "中",
     "created_at": "2026-03-04 01:34:20"
   },
@@ -407,5 +408,19 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:02:17"
+  },
+  {
+    "id": 53,
+    "content": "我需要先了解已完成任务的内容和项目当前状态。",
+    "done": false,
+    "created_at": "2026-03-04 02:02:38",
+    "priority": "中"
+  },
+  {
+    "id": 54,
+    "content": "NONE",
+    "done": false,
+    "created_at": "2026-03-04 02:02:38",
+    "priority": "中"
   }
 ]
