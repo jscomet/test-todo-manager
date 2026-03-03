@@ -91,22 +91,23 @@
   {
     "id": 12,
     "content": "添加按优先级过滤功能（支持 --priority 参数筛选）",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:17:58",
-    "priority": "中"
+    "priority": "中",
+    "completed_at": "2026-03-04 01:43:46"
   },
   {
     "id": 13,
     "content": "添加修改任务优先级功能",
     "done": false,
     "created_at": "2026-03-04 01:17:58",
-    "priority": "中"
+    "priority": "低"
   },
   {
     "id": 14,
     "content": "测试截止日期功能",
     "done": false,
-    "priority": "中",
+    "priority": "高",
     "created_at": "2026-03-04 01:24:42",
     "due_date": "2026-03-10"
   },
@@ -266,5 +267,19 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:43:41"
+  },
+  {
+    "id": 35,
+    "content": "优先级统计功能",
+    "done": false,
+    "created_at": "2026-03-04 01:44:03",
+    "priority": "中"
+  },
+  {
+    "id": 36,
+    "content": "测试任务_1772559903",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:45:03"
   }
 ]
