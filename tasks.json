@@ -341,14 +341,15 @@
   {
     "id": 43,
     "content": "CLI 测试任务",
-    "done": false,
+    "done": true,
     "priority": "高",
     "created_at": "2026-03-04 02:34:14",
     "due_date": "2026-12-31",
     "tags": [
       "测试",
       "CLI"
-    ]
+    ],
+    "completed_at": "2026-03-04 04:02:20"
   },
   {
     "id": 44,
@@ -2153,5 +2154,24 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:02:16"
+  },
+  {
+    "id": 267,
+    "content": "测试截止日期 CLI",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 04:03:04",
+    "due_date": "2026-03-15",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
+  },
+  {
+    "id": 268,
+    "content": "测试任务_1772568196",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 04:03:16"
   }
 ]
