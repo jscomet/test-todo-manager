@@ -58,7 +58,7 @@
 | 🟢 低 | 添加使用文档 | ✅ 已完成 | AI | 1h | 0.5h |
 | 🟢 低 | 代码审查和重构 | ✅ 已完成 | AI | 2h | 0.5h |
 | 🔴 高 | 修复 test_add_task.py 测试失败 | 🔄 进行中 | AI | 0.5h | |
-| 🔴 高 | 修复 test_delete_task.py 测试失败 | ⏳ 待开始 | AI | 0.5h | |
+| 🔴 高 | 修复 test_delete_task.py 测试失败 | 🔄 进行中 | AI | 0.5h | |
 | 🔴 高 | 修复 test_priority.py 测试失败 | ⏳ 待开始 | AI | 0.5h | |
 | 🔴 高 | 修复 test_export.py 测试失败 | ⏳ 待开始 | AI | 0.5h | |
 | 🟡 中 | 为 core/models.py 添加单元测试 | ⏳ 待开始 | AI | 1h | |
