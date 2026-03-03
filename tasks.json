@@ -126,7 +126,8 @@
     "content": "测试任务_1772558695",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:24:55"
+    "created_at": "2026-03-04 01:24:55",
+    "completed_at": "2026-03-04 01:49:53"
   },
   {
     "id": 17,
@@ -320,5 +321,23 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:49:48"
+  },
+  {
+    "id": 42,
+    "content": "测试标签分割功能",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:50:12",
+    "tags": [
+      "工作",
+      "紧急"
+    ]
+  },
+  {
+    "id": 43,
+    "content": "测试任务_1772560261",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 01:51:01"
   }
 ]
