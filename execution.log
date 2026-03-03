@@ -49347,3 +49347,155 @@ python3 -m pytest test_task_1772563690.py -v
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 05:05:35][0m ========== 阶段 4: Git 提交推送 ==========
+[main 1e4bfcc] Feat: 测试任务_1772563690
+ 2 files changed, 715 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   5f6c342..1e4bfcc  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 05:05:39][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 53 已标记为完成
+[0;34m[2026-03-04 05:06:01][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 05:06:04][0m 
+[0;34m[2026-03-04 05:06:04][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 05:06:04][0m ║  第 95 轮执行                          ║
+[0;34m[2026-03-04 05:06:04][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 05:06:04][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 343
+[0;34m[2026-03-04 05:06:04][0m 获取到任务 ID=52: 测试任务_1772563690
+[0;34m[2026-03-04 05:06:04][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772563690
+[0;34m[2026-03-04 05:06:04][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+I'll start by analyzing the project structure and understanding the existing code.
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager
+total 3104
+drwxr-xr-x 9 root root    4096 Mar  4 05:05 .
+drwxr-xr-x 3 root root    4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root       0 Mar  4 01:08 1
+-rw-r--r-- 1 root root    3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root    8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root   53248 Mar  4 05:03 .coverage
+drwxr-xr-x 2 root root    4096 Mar  4 03:14 cov_html
+drwxr-xr-x 2 root root    4096 Mar  4 03:17 cov_report
+-rw-r--r-- 1 root root 2298617 Mar  4 05:06 execution.log
+-rw-r--r-- 1 root root       6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root   12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root    4096 Mar  4 05:05 .git
+-rw-r--r-- 1 root root     170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root    4096 Mar  4 03:19 htmlcov
+drwxr-xr-x 2 root root    4096 Mar  4 05:05 __pycache__
+drwxr-xr-x 3 root root    4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root    3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root    4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root     630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   74447 Mar  4 05:05 tasks.json
+-rw-r--r-- 1 root root   16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root     116 Mar  4 04:52 test_cli_1772562229.csv
+-rw-r--r-- 1 root root     116 Mar  4 04:52 test_cli_1772562601.csv
+-rw-r--r-- 1 root root   16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root    9949 Mar  4 04:49 test_cli_edge_cases.py
+-rw-r--r-- 1 root root   11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   10924 Mar  4 04:31 test_delete_task.py
+-rw-r--r-- 1 root root   11941 Mar  4 04:17 test_due_cli.py
+-rw-r--r-- 1 root root    6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root    8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   21962 Mar  4 04:42 test_priority.py
+-rw-r--r-- 1 root root   14019 Mar  4 04:44 test_stats.py
+-rw-r--r-- 1 root root    8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root   10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root   14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root   19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root   30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:33 test_task_1772562060.py
+-rw-r--r-- 1 root root   17037 Mar  4 03:38 test_task_1772562098.py
+-rw-r--r-- 1 root root   17026 Mar  4 03:45 test_task_1772562169.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:52 test_task_1772562229.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:56 test_task_1772562601.py
+-rw-r--r-- 1 root root    8792 Mar  4 04:10 test_task_1772563000.py
+-rw-r--r-- 1 root root   13554 Mar  4 04:24 test_task_1772563059.py
+-rw-r--r-- 1 root root   13554 Mar  4 05:05 test_task_1772563690.py
+-rw-r--r-- 1 root root   21090 Mar  4 04:15 todo.py
+[0m
+Let me read the test file for this task to understand what needs to be done:
+[0m→ [0mRead test_task_1772563690.py
+Now I understand the task. This is a comprehensive test file that validates all existing functionality. Let me run the tests to verify everything works:
+[0m
+[0m$ [0mpython3 -m pytest test_task_1772563690.py -v 2>&1 | head -100
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 37 items
+
+test_task_1772563690.py::TestTaskManagement::test_add_task_basic PASSED  [  2%]
+test_task_1772563690.py::TestTaskManagement::test_add_task_with_due_date PASSED [  5%]
+test_task_1772563690.py::TestTaskManagement::test_add_task_with_priority PASSED [  8%]
+test_task_1772563690.py::TestTaskManagement::test_add_task_with_tags PASSED [ 10%]
+test_task_1772563690.py::TestTaskManagement::test_list_tasks PASSED      [ 13%]
+test_task_1772563690.py::TestTaskManagement::test_list_tasks_filter_by_priority PASSED [ 16%]
+test_task_1772563690.py::TestTaskManagement::test_list_tasks_filter_by_tag PASSED [ 18%]
+test_task_1772563690.py::TestTaskManagement::test_list_tasks_no_sort PASSED [ 21%]
+test_task_1772563690.py::TestTaskManagement::test_list_tasks_sort_by_priority PASSED [ 24%]
+test_task_1772563690.py::TestTaskCompletion::test_done_nonexistent_task PASSED [ 27%]
+test_task_1772563690.py::TestTaskCompletion::test_done_task PASSED       [ 29%]
+test_task_1772563690.py::TestTaskDeletion::test_delete_nonexistent_task PASSED [ 32%]
+test_task_1772563690.py::TestTaskDeletion::test_delete_task PASSED       [ 35%]
+test_task_1772563690.py::TestTagManagement::test_add_duplicate_tag PASSED [ 37%]
+test_task_1772563690.py::TestTagManagement::test_add_tag PASSED          [ 40%]
+test_task_1772563690.py::TestTagManagement::test_add_tag_to_nonexistent_task PASSED [ 43%]
+test_task_1772563690.py::TestTagManagement::test_remove_nonexistent_tag PASSED [ 45%]
+test_task_1772563690.py::TestTagManagement::test_remove_tag PASSED       [ 48%]
+test_task_1772563690.py::TestTagManagement::test_remove_tag_from_nonexistent_task PASSED [ 51%]
+test_task_1772563690.py::TestPriorityManagement::test_set_priority_high PASSED [ 54%]
+test_task_1772563690.py::TestPriorityManagement::test_set_priority_low PASSED [ 56%]
+test_task_1772563690.py::TestPriorityManagement::test_set_priority_medium PASSED [ 59%]
+test_task_1772563690.py::TestPriorityManagement::test_set_priority_nonexistent_task PASSED [ 62%]
+test_task_1772563690.py::TestExportFunctionality::test_export_csv PASSED [ 64%]
+test_task_1772563690.py::TestExportFunctionality::test_export_markdown PASSED [ 67%]
+test_task_1772563690.py::TestStatisticsFunctionality::test_stats_basic PASSED [ 70%]
+test_task_1772563690.py::TestStatisticsFunctionality::test_stats_filter_by_priority PASSED [ 72%]
+test_task_1772563690.py::TestStatisticsFunctionality::test_stats_filter_by_tag PASSED [ 75%]
+test_task_1772563690.py::TestDueDateFunctionality::test_due_basic PASSED [ 78%]
+test_task_1772563690.py::TestDueDateFunctionality::test_due_sort_by_priority PASSED [ 81%]
+test_task_1772563690.py::TestDueDateFunctionality::test_due_with_days_filter PASSED [ 83%]
+test_task_1772563690.py::TestIntegration::test_full_workflow PASSED      [ 86%]
+test_task_1772563690.py::TestIntegration::test_multiple_attributes_task PASSED [ 89%]
+test_task_1772563690.py::TestEdgeCases::test_add_task_special_characters PASSED [ 91%]
+test_task_1772563690.py::TestEdgeCases::test_add_task_unicode PASSED     [ 94%]
+test_task_1772563690.py::TestEdgeCases::test_empty_task_list_message PASSED [ 97%]
+test_task_1772563690.py::TestEdgeCases::test_help_command PASSED         [100%]
+
+============================== 37 passed in 1.41s ==============================
+[0m
+All 37 tests passed! Let me mark the task as complete and commit:
+[0m$ [0mpython3 todo.py done 52
+✅ 任务 52 已完成: CLI 测试任务
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	REFACTOR_PLAN.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
