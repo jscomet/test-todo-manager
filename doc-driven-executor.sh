@@ -251,7 +251,7 @@ phase_6_update_plan() {
 
 main_loop() {
     log "======================================"
-    log "文档驱动的 BabyAGI 执行器 v2.1 启动"
+    log "文档驱动的 BabyAGI 执行器 v2.2 启动"
     log "======================================"
     
     check_documents
