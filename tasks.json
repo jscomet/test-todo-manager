@@ -35,75 +35,69 @@
   {
     "id": 5,
     "content": "添加数据导出功能（导出为 CSV 或 Markdown）",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:00:04",
-    "priority": "中"
+    "priority": "中",
+    "completed_at": "2026-03-04 01:32:28"
   },
   {
     "id": 6,
     "content": "测试任务 1",
-    "done": false,
+    "done": true,
     "created_at": "2026-03-04 01:13:10",
     "priority": "中"
   },
   {
     "id": 7,
-    "content": "测试任务_1772557996",
-    "done": false,
-    "created_at": "2026-03-04 01:13:16",
-    "priority": "中"
-  },
-  {
-    "id": 8,
     "content": "测试低优先级任务",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 01:17:10"
   },
   {
-    "id": 9,
+    "id": 8,
     "content": "测试高优先级任务",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 01:17:10"
   },
   {
-    "id": 10,
+    "id": 9,
     "content": "测试默认优先级任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:17:10"
   },
   {
-    "id": 11,
+    "id": 10,
     "content": "测试任务_1772558260",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:17:40"
   },
   {
-    "id": 12,
+    "id": 11,
     "content": "添加按优先级排序功能（高优先级任务排在前面）",
     "done": false,
     "created_at": "2026-03-04 01:17:58",
     "priority": "中"
   },
   {
-    "id": 13,
+    "id": 12,
     "content": "添加按优先级过滤功能（支持 --priority 参数筛选）",
     "done": false,
     "created_at": "2026-03-04 01:17:58",
     "priority": "中"
   },
   {
-    "id": 14,
+    "id": 13,
     "content": "添加修改任务优先级功能",
     "done": false,
     "created_at": "2026-03-04 01:17:58",
     "priority": "中"
   },
   {
-    "id": 15,
+    "id": 14,
     "content": "测试截止日期功能",
     "done": false,
     "priority": "中",
@@ -111,21 +105,21 @@
     "due_date": "2026-03-10"
   },
   {
-    "id": 16,
+    "id": 15,
     "content": "测试无截止日期任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:24:43"
   },
   {
-    "id": 17,
+    "id": 16,
     "content": "测试任务_1772558695",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:24:55"
   },
   {
-    "id": 18,
+    "id": 17,
     "content": "测试标签分割",
     "done": false,
     "priority": "中",
@@ -135,7 +129,7 @@
     ]
   },
   {
-    "id": 19,
+    "id": 18,
     "content": "英文逗号测试",
     "done": false,
     "priority": "中",
@@ -146,17 +140,36 @@
     ]
   },
   {
-    "id": 20,
+    "id": 19,
     "content": "测试任务_1772559067",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:31:07"
   },
   {
-    "id": 21,
+    "id": 20,
     "content": "测试任务_1772559141",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 01:32:21"
+  },
+  {
+    "id": 21,
+    "content": "添加导出功能的单元测试",
+    "done": false,
+    "created_at": "2026-03-04 01:32:41",
+    "priority": "中"
+  },
+  {
+    "id": 22,
+    "content": "测试添加功能",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 01:32:58",
+    "due_date": "2026-03-15",
+    "tags": [
+      "测试",
+      "验证"
+    ]
   }
 ]
