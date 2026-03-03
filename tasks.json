@@ -424,9 +424,10 @@
   {
     "id": 50,
     "content": "导出测试",
-    "done": false,
+    "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 02:47:35"
+    "created_at": "2026-03-04 02:47:35",
+    "completed_at": "2026-03-04 05:01:36"
   },
   {
     "id": 51,
@@ -3114,5 +3115,12 @@
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:01:31"
+  },
+  {
+    "id": 385,
+    "content": "测试任务_1772571762",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:02:42"
   }
 ]

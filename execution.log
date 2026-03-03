@@ -47260,3 +47260,674 @@ python3 todo.py export --format markdown --output my_tasks.md
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 05:01:31][0m ========== 阶段 4: Git 提交推送 ==========
+[main 3ff73b8] Feat: 导出测试
+ 2 files changed, 729 insertions(+), 2 deletions(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   29d4525..3ff73b8  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 05:01:36][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 50 已标记为完成
+[0;34m[2026-03-04 05:01:39][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 05:01:42][0m 
+[0;34m[2026-03-04 05:01:42][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 05:01:42][0m ║  第 92 轮执行                          ║
+[0;34m[2026-03-04 05:01:42][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 05:01:42][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 334
+[0;34m[2026-03-04 05:01:42][0m 获取到任务 ID=51: 优先级测试
+[0;34m[2026-03-04 05:01:42][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 优先级测试
+[0;34m[2026-03-04 05:01:42][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 2988
+drwxr-xr-x 9 root root    4096 Mar  4 05:01 .
+drwxr-xr-x 3 root root    4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root       0 Mar  4 01:08 1
+-rw-r--r-- 1 root root    3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root    8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root   53248 Mar  4 04:56 .coverage
+drwxr-xr-x 2 root root    4096 Mar  4 03:14 cov_html
+drwxr-xr-x 2 root root    4096 Mar  4 03:17 cov_report
+-rw-r--r-- 1 root root 2201147 Mar  4 05:01 execution.log
+-rw-r--r-- 1 root root       6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root   12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root    4096 Mar  4 05:01 .git
+-rw-r--r-- 1 root root     170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root    4096 Mar  4 03:19 htmlcov
+drwxr-xr-x 2 root root    4096 Mar  4 05:01 __pycache__
+drwxr-xr-x 3 root root    4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root    3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root    4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root     630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   72173 Mar  4 05:01 tasks.json
+-rw-r--r-- 1 root root   16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root     116 Mar  4 04:52 test_cli_1772562229.csv
+-rw-r--r-- 1 root root     116 Mar  4 04:52 test_cli_1772562601.csv
+-rw-r--r-- 1 root root   16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root    9949 Mar  4 04:49 test_cli_edge_cases.py
+-rw-r--r-- 1 root root   11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   10924 Mar  4 04:31 test_delete_task.py
+-rw-r--r-- 1 root root   11941 Mar  4 04:17 test_due_cli.py
+-rw-r--r-- 1 root root    6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root    8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   21962 Mar  4 04:42 test_priority.py
+-rw-r--r-- 1 root root   14019 Mar  4 04:44 test_stats.py
+-rw-r--r-- 1 root root    8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root   10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root   14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root   19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root   30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:33 test_task_1772562060.py
+-rw-r--r-- 1 root root   17037 Mar  4 03:38 test_task_1772562098.py
+-rw-r--r-- 1 root root   17026 Mar  4 03:45 test_task_1772562169.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:52 test_task_1772562229.py
+-rw-r--r-- 1 root root   17379 Mar  4 03:56 test_task_1772562601.py
+-rw-r--r-- 1 root root    8792 Mar  4 04:10 test_task_1772563000.py
+-rw-r--r-- 1 root root   13554 Mar  4 04:24 test_task_1772563059.py
+-rw-r--r-- 1 root root   21090 Mar  4 04:15 todo.py
+[0m
+[0m→ [0mRead test_priority.py
+[0m
+[0m$ [0mpython -m pytest test_priority.py -v 2>&1
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 -m pytest test_priority.py -v 2>&1
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 32 items
+
+test_priority.py::TestPriorityBasic::test_add_all_priority_levels PASSED [  3%]
+test_priority.py::TestPriorityBasic::test_add_task_high_priority PASSED  [  6%]
+test_priority.py::TestPriorityBasic::test_add_task_low_priority PASSED   [  9%]
+test_priority.py::TestPriorityBasic::test_add_task_medium_priority PASSED [ 12%]
+test_priority.py::TestPrioritySort::test_list_sort_by_priority_order PASSED [ 15%]
+test_priority.py::TestPrioritySort::test_priority_sort_with_multiple_tasks PASSED [ 18%]
+test_priority.py::TestPriorityFilter::test_filter_by_high_priority PASSED [ 21%]
+test_priority.py::TestPriorityFilter::test_filter_by_low_priority PASSED [ 25%]
+test_priority.py::TestPriorityFilter::test_filter_by_medium_priority PASSED [ 28%]
+test_priority.py::TestPriorityFilter::test_filter_empty_result PASSED    [ 31%]
+test_priority.py::TestPriorityIcons::test_all_priority_icons PASSED      [ 34%]
+test_priority.py::TestPriorityIcons::test_high_priority_icon PASSED      [ 37%]
+test_priority.py::TestPriorityIcons::test_low_priority_icon PASSED       [ 40%]
+test_priority.py::TestPriorityIcons::test_medium_priority_icon PASSED    [ 43%]
+test_priority.py::TestSetPriority::test_set_priority_high_to_low PASSED  [ 46%]
+test_priority.py::TestSetPriority::test_set_priority_low_to_medium PASSED [ 50%]
+test_priority.py::TestSetPriority::test_set_priority_medium_to_high PASSED [ 53%]
+test_priority.py::TestSetPriority::test_set_priority_nonexistent_task PASSED [ 56%]
+test_priority.py::TestPriorityStats::test_stats_all_priority_levels PASSED [ 59%]
+test_priority.py::TestPriorityStats::test_stats_empty PASSED             [ 62%]
+test_priority.py::TestPriorityStats::test_stats_filter_by_priority PASSED [ 65%]
+test_priority.py::TestPriorityStats::test_stats_with_completed_tasks PASSED [ 68%]
+test_priority.py::TestPriorityDueDate::test_due_sort_by_date PASSED      [ 71%]
+test_priority.py::TestPriorityDueDate::test_due_sort_by_priority PASSED  [ 75%]
+test_priority.py::TestPriorityBackwardCompatibility::test_load_mixed_tasks PASSED [ 78%]
+test_priority.py::TestPriorityBackwardCompatibility::test_load_old_tasks_without_priority PASSED [ 81%]
+test_priority.py::TestPriorityExport::test_export_csv_includes_priority PASSED [ 84%]
+test_priority.py::TestPriorityExport::test_export_markdown_includes_priority PASSED [ 87%]
+test_priority.py::TestPriorityEdgeCases::test_many_tasks_different_priorities PASSED [ 90%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_emoji PASSED [ 93%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_long_content PASSED [ 96%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_special_characters PASSED [100%]
+
+============================== 32 passed in 0.13s ==============================
+[0m
+所有 32 个优先级测试全部通过！让我再运行 CLI 优先级相关测试验证：
+[0m$ [0mpython3 -m pytest test_cli_commands.py -v -k "priority" 2>&1
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 27 items / 21 deselected / 6 selected
+
+test_cli_commands.py::TestCLICommands::test_cli_add_with_priority PASSED [ 16%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_priority PASSED [ 33%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_priority PASSED [ 50%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority PASSED      [ 66%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority_nonexistent_task PASSED [ 83%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_priority PASSED [100%]
+
+======================= 6 passed, 21 deselected in 0.04s =======================
+[0m
+[0m$ [0mpython3 -m pytest test_priority.py test_cli_commands.py -v --cov=todo --cov-report=term-missing 2>&1 | tail -50
+test_priority.py::TestPriorityStats::test_stats_empty PASSED             [ 33%]
+test_priority.py::TestPriorityStats::test_stats_filter_by_priority PASSED [ 35%]
+test_priority.py::TestPriorityStats::test_stats_with_completed_tasks PASSED [ 37%]
+test_priority.py::TestPriorityDueDate::test_due_sort_by_date PASSED      [ 38%]
+test_priority.py::TestPriorityDueDate::test_due_sort_by_priority PASSED  [ 40%]
+test_priority.py::TestPriorityBackwardCompatibility::test_load_mixed_tasks PASSED [ 42%]
+test_priority.py::TestPriorityBackwardCompatibility::test_load_old_tasks_without_priority PASSED [ 44%]
+test_priority.py::TestPriorityExport::test_export_csv_includes_priority PASSED [ 45%]
+test_priority.py::TestPriorityExport::test_export_markdown_includes_priority PASSED [ 47%]
+test_priority.py::TestPriorityEdgeCases::test_many_tasks_different_priorities PASSED [ 49%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_emoji PASSED [ 50%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_long_content PASSED [ 52%]
+test_priority.py::TestPriorityEdgeCases::test_priority_with_special_characters PASSED [ 54%]
+test_cli_commands.py::TestCLICommands::test_cli_add_basic PASSED         [ 55%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag PASSED           [ 57%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag_nonexistent_task PASSED [ 59%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_due_date PASSED [ 61%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_priority PASSED [ 62%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_tags PASSED     [ 64%]
+test_cli_commands.py::TestCLICommands::test_cli_delete PASSED            [ 66%]
+test_cli_commands.py::TestCLICommands::test_cli_delete_nonexistent_task PASSED [ 67%]
+test_cli_commands.py::TestCLICommands::test_cli_done PASSED              [ 69%]
+test_cli_commands.py::TestCLICommands::test_cli_done_nonexistent_task PASSED [ 71%]
+test_cli_commands.py::TestCLICommands::test_cli_export_csv PASSED        [ 72%]
+test_cli_commands.py::TestCLICommands::test_cli_export_markdown PASSED   [ 74%]
+test_cli_commands.py::TestCLICommands::test_cli_help PASSED              [ 76%]
+test_cli_commands.py::TestCLICommands::test_cli_list_empty PASSED        [ 77%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_priority PASSED [ 79%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_tag PASSED [ 81%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_none PASSED    [ 83%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_priority PASSED [ 84%]
+test_cli_commands.py::TestCLICommands::test_cli_list_with_tasks PASSED   [ 86%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag PASSED        [ 88%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag_nonexistent_task PASSED [ 89%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority PASSED      [ 91%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority_nonexistent_task PASSED [ 93%]
+test_cli_commands.py::TestCLICommands::test_cli_stats PASSED             [ 94%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_priority PASSED [ 96%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_tag PASSED [ 98%]
+test_cli_commands.py::TestCLIWorkflow::test_complete_workflow PASSED     [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     316     31    90%   117, 229, 258, 306-307, 310, 349-350, 353, 401-402, 413-416, 420-421, 424-428, 440, 452-453, 455, 457, 468, 496, 498, 705, 709
+---------------------------------------
+TOTAL       316     31    90%
+============================== 59 passed in 0.44s ==============================
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .coverage
+	modified:   execution.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+## ✅ 优先级测试完成报告
+
+### 测试结果
+**全部通过！** 共 59 个测试用例，100% 通过率
+
+### 测试覆盖功能
+
+| 测试类别 | 测试用例数 | 状态 |
+|---------|----------|------|
+| 基本优先级功能 | 4 | ✅ |
+| 优先级排序 | 2 | ✅ |
+| 优先级过滤 | 4 | ✅ |
+| 优先级图标显示 | 4 | ✅ |
+| 修改优先级 | 4 | ✅ |
+| 优先级统计 | 4 | ✅ |
+| 优先级与截止日期 | 2 | ✅ |
+| 向后兼容性 | 2 | ✅ |
+| 优先级导出 | 2 | ✅ |
+| 边界情况 | 4 | ✅ |
+| CLI 集成测试 | 6 | ✅ |
+
+### 测试覆盖率
+- **代码覆盖率**: 90%
+- **文件**: `todo.py` (316 语句，31 未覆盖)
+
+### 修改的文件
+- `.coverage` - 覆盖率数据
+- `execution.log` - 执行日志
+- `tasks.json` - 测试任务数据
+
+### 如何手动测试
+
+```bash
+# 1. 添加不同优先级任务
+python3 todo.py add "高优先级任务" --priority 高
+python3 todo.py add "中优先级任务" --priority 中
+python3 todo.py add "低优先级任务" --priority 低
+
+# 2. 按优先级排序查看
+python3 todo.py list --sort priority
+
+# 3. 按优先级过滤
+python3 todo.py list --priority 高
+
+# 4. 修改优先级
+python3 todo.py set-priority 1 高
+
+# 5. 查看优先级统计
+python3 todo.py stats --priority 高
+
+# 6. 运行自动化测试
+python3 -m pytest test_priority.py -v
+```
+
+### 优先级功能特性
+- ✅ 三级别优先级：高/中/低
+- ✅ 图标显示：🔴高 🟡中 🟢低
+- ✅ 自动排序（默认按优先级）
+- ✅ CLI 过滤和统计
+- ✅ 向后兼容（旧任务默认"中"优先级）
+- ✅ CSV/Markdown 导出包含优先级
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 05:02:42][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772571762
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 测试任务_1772559903
+✅ [10] 🔴 CLI 测试任务
+✅ [32] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+✅ [34] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+✅ [37] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+✅ [42] 🔴 统计测试
+✅ [43] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+✅ [47] 🔴 统计测试
+✅ [48] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [52] 🔴 统计测试
+⭕ [54] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [59] 🔴 统计测试
+⭕ [61] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [66] 🔴 统计测试
+⭕ [71] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [76] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [77] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [82] 🔴 统计测试
+⭕ [83] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [84] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [89] 🔴 统计测试
+⭕ [90] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [91] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [96] 🔴 统计测试
+⭕ [98] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [99] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [104] 🔴 统计测试
+⭕ [105] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [106] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [111] 🔴 统计测试
+⭕ [113] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [114] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [119] 🔴 统计测试
+⭕ [120] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [121] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [126] 🔴 统计测试
+⭕ [128] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [129] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [134] 🔴 统计测试
+⭕ [135] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [136] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [141] 🔴 统计测试
+⭕ [142] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [143] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [148] 🔴 统计测试
+⭕ [149] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [150] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [155] 🔴 统计测试
+⭕ [157] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [158] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [163] 🔴 统计测试
+⭕ [164] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [165] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [170] 🔴 统计测试
+⭕ [172] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [173] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [178] 🔴 统计测试
+⭕ [184] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [185] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [190] 🔴 统计测试
+⭕ [191] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [192] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [197] 🔴 统计测试
+⭕ [206] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [207] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [212] 🔴 统计测试
+⭕ [233] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [234] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [239] 🔴 统计测试
+⭕ [243] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [244] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [249] 🔴 统计测试
+⭕ [254] 🔴 测试截止日期 CLI 📅 2026-03-15 🔖 #测试 #CLI
+⭕ [257] 🔴 测试截止日期 CLI 📅 2026-04-15
+⭕ [258] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [259] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [264] 🔴 统计测试
+⭕ [267] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [268] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [273] 🔴 统计测试
+⭕ [280] 🔴 测试优先级_高
+⭕ [284] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [290] 🔴 测试优先级_高
+⭕ [294] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [300] 🔴 测试优先级_高
+⭕ [304] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [311] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [312] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [317] 🔴 统计测试
+⭕ [322] 🔴 测试优先级_高
+⭕ [326] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [338] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [339] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [344] 🔴 统计测试
+⭕ [349] 🔴 测试优先级_高
+⭕ [353] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [357] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [358] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [363] 🔴 统计测试
+⭕ [368] 🔴 测试优先级_高
+⭕ [372] 🔴 多属性测试 📅 2026-06-15 🔖 #重要 #紧急 #工作
+⭕ [375] 🔴 CLI 测试验证任务 📅 2026-12-31 🔖 #测试 #验证
+✅ [2] 🟡 测试无截止日期
+✅ [3] 🟡 测试任务_1772559976 🔖 #重复标签 #新标签
+✅ [4] 🟡 测试任务_1772560148
+✅ [5] 🟡 测试任务_1772560188
+✅ [6] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [7] 🟡 测试任务_1772560261
+✅ [8] 🟡 测试任务_1772560300
+✅ [9] 🟡 测试任务_1772560348
+✅ [11] 🟡 测试任务_1772560561
+✅ [12] 🟡 测试任务_1772560713
+✅ [13] 🟡 运行测试验证覆盖情况：
+✅ [14] 🟡 NONE
+✅ [15] 🟡 测试任务_1772560897
+✅ [16] 🟡 测试任务_1772560937
+✅ [17] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+✅ [18] 🟡 NONE
+✅ [19] 🟡 测试任务_1772560995
+✅ [20] 🟡 测试任务_1772561467
+✅ [21] 🟡 测试任务_1772561636
+✅ [22] 🟡 测试任务_1772561872
+✅ [23] 🟡 NONE
+✅ [24] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+✅ [25] 🟡 测试任务_1772562060
+✅ [26] 🟡 测试任务_1772562098
+✅ [27] 🟡 测试任务_1772562125
+✅ [28] 🟡 测试任务_1772562169
+✅ [29] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+✅ [30] 🟡 测试任务_1772562229
+✅ [31] 🟡 测试任务_1772562601
+✅ [33] 🟡 测试任务_1772562920
+✅ [35] 🟡 测试任务_1772563000
+✅ [36] 🟡 测试任务_1772563059
+✅ [38] 🟡 CLI 删除测试
+✅ [39] 🟡 CLI 完成测试
+✅ [40] 🟡 导出测试
+✅ [41] 🟡 优先级测试
+✅ [44] 🟡 CLI 完成测试
+✅ [45] 🟡 导出测试
+✅ [46] 🟡 优先级测试
+✅ [49] 🟡 CLI 完成测试
+✅ [50] 🟡 导出测试
+⭕ [51] 🟡 优先级测试
+⭕ [53] 🟡 测试任务_1772563690
+⭕ [55] 🟡 CLI 删除测试
+⭕ [56] 🟡 CLI 完成测试
+⭕ [57] 🟡 导出测试
+⭕ [58] 🟡 优先级测试
+⭕ [60] 🟡 测试任务_1772563758
+⭕ [62] 🟡 CLI 删除测试
+⭕ [63] 🟡 CLI 完成测试
+⭕ [64] 🟡 导出测试
+⭕ [65] 🟡 优先级测试
+⭕ [67] 🟡 测试任务_1772563866
+⭕ [68] 🟡 测试任务_1772563922
+⭕ [69] 🟡 测试任务_1772564218
+⭕ [70] 🟡 测试任务_1772564294
+⭕ [72] 🟡 测试任务_1772564371
+⭕ [73] 🟡 测试任务_1772564431
+⭕ [74] 🟡 测试任务_1772564549
+⭕ [75] 🟡 测试任务_1772565221
+⭕ [78] 🟡 CLI 删除测试
+⭕ [79] 🟡 CLI 完成测试
+⭕ [80] 🟡 导出测试
+⭕ [81] 🟡 优先级测试
+⭕ [85] 🟡 CLI 删除测试
+⭕ [86] 🟡 CLI 完成测试
+⭕ [87] 🟡 导出测试
+⭕ [88] 🟡 优先级测试
+⭕ [92] 🟡 CLI 删除测试
+⭕ [93] 🟡 CLI 完成测试
+⭕ [94] 🟡 导出测试
+⭕ [95] 🟡 优先级测试
+⭕ [97] 🟡 测试任务_1772565281
+⭕ [100] 🟡 CLI 删除测试
+⭕ [101] 🟡 CLI 完成测试
+⭕ [102] 🟡 导出测试
+⭕ [103] 🟡 优先级测试
+⭕ [107] 🟡 CLI 删除测试
+⭕ [108] 🟡 CLI 完成测试
+⭕ [109] 🟡 导出测试
+⭕ [110] 🟡 优先级测试
+⭕ [112] 🟡 测试任务_1772565327
+⭕ [115] 🟡 CLI 删除测试
+⭕ [116] 🟡 CLI 完成测试
+⭕ [117] 🟡 导出测试
+⭕ [118] 🟡 优先级测试
+⭕ [122] 🟡 CLI 删除测试
+⭕ [123] 🟡 CLI 完成测试
+⭕ [124] 🟡 导出测试
+⭕ [125] 🟡 优先级测试
+⭕ [127] 🟡 测试任务_1772565384
+⭕ [130] 🟡 CLI 删除测试
+⭕ [131] 🟡 CLI 完成测试
+⭕ [132] 🟡 导出测试
+⭕ [133] 🟡 优先级测试
+⭕ [137] 🟡 CLI 删除测试
+⭕ [138] 🟡 CLI 完成测试
+⭕ [139] 🟡 导出测试
+⭕ [140] 🟡 优先级测试
+⭕ [144] 🟡 CLI 删除测试
+⭕ [145] 🟡 CLI 完成测试
+⭕ [146] 🟡 导出测试
+⭕ [147] 🟡 优先级测试
+⭕ [151] 🟡 CLI 删除测试
+⭕ [152] 🟡 CLI 完成测试
+⭕ [153] 🟡 导出测试
+⭕ [154] 🟡 优先级测试
+⭕ [156] 🟡 测试任务_1772565451
+⭕ [159] 🟡 CLI 删除测试
+⭕ [160] 🟡 CLI 完成测试
+⭕ [161] 🟡 导出测试
+⭕ [162] 🟡 优先级测试
+⭕ [166] 🟡 CLI 删除测试
+⭕ [167] 🟡 CLI 完成测试
+⭕ [168] 🟡 导出测试
+⭕ [169] 🟡 优先级测试
+⭕ [171] 🟡 测试任务_1772565492
+⭕ [174] 🟡 CLI 删除测试
+⭕ [175] 🟡 CLI 完成测试
+⭕ [176] 🟡 导出测试
+⭕ [177] 🟡 优先级测试
+⭕ [179] 🟡 测试任务_1772565586
+⭕ [180] 🟡 过滤测试任务 1 🔖 #过滤测试
+⭕ [181] 🟡 测试英文逗号标签 🔖 #work #urgent #important
+⭕ [182] 🟡 测试 add-tag 命令
+⭕ [183] 🟡 测试空格标签 🔖 #工作 #紧急 #重要
+⭕ [186] 🟡 测试 remove-tag 命令 🔖 #工作 #重要
+⭕ [187] 🟡 CLI 完成测试
+⭕ [188] 🟡 导出测试
+⭕ [189] 🟡 优先级测试
+⭕ [193] 🟡 CLI 删除测试
+⭕ [194] 🟡 CLI 完成测试
+⭕ [195] 🟡 导出测试
+⭕ [196] 🟡 优先级测试
+⭕ [198] 🟡 测试任务_1772565683
+⭕ [199] 🟡 根据分析，已完成的任务（任务 32）是一个分析性质的任务，用于了解项目状态。从项目当前状态来看：
+⭕ [200] 🟡 **已完成功能**:
+⭕ [201] 🟡 - ✅ 任务优先级（高/中/低）
+⭕ [202] 🟡 - ✅ 任务截止日期
+⭕ [203] 🟡 - ✅ 任务标签系统
+⭕ [204] 🟡 测试任务_1772565756
+⭕ [205] 🟡 测试任务_1772565854
+⭕ [208] 🟡 CLI 删除测试
+⭕ [209] 🟡 CLI 完成测试
+⭕ [210] 🟡 导出测试
+⭕ [211] 🟡 优先级测试
+⭕ [213] 🟡 测试任务_1772566022
+⭕ [214] 🟡 测试任务_1772566115
+⭕ [215] 🟡 测试任务_1772566162
+⭕ [216] 🟡 测试任务_1772566192
+⭕ [217] 🟡 测试任务_1772566448
+⭕ [218] 🟡 CLI 测试任务
+⭕ [219] 🟡 CLI 测试任务
+⭕ [220] 🟡 测试任务_1772566834
+⭕ [221] 🟡 CLI 测试任务
+⭕ [222] 🟡 测试任务_1772567265
+⭕ [223] 🟡 我需要先了解已完成任务的内容和项目当前状态，才能判断是否需要创建后续任务。
+⭕ [224] 🟡 NONE
+⭕ [225] 🟡 测试任务_1772567346
+⭕ [226] 🟡 测试任务_1772567620
+⭕ [227] 🟡 测试任务_1772567837
+⭕ [228] 🟡 根据对任务 1772562601 的分析：
+⭕ [229] 🟡 **任务内容**: 这是一个综合功能验证测试任务，主要验证 todo 管理器的核心功能，包括：
+⭕ [230] 🟡 - 任务列表功能
+⭕ [231] 🟡 - 优先级系统
+⭕ [232] 🟡 - 截止日期功能
+⭕ [235] 🟡 CLI 删除测试
+⭕ [236] 🟡 CLI 完成测试
+⭕ [237] 🟡 导出测试
+⭕ [238] 🟡 优先级测试
+⭕ [240] 🟡 CLI 测试任务
+⭕ [241] 🟡 CLI 测试任务
+⭕ [242] 🟡 测试任务_1772567950
+⭕ [245] 🟡 CLI 删除测试
+⭕ [246] 🟡 CLI 完成测试
+⭕ [247] 🟡 导出测试
+⭕ [248] 🟡 优先级测试
+⭕ [250] 🟡 CLI 测试任务
+⭕ [251] 🟡 CLI 测试任务
+⭕ [252] 🟡 测试任务_1772568078
+⭕ [253] 🟡 测试任务_1772568136
+⭕ [255] 🟡 测试任务_1772568196
+⭕ [256] 🟡 测试任务_1772568851
+⭕ [260] 🟡 CLI 删除测试
+⭕ [261] 🟡 CLI 完成测试
+⭕ [262] 🟡 导出测试
+⭕ [263] 🟡 优先级测试
+⭕ [265] 🟡 CLI 测试任务
+⭕ [266] 🟡 CLI 测试任务
+⭕ [269] 🟡 CLI 删除测试
+⭕ [270] 🟡 CLI 完成测试
+⭕ [271] 🟡 导出测试
+⭕ [272] 🟡 优先级测试
+⭕ [274] 🟡 CLI 测试任务
+⭕ [275] 🟡 CLI 测试任务
+⭕ [276] 🟡 测试任务_1772569226
+⭕ [277] 🟡 测试任务_1772569324
+⭕ [278] 🟡 测试任务_1772563059_基本添加
+⭕ [279] 🟡 测试截止日期 📅 2026-03-11
+⭕ [281] 🟡 测试优先级_中
+⭕ [283] 🟡 测试标签 🔖 #测试 #验证
+⭕ [285] 🟡 测试特殊字符：@#$%&*()
+⭕ [286] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [287] 🟡 测试任务_1772569521
+⭕ [288] 🟡 测试任务_1772563059_基本添加
+⭕ [289] 🟡 测试截止日期 📅 2026-03-11
+⭕ [291] 🟡 测试优先级_中
+⭕ [293] 🟡 测试标签 🔖 #测试 #验证
+⭕ [295] 🟡 测试特殊字符：@#$%&*()
+⭕ [296] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [297] 🟡 测试任务_1772569575
+⭕ [298] 🟡 测试任务_1772563059_基本添加
+⭕ [299] 🟡 测试截止日期 📅 2026-03-11
+⭕ [301] 🟡 测试优先级_中
+⭕ [303] 🟡 测试标签 🔖 #测试 #验证
+⭕ [305] 🟡 测试特殊字符：@#$%&*()
+⭕ [306] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [307] 🟡 测试任务_1772569611
+⭕ [308] 🟡 测试任务_1772569730
+⭕ [309] 🟡 测试任务_1772570039
+⭕ [310] 🟡 测试任务_1772570162
+⭕ [313] 🟡 CLI 删除测试
+⭕ [314] 🟡 CLI 完成测试
+⭕ [315] 🟡 导出测试
+⭕ [316] 🟡 优先级测试
+⭕ [318] 🟡 CLI 测试任务
+⭕ [319] 🟡 CLI 测试任务
+⭕ [320] 🟡 测试任务_1772563059_基本添加
+⭕ [321] 🟡 测试截止日期 📅 2026-03-11
+⭕ [323] 🟡 测试优先级_中
+⭕ [325] 🟡 测试标签 🔖 #测试 #验证
+⭕ [327] 🟡 测试特殊字符：@#$%&*()
+⭕ [328] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [329] 🟡 分析完成。CLI 测试覆盖率 98%，42 个测试全部通过。未覆盖的 6 行代码是边界情况：
+⭕ [330] 🟡 1. `list --tag` 有任务但无匹配标签的提示
+⭕ [331] 🟡 2. `list --priority` 有任务但无匹配优先级的提示
+⭕ [332] 🟡 3. `stats --tag` 有任务但无匹配标签的提示
+⭕ [333] 🟡 4. `stats --priority` 有任务但无匹配优先级的提示
+⭕ [334] 🟡 测试任务_1772570293
+⭕ [335] 🟡 测试任务_1772570369
+⭕ [336] 🟡 测试任务_1772570571
+⭕ [337] 🟡 测试任务_1772570734
+⭕ [340] 🟡 CLI 删除测试
+⭕ [341] 🟡 CLI 完成测试
+⭕ [342] 🟡 导出测试
+⭕ [343] 🟡 优先级测试
+⭕ [345] 🟡 CLI 测试任务
+⭕ [346] 🟡 CLI 测试任务
+⭕ [347] 🟡 测试任务_1772563059_基本添加
+⭕ [348] 🟡 测试截止日期 📅 2026-03-11
+⭕ [350] 🟡 测试优先级_中
+⭕ [352] 🟡 测试标签 🔖 #测试 #验证
+⭕ [354] 🟡 测试特殊字符：@#$%&*()
+⭕ [355] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [356] 🟡 测试任务_1772570793
+⭕ [359] 🟡 CLI 删除测试
+⭕ [360] 🟡 CLI 完成测试
+⭕ [361] 🟡 导出测试
+⭕ [362] 🟡 优先级测试
+⭕ [364] 🟡 CLI 测试任务
+⭕ [365] 🟡 CLI 测试任务
+⭕ [366] 🟡 测试任务_1772563059_基本添加
+⭕ [367] 🟡 测试截止日期 📅 2026-03-11
+⭕ [369] 🟡 测试优先级_中
+⭕ [371] 🟡 测试标签 🔖 #测试 #验证
+⭕ [373] 🟡 测试特殊字符：@#$%&*()
+⭕ [374] 🟡 测试 Unicode：日本語，한국어，العربية
+⭕ [376] 🟡 测试任务_1772571195
+⭕ [377] 🟡 测试任务_1772571264
+⭕ [378] 🟡 测试任务_1772571345
+⭕ [379] 🟡 测试任务_1772571433
+⭕ [380] 🟡 测试任务_1772571508
+⭕ [381] 🟡 测试任务_1772571548
+⭕ [382] 🟡 临时测试删除任务
+⭕ [383] 🟡 测试任务_1772571607
+⭕ [384] 🟡 测试任务_1772571691
+⭕ [385] 🟡 测试任务_1772571762
+⭕ [282] 🟢 测试优先级_低
+⭕ [292] 🟢 测试优先级_低
+⭕ [302] 🟢 测试优先级_低
+⭕ [324] 🟢 测试优先级_低
+⭕ [351] 🟢 测试优先级_低
+⭕ [370] 🟢 测试优先级_低
+--------------------------------------------------
+总计：385 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 05:02:43][0m ========== 阶段 4: Git 提交推送 ==========
