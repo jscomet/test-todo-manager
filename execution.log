@@ -17451,3 +17451,640 @@ To github.com:jscomet/test-todo-manager.git
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:15:27][0m ========== 阶段 4: Git 提交推送 ==========
+[main e889e9e] Feat: 运行测试验证覆盖情况：
+ 2 files changed, 198 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   b297571..e889e9e  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:15:31][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 41 已标记为完成
+[0;34m[2026-03-04 03:15:54][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:15:57][0m 
+[0;34m[2026-03-04 03:15:57][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:15:57][0m ║  第 49 轮执行                          ║
+[0;34m[2026-03-04 03:15:57][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:15:57][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 107
+[0;34m[2026-03-04 03:15:57][0m 获取到任务 ID=38: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:15:57][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:15:57][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m✱ [0mGlob "**/test*.py"[90m 14 matches[0m
+[0m✱ [0mGlob "**/pytest.ini"[90m 0 matches[0m
+[0m→ [0mRead todo.py
+[0m✱ [0mGlob "**/setup.py"[90m 0 matches[0m
+[0m
+[0m$ [0mls -la
+total 1372
+drwxr-xr-x 8 root root   4096 Mar  4 03:15 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root  53248 Mar  4 03:15 .coverage
+drwxr-xr-x 2 root root   4096 Mar  4 03:14 cov_html
+-rw-r--r-- 1 root root 812664 Mar  4 03:16 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 03:15 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 03:15 htmlcov
+drwxr-xr-x 2 root root   4096 Mar  4 03:15 __pycache__
+drwxr-xr-x 3 root root   4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  25122 Mar  4 03:15 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root  12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+我看到项目已经有多个测试文件和覆盖率数据 (`.coverage` 文件)。让我运行测试并检查覆盖情况。
+[0m$ [0mpython -m pytest --cov=todo --cov-report=term-missing -v 2>&1 | head -200
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=term-missing -v 2>&1 | head -250
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 369 items
+
+test_add_task.py::TestAddTaskFunctionality::test_add_task_auto_increment_id PASSED [  0%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_basic PASSED   [  0%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_timestamp PASSED [  0%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_with_all_fields PASSED [  1%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_with_due_date PASSED [  1%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_with_priority PASSED [  1%]
+test_add_task.py::TestAddTaskFunctionality::test_add_task_with_tags PASSED [  1%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_empty_content PASSED [  2%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_empty_due_date_string PASSED [  2%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_empty_tags_list PASSED [  2%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_none_due_date PASSED [  2%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_none_tags PASSED   [  3%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_special_characters PASSED [  3%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_unicode_content PASSED [  3%]
+test_add_task.py::TestAddTaskEdgeCases::test_add_task_very_long_content PASSED [  4%]
+test_add_task.py::TestAddTaskPersistence::test_add_multiple_tasks_persistence PASSED [  4%]
+test_add_task.py::TestAddTaskPersistence::test_add_task_file_encoding PASSED [  4%]
+test_add_task.py::TestAddTaskPersistence::test_add_task_persists_to_file PASSED [  4%]
+test_add_task.py::TestAddTaskOutput::test_add_task_print_confirmation PASSED [  5%]
+test_add_task.py::TestAddTaskOutput::test_add_task_with_priority_output PASSED [  5%]
+test_add_task.py::TestAddTaskBackwardCompatibility::test_add_task_maintains_old_tasks PASSED [  5%]
+test_add_task.py::TestAddTaskBackwardCompatibility::test_add_task_to_existing_file PASSED [  5%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_basic PASSED           [  6%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_all_options PASSED [  6%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_due_date PASSED   [  6%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_due_date_short PASSED [  7%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_priority PASSED   [  7%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_priority_short PASSED [  7%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_tags PASSED       [  7%]
+test_add_task.py::TestCLIAddCommand::test_cli_add_with_tags_short PASSED [  8%]
+test_cli_commands.py::TestCLICommands::test_cli_add_basic PASSED         [  8%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag PASSED           [  8%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag_nonexistent_task PASSED [  8%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_due_date PASSED [  9%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_priority PASSED [  9%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_tags PASSED     [  9%]
+test_cli_commands.py::TestCLICommands::test_cli_delete PASSED            [ 10%]
+test_cli_commands.py::TestCLICommands::test_cli_delete_nonexistent_task PASSED [ 10%]
+test_cli_commands.py::TestCLICommands::test_cli_done PASSED              [ 10%]
+test_cli_commands.py::TestCLICommands::test_cli_done_nonexistent_task PASSED [ 10%]
+test_cli_commands.py::TestCLICommands::test_cli_export_csv PASSED        [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_export_markdown PASSED   [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_help PASSED              [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_list_empty PASSED        [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_priority PASSED [ 12%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_tag PASSED [ 12%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_none PASSED    [ 12%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_priority PASSED [ 13%]
+test_cli_commands.py::TestCLICommands::test_cli_list_with_tasks PASSED   [ 13%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag PASSED        [ 13%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag_nonexistent_task PASSED [ 13%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority PASSED      [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority_nonexistent_task PASSED [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_stats PASSED             [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_priority PASSED [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_tag PASSED [ 15%]
+test_cli_commands.py::TestCLIWorkflow::test_complete_workflow PASSED     [ 15%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_default_priority PASSED [ 15%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_explicit_medium_priority PASSED [ 15%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_multiple_default_priority PASSED [ 16%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_with_all_options_default_priority PASSED [ 16%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_with_due_date_default_priority PASSED [ 16%]
+test_default_priority.py::TestDefaultPriorityBasic::test_add_task_with_tags_default_priority PASSED [ 17%]
+test_default_priority.py::TestDefaultPriorityFunctionParameters::test_add_task_keyword_content_only PASSED [ 17%]
+test_default_priority.py::TestDefaultPriorityFunctionParameters::test_add_task_positional_content_only PASSED [ 17%]
+test_default_priority.py::TestDefaultPriorityFunctionParameters::test_add_task_priority_parameter_position PASSED [ 17%]
+test_default_priority.py::TestDefaultPriorityBackwardCompatibility::test_add_task_to_old_file_gets_default_priority PASSED [ 18%]
+test_default_priority.py::TestDefaultPriorityBackwardCompatibility::test_load_tasks_adds_default_priority_to_old_tasks PASSED [ 18%]
+test_default_priority.py::TestDefaultPriorityBackwardCompatibility::test_load_tasks_preserves_existing_priority PASSED [ 18%]
+test_default_priority.py::TestCLIDefaultPriority::test_cli_add_mixed_options_default_priority PASSED [ 18%]
+test_default_priority.py::TestCLIDefaultPriority::test_cli_add_with_default_priority_flag PASSED [ 19%]
+test_default_priority.py::TestCLIDefaultPriority::test_cli_add_with_short_priority_flag_default PASSED [ 19%]
+test_default_priority.py::TestCLIDefaultPriority::test_cli_add_without_priority_flag PASSED [ 19%]
+test_default_priority.py::TestDefaultPrioritySortAndFilter::test_default_priority_tasks_sort_correctly PASSED [ 20%]
+test_default_priority.py::TestDefaultPrioritySortAndFilter::test_filter_by_medium_priority_includes_default PASSED [ 20%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_with_due_date PASSED [ 20%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_with_due_date_and_tags PASSED [ 20%]
+test_due_date.py::TestDueDateFunctionality::test_add_task_without_due_date PASSED [ 21%]
+test_due_date.py::TestDueDateFunctionality::test_due_date_format_validation PASSED [ 21%]
+test_due_date.py::TestDueDateFunctionality::test_due_date_with_completed_task PASSED [ 21%]
+test_due_date.py::TestDueDateFunctionality::test_export_csv_includes_due_date PASSED [ 21%]
+test_due_date.py::TestDueDateFunctionality::test_export_markdown_includes_due_date PASSED [ 22%]
+test_due_date.py::TestDueDateFunctionality::test_list_tasks_shows_due_date PASSED [ 22%]
+test_due_date.py::TestDueDateFunctionality::test_multiple_tasks_with_different_due_dates PASSED [ 22%]
+test_due_date.py::TestDueDateEdgeCases::test_due_date_in_past PASSED     [ 23%]
+test_due_date.py::TestDueDateEdgeCases::test_empty_due_date_string PASSED [ 23%]
+test_due_date.py::TestDueDateEdgeCases::test_load_tasks_with_missing_due_date PASSED [ 23%]
+test_export.py::TestExportCSV::test_export_csv_completed_task PASSED     [ 23%]
+test_export.py::TestExportCSV::test_export_csv_default_filename PASSED   [ 24%]
+test_export.py::TestExportCSV::test_export_csv_empty_tasks PASSED        [ 24%]
+test_export.py::TestExportCSV::test_export_csv_encoding PASSED           [ 24%]
+test_export.py::TestExportCSV::test_export_csv_headers PASSED            [ 24%]
+test_export.py::TestExportCSV::test_export_csv_multiple_tasks PASSED     [ 25%]
+test_export.py::TestExportCSV::test_export_csv_single_task PASSED        [ 25%]
+test_export.py::TestExportCSV::test_export_csv_special_characters PASSED [ 25%]
+test_export.py::TestExportCSV::test_export_csv_task_without_due_date PASSED [ 26%]
+test_export.py::TestExportCSV::test_export_csv_task_without_tags PASSED  [ 26%]
+test_export.py::TestExportCSV::test_export_csv_with_custom_filename PASSED [ 26%]
+test_export.py::TestExportMarkdown::test_export_markdown_completed_task_icon PASSED [ 26%]
+test_export.py::TestExportMarkdown::test_export_markdown_custom_filename PASSED [ 27%]
+test_export.py::TestExportMarkdown::test_export_markdown_default_filename PASSED [ 27%]
+test_export.py::TestExportMarkdown::test_export_markdown_empty_tasks PASSED [ 27%]
+test_export.py::TestExportMarkdown::test_export_markdown_encoding PASSED [ 27%]
+test_export.py::TestExportMarkdown::test_export_markdown_multiple_tasks PASSED [ 28%]
+test_export.py::TestExportMarkdown::test_export_markdown_pipe_character_escaping PASSED [ 28%]
+test_export.py::TestExportMarkdown::test_export_markdown_statistics_section PASSED [ 28%]
+test_export.py::TestExportMarkdown::test_export_markdown_summary PASSED  [ 28%]
+test_export.py::TestExportMarkdown::test_export_markdown_table_headers PASSED [ 29%]
+test_export.py::TestExportMarkdown::test_export_markdown_table_row PASSED [ 29%]
+test_export.py::TestExportMarkdown::test_export_markdown_title PASSED    [ 29%]
+test_export.py::TestExportEdgeCases::test_export_mixed_completed_and_pending PASSED [ 30%]
+test_export.py::TestExportEdgeCases::test_export_with_all_fields_populated PASSED [ 30%]
+test_no_due_date.py::TestNoDueDateTasks::test_add_multiple_no_due_date_tasks PASSED [ 30%]
+test_no_due_date.py::TestNoDueDateTasks::test_add_task_without_due_date PASSED [ 30%]
+test_no_due_date.py::TestNoDueDateTasks::test_backward_compatibility_old_tasks PASSED [ 31%]
+test_no_due_date.py::TestNoDueDateTasks::test_list_no_due_date_tasks PASSED [ 31%]
+test_no_due_date.py::TestNoDueDateTasks::test_mix_due_and_no_due_date_tasks PASSED [ 31%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_export_csv PASSED [ 31%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_export_markdown PASSED [ 32%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_list_display_format PASSED [ 32%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_add_tag PASSED [ 32%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_delete PASSED [ 33%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_done PASSED [ 33%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_modify_priority PASSED [ 33%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_priority_filter PASSED [ 33%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_remove_tag PASSED [ 34%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_sorting_by_priority PASSED [ 34%]
+test_no_due_date.py::TestNoDueDateTasks::test_no_due_date_task_with_tags PASSED [ 34%]
+test_tag_splitting.py::test_chinese_comma_splitting PASSED               [ 34%]
+test_tag_splitting.py::test_english_comma_splitting PASSED               [ 35%]
+test_tag_splitting.py::test_mixed_comma_splitting PASSED                 [ 35%]
+test_tag_splitting.py::test_single_tag PASSED                            [ 35%]
+test_tag_splitting.py::test_tag_with_spaces PASSED                       [ 36%]
+test_tag_splitting.py::test_tag_filtering PASSED                         [ 36%]
+test_tag_splitting.py::test_add_tag_command PASSED                       [ 36%]
+test_tag_splitting.py::test_remove_tag_command PASSED                    [ 36%]
+test_task_1772559141.py::TestCoreFunctionality::test_add_tag PASSED      [ 37%]
+test_task_1772559141.py::TestCoreFunctionality::test_add_task_basic PASSED [ 37%]
+test_task_1772559141.py::TestCoreFunctionality::test_add_task_with_all_fields PASSED [ 37%]
+test_task_1772559141.py::TestCoreFunctionality::test_backward_compatibility PASSED [ 37%]
+test_task_1772559141.py::TestCoreFunctionality::test_delete_nonexistent_task PASSED [ 38%]
+test_task_1772559141.py::TestCoreFunctionality::test_delete_task PASSED  [ 38%]
+test_task_1772559141.py::TestCoreFunctionality::test_done_nonexistent_task PASSED [ 38%]
+test_task_1772559141.py::TestCoreFunctionality::test_done_task PASSED    [ 39%]
+test_task_1772559141.py::TestCoreFunctionality::test_duplicate_tag_prevention PASSED [ 39%]
+test_task_1772559141.py::TestCoreFunctionality::test_export_csv PASSED   [ 39%]
+test_task_1772559141.py::TestCoreFunctionality::test_export_markdown PASSED [ 39%]
+test_task_1772559141.py::TestCoreFunctionality::test_id_renumber_after_delete PASSED [ 40%]
+test_task_1772559141.py::TestCoreFunctionality::test_list_filter_by_priority PASSED [ 40%]
+test_task_1772559141.py::TestCoreFunctionality::test_list_filter_by_tag PASSED [ 40%]
+test_task_1772559141.py::TestCoreFunctionality::test_list_tasks_empty PASSED [ 40%]
+test_task_1772559141.py::TestCoreFunctionality::test_list_tasks_with_items PASSED [ 41%]
+test_task_1772559141.py::TestCoreFunctionality::test_remove_tag PASSED   [ 41%]
+test_task_1772559141.py::TestCoreFunctionality::test_set_priority PASSED [ 41%]
+test_task_1772559141.py::TestCoreFunctionality::test_sort_by_priority PASSED [ 42%]
+test_task_1772559141.py::TestCommandLineInterface::test_add_via_cli PASSED [ 42%]
+test_task_1772559141.py::TestCommandLineInterface::test_help_command PASSED [ 42%]
+test_task_1772559323.py::TestAddTask::test_add_simple_task PASSED        [ 42%]
+test_task_1772559323.py::TestAddTask::test_add_task_with_all_fields PASSED [ 43%]
+test_task_1772559323.py::TestAddTask::test_add_task_with_due_date PASSED [ 43%]
+test_task_1772559323.py::TestAddTask::test_add_task_with_priority PASSED [ 43%]
+test_task_1772559323.py::TestAddTask::test_add_task_with_tags PASSED     [ 43%]
+test_task_1772559323.py::TestListTasks::test_list_empty_tasks PASSED     [ 44%]
+test_task_1772559323.py::TestListTasks::test_list_filter_by_priority PASSED [ 44%]
+test_task_1772559323.py::TestListTasks::test_list_filter_by_tag PASSED   [ 44%]
+test_task_1772559323.py::TestListTasks::test_list_sort_by_priority PASSED [ 44%]
+test_task_1772559323.py::TestListTasks::test_list_with_tasks PASSED      [ 45%]
+test_task_1772559323.py::TestMarkDone::test_mark_nonexistent_task PASSED [ 45%]
+test_task_1772559323.py::TestMarkDone::test_mark_task_done PASSED        [ 45%]
+test_task_1772559323.py::TestDeleteTask::test_delete_nonexistent PASSED  [ 46%]
+test_task_1772559323.py::TestDeleteTask::test_delete_renumbers_ids PASSED [ 46%]
+test_task_1772559323.py::TestDeleteTask::test_delete_task PASSED         [ 46%]
+test_task_1772559323.py::TestTags::test_add_duplicate_tag PASSED         [ 46%]
+test_task_1772559323.py::TestTags::test_add_tag PASSED                   [ 47%]
+test_task_1772559323.py::TestTags::test_remove_nonexistent_tag PASSED    [ 47%]
+test_task_1772559323.py::TestTags::test_remove_tag PASSED                [ 47%]
+test_task_1772559323.py::TestPriority::test_set_priority PASSED          [ 47%]
+test_task_1772559323.py::TestPriority::test_set_priority_nonexistent PASSED [ 48%]
+test_task_1772559323.py::TestExport::test_export_csv PASSED              [ 48%]
+test_task_1772559323.py::TestExport::test_export_empty PASSED            [ 48%]
+test_task_1772559323.py::TestExport::test_export_markdown PASSED         [ 49%]
+test_task_1772559323.py::TestBackwardCompatibility::test_old_tasks_get_default_priority PASSED [ 49%]
+test_task_1772559323.py::TestEdgeCases::test_chinese_comma_in_tags PASSED [ 49%]
+test_task_1772559323.py::TestEdgeCases::test_empty_tags_list PASSED      [ 49%]
+test_task_1772559323.py::TestEdgeCases::test_special_characters_in_content PASSED [ 50%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_basic_task PASSED [ 50%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_task_complete_fields PASSED [ 50%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_task_with_due_date PASSED [ 50%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_task_with_high_priority PASSED [ 51%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_task_with_low_priority PASSED [ 51%]
+test_task_1772559366.py::TestAddTaskFunctionality::test_add_task_with_tags PASSED [ 51%]
+test_task_1772559366.py::TestListTasksFunctionality::test_list_empty_tasks PASSED [ 52%]
+test_task_1772559366.py::TestListTasksFunctionality::test_list_filter_by_priority PASSED [ 52%]
+test_task_1772559366.py::TestListTasksFunctionality::test_list_filter_by_tag PASSED [ 52%]
+test_task_1772559366.py::TestListTasksFunctionality::test_list_sort_by_priority PASSED [ 52%]
+test_task_1772559366.py::TestListTasksFunctionality::test_list_with_tasks PASSED [ 53%]
+test_task_1772559366.py::TestMarkDoneFunctionality::test_mark_nonexistent_task_done PASSED [ 53%]
+test_task_1772559366.py::TestMarkDoneFunctionality::test_mark_task_done PASSED [ 53%]
+test_task_1772559366.py::TestMarkDoneFunctionality::test_mark_task_done_message PASSED [ 53%]
+test_task_1772559366.py::TestDeleteTaskFunctionality::test_delete_nonexistent_task PASSED [ 54%]
+test_task_1772559366.py::TestDeleteTaskFunctionality::test_delete_renumbers_ids PASSED [ 54%]
+test_task_1772559366.py::TestDeleteTaskFunctionality::test_delete_task PASSED [ 54%]
+test_task_1772559366.py::TestTagFunctionality::test_add_duplicate_tag PASSED [ 55%]
+test_task_1772559366.py::TestTagFunctionality::test_add_tag_to_task PASSED [ 55%]
+test_task_1772559366.py::TestTagFunctionality::test_remove_nonexistent_tag PASSED [ 55%]
+test_task_1772559366.py::TestTagFunctionality::test_remove_tag_from_task PASSED [ 55%]
+test_task_1772559366.py::TestPriorityFunctionality::test_set_priority_high PASSED [ 56%]
+test_task_1772559366.py::TestPriorityFunctionality::test_set_priority_low PASSED [ 56%]
+test_task_1772559366.py::TestPriorityFunctionality::test_set_priority_nonexistent_task PASSED [ 56%]
+test_task_1772559366.py::TestExportFunctionality::test_export_csv PASSED [ 56%]
+test_task_1772559366.py::TestExportFunctionality::test_export_empty_tasks PASSED [ 57%]
+test_task_1772559366.py::TestExportFunctionality::test_export_markdown PASSED [ 57%]
+test_task_1772559366.py::TestBackwardCompatibility::test_old_tasks_get_default_priority PASSED [ 57%]
+test_task_1772559366.py::TestEdgeCases::test_emoji_content PASSED        [ 57%]
+test_task_1772559366.py::TestEdgeCases::test_empty_content_task PASSED   [ 58%]
+test_task_1772559366.py::TestEdgeCases::test_empty_tags_not_saved PASSED [ 58%]
+test_task_1772559366.py::TestEdgeCases::test_special_characters_content PASSED [ 58%]
+test_task_1772559366.py::TestCLICommands::test_cli_add_command PASSED    [ 59%]
+test_task_1772559366.py::TestCLICommands::test_cli_list_command PASSED   [ 59%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_basic_task PASSED [ 59%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_task_complete_fields PASSED [ 59%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_task_with_due_date PASSED [ 60%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_task_with_high_priority PASSED [ 60%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_task_with_low_priority PASSED [ 60%]
+test_task_1772559411.py::TestAddTaskFunctionality::test_add_task_with_tags PASSED [ 60%]
+test_task_1772559411.py::TestListTasksFunctionality::test_list_empty_tasks PASSED [ 61%]
+test_task_1772559411.py::TestListTasksFunctionality::test_list_filter_by_priority PASSED [ 61%]
+test_task_1772559411.py::TestListTasksFunctionality::test_list_filter_by_tag PASSED [ 61%]
+test_task_1772559411.py::TestListTasksFunctionality::test_list_sort_by_priority PASSED [ 62%]
+test_task_1772559411.py::TestListTasksFunctionality::test_list_with_tasks PASSED [ 62%]
+test_task_1772559411.py::TestMarkDoneFunctionality::test_mark_nonexistent_task_done PASSED [ 62%]
+test_task_1772559411.py::TestMarkDoneFunctionality::test_mark_task_done PASSED [ 62%]
+test_task_1772559411.py::TestMarkDoneFunctionality::test_mark_task_done_message PASSED [ 63%]
+test_task_1772559411.py::TestDeleteTaskFunctionality::test_delete_nonexistent_task PASSED [ 63%]
+test_task_1772559411.py::TestDeleteTaskFunctionality::test_delete_renumbers_ids PASSED [ 63%]
+test_task_1772559411.py::TestDeleteTaskFunctionality::test_delete_task PASSED [ 63%]
+test_task_1772559411.py::TestTagFunctionality::test_add_duplicate_tag PASSED [ 64%]
+test_task_1772559411.py::TestTagFunctionality::test_add_tag_to_task PASSED [ 64%]
+test_task_1772559411.py::TestTagFunctionality::test_remove_nonexistent_tag PASSED [ 64%]
+test_task_1772559411.py::TestTagFunctionality::test_remove_tag_from_task PASSED [ 65%]
+test_task_1772559411.py::TestPriorityFunctionality::test_set_priority_high PASSED [ 65%]
+test_task_1772559411.py::TestPriorityFunctionality::test_set_priority_low PASSED [ 65%]
+test_task_1772559411.py::TestPriorityFunctionality::test_set_priority_nonexistent_task PASSED [ 65%]
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=term-missing -v 2>&1 | tail -100
+test_task_1772559976.py::TestStatistics::test_stats_empty PASSED         [ 89%]
+test_task_1772559976.py::TestStatistics::test_stats_filter_by_priority PASSED [ 89%]
+test_task_1772559976.py::TestStatistics::test_stats_filter_by_tag PASSED [ 89%]
+test_task_1772559976.py::TestStatistics::test_stats_with_completion PASSED [ 90%]
+test_task_1772559976.py::TestBackwardCompatibility::test_old_tasks_get_default_priority PASSED [ 90%]
+test_task_1772559976.py::TestBackwardCompatibility::test_old_tasks_without_tags_field PASSED [ 90%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_add_task PASSED    [ 91%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_delete_task PASSED [ 91%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_done_task PASSED   [ 91%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_export_csv PASSED  [ 91%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_help PASSED        [ 92%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_list_help PASSED   [ 92%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_set_priority PASSED [ 92%]
+test_task_1772559976.py::TestCLIIntegration::test_cli_stats PASSED       [ 92%]
+test_task_1772559976.py::TestEdgeCases::test_add_task_with_chinese_commas PASSED [ 93%]
+test_task_1772559976.py::TestEdgeCases::test_add_task_with_empty_content PASSED [ 93%]
+test_task_1772559976.py::TestEdgeCases::test_add_task_with_special_characters PASSED [ 93%]
+test_task_1772559976.py::TestEdgeCases::test_load_tasks_from_nonexistent_file PASSED [ 94%]
+test_task_1772559976.py::TestEdgeCases::test_save_and_load_tasks PASSED  [ 94%]
+test_task_1772560713.py::TestTaskCreation::test_add_basic_task PASSED    [ 94%]
+test_task_1772560713.py::TestTaskCreation::test_add_task_with_due_date PASSED [ 94%]
+test_task_1772560713.py::TestTaskCreation::test_add_task_with_priority PASSED [ 95%]
+test_task_1772560713.py::TestTaskCreation::test_add_task_with_tags PASSED [ 95%]
+test_task_1772560713.py::TestTaskCreation::test_task_auto_increment_id PASSED [ 95%]
+test_task_1772560713.py::TestTaskCreation::test_task_timestamp_creation PASSED [ 95%]
+test_task_1772560713.py::TestTaskListing::test_list_empty_tasks PASSED   [ 96%]
+test_task_1772560713.py::TestTaskListing::test_list_filter_by_priority PASSED [ 96%]
+test_task_1772560713.py::TestTaskListing::test_list_tasks_with_priority_sort PASSED [ 96%]
+test_task_1772560713.py::TestTaskCompletion::test_mark_nonexistent_task_done PASSED [ 97%]
+test_task_1772560713.py::TestTaskCompletion::test_mark_task_done PASSED  [ 97%]
+test_task_1772560713.py::TestTaskDeletion::test_delete_task PASSED       [ 97%]
+test_task_1772560713.py::TestTaskDeletion::test_delete_task_renumbers PASSED [ 97%]
+test_task_1772560713.py::TestTagManagement::test_add_tag PASSED          [ 98%]
+test_task_1772560713.py::TestTagManagement::test_remove_tag PASSED       [ 98%]
+test_task_1772560713.py::TestPriorityManagement::test_set_priority PASSED [ 98%]
+test_task_1772560713.py::TestStatistics::test_stats_empty PASSED         [ 98%]
+test_task_1772560713.py::TestStatistics::test_stats_with_tasks PASSED    [ 99%]
+test_task_1772560713.py::TestExport::test_export_csv PASSED              [ 99%]
+test_task_1772560713.py::TestExport::test_export_markdown PASSED         [ 99%]
+test_task_1772560713.py::TestCLIBackwardCompatibility::test_load_tasks_without_priority PASSED [100%]
+
+=============================== warnings summary ===============================
+test_tag_splitting.py::test_chinese_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_chinese_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_english_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_english_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_mixed_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_mixed_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_single_tag
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_single_tag returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_with_spaces
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_with_spaces returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_filtering
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_filtering returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     256      5    98%   117, 406, 408, 597, 601
+---------------------------------------
+TOTAL       256      5    98%
+======================= 369 passed, 8 warnings in 1.89s ========================
+[0m
+测试全部通过！覆盖率报告已生成。让我查看未覆盖的代码行：
+[0m→ [0mRead todo.py[90m [offset=115, limit=10][0m
+[0m→ [0mRead todo.py[90m [offset=595, limit=10][0m
+[0m→ [0mRead todo.py[90m [offset=404, limit=10][0m
+## ✅ 测试覆盖验证完成
+
+### 📊 测试结果
+- **总测试数**: 369
+- **通过**: 369 (100%)
+- **失败**: 0
+- **覆盖率**: **98%**
+
+### 📝 未覆盖代码 (5 行)
+| 行号 | 内容 | 说明 |
+|------|------|------|
+| 117 | `print(f"📭 没有找到带标签 '{tag_filter}' 的任务")` | list_tasks 标签过滤空结果 |
+| 406 | `print(f"📭 没有找到带标签 '{tag_filter}' 的任务")` | stats 标签过滤空结果 |
+| 408 | `print(f"📭 没有找到优先级为 '{priority_filter}' 的任务")` | stats 优先级过滤空结果 |
+| 597 | `parser.print_help()` | 无参数时显示帮助 |
+| 601 | `main()` | `__main__` 入口 |
+
+### 📂 测试文件 (14 个)
+- `test_add_task.py` - 添加任务功能
+- `test_cli_commands.py` - CLI 命令测试
+- `test_default_priority.py` - 默认优先级
+- `test_due_date.py` - 截止日期
+- `test_export.py` - 导出功能
+- `test_no_due_date.py` - 无截止日期任务
+- `test_tag_splitting.py` - 标签分割
+- `test_task_*.py` (8 个) - 综合功能测试
+
+### 🧪 如何运行测试
+```bash
+# 运行所有测试
+python3 -m pytest -v
+
+# 带覆盖率报告
+python3 -m pytest --cov=todo --cov-report=term-missing -v
+
+# 生成 HTML 覆盖率报告
+python3 -m pytest --cov=todo --cov-report=html
+```
+
+### ⚠️ 注意事项
+- 有 8 个警告来自 `test_tag_splitting.py`，建议修复测试函数返回值问题
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 03:16:24][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772565384
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 添加修改任务优先级功能
+✅ [2] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [10] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+✅ [25] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [34] 🔴 CLI 测试任务
+⭕ [56] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [58] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [61] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [66] 🔴 统计测试
+⭕ [67] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [72] 🔴 统计测试
+⭕ [73] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [78] 🔴 统计测试
+⭕ [80] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [85] 🔴 统计测试
+⭕ [87] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [92] 🔴 统计测试
+⭕ [97] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [102] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [103] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [108] 🔴 统计测试
+⭕ [109] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [110] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [115] 🔴 统计测试
+⭕ [116] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [117] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [122] 🔴 统计测试
+⭕ [124] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [125] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [130] 🔴 统计测试
+⭕ [131] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [132] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [137] 🔴 统计测试
+⭕ [139] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [140] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [145] 🔴 统计测试
+⭕ [146] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [147] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [152] 🔴 统计测试
+✅ [3] 🟡 测试无截止日期任务
+✅ [4] 🟡 测试任务_1772558695
+✅ [5] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [6] 🟡 英文逗号测试 🔖 #test #urgent
+✅ [7] 🟡 测试任务_1772559067
+✅ [8] 🟡 测试任务_1772559141
+✅ [9] 🟡 添加导出功能的单元测试
+✅ [11] 🟡 测试任务_1772559221
+✅ [14] 🟡 测试任务_1772559260
+✅ [15] 🟡 测试任务_1772559323
+✅ [16] 🟡 测试默认优先级 - 新任务
+✅ [17] 🟡 测试任务_1772559366
+✅ [18] 🟡 测试任务_1772559411
+✅ [19] 🟡 NONE
+✅ [20] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [21] 🟡 测试任务_1772559626
+✅ [22] 🟡 测试任务_1772559821
+✅ [23] 🟡 优先级统计功能
+✅ [24] 🟡 测试任务_1772559903
+✅ [27] 🟡 测试任务_1772559976
+✅ [28] 🟡 测试任务_1772560148
+✅ [29] 🟡 测试任务_1772560188
+✅ [30] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [31] 🟡 测试任务_1772560261
+✅ [32] 🟡 测试任务_1772560300
+✅ [33] 🟡 测试任务_1772560348
+✅ [35] 🟡 测试任务_1772560561
+✅ [36] 🟡 测试任务_1772560713
+⭕ [37] 🟡 运行测试验证覆盖情况：
+⭕ [38] 🟡 NONE
+✅ [39] 🟡 测试任务_1772560897
+✅ [40] 🟡 测试任务_1772560937
+⭕ [41] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+⭕ [42] 🟡 NONE
+⭕ [43] 🟡 测试任务_1772560995
+⭕ [44] 🟡 测试任务_1772561467
+⭕ [45] 🟡 测试任务_1772561636
+⭕ [46] 🟡 测试任务_1772561872
+⭕ [47] 🟡 NONE
+⭕ [48] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+⭕ [49] 🟡 测试任务_1772562060
+⭕ [50] 🟡 测试任务_1772562098
+⭕ [51] 🟡 测试任务_1772562125
+⭕ [52] 🟡 测试任务_1772562169
+⭕ [53] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+⭕ [54] 🟡 测试任务_1772562229
+⭕ [55] 🟡 测试任务_1772562601
+⭕ [57] 🟡 测试任务_1772562920
+⭕ [59] 🟡 测试任务_1772563000
+⭕ [60] 🟡 测试任务_1772563059
+⭕ [62] 🟡 CLI 删除测试
+⭕ [63] 🟡 CLI 完成测试
+⭕ [64] 🟡 导出测试
+⭕ [65] 🟡 优先级测试
+⭕ [68] 🟡 CLI 删除测试
+⭕ [69] 🟡 CLI 完成测试
+⭕ [70] 🟡 导出测试
+⭕ [71] 🟡 优先级测试
+⭕ [74] 🟡 CLI 删除测试
+⭕ [75] 🟡 CLI 完成测试
+⭕ [76] 🟡 导出测试
+⭕ [77] 🟡 优先级测试
+⭕ [79] 🟡 测试任务_1772563690
+⭕ [81] 🟡 CLI 删除测试
+⭕ [82] 🟡 CLI 完成测试
+⭕ [83] 🟡 导出测试
+⭕ [84] 🟡 优先级测试
+⭕ [86] 🟡 测试任务_1772563758
+⭕ [88] 🟡 CLI 删除测试
+⭕ [89] 🟡 CLI 完成测试
+⭕ [90] 🟡 导出测试
+⭕ [91] 🟡 优先级测试
+⭕ [93] 🟡 测试任务_1772563866
+⭕ [94] 🟡 测试任务_1772563922
+⭕ [95] 🟡 测试任务_1772564218
+⭕ [96] 🟡 测试任务_1772564294
+⭕ [98] 🟡 测试任务_1772564371
+⭕ [99] 🟡 测试任务_1772564431
+⭕ [100] 🟡 测试任务_1772564549
+⭕ [101] 🟡 测试任务_1772565221
+⭕ [104] 🟡 CLI 删除测试
+⭕ [105] 🟡 CLI 完成测试
+⭕ [106] 🟡 导出测试
+⭕ [107] 🟡 优先级测试
+⭕ [111] 🟡 CLI 删除测试
+⭕ [112] 🟡 CLI 完成测试
+⭕ [113] 🟡 导出测试
+⭕ [114] 🟡 优先级测试
+⭕ [118] 🟡 CLI 删除测试
+⭕ [119] 🟡 CLI 完成测试
+⭕ [120] 🟡 导出测试
+⭕ [121] 🟡 优先级测试
+⭕ [123] 🟡 测试任务_1772565281
+⭕ [126] 🟡 CLI 删除测试
+⭕ [127] 🟡 CLI 完成测试
+⭕ [128] 🟡 导出测试
+⭕ [129] 🟡 优先级测试
+⭕ [133] 🟡 CLI 删除测试
+⭕ [134] 🟡 CLI 完成测试
+⭕ [135] 🟡 导出测试
+⭕ [136] 🟡 优先级测试
+⭕ [138] 🟡 测试任务_1772565327
+⭕ [141] 🟡 CLI 删除测试
+⭕ [142] 🟡 CLI 完成测试
+⭕ [143] 🟡 导出测试
+⭕ [144] 🟡 优先级测试
+⭕ [148] 🟡 CLI 删除测试
+⭕ [149] 🟡 CLI 完成测试
+⭕ [150] 🟡 导出测试
+⭕ [151] 🟡 优先级测试
+⭕ [153] 🟡 测试任务_1772565384
+✅ [12] 🟢 低优先级测试任务
+✅ [13] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [26] 🟢 测试无截止日期
+--------------------------------------------------
+总计：153 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 03:16:24][0m ========== 阶段 4: Git 提交推送 ==========
