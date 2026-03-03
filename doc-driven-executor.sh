@@ -174,80 +174,66 @@ phase_2_to_5_execute() {
     log "========== 阶段 2-5: 执行任务 =========="
     info "调用 OpenCode 执行任务: $task_name"
     
-    # 创建提示词文件
+    # 创建提示词文件 - 使用简单 ASCII 字符避免编码问题
     local prompt_file=$(mktemp)
-    cat > "$prompt_file" << 'PROMPT_EOF'
-你是专业 Python 开发者，请完成以下任务。
+    cat > "$prompt_file" << PROMPT_EOF
+Task: TASK_NAME_PLACEHOLDER
 
-【任务】TASK_NAME_PLACEHOLDER
+Project: PROJECT_DIR_PLACEHOLDER
 
-【项目路径】PROJECT_DIR_PLACEHOLDER
+Requirements:
+1. Read SPEC.md for technical specifications
+2. Read PLAN.md for task planning
+3. Implement code following SPEC chapter 3 (data model) and chapter 4 (interfaces)
+4. Run pytest tests to verify
+5. Update SPEC.md if architecture changes
+6. Git commit with format: "Feat: task name"
+7. Update PLAN.md to mark task as completed ONLY after real completion
 
-【必须遵循的规范】
-1. 实现必须符合 SPEC.md 技术规范
-2. 数据模型必须符合 SPEC 第3章
-3. 接口必须符合 SPEC 第4章
-4. 参考 AGENTS.md 六阶段工作流程
+Important: You must ACTUALLY write code files and verify they work. Do NOT return success without real implementation.
 
-【工作要求】
-1. 阶段 0: 阅读 SPEC.md + PLAN.md
-2. 阶段 1: 分析任务需求
-3. 阶段 2: 编写代码（遵循 SPEC）
-4. 阶段 3: 运行 pytest 测试
-5. 阶段 4: 如架构变更，更新 SPEC.md
-6. 阶段 5: Git 提交，格式: "Feat: 任务名"
-7. 阶段 6: 更新 PLAN.md 标记完成
-
-【重要】
-- 必须实际编写代码文件
-- 必须运行测试验证
-- 只有真正完成任务后才返回成功
-- 禁止虚假完成
-
-请开始执行任务。
+Start working on this task now.
 PROMPT_EOF
     
     # 替换变量
-    sed -i "s#TASK_NAME_PLACEHOLDER#$task_name#g" "$prompt_file"
-    sed -i "s#PROJECT_DIR_PLACEHOLDER#$PROJECT_DIR#g" "$prompt_file"
+    sed -i "s/TASK_NAME_PLACEHOLDER/$task_name/g" "$prompt_file"
+    sed -i "s|PROJECT_DIR_PLACEHOLDER|$PROJECT_DIR|g" "$prompt_file"
     
     # 执行 OpenCode
     local output_file=$(mktemp)
-    local exit_code=0
     
     # 使用 timeout 防止卡住
     if ! timeout 300 opencode run "$prompt_file" > "$output_file" 2>&1; then
-        exit_code=$?
+        local exit_code=$?
         if [ $exit_code -eq 124 ]; then
             error "OpenCode 执行超时（5分钟）"
         else
             error "OpenCode 执行失败 (exit: $exit_code)"
         fi
-        cat "$output_file" | tail -20 >> "$LOG_FILE"
+        cat "$output_file" | tail -30 >> "$LOG_FILE"
         rm -f "$prompt_file" "$output_file"
         return 1
     fi
     
-    # 检查输出是否包含成功标志和实际完成证据
-    local has_success=$(grep -c "完成\|success\|✓\|已创建\|已添加" "$output_file" 2>/dev/null || echo "0")
-    local has_files=$(grep -c "\.py\|文件" "$output_file" 2>/dev/null || echo "0")
+    # 记录输出
+    cat "$output_file" >> "$LOG_FILE"
     
-    cat "$output_file" | tail -50 >> "$LOG_FILE"
+    # 检查是否实际创建了文件
+    local new_files=$(find "$PROJECT_DIR" -name "*.py" -newer "$prompt_file" 2>/dev/null | wc -l)
+    
     rm -f "$prompt_file" "$output_file"
     
-    # 严格验证：必须有成功标志 AND 有文件操作
-    if [ "$has_success" -lt 1 ] || [ "$has_files" -lt 1 ]; then
-        error "OpenCode 未实际完成任务（缺少成功标志或文件操作）"
-        error "成功标志: $has_success, 文件操作: $has_files"
+    # 验证：必须实际创建了新文件
+    if [ "$new_files" -lt 1 ]; then
+        error "OpenCode 未实际创建文件 (new files: $new_files)"
         return 1
     fi
     
-    success "OpenCode 执行成功"
+    success "OpenCode 执行成功，创建 $new_files 个新文件"
     
     local end_time=$(date +%s)
     local duration=$(( (end_time - start_time) / 60 ))
     
-    success "任务执行完成，耗时 ${duration} 分钟"
     echo "$duration"
 }
 
