@@ -81,6 +81,11 @@
 ### 3.1 当前任务队列
 | 优先级 | 任务 | 状态 | 负责人 | 预计工时 | 实际工时 |
 |--------|------|------|--------|----------|----------|
+| 🟡 中 | 创建 core/models.py 定义 Task 数据类 | ⏳ 待开始 | AI | 2h | |
+| 🟡 中 | 创建 core/storage.py 实现 JSONStorage | ⏳ 待开始 | AI | 2h | |
+| 🟡 中 | 创建 commands/base.py 定义 Command 基类 | ⏳ 待开始 | AI | 2h | |
+| 🟡 中 | 拆分 commands/task_commands.py 实现增删改查 | ⏳ 待开始 | AI | 2h | |
+| 🟡 中 | 拆分 commands/query_commands.py 实现 list/stats/due | ⏳ 待开始 | AI | 2h | |
 | 创建 core/models.py 定义 Task 数据类 | 🔄 进行中 | AI | 2h | |
 | 创建 core/storage.py 实现 JSONStorage | 🔄 进行中 | AI | 2h | |
 | 创建 commands/base.py 定义 Command 基类 | 🔄 进行中 | AI | 2h | |
