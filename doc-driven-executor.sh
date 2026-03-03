@@ -171,8 +171,8 @@ phase_2_to_5_execute() {
     log "========== 阶段 2-5: 执行任务 =========="
     info "调用 OpenCode 执行任务: $task_name"
     
-    # 创建提示词文件 - 使用简单 ASCII 字符避免编码问题
-    local prompt_file=$(mktemp)
+    # 创建提示词文件 - 在项目目录内避免权限问题
+    local prompt_file="$PROJECT_DIR/.prompt_$$.txt"
     cat > "$prompt_file" << PROMPT_EOF
 Task: TASK_NAME_PLACEHOLDER
 
@@ -197,7 +197,7 @@ PROMPT_EOF
     sed -i "s|PROJECT_DIR_PLACEHOLDER|$PROJECT_DIR|g" "$prompt_file"
     
     # 执行 OpenCode
-    local output_file=$(mktemp)
+    local output_file="$PROJECT_DIR/.output_$$.txt"
     
     # 使用 timeout 防止卡住
     if ! timeout 300 opencode run "$prompt_file" > "$output_file" 2>&1; then
