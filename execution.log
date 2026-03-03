@@ -21823,3 +21823,147 @@ Test: 完成任务_1772561467
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:27:02][0m ========== 阶段 4: Git 提交推送 ==========
+[main 786a223] Feat: 测试任务_1772561467
+ 2 files changed, 576 insertions(+)
+[0;32m[✓][0m Git 提交成功
+ERROR: internal error performing authentication
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:27:07][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 35 已标记为完成
+[0;34m[2026-03-04 03:27:10][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:27:13][0m 
+[0;34m[2026-03-04 03:27:13][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:27:13][0m ║  第 57 轮执行                          ║
+[0;34m[2026-03-04 03:27:13][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:27:13][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 194
+[0;34m[2026-03-04 03:27:13][0m 获取到任务 ID=36: 测试任务_1772561872
+[0;34m[2026-03-04 03:27:13][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772561872
+[0;34m[2026-03-04 03:27:14][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 1628
+drwxr-xr-x 9 root root    4096 Mar  4 03:27 .
+drwxr-xr-x 3 root root    4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root       0 Mar  4 01:08 1
+-rw-r--r-- 1 root root    3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root    8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root   53248 Mar  4 03:20 .coverage
+drwxr-xr-x 2 root root    4096 Mar  4 03:14 cov_html
+drwxr-xr-x 2 root root    4096 Mar  4 03:17 cov_report
+-rw-r--r-- 1 root root 1054324 Mar  4 03:27 execution.log
+-rw-r--r-- 1 root root       6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root   12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root    4096 Mar  4 03:27 .git
+-rw-r--r-- 1 root root     170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root    4096 Mar  4 03:19 htmlcov
+drwxr-xr-x 2 root root    4096 Mar  4 03:27 __pycache__
+drwxr-xr-x 3 root root    4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root    3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root    4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root     630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   43315 Mar  4 03:27 tasks.json
+-rw-r--r-- 1 root root   16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root   16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root   11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root    6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root    8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root    8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root   10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root   14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root   19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root   30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root   17763 Mar  4 02:29 todo.py
+[0m
+我看到任务了。任务是**测试任务_1772561872**（任务 ID: 36），这是一个待完成的测试任务。
+
+让我分析代码结构和现有测试，然后执行测试验证功能：
+[0m$ [0mpython3 todo.py list --priority 高 | head -20
+📋 任务列表:
+优先级：高
+--------------------------------------------------
+✅ [1] 🔴 测试任务_1772559221
+✅ [15] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [24] 🔴 CLI 测试任务
+⭕ [46] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [48] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [51] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [56] 🔴 统计测试
+⭕ [57] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [62] 🔴 统计测试
+⭕ [63] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [68] 🔴 统计测试
+⭕ [70] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [75] 🔴 统计测试
+⭕ [77] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [82] 🔴 统计测试
+⭕ [87] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+[0m
+[0m$ [0mpython3 todo.py stats
+📊 任务统计
+--------------------------------------------------
+
+📌 总体情况:
+   总计：229 个任务
+   ✅ 已完成：35 (15%)
+   ⭕ 待完成：194 (84%)
+
+📌 优先级分布:
+   🔴 高优先级：67 个 (完成：3/67)
+   🟡 中优先级：159 个 (完成：29/159)
+   🟢 低优先级：3 个 (完成：3/3)
+[0m
+[0m$ [0mpython3 -m pytest test_cli_commands.py -v 2>&1 | head -50
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 27 items
+
+test_cli_commands.py::TestCLICommands::test_cli_add_basic PASSED         [  3%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag PASSED           [  7%]
+test_cli_commands.py::TestCLICommands::test_cli_add_tag_nonexistent_task PASSED [ 11%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_due_date PASSED [ 14%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_priority PASSED [ 18%]
+test_cli_commands.py::TestCLICommands::test_cli_add_with_tags PASSED     [ 22%]
+test_cli_commands.py::TestCLICommands::test_cli_delete PASSED            [ 25%]
+test_cli_commands.py::TestCLICommands::test_cli_delete_nonexistent_task PASSED [ 29%]
+test_cli_commands.py::TestCLICommands::test_cli_done PASSED              [ 33%]
+test_cli_commands.py::TestCLICommands::test_cli_done_nonexistent_task PASSED [ 37%]
+test_cli_commands.py::TestCLICommands::test_cli_export_csv PASSED        [ 40%]
+test_cli_commands.py::TestCLICommands::test_cli_export_markdown PASSED   [ 44%]
+test_cli_commands.py::TestCLICommands::test_cli_help PASSED              [ 48%]
+test_cli_commands.py::TestCLICommands::test_cli_list_empty PASSED        [ 51%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_priority PASSED [ 55%]
+test_cli_commands.py::TestCLICommands::test_cli_list_filter_by_tag PASSED [ 59%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_none PASSED    [ 62%]
+test_cli_commands.py::TestCLICommands::test_cli_list_sort_priority PASSED [ 66%]
+test_cli_commands.py::TestCLICommands::test_cli_list_with_tasks PASSED   [ 70%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag PASSED        [ 74%]
+test_cli_commands.py::TestCLICommands::test_cli_remove_tag_nonexistent_task PASSED [ 77%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority PASSED      [ 81%]
+test_cli_commands.py::TestCLICommands::test_cli_set_priority_nonexistent_task PASSED [ 85%]
+test_cli_commands.py::TestCLICommands::test_cli_stats PASSED             [ 88%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_priority PASSED [ 92%]
+test_cli_commands.py::TestCLICommands::test_cli_stats_filter_by_tag PASSED [ 96%]
+test_cli_commands.py::TestCLIWorkflow::test_complete_workflow PASSED     [100%]
+
+============================== 27 passed in 0.10s ==============================
+[0m
+测试全部通过！现在让我完成任务并提交：
