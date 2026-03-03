@@ -1,6 +1,6 @@
 #!/bin/bash
-# 文档驱动的 BabyAGI 执行器
-# 遵循 AGENTS.md v2.0 规范：SPEC + PLAN 双文档驱动
+# 文档驱动的 BabyAGI 执行器 v2.1
+# 修复: 使用更可靠的方式调用 OpenCode
 
 set -e
 
@@ -8,14 +8,16 @@ set -e
 PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
 SPEC_FILE="$PROJECT_DIR/SPEC.md"
 PLAN_FILE="$PROJECT_DIR/PLAN.md"
-TASKS_FILE="$PROJECT_DIR/tasks.json"
+DATA_TASKS_FILE="$PROJECT_DIR/data/tasks.json"
 LOG_FILE="$PROJECT_DIR/logs/executor.log"
 LOCK_FILE="/tmp/doc-driven-executor.lock"
 
-cd "$PROJECT_DIR"
-
-# 确保日志目录存在
+# 确保目录存在
 mkdir -p "$PROJECT_DIR/logs"
+mkdir -p "$PROJECT_DIR/core"
+mkdir -p "$PROJECT_DIR/commands"
+
+cd "$PROJECT_DIR"
 
 # ==================== 颜色输出 ====================
 RED='\033[0;31m'
@@ -51,12 +53,12 @@ check_documents() {
     log "========== 阶段 0: 文档检查 =========="
     
     if [ ! -f "$SPEC_FILE" ]; then
-        error "SPEC.md 不存在! 请确保技术规范文档已创建"
+        error "SPEC.md 不存在!"
         exit 1
     fi
     
     if [ ! -f "$PLAN_FILE" ]; then
-        error "PLAN.md 不存在! 请确保项目计划文档已创建"
+        error "PLAN.md 不存在!"
         exit 1
     fi
     
@@ -65,117 +67,9 @@ check_documents() {
     info "PLAN.md: $(wc -l < "$PLAN_FILE") 行"
 }
 
-# ==================== 从 tasks.json 同步任务到 PLAN ====================
+# ==================== 从 PLAN 获取任务 ====================
 
-sync_tasks_to_plan() {
-    log "检查 tasks.json 中的遗留任务..."
-    
-    if [ ! -f "$TASKS_FILE" ]; then
-        info "tasks.json 不存在，跳过同步"
-        return
-    fi
-    
-    # 获取未完成的非测试任务
-    local pending_tasks=$(python3 << EOF
-import json
-import sys
-
-try:
-    with open('$TASKS_FILE', 'r') as f:
-        tasks = json.load(f)
-    
-    pending = []
-    for t in tasks:
-        if not t.get('done', False) and not t.get('is_test', False):
-            # 过滤掉测试任务和无效内容
-            content = t.get('content', '').strip()
-            if content and len(content) > 2:
-                # 排除明显是测试或无效的任务
-                invalid_prefixes = ['测试任务_', 'test_', '根据分析', '我需要', '**', '1.', '2.', '3.']
-                if not any(content.startswith(p) for p in invalid_prefixes):
-                    pending.append(content)
-    
-    for task in pending[:20]:  # 最多同步20个
-        print(task)
-except Exception as e:
-    print(f"错误: {e}", file=sys.stderr)
-    sys.exit(0)
-EOF
-)
-    
-    if [ -z "$pending_tasks" ]; then
-        info "tasks.json 中没有需要同步的有效任务"
-        return
-    fi
-    
-    info "发现 tasks.json 中的遗留任务，同步到 PLAN.md"
-    
-    # 将任务添加到 PLAN.md
-    local tmp_file=$(mktemp)
-    local inserted=false
-    
-    while IFS= read -r line; do
-        if [[ "$line" =~ ^\|.*任务.*\|.*状态.*\| ]] && [ "$inserted" = false ]; then
-            # 找到任务表格头部，在下面插入任务
-            echo "$line" >> "$tmp_file"
-            # 输出分隔行
-            IFS= read -r sep_line
-            echo "$sep_line" >> "$tmp_file"
-            # 插入 tasks.json 的任务
-            echo "$pending_tasks" | while IFS= read -r task_content; do
-                if [ -n "$task_content" ]; then
-                    echo "| 🟡 中 | $task_content | ⏳ 待开始 | AI | 2h | |" >> "$tmp_file"
-                fi
-            done
-            inserted=true
-        else
-            echo "$line" >> "$tmp_file"
-        fi
-    done < "$PLAN_FILE"
-    
-    mv "$tmp_file" "$PLAN_FILE"
-    success "已同步 $(echo "$pending_tasks" | wc -l) 个任务到 PLAN.md"
-    
-    # Git 提交
-    git add "$PLAN_FILE"
-    git commit -m "Docs: 从 tasks.json 同步遗留任务到 PLAN" || true
-}
-
-# ==================== 标记 tasks.json 任务完成 ====================
-
-mark_task_json_done() {
-    local task_content="$1"
-    
-    if [ ! -f "$TASKS_FILE" ]; then
-        return
-    fi
-    
-    python3 << EOF
-import json
-import sys
-
-try:
-    with open('$TASKS_FILE', 'r') as f:
-        tasks = json.load(f)
-    
-    updated = False
-    for t in tasks:
-        if t.get('content') == '$task_content' and not t.get('done'):
-            t['done'] = True
-            from datetime import datetime
-            t['completed_at'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            updated = True
-            break
-    
-    if updated:
-        with open('$TASKS_FILE', 'w') as f:
-            json.dump(tasks, f, ensure_ascii=False, indent=2)
-        print(f"✅ tasks.json 中标记完成: {task_content[:50]}")
-except Exception as e:
-    print(f"警告: 更新 tasks.json 失败: {e}", file=sys.stderr)
-EOF
-}
-    # 解析 PLAN.md 获取第一个 ⏳ 待开始的任务
+get_next_task_from_plan() {
     local task_info=$(grep "|.*⏳ 待开始" "$PLAN_FILE" | head -1)
     
     if [ -z "$task_info" ]; then
@@ -183,7 +77,6 @@ EOF
         return
     fi
     
-    # 提取任务名称（第3列）
     local task_name=$(echo "$task_info" | awk -F '|' '{print $3}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
     local priority=$(echo "$task_info" | awk -F '|' '{print $2}' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
     
@@ -199,59 +92,42 @@ update_plan_status() {
     
     log "更新 PLAN.md: $task_name → $new_status"
     
-    # 创建临时文件
     local tmp_file=$(mktemp)
     
-    # 读取并修改 PLAN.md
-    awk -F '|' '
+    # 使用 awk 安全地替换状态
+    awk -F '|' -v task="$task_name" -v status="$new_status" -v time="$actual_time" '
     BEGIN { OFS="|" }
     {
-        if ($0 ~ /\|.*\|.*'$task_name'.*\|.*⏳ 待开始/) {
-            # 替换状态
-            gsub(/⏳ 待开始/, "'$new_status'", $0)
-            # 如提供了实际工时，更新第6列
-            if ("'$actual_time'" != "") {
-                $6 = " '$actual_time' "
+        if (match($0, "\\|[^\\|]*\\|[^\\|]*" task "[^\\|]*\\|[^\\|]*⏳ 待开始")) {
+            gsub(/⏳ 待开始/, status, $0)
+            if (time != "") {
+                $6 = " " time " "
             }
         }
         print $0
     }' "$PLAN_FILE" > "$tmp_file"
     
     mv "$tmp_file" "$PLAN_FILE"
-    
     success "PLAN.md 已更新"
     
-    # Git 提交 PLAN 更新
-    if git diff --quiet "$PLAN_FILE" 2>/dev/null; then
-        return
+    # Git 提交
+    if ! git diff --quiet "$PLAN_FILE" 2>/dev/null; then
+        git add "$PLAN_FILE"
+        git commit -m "Docs: 更新 PLAN 进度 - $task_name $new_status" || true
+        git push origin main 2>/dev/null || true
     fi
-    
-    git add "$PLAN_FILE"
-    git commit -m "Docs: 更新 PLAN 进度 - $task_name $new_status" || true
-    git push origin main 2>/dev/null || true
 }
 
-# ==================== 检查 PLAN 是否完成 ====================
+# ==================== 检查 PLAN 完成状态 ====================
 
 check_plan_completion() {
     local pending_count=$(grep -c "⏳ 待开始" "$PLAN_FILE" || echo "0")
-    local in_progress_count=$(grep -c "🔄 进行中" "$PLAN_FILE" || echo "0")
     
-    if [ "$pending_count" -eq 0 ] && [ "$in_progress_count" -eq 0 ]; then
+    if [ "$pending_count" -eq 0 ]; then
         echo "COMPLETE"
     else
-        echo "PENDING:$((pending_count + in_progress_count))"
+        echo "PENDING:$pending_count"
     fi
-}
-
-# ==================== 从 SPEC 获取规范 ====================
-
-get_spec_section() {
-    local section="$1"
-    log "读取 SPEC.md: $section"
-    # 这里可以实现 SPEC 章节解析
-    # 简单实现：显示相关行
-    grep -A 10 "$section" "$SPEC_FILE" | head -15 || echo "章节未找到"
 }
 
 # ==================== 阶段 1: 任务分析 ====================
@@ -262,16 +138,23 @@ phase_1_analyze() {
     log "========== 阶段 1: 任务分析 =========="
     info "任务: $task_name"
     
-    # 在 PLAN 中标记为进行中
-    sed -i "s/|.*$task_name.*|.*⏳ 待开始/| $task_name | 🔄 进行中/" "$PLAN_FILE"
+    # 标记为进行中
+    local tmp_file=$(mktemp)
+    awk -F '|' -v task="$task_name" '
+    BEGIN { OFS="|" }
+    {
+        if (match($0, "\\|[^\\|]*\\|[^\\|]*" task "[^\\|]*\\|[^\\|]*⏳ 待开始")) {
+            gsub(/⏳ 待开始/, "🔄 进行中", $0)
+        }
+        print $0
+    }' "$PLAN_FILE" > "$tmp_file"
+    mv "$tmp_file" "$PLAN_FILE"
     
-    # 读取相关 SPEC 章节
     info "读取技术规范..."
-    
     success "任务分析完成"
 }
 
-# ==================== 阶段 2-5: 调用 OpenCode ====================
+# ==================== 阶段 2-5: 执行 OpenCode ====================
 
 phase_2_to_5_execute() {
     local task_name="$1"
@@ -280,46 +163,67 @@ phase_2_to_5_execute() {
     log "========== 阶段 2-5: 执行任务 =========="
     info "调用 OpenCode 执行任务: $task_name"
     
-    # 构建提示词，包含 SPEC 和 PLAN 引用
-    local prompt="你是一个专业的 Python 开发者。请完成以下任务：
+    # 创建提示词文件
+    local prompt_file=$(mktemp)
+    cat > "$prompt_file" << 'PROMPT_EOF'
+你是专业 Python 开发者，请完成以下任务。
 
-【任务】$task_name
+【任务】TASK_NAME_PLACEHOLDER
 
-【项目信息】
-- 项目路径: $PROJECT_DIR
-- 这是一个 Python CLI Todo 管理器
-- 主程序: todo.py
-- 任务存储: tasks.json
+【项目路径】PROJECT_DIR_PLACEHOLDER
 
 【必须遵循的规范】
-1. 实现必须符合 SPEC.md 中的技术规范
-2. 接口必须符合 SPEC.md 第4章定义
-3. 数据模型必须符合 SPEC.md 第3章定义
-4. 参考 AGENTS.md 工作流程
+1. 实现必须符合 SPEC.md 技术规范
+2. 数据模型必须符合 SPEC 第3章
+3. 接口必须符合 SPEC 第4章
+4. 参考 AGENTS.md 六阶段工作流程
 
-【工作规范】(参考 AGENTS.md)
-1. 阶段 0: 阅读 SPEC.md 和 PLAN.md
-2. 阶段 1: 分析任务需求，确定实现方案
-3. 阶段 2: 编写/修改代码，遵循 SPEC 规范
-4. 阶段 3: 添加必要的测试，运行 pytest
+【工作要求】
+1. 阶段 0: 阅读 SPEC.md + PLAN.md
+2. 阶段 1: 分析任务需求
+3. 阶段 2: 编写代码（遵循 SPEC）
+4. 阶段 3: 运行 pytest 测试
 5. 阶段 4: 如架构变更，更新 SPEC.md
-6. 阶段 5: Git 提交，格式: \"Feat: $task_name\"
-7. 阶段 6: 更新 PLAN.md 标记任务完成
+6. 阶段 5: Git 提交，格式: "Feat: 任务名"
+7. 阶段 6: 更新 PLAN.md 标记完成
 
-【输出要求】
-1. 完成代码编写
-2. 报告完成的功能
-3. 列出修改的文件
-4. 说明如何测试
-5. 确认 SPEC 和 PLAN 已更新
+【输出】
+- 完成代码编写
+- 报告完成功能
+- 列出修改文件
+- 说明测试方法
 
-请开始执行任务。"
-
-    # 执行 OpenCode
-    if ! echo "$prompt" | opencode run --stdin; then
-        error "OpenCode 执行失败"
+请开始执行任务。
+PROMPT_EOF
+    
+    # 替换变量
+    sed -i "s#TASK_NAME_PLACEHOLDER#$task_name#g" "$prompt_file"
+    sed -i "s#PROJECT_DIR_PLACEHOLDER#$PROJECT_DIR#g" "$prompt_file"
+    
+    # 执行 OpenCode（前台模式，通过输出文件通信）
+    local output_file=$(mktemp)
+    local exit_code=0
+    
+    # 使用 timeout 防止卡住
+    if ! timeout 300 opencode run "$prompt_file" > "$output_file" 2>&1; then
+        exit_code=$?
+        if [ $exit_code -eq 124 ]; then
+            error "OpenCode 执行超时（5分钟）"
+        else
+            error "OpenCode 执行失败 (exit: $exit_code)"
+        fi
+        cat "$output_file" | tail -20 >> "$LOG_FILE"
+        rm -f "$prompt_file" "$output_file"
         return 1
     fi
+    
+    # 检查输出是否包含成功标志
+    if grep -q "完成\|success\|✓" "$output_file" 2>/dev/null; then
+        success "OpenCode 执行成功"
+    fi
+    
+    cat "$output_file" | tail -30 >> "$LOG_FILE"
+    rm -f "$prompt_file" "$output_file"
     
     local end_time=$(date +%s)
     local duration=$(( (end_time - start_time) / 60 ))
@@ -336,34 +240,22 @@ phase_6_update_plan() {
     
     log "========== 阶段 6: 更新 PLAN =========="
     
-    # 检查 PLAN 是否已被更新
-    if grep -q "$task_name.*✅ 已完成" "$PLAN_FILE"; then
-        success "PLAN 已标记为完成"
-    else
-        # 更新 PLAN
-        update_plan_status "$task_name" "✅ 已完成" "${duration}m"
-        success "PLAN 更新完成"
-    fi
+    update_plan_status "$task_name" "✅ 已完成" "${duration}m"
     
-    # 同时更新 tasks.json（如果存在该任务）
-    mark_task_json_done "$task_name"
+    success "PLAN 更新完成"
 }
 
 # ==================== 主循环 ====================
 
 main_loop() {
     log "======================================"
-    log "文档驱动的 BabyAGI 执行器启动"
+    log "文档驱动的 BabyAGI 执行器 v2.1 启动"
     log "======================================"
     
-    # 检查文档
     check_documents
     
-    # 同步 tasks.json 中的遗留任务到 PLAN
-    sync_tasks_to_plan
-    
     local iteration=0
-    local max_iterations="${MAX_ITERATIONS:-100}"
+    local max_iterations="${MAX_ITERATIONS:-50}"
     
     while [ $iteration -lt $max_iterations ]; do
         iteration=$((iteration + 1))
@@ -373,7 +265,7 @@ main_loop() {
         log "║  第 $iteration 轮执行                          ║"
         log "╚════════════════════════════════════════════════╝"
         
-        # 检查 PLAN 完成状态
+        # 检查完成状态
         local plan_status=$(check_plan_completion)
         
         if [ "$plan_status" = "COMPLETE" ]; then
@@ -390,10 +282,8 @@ main_loop() {
         local task_info=$(get_next_task_from_plan)
         
         if [ "$task_info" = "NO_TASK" ]; then
-            warn "没有待开始的任务，但 PLAN 未完成"
-            warn "可能存在进行中的任务或状态异常"
-            info "5秒后重试..."
-            sleep 5
+            warn "没有待开始的任务"
+            sleep 10
             continue
         fi
         
@@ -410,13 +300,13 @@ main_loop() {
             phase_6_update_plan "$task_name" "$duration"
         else
             error "任务执行失败: $task_name"
-            # 标记为失败
-            sed -i "s/|.*$task_name.*|.*🔄 进行中/| $task_name | ❌ 失败/" "$PLAN_FILE"
+            # 标记为失败，避免无限重试
+            update_plan_status "$task_name" "❌ 失败" "0m"
         fi
         
         # 轮询间隔
-        log "等待 5 秒后继续下一轮..."
-        sleep 5
+        log "等待 10 秒后继续下一轮..."
+        sleep 10
     done
     
     warn "达到最大迭代次数 ($max_iterations)，执行器退出"
