@@ -127,3 +127,542 @@ python3 todo.py delete 1
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 01:13:16][0m ========== 阶段 4: Git 提交推送 ==========
+[main 6e9d4f8] Feat: 优化 todo.py 的代码结构，添加函数注释
+ 3 files changed, 225 insertions(+), 1 deletion(-)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   701e632..6e9d4f8  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 01:13:21][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 1 已标记为完成
+
+========================================
+📊 当前任务状态
+========================================
+
+📋 任务列表:
+----------------------------------------
+✅ [1] 优化 todo.py 的代码结构，添加函数注释
+⭕ [2] 添加任务优先级功能（高/中/低）
+⭕ [3] 添加任务截止日期功能
+⭕ [4] 添加任务分类/标签功能
+⭕ [5] 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 测试任务 1
+⭕ [7] 测试任务_1772557996
+----------------------------------------
+总计: 7 个任务
+
+
+总计: 7 | 完成: 1 | 待办: 6
+========================================
+
+[0;34m[2026-03-04 01:13:23][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 01:13:26][0m 
+[0;34m[2026-03-04 01:13:26][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 01:13:26][0m ║  第 2 轮执行                          ║
+[0;34m[2026-03-04 01:13:27][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 01:13:27][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 6
+[0;34m[2026-03-04 01:13:27][0m 获取到任务 ID=2: 添加任务优先级功能（高/中/低）
+[0;34m[2026-03-04 01:13:27][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 添加任务优先级功能（高/中/低）
+[0;34m[2026-03-04 01:13:27][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我来完成添加任务优先级功能的任务。首先让我分析项目结构和现有代码。
+[0m→ [0mRead tasks.json
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 96
+drwxr-xr-x 5 root root  4096 Mar  4 01:13 .
+drwxr-xr-x 3 root root  4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root     0 Mar  4 01:08 1
+-rw-r--r-- 1 root root  3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root  8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root  5948 Mar  4 01:13 execution.log
+-rw-r--r-- 1 root root     6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root 12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root  4096 Mar  4 01:13 .git
+-rw-r--r-- 1 root root   170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root  4096 Mar  4 01:13 __pycache__
+-rw-r--r-- 1 root root  3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root  4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root   630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  7047 Mar  4 01:13 runtime.log
+-rw-r--r-- 1 root root  1203 Mar  4 01:13 tasks.json
+-rw-r--r-- 1 root root  4676 Mar  4 01:12 todo.py
+[0m
+## 📋 任务分析
+
+**需求理解**:
+- 为任务添加优先级字段（高/中/低）
+- 添加任务时支持指定优先级
+- 列表显示时展示优先级
+- 保持向后兼容（现有任务默认中优先级）
+
+**实现方案**:
+1. 修改 `add_task()` 函数，添加优先级参数（默认"中"）
+2. 修改 `list_tasks()` 函数，显示优先级图标
+3. 修改 `main()` 函数，添加命令行参数
+4. 现有任务加载时自动补充默认优先级
+
+现在开始实现：
+[0m# [0mTodos
+[ ] 修改 add_task 函数支持优先级参数
+[ ] 修改 list_tasks 函数显示优先级
+[ ] 修改 main 函数添加优先级命令行参数
+[ ] 测试功能并验证
+[ ] 提交代码
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead todo.py[90m [offset=47, limit=25][0m
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -43,14 +43,15 @@
+     with open(TASKS_FILE, "w", encoding="utf-8") as f:
+         json.dump(tasks, f, ensure_ascii=False, indent=2)
+ 
+ 
+-def add_task(content):
++def add_task(content, priority="中"):
+     """
+     添加新任务到任务列表
+ 
+     Args:
+         content (str): 任务内容描述
++        priority (str): 任务优先级，可选值：高/中/低，默认为"中"
+ 
+     Returns:
+         None
+ 
+@@ -61,12 +62,34 @@
+     task = {
+         "id": len(tasks) + 1,
+         "content": content,
+         "done": False,
++        "priority": priority,
+         "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+     }
+     tasks.append(task)
+     save_tasks(tasks)
++    print(f"✅ 已添加任务：{content}")
++
++
++    Args:
++        content (str): 任务内容描述
++
++    Returns:
++        None
++
++    Note:
++        新任务会自动分配 ID，并设置 created_at 时间戳
++    """
++    tasks = load_tasks()
++    task = {
++        "id": len(tasks) + 1,
++        "content": content,
++        "done": False,
++        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
++    }
++    tasks.append(task)
++    save_tasks(tasks)
+     print(f"✅ 已添加任务: {content}")
+ 
+ 
+ def list_tasks():
+
+[0m
+[0m→ [0mRead todo.py[90m [limit=30, offset=71][0m
+编辑时出现了重复。让我重新读取完整文件并修复：
+[0m→ [0mRead todo.py
+发现有重复内容。让我删除重复部分并继续修改：
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -70,29 +70,8 @@
+     save_tasks(tasks)
+     print(f"✅ 已添加任务：{content}")
+ 
+ 
+-    Args:
+-        content (str): 任务内容描述
+-
+-    Returns:
+-        None
+-
+-    Note:
+-        新任务会自动分配 ID，并设置 created_at 时间戳
+-    """
+-    tasks = load_tasks()
+-    task = {
+-        "id": len(tasks) + 1,
+-        "content": content,
+-        "done": False,
+-        "created_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+-    }
+-    tasks.append(task)
+-    save_tasks(tasks)
+-    print(f"✅ 已添加任务: {content}")
+-
+-
+ def list_tasks():
+     """
+     列出所有任务及其状态
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -22,9 +22,14 @@
+               如果文件不存在则返回空列表
+     """
+     if os.path.exists(TASKS_FILE):
+         with open(TASKS_FILE, "r", encoding="utf-8") as f:
+-            return json.load(f)
++            tasks = json.load(f)
++            # 向后兼容：为现有任务添加默认优先级
++            for task in tasks:
++                if "priority" not in task:
++                    task["priority"] = "中"
++            return tasks
+     return []
+ 
+ 
+ def save_tasks(tasks):
+
+[0m
+[0m# [0mTodos
+[x] 修改 add_task 函数支持优先级参数
+[ ] 修改 list_tasks 函数显示优先级
+[ ] 修改 main 函数添加优先级命令行参数
+[ ] 测试功能并验证
+[ ] 提交代码
+[0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead todo.py[90m [limit=30, offset=73][0m
+[0m✗ [0medit failed
+[91m[1mError: [0mCould not find oldString in the file. It must match exactly, including whitespace, indentation, and line endings.
+[0m→ [0mRead todo.py[90m [limit=30, offset=79][0m
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -79,8 +79,36 @@
+ def list_tasks():
+     """
+     列出所有任务及其状态
+ 
++    按顺序显示所有任务的 ID、状态、优先级和内容
++    任务状态用图标表示：✅ 已完成，⭕ 待完成
++    优先级用图标表示：🔴 高，🟡 中，🟢 低
++
++    Returns:
++        None
++
++    Note:
++        如果没有任务，会显示提示信息
++    """
++    tasks = load_tasks()
++    if not tasks:
++        print("📭 暂无任务")
++        return
++
++    priority_icons = {"高": "🔴", "中": "🟡", "低": "🟢"}
++
++    print("\n📋 任务列表:")
++    print("-" * 50)
++    for task in tasks:
++        status = "✅" if task["done"] else "⭕"
++        priority = task.get("priority", "中")
++        priority_icon = priority_icons.get(priority, "🟡")
++        print(f"{status} [{task['id']}] {priority_icon} {task['content']}")
++    print("-" * 50)
++    print(f"总计：{len(tasks)} 个任务\n")
++
++
+     按顺序显示所有任务的 ID、状态和内容
+     任务状态用图标表示：✅ 已完成，⭕ 待完成
+ 
+     Returns:
+
+[0m
+[0m→ [0mRead todo.py
+发现有重复内容。让我删除重复的行：
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -107,31 +107,8 @@
+     print("-" * 50)
+     print(f"总计：{len(tasks)} 个任务\n")
+ 
+ 
+-    按顺序显示所有任务的 ID、状态和内容
+-    任务状态用图标表示：✅ 已完成，⭕ 待完成
+-
+-    Returns:
+-        None
+-
+-    Note:
+-        如果没有任务，会显示提示信息
+-    """
+-    tasks = load_tasks()
+-    if not tasks:
+-        print("📭 暂无任务")
+-        return
+-
+-    print("\n📋 任务列表:")
+-    print("-" * 40)
+-    for task in tasks:
+-        status = "✅" if task["done"] else "⭕"
+-        print(f"{status} [{task['id']}] {task['content']}")
+-    print("-" * 40)
+-    print(f"总计: {len(tasks)} 个任务\n")
+-
+-
+ def done_task(task_id):
+     """
+     标记指定 ID 的任务为已完成
+ 
+
+[0m
+[0m# [0mTodos
+[x] 修改 add_task 函数支持优先级参数
+[x] 修改 list_tasks 函数显示优先级
+[ ] 修改 main 函数添加优先级命令行参数
+[ ] 测试功能并验证
+[ ] 提交代码
+[0m
+[0m→ [0mRead todo.py[90m [limit=60, offset=156][0m
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -181,8 +181,14 @@
+ 
+ # add 命令
+ add_parser = subparsers.add_parser("add", help="添加任务")
+ add_parser.add_argument("content", help="任务内容")
++add_parser.add_argument(
++    "--priority", "-p",
++    choices=["高", "中", "低"],
++    default="中",
++    help="任务优先级（高/中/低），默认为中"
++)
+ 
+ # list 命令
+ subparsers.add_parser("list", help="列出所有任务")
+ 
+
+[0m
+[0m← [0mEdit todo.py
+Index: /root/.openclaw/workspace/test/todo-manager/todo.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/todo.py
++++ /root/.openclaw/workspace/test/todo-manager/todo.py
+@@ -182,12 +182,13 @@
+ # add 命令
+ add_parser = subparsers.add_parser("add", help="添加任务")
+ add_parser.add_argument("content", help="任务内容")
+ add_parser.add_argument(
+-    "--priority", "-p",
++    "--priority",
++    "-p",
+     choices=["高", "中", "低"],
+     default="中",
+-    help="任务优先级（高/中/低），默认为中"
++    help="任务优先级（高/中/低），默认为中",
+ )
+ 
+ # list 命令
+ subparsers.add_parser("list", help="列出所有任务")
+@@ -202,9 +203,9 @@
+ 
+ args = parser.parse_args()
+ 
+ if args.command == "add":
+-    add_task(args.content)
++    add_task(args.content, args.priority)
+ elif args.command == "list":
+     list_tasks()
+ elif args.command == "done":
+     done_task(args.id)
+
+[0m
+[0m# [0mTodos
+[x] 修改 add_task 函数支持优先级参数
+[x] 修改 list_tasks 函数显示优先级
+[x] 修改 main 函数添加优先级命令行参数
+[ ] 测试功能并验证
+[ ] 提交代码
+[0m
+现在测试功能：
+[0m$ [0mpython3 todo.py add "测试低优先级任务" -p 低
+✅ 已添加任务：测试低优先级任务
+[0m
+[0m$ [0mpython3 todo.py add "测试高优先级任务" --priority 高
+✅ 已添加任务：测试高优先级任务
+[0m
+[0m$ [0mpython3 todo.py add "测试默认优先级任务"
+✅ 已添加任务：测试默认优先级任务
+[0m
+[0m$ [0mpython3 todo.py list
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+⭕ [2] 🟡 添加任务优先级功能（高/中/低）
+⭕ [3] 🟡 添加任务截止日期功能
+⭕ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+--------------------------------------------------
+总计：10 个任务
+[0m
+完美！功能正常工作。现在测试帮助信息：
+[0m$ [0mpython3 todo.py add --help
+usage: todo add [-h] [--priority {高,中,低}] content
+
+positional arguments:
+  content               任务内容
+
+options:
+  -h, --help            show this help message and exit
+  --priority {高,中,低}, -p {高,中,低}
+                        任务优先级（高/中/低），默认为中
+[0m
+[0m# [0mTodos
+[x] 修改 add_task 函数支持优先级参数
+[x] 修改 list_tasks 函数显示优先级
+[x] 修改 main 函数添加优先级命令行参数
+[x] 测试功能并验证
+[ ] 提交代码
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   runtime.log
+	modified:   tasks.json
+	modified:   todo.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
+[0m$ [0mgit log -1 --format='%s'
+Feat: 优化 todo.py 的代码结构，添加函数注释
+[0m
+[0m$ [0mgit add todo.py tasks.json && git commit -m "Feat: 添加任务优先级功能（高/中/低）
+
+- add_task 函数新增 priority 参数，支持指定高/中/低优先级
+- list_tasks 函数显示优先级图标（🔴高/🟡中/🟢低）
+- load_tasks 函数自动为现有任务添加默认优先级（中）
+- main 函数新增 --priority/-p 命令行参数
+- 完全向后兼容，不影响现有功能"
+[main 3455ed2] Feat: 添加任务优先级功能（高/中/低）
+ 2 files changed, 65 insertions(+), 17 deletions(-)
+[0m
+[0m$ [0mgit push origin main
+To github.com:jscomet/test-todo-manager.git
+   6e9d4f8..3455ed2  main -> main
+[0m
+[0m# [0mTodos
+[x] 修改 add_task 函数支持优先级参数
+[x] 修改 list_tasks 函数显示优先级
+[x] 修改 main 函数添加优先级命令行参数
+[x] 测试功能并验证
+[x] 提交代码
+[0m
+## ✅ 任务完成
+
+### 完成的功能
+
+| 功能 | 说明 |
+|------|------|
+| 添加任务优先级 | `add_task()` 支持 `priority` 参数 |
+| 显示优先级图标 | 列表显示 🔴高/🟡中/🟢低 |
+| 命令行参数 | `--priority` 或 `-p` 指定优先级 |
+| 向后兼容 | 现有任务自动补充默认优先级（中） |
+
+### 修改的文件
+
+- **todo.py** - 核心功能实现
+  - `load_tasks()` - 添加兼容性处理
+  - `add_task()` - 新增 priority 参数
+  - `list_tasks()` - 显示优先级图标
+  - `main()` - 添加命令行参数
+
+- **tasks.json** - 测试数据更新
+
+### 测试方法
+
+```bash
+# 添加不同优先级的任务
+python3 todo.py add "紧急任务" --priority 高
+python3 todo.py add "普通任务" -p 中
+python3 todo.py add "不紧急任务" -p 低
+python3 todo.py add "默认任务"  # 默认中优先级
+
+# 查看任务列表
+python3 todo.py list
+
+# 查看帮助
+python3 todo.py add --help
+```
+
+### Git 提交
+
+已提交并推送到远程仓库：`3455ed2`
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 01:17:40][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772558260
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🟡 优化 todo.py 的代码结构，添加函数注释
+⭕ [2] 🟡 添加任务优先级功能（高/中/低）
+⭕ [3] 🟡 添加任务截止日期功能
+⭕ [4] 🟡 添加任务分类/标签功能
+⭕ [5] 🟡 添加数据导出功能（导出为 CSV 或 Markdown）
+⭕ [6] 🟡 测试任务 1
+⭕ [7] 🟡 测试任务_1772557996
+⭕ [8] 🟢 测试低优先级任务
+⭕ [9] 🔴 测试高优先级任务
+⭕ [10] 🟡 测试默认优先级任务
+⭕ [11] 🟡 测试任务_1772558260
+--------------------------------------------------
+总计：11 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 01:17:40][0m ========== 阶段 4: Git 提交推送 ==========
