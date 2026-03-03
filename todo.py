@@ -82,7 +82,7 @@ def add_task(content, priority="中", due_date=None, tags=None):
     print(f"✅ 已添加任务：{content}")
 
 
-def list_tasks(tag_filter=None):
+def list_tasks(tag_filter=None, sort_by="priority"):
     """
     列出所有任务及其状态
 
@@ -92,6 +92,8 @@ def list_tasks(tag_filter=None):
 
     Args:
         tag_filter (str): 可选，只显示包含此标签的任务
+        sort_by (str): 排序方式，可选值：priority（优先级）/ created（创建时间）/ none（不排序）
+                      默认为 priority
 
     Returns:
         None
@@ -111,6 +113,13 @@ def list_tasks(tag_filter=None):
         else:
             print("📭 暂无任务")
         return
+
+    # 按优先级排序
+    if sort_by == "priority":
+        priority_order = {"高": 0, "中": 1, "低": 2}
+        tasks = sorted(
+            tasks, key=lambda t: priority_order.get(t.get("priority", "中"), 1)
+        )
 
     priority_icons = {"高": "🔴", "中": "🟡", "低": "🟢"}
 
@@ -383,6 +392,13 @@ def main():
         "--tag",
         help="按标签过滤",
     )
+    list_parser.add_argument(
+        "--sort",
+        "-s",
+        choices=["priority", "created", "none"],
+        default="priority",
+        help="排序方式（priority/created/none），默认为 priority",
+    )
 
     # done 命令
     done_parser = subparsers.add_parser("done", help="标记任务完成")
@@ -424,7 +440,7 @@ def main():
             tags = [t.strip() for t in args.tags.replace("，", ",").split(",")]
         add_task(args.content, args.priority, args.due, tags)
     elif args.command == "list":
-        list_tasks(args.tag)
+        list_tasks(args.tag, args.sort)
     elif args.command == "done":
         done_task(args.id)
     elif args.command == "delete":
