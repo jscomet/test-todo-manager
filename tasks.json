@@ -9,14 +9,6 @@
   },
   {
     "id": 2,
-    "content": "测试无截止日期",
-    "done": true,
-    "priority": "中",
-    "created_at": "2026-03-04 01:45:29",
-    "completed_at": "2026-03-04 02:37:43"
-  },
-  {
-    "id": 3,
     "content": "测试任务_1772559976",
     "done": true,
     "priority": "中",
@@ -27,15 +19,19 @@
     ]
   },
   {
-    "id": 4,
+    "id": 3,
     "content": "测试任务_1772560148",
     "done": true,
     "priority": "中",
     "created_at": "2026-03-04 01:49:08",
-    "completed_at": "2026-03-04 02:51:12"
+    "completed_at": "2026-03-04 02:51:12",
+    "tags": [
+      "重复标签",
+      "新标签"
+    ]
   },
   {
-    "id": 5,
+    "id": 4,
     "content": "测试任务_1772560188",
     "done": true,
     "priority": "中",
@@ -43,7 +39,7 @@
     "completed_at": "2026-03-04 02:52:22"
   },
   {
-    "id": 6,
+    "id": 5,
     "content": "测试标签分割功能",
     "done": true,
     "priority": "中",
@@ -55,7 +51,7 @@
     "completed_at": "2026-03-04 02:48:14"
   },
   {
-    "id": 7,
+    "id": 6,
     "content": "测试任务_1772560261",
     "done": true,
     "priority": "中",
@@ -63,7 +59,7 @@
     "completed_at": "2026-03-04 02:57:05"
   },
   {
-    "id": 8,
+    "id": 7,
     "content": "测试任务_1772560300",
     "done": true,
     "priority": "中",
@@ -71,7 +67,7 @@
     "completed_at": "2026-03-04 02:58:23"
   },
   {
-    "id": 9,
+    "id": 8,
     "content": "测试任务_1772560348",
     "done": true,
     "priority": "中",
@@ -79,7 +75,7 @@
     "completed_at": "2026-03-04 02:59:35"
   },
   {
-    "id": 10,
+    "id": 9,
     "content": "CLI 测试任务",
     "done": true,
     "priority": "高",
@@ -87,7 +83,7 @@
     "completed_at": "2026-03-04 03:00:36"
   },
   {
-    "id": 11,
+    "id": 10,
     "content": "测试任务_1772560561",
     "done": true,
     "priority": "中",
@@ -95,7 +91,7 @@
     "completed_at": "2026-03-04 03:02:33"
   },
   {
-    "id": 12,
+    "id": 11,
     "content": "测试任务_1772560713",
     "done": true,
     "priority": "中",
@@ -103,7 +99,7 @@
     "completed_at": "2026-03-04 03:13:46"
   },
   {
-    "id": 13,
+    "id": 12,
     "content": "运行测试验证覆盖情况：",
     "done": true,
     "created_at": "2026-03-04 01:59:00",
@@ -111,7 +107,7 @@
     "completed_at": "2026-03-04 03:19:51"
   },
   {
-    "id": 14,
+    "id": 13,
     "content": "NONE",
     "done": true,
     "created_at": "2026-03-04 01:59:00",
@@ -119,7 +115,7 @@
     "completed_at": "2026-03-04 03:16:28"
   },
   {
-    "id": 15,
+    "id": 14,
     "content": "测试任务_1772560897",
     "done": true,
     "priority": "中",
@@ -127,7 +123,7 @@
     "completed_at": "2026-03-04 03:18:18"
   },
   {
-    "id": 16,
+    "id": 15,
     "content": "测试任务_1772560937",
     "done": true,
     "priority": "中",
@@ -135,7 +131,7 @@
     "completed_at": "2026-03-04 03:17:36"
   },
   {
-    "id": 17,
+    "id": 16,
     "content": "我需要先了解已完成任务的内容和项目当前状态。",
     "done": true,
     "created_at": "2026-03-04 02:02:38",
@@ -143,7 +139,7 @@
     "completed_at": "2026-03-04 03:21:27"
   },
   {
-    "id": 18,
+    "id": 17,
     "content": "NONE",
     "done": true,
     "created_at": "2026-03-04 02:02:38",
@@ -151,7 +147,7 @@
     "completed_at": "2026-03-04 03:22:41"
   },
   {
-    "id": 19,
+    "id": 18,
     "content": "测试任务_1772560995",
     "done": true,
     "priority": "中",
@@ -159,14 +155,14 @@
     "completed_at": "2026-03-04 03:24:18"
   },
   {
-    "id": 20,
+    "id": 19,
     "content": "测试任务_1772561467",
     "done": true,
     "priority": "中",
     "created_at": "2026-03-04 02:11:07"
   },
   {
-    "id": 21,
+    "id": 20,
     "content": "测试任务_1772561636",
     "done": true,
     "priority": "中",
@@ -174,7 +170,7 @@
     "completed_at": "2026-03-04 03:27:07"
   },
   {
-    "id": 22,
+    "id": 21,
     "content": "测试任务_1772561872",
     "done": true,
     "priority": "中",
@@ -182,7 +178,7 @@
     "completed_at": "2026-03-04 03:28:39"
   },
   {
-    "id": 23,
+    "id": 22,
     "content": "NONE",
     "done": true,
     "created_at": "2026-03-04 02:18:00",
@@ -190,7 +186,7 @@
     "completed_at": "2026-03-04 03:29:26"
   },
   {
-    "id": 24,
+    "id": 23,
     "content": "（要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称\"测试任务\"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）",
     "done": true,
     "created_at": "2026-03-04 02:18:00",
@@ -198,7 +194,7 @@
     "completed_at": "2026-03-04 03:30:00"
   },
   {
-    "id": 25,
+    "id": 24,
     "content": "测试任务_1772562060",
     "done": true,
     "priority": "中",
@@ -206,7 +202,7 @@
     "completed_at": "2026-03-04 03:34:12"
   },
   {
-    "id": 26,
+    "id": 25,
     "content": "测试任务_1772562098",
     "done": true,
     "priority": "中",
@@ -214,7 +210,7 @@
     "completed_at": "2026-03-04 03:45:00"
   },
   {
-    "id": 27,
+    "id": 26,
     "content": "测试任务_1772562125",
     "done": true,
     "priority": "中",
@@ -222,7 +218,7 @@
     "completed_at": "2026-03-04 03:40:38"
   },
   {
-    "id": 28,
+    "id": 27,
     "content": "测试任务_1772562169",
     "done": true,
     "priority": "中",
@@ -230,7 +226,7 @@
     "completed_at": "2026-03-04 03:47:50"
   },
   {
-    "id": 29,
+    "id": 28,
     "content": "测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。",
     "done": true,
     "priority": "中",
@@ -238,7 +234,7 @@
     "completed_at": "2026-03-04 03:49:11"
   },
   {
-    "id": 30,
+    "id": 29,
     "content": "测试任务_1772562229",
     "done": true,
     "priority": "中",
@@ -246,7 +242,7 @@
     "completed_at": "2026-03-04 03:53:44"
   },
   {
-    "id": 31,
+    "id": 30,
     "content": "测试任务_1772562601",
     "done": true,
     "priority": "中",
@@ -254,7 +250,7 @@
     "completed_at": "2026-03-04 03:57:21"
   },
   {
-    "id": 32,
+    "id": 31,
     "content": "CLI 测试任务",
     "done": true,
     "priority": "高",
@@ -267,7 +263,7 @@
     "completed_at": "2026-03-04 04:02:20"
   },
   {
-    "id": 33,
+    "id": 32,
     "content": "测试任务_1772562920",
     "done": true,
     "priority": "中",
@@ -275,7 +271,7 @@
     "completed_at": "2026-03-04 04:01:22"
   },
   {
-    "id": 34,
+    "id": 33,
     "content": "测试截止日期 CLI",
     "done": true,
     "priority": "高",
@@ -288,7 +284,7 @@
     "completed_at": "2026-03-04 04:22:08"
   },
   {
-    "id": 35,
+    "id": 34,
     "content": "测试任务_1772563000",
     "done": true,
     "priority": "中",
@@ -296,7 +292,7 @@
     "completed_at": "2026-03-04 04:14:15"
   },
   {
-    "id": 36,
+    "id": 35,
     "content": "测试任务_1772563059",
     "done": true,
     "priority": "中",
@@ -304,7 +300,7 @@
     "completed_at": "2026-03-04 04:28:55"
   },
   {
-    "id": 37,
+    "id": 36,
     "content": "CLI 测试任务",
     "done": true,
     "priority": "高",
@@ -317,7 +313,7 @@
     "completed_at": "2026-03-04 04:26:55"
   },
   {
-    "id": 38,
+    "id": 37,
     "content": "CLI 删除测试",
     "done": true,
     "priority": "中",
@@ -325,7 +321,7 @@
     "completed_at": "2026-03-04 04:38:17"
   },
   {
-    "id": 39,
+    "id": 38,
     "content": "CLI 完成测试",
     "done": true,
     "priority": "中",
@@ -333,7 +329,7 @@
     "completed_at": "2026-03-04 04:36:07"
   },
   {
-    "id": 40,
+    "id": 39,
     "content": "导出测试",
     "done": true,
     "priority": "中",
@@ -341,7 +337,7 @@
     "completed_at": "2026-03-04 04:39:33"
   },
   {
-    "id": 41,
+    "id": 40,
     "content": "优先级测试",
     "done": true,
     "priority": "中",
@@ -349,7 +345,7 @@
     "completed_at": "2026-03-04 04:42:55"
   },
   {
-    "id": 42,
+    "id": 41,
     "content": "统计测试",
     "done": true,
     "priority": "高",
@@ -357,7 +353,7 @@
     "completed_at": "2026-03-04 04:45:38"
   },
   {
-    "id": 43,
+    "id": 42,
     "content": "CLI 测试任务",
     "done": true,
     "priority": "高",
@@ -369,7 +365,7 @@
     ]
   },
   {
-    "id": 44,
+    "id": 43,
     "content": "CLI 完成测试",
     "done": true,
     "priority": "中",
@@ -377,7 +373,7 @@
     "completed_at": "2026-03-04 04:54:29"
   },
   {
-    "id": 45,
+    "id": 44,
     "content": "导出测试",
     "done": true,
     "priority": "中",
@@ -385,7 +381,7 @@
     "completed_at": "2026-03-04 04:55:49"
   },
   {
-    "id": 46,
+    "id": 45,
     "content": "优先级测试",
     "done": true,
     "priority": "中",
@@ -393,7 +389,7 @@
     "completed_at": "2026-03-04 04:57:17"
   },
   {
-    "id": 47,
+    "id": 46,
     "content": "统计测试",
     "done": true,
     "priority": "高",
@@ -401,7 +397,7 @@
     "completed_at": "2026-03-04 04:58:33"
   },
   {
-    "id": 48,
+    "id": 47,
     "content": "CLI 测试任务",
     "done": true,
     "priority": "高",
@@ -414,7 +410,7 @@
     "completed_at": "2026-03-04 04:59:12"
   },
   {
-    "id": 49,
+    "id": 48,
     "content": "CLI 完成测试",
     "done": true,
     "priority": "中",
@@ -422,7 +418,7 @@
     "completed_at": "2026-03-04 05:00:11"
   },
   {
-    "id": 50,
+    "id": 49,
     "content": "导出测试",
     "done": true,
     "priority": "中",
@@ -430,7 +426,7 @@
     "completed_at": "2026-03-04 05:01:36"
   },
   {
-    "id": 51,
+    "id": 50,
     "content": "优先级测试",
     "done": true,
     "priority": "中",
@@ -438,23 +434,24 @@
     "completed_at": "2026-03-04 05:02:47"
   },
   {
-    "id": 52,
+    "id": 51,
     "content": "统计测试",
-    "done": false,
+    "done": true,
     "priority": "高",
-    "created_at": "2026-03-04 02:47:35"
+    "created_at": "2026-03-04 02:47:35",
+    "completed_at": "2026-03-04 05:03:44"
   },
   {
-    "id": 53,
+    "id": 52,
     "content": "测试任务_1772563690",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:48:10"
   },
   {
-    "id": 54,
+    "id": 53,
     "content": "CLI 测试任务",
-    "done": false,
+    "done": true,
     "priority": "高",
     "created_at": "2026-03-04 02:48:33",
     "due_date": "2026-12-31",
@@ -464,49 +461,49 @@
     ]
   },
   {
-    "id": 55,
+    "id": 54,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:48:33"
   },
   {
-    "id": 56,
+    "id": 55,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:48:33"
   },
   {
-    "id": 57,
+    "id": 56,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:48:33"
   },
   {
-    "id": 58,
+    "id": 57,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:48:34"
   },
   {
-    "id": 59,
+    "id": 58,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 02:48:34"
   },
   {
-    "id": 60,
+    "id": 59,
     "content": "测试任务_1772563758",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:49:18"
   },
   {
-    "id": 61,
+    "id": 60,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -518,70 +515,70 @@
     ]
   },
   {
-    "id": 62,
+    "id": 61,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:49:50"
   },
   {
-    "id": 63,
+    "id": 62,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:49:50"
   },
   {
-    "id": 64,
+    "id": 63,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:49:50"
   },
   {
-    "id": 65,
+    "id": 64,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:49:50"
   },
   {
-    "id": 66,
+    "id": 65,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 02:49:50"
   },
   {
-    "id": 67,
+    "id": 66,
     "content": "测试任务_1772563866",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:51:06"
   },
   {
-    "id": 68,
+    "id": 67,
     "content": "测试任务_1772563922",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:52:02"
   },
   {
-    "id": 69,
+    "id": 68,
     "content": "测试任务_1772564218",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:56:58"
   },
   {
-    "id": 70,
+    "id": 69,
     "content": "测试任务_1772564294",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:58:14"
   },
   {
-    "id": 71,
+    "id": 70,
     "content": "测试验证任务_1772564338",
     "done": false,
     "priority": "高",
@@ -593,35 +590,35 @@
     ]
   },
   {
-    "id": 72,
+    "id": 71,
     "content": "测试任务_1772564371",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 02:59:31"
   },
   {
-    "id": 73,
+    "id": 72,
     "content": "测试任务_1772564431",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:00:31"
   },
   {
-    "id": 74,
+    "id": 73,
     "content": "测试任务_1772564549",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:02:29"
   },
   {
-    "id": 75,
+    "id": 74,
     "content": "测试任务_1772565221",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:13:41"
   },
   {
-    "id": 76,
+    "id": 75,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -633,7 +630,7 @@
     ]
   },
   {
-    "id": 77,
+    "id": 76,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -645,42 +642,42 @@
     ]
   },
   {
-    "id": 78,
+    "id": 77,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:25"
   },
   {
-    "id": 79,
+    "id": 78,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:25"
   },
   {
-    "id": 80,
+    "id": 79,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:25"
   },
   {
-    "id": 81,
+    "id": 80,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:25"
   },
   {
-    "id": 82,
+    "id": 81,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:14:25"
   },
   {
-    "id": 83,
+    "id": 82,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -692,7 +689,7 @@
     ]
   },
   {
-    "id": 84,
+    "id": 83,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -704,42 +701,42 @@
     ]
   },
   {
-    "id": 85,
+    "id": 84,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:30"
   },
   {
-    "id": 86,
+    "id": 85,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:30"
   },
   {
-    "id": 87,
+    "id": 86,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:30"
   },
   {
-    "id": 88,
+    "id": 87,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:30"
   },
   {
-    "id": 89,
+    "id": 88,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:14:30"
   },
   {
-    "id": 90,
+    "id": 89,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -751,7 +748,7 @@
     ]
   },
   {
-    "id": 91,
+    "id": 90,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -763,46 +760,58 @@
     ]
   },
   {
-    "id": 92,
+    "id": 91,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:35"
   },
   {
-    "id": 93,
+    "id": 92,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:35"
   },
   {
-    "id": 94,
+    "id": 93,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:35"
   },
   {
-    "id": 95,
+    "id": 94,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:35"
   },
   {
-    "id": 96,
+    "id": 95,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:14:35"
   },
   {
-    "id": 97,
+    "id": 96,
     "content": "测试任务_1772565281",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:14:41"
+  },
+  {
+    "id": 97,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:15:05",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 98,
@@ -818,50 +827,50 @@
   },
   {
     "id": 99,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:15:05",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 100,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:05"
   },
   {
-    "id": 101,
+    "id": 100,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:05"
   },
   {
-    "id": 102,
+    "id": 101,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:05"
   },
   {
-    "id": 103,
+    "id": 102,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:05"
   },
   {
-    "id": 104,
+    "id": 103,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 104,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:15:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 105,
@@ -877,57 +886,57 @@
   },
   {
     "id": 106,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:15:09",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 107,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:09"
   },
   {
-    "id": 108,
+    "id": 107,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:09"
   },
   {
-    "id": 109,
+    "id": 108,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:09"
   },
   {
-    "id": 110,
+    "id": 109,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:10"
   },
   {
-    "id": 111,
+    "id": 110,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:15:10"
   },
   {
-    "id": 112,
+    "id": 111,
     "content": "测试任务_1772565327",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:27"
+  },
+  {
+    "id": 112,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:15:41",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 113,
@@ -943,50 +952,50 @@
   },
   {
     "id": 114,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:15:41",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 115,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:41"
   },
   {
-    "id": 116,
+    "id": 115,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:41"
   },
   {
-    "id": 117,
+    "id": 116,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:41"
   },
   {
-    "id": 118,
+    "id": 117,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:15:41"
   },
   {
-    "id": 119,
+    "id": 118,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 119,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:16:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 120,
@@ -1002,57 +1011,57 @@
   },
   {
     "id": 121,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:16:13",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 122,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:13"
   },
   {
-    "id": 123,
+    "id": 122,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:13"
   },
   {
-    "id": 124,
+    "id": 123,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:13"
   },
   {
-    "id": 125,
+    "id": 124,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:13"
   },
   {
-    "id": 126,
+    "id": 125,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:16:13"
   },
   {
-    "id": 127,
+    "id": 126,
     "content": "测试任务_1772565384",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:24"
+  },
+  {
+    "id": 127,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:16:37",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 128,
@@ -1068,50 +1077,50 @@
   },
   {
     "id": 129,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:16:37",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 130,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:37"
   },
   {
-    "id": 131,
+    "id": 130,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:37"
   },
   {
-    "id": 132,
+    "id": 131,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:37"
   },
   {
-    "id": 133,
+    "id": 132,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:16:37"
   },
   {
-    "id": 134,
+    "id": 133,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 134,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:17:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 135,
@@ -1127,50 +1136,50 @@
   },
   {
     "id": 136,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:17:09",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 137,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:09"
   },
   {
-    "id": 138,
+    "id": 137,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:09"
   },
   {
-    "id": 139,
+    "id": 138,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:09"
   },
   {
-    "id": 140,
+    "id": 139,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:09"
   },
   {
-    "id": 141,
+    "id": 140,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 141,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:17:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 142,
@@ -1186,53 +1195,41 @@
   },
   {
     "id": 143,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:17:13",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 144,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:14"
   },
   {
-    "id": 145,
+    "id": 144,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:14"
   },
   {
-    "id": 146,
+    "id": 145,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:14"
   },
   {
-    "id": 147,
+    "id": 146,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:14"
   },
   {
-    "id": 148,
+    "id": 147,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:17:14"
   },
   {
-    "id": 149,
+    "id": 148,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1244,7 +1241,7 @@
     ]
   },
   {
-    "id": 150,
+    "id": 149,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1256,46 +1253,58 @@
     ]
   },
   {
-    "id": 151,
+    "id": 150,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:22"
   },
   {
-    "id": 152,
+    "id": 151,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:22"
   },
   {
-    "id": 153,
+    "id": 152,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:22"
   },
   {
-    "id": 154,
+    "id": 153,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:22"
   },
   {
-    "id": 155,
+    "id": 154,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:17:22"
   },
   {
-    "id": 156,
+    "id": 155,
     "content": "测试任务_1772565451",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:31"
+  },
+  {
+    "id": 156,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:17:57",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 157,
@@ -1311,50 +1320,50 @@
   },
   {
     "id": 158,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:17:57",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 159,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:57"
   },
   {
-    "id": 160,
+    "id": 159,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:57"
   },
   {
-    "id": 161,
+    "id": 160,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:57"
   },
   {
-    "id": 162,
+    "id": 161,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:17:57"
   },
   {
-    "id": 163,
+    "id": 162,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 163,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:18:03",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 164,
@@ -1370,57 +1379,57 @@
   },
   {
     "id": 165,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:18:03",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 166,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:03"
   },
   {
-    "id": 167,
+    "id": 166,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:03"
   },
   {
-    "id": 168,
+    "id": 167,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:03"
   },
   {
-    "id": 169,
+    "id": 168,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:03"
   },
   {
-    "id": 170,
+    "id": 169,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:18:03"
   },
   {
-    "id": 171,
+    "id": 170,
     "content": "测试任务_1772565492",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:13"
+  },
+  {
+    "id": 171,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:18:54",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 172,
@@ -1436,60 +1445,48 @@
   },
   {
     "id": 173,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:18:54",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 174,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:54"
   },
   {
-    "id": 175,
+    "id": 174,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:54"
   },
   {
-    "id": 176,
+    "id": 175,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:54"
   },
   {
-    "id": 177,
+    "id": 176,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:18:54"
   },
   {
-    "id": 178,
+    "id": 177,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:18:54"
   },
   {
-    "id": 179,
+    "id": 178,
     "content": "测试任务_1772565586",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:19:46"
   },
   {
-    "id": 180,
+    "id": 179,
     "content": "过滤测试任务 1",
     "done": false,
     "priority": "中",
@@ -1499,7 +1496,7 @@
     ]
   },
   {
-    "id": 181,
+    "id": 180,
     "content": "测试英文逗号标签",
     "done": false,
     "priority": "中",
@@ -1511,14 +1508,14 @@
     ]
   },
   {
-    "id": 182,
+    "id": 181,
     "content": "测试 add-tag 命令",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:06"
   },
   {
-    "id": 183,
+    "id": 182,
     "content": "测试空格标签",
     "done": false,
     "priority": "中",
@@ -1530,7 +1527,7 @@
     ]
   },
   {
-    "id": 184,
+    "id": 183,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1542,7 +1539,7 @@
     ]
   },
   {
-    "id": 185,
+    "id": 184,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1554,7 +1551,7 @@
     ]
   },
   {
-    "id": 186,
+    "id": 185,
     "content": "测试 remove-tag 命令",
     "done": false,
     "priority": "中",
@@ -1565,32 +1562,44 @@
     ]
   },
   {
-    "id": 187,
+    "id": 186,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 188,
+    "id": 187,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 189,
+    "id": 188,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 190,
+    "id": 189,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 190,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:20:07",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 191,
@@ -1606,109 +1615,97 @@
   },
   {
     "id": 192,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:20:07",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 193,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 194,
+    "id": 193,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 195,
+    "id": 194,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 196,
+    "id": 195,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 197,
+    "id": 196,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:20:07"
   },
   {
-    "id": 198,
+    "id": 197,
     "content": "测试任务_1772565683",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:21:23"
   },
   {
-    "id": 199,
+    "id": 198,
     "content": "根据分析，已完成的任务（任务 32）是一个分析性质的任务，用于了解项目状态。从项目当前状态来看：",
     "done": false,
     "created_at": "2026-03-04 03:21:56",
     "priority": "中"
   },
   {
-    "id": 200,
+    "id": 199,
     "content": "**已完成功能**:",
     "done": false,
     "created_at": "2026-03-04 03:21:56",
     "priority": "中"
   },
   {
-    "id": 201,
+    "id": 200,
     "content": "- ✅ 任务优先级（高/中/低）",
     "done": false,
     "created_at": "2026-03-04 03:21:56",
     "priority": "中"
   },
   {
-    "id": 202,
+    "id": 201,
     "content": "- ✅ 任务截止日期",
     "done": false,
     "created_at": "2026-03-04 03:21:56",
     "priority": "中"
   },
   {
-    "id": 203,
+    "id": 202,
     "content": "- ✅ 任务标签系统",
     "done": false,
     "created_at": "2026-03-04 03:21:56",
     "priority": "中"
   },
   {
-    "id": 204,
+    "id": 203,
     "content": "测试任务_1772565756",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:22:36"
   },
   {
-    "id": 205,
+    "id": 204,
     "content": "测试任务_1772565854",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:24:14"
   },
   {
-    "id": 206,
+    "id": 205,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1720,7 +1717,7 @@
     ]
   },
   {
-    "id": 207,
+    "id": 206,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -1732,179 +1729,191 @@
     ]
   },
   {
-    "id": 208,
+    "id": 207,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:25:34"
   },
   {
-    "id": 209,
+    "id": 208,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:25:34"
   },
   {
-    "id": 210,
+    "id": 209,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:25:34"
   },
   {
-    "id": 211,
+    "id": 210,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:25:34"
   },
   {
-    "id": 212,
+    "id": 211,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:25:34"
   },
   {
-    "id": 213,
+    "id": 212,
     "content": "测试任务_1772566022",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:27:02"
   },
   {
-    "id": 214,
+    "id": 213,
     "content": "测试任务_1772566115",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:28:35"
   },
   {
-    "id": 215,
+    "id": 214,
     "content": "测试任务_1772566162",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:29:22"
   },
   {
-    "id": 216,
+    "id": 215,
     "content": "测试任务_1772566192",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:29:52"
   },
   {
-    "id": 217,
+    "id": 216,
     "content": "测试任务_1772566448",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:34:08"
   },
   {
-    "id": 218,
+    "id": 217,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:38:31"
   },
   {
-    "id": 219,
+    "id": 218,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:39:01"
   },
   {
-    "id": 220,
+    "id": 219,
     "content": "测试任务_1772566834",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:40:34"
   },
   {
-    "id": 221,
+    "id": 220,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:46:34"
   },
   {
-    "id": 222,
+    "id": 221,
     "content": "测试任务_1772567265",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:47:45"
   },
   {
-    "id": 223,
+    "id": 222,
     "content": "我需要先了解已完成任务的内容和项目当前状态，才能判断是否需要创建后续任务。",
     "done": false,
     "created_at": "2026-03-04 03:48:05",
     "priority": "中"
   },
   {
-    "id": 224,
+    "id": 223,
     "content": "NONE",
     "done": false,
     "created_at": "2026-03-04 03:48:05",
     "priority": "中"
   },
   {
-    "id": 225,
+    "id": 224,
     "content": "测试任务_1772567346",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:49:06"
   },
   {
-    "id": 226,
+    "id": 225,
     "content": "测试任务_1772567620",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:53:40"
   },
   {
-    "id": 227,
+    "id": 226,
     "content": "测试任务_1772567837",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:57:17"
   },
   {
-    "id": 228,
+    "id": 227,
     "content": "根据对任务 1772562601 的分析：",
     "done": false,
     "created_at": "2026-03-04 03:57:39",
     "priority": "中"
   },
   {
-    "id": 229,
+    "id": 228,
     "content": "**任务内容**: 这是一个综合功能验证测试任务，主要验证 todo 管理器的核心功能，包括：",
     "done": false,
     "created_at": "2026-03-04 03:57:39",
     "priority": "中"
   },
   {
-    "id": 230,
+    "id": 229,
     "content": "- 任务列表功能",
     "done": false,
     "created_at": "2026-03-04 03:57:39",
     "priority": "中"
   },
   {
-    "id": 231,
+    "id": 230,
     "content": "- 优先级系统",
     "done": false,
     "created_at": "2026-03-04 03:57:39",
     "priority": "中"
   },
   {
-    "id": 232,
+    "id": 231,
     "content": "- 截止日期功能",
     "done": false,
     "created_at": "2026-03-04 03:57:39",
     "priority": "中"
+  },
+  {
+    "id": 232,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 03:58:29",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 233,
@@ -1920,50 +1929,45 @@
   },
   {
     "id": 234,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 03:58:29",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 235,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:58:29"
   },
   {
-    "id": 236,
+    "id": 235,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:58:29"
   },
   {
-    "id": 237,
+    "id": 236,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:58:29"
   },
   {
-    "id": 238,
+    "id": 237,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:58:29"
   },
   {
-    "id": 239,
+    "id": 238,
     "content": "统计测试",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 03:58:29"
+  },
+  {
+    "id": 239,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 03:58:30"
   },
   {
     "id": 240,
@@ -1974,17 +1978,22 @@
   },
   {
     "id": 241,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 03:58:30"
-  },
-  {
-    "id": 242,
     "content": "测试任务_1772567950",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 03:59:10"
+  },
+  {
+    "id": 242,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 04:00:39",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 243,
@@ -2000,49 +2009,44 @@
   },
   {
     "id": 244,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 04:00:39",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 245,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:00:39"
   },
   {
-    "id": 246,
+    "id": 245,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:00:39"
   },
   {
-    "id": 247,
+    "id": 246,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:00:39"
   },
   {
-    "id": 248,
+    "id": 247,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:00:39"
   },
   {
-    "id": 249,
+    "id": 248,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:00:39"
+  },
+  {
+    "id": 249,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:00:39"
   },
   {
@@ -2054,27 +2058,20 @@
   },
   {
     "id": 251,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:00:39"
-  },
-  {
-    "id": 252,
     "content": "测试任务_1772568078",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:01:18"
   },
   {
-    "id": 253,
+    "id": 252,
     "content": "测试任务_1772568136",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:02:16"
   },
   {
-    "id": 254,
+    "id": 253,
     "content": "测试截止日期 CLI",
     "done": false,
     "priority": "高",
@@ -2086,26 +2083,38 @@
     ]
   },
   {
-    "id": 255,
+    "id": 254,
     "content": "测试任务_1772568196",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:03:16"
   },
   {
-    "id": 256,
+    "id": 255,
     "content": "测试任务_1772568851",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:14:11"
   },
   {
-    "id": 257,
+    "id": 256,
     "content": "测试截止日期 CLI",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:14:49",
     "due_date": "2026-04-15"
+  },
+  {
+    "id": 257,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 04:19:52",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 258,
@@ -2121,49 +2130,44 @@
   },
   {
     "id": 259,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 04:19:52",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 260,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:52"
   },
   {
-    "id": 261,
+    "id": 260,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:52"
   },
   {
-    "id": 262,
+    "id": 261,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:52"
   },
   {
-    "id": 263,
+    "id": 262,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:52"
   },
   {
-    "id": 264,
+    "id": 263,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:19:52"
+  },
+  {
+    "id": 264,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:19:52"
   },
   {
@@ -2177,8 +2181,13 @@
     "id": 266,
     "content": "CLI 测试任务",
     "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:19:52"
+    "priority": "高",
+    "created_at": "2026-03-04 04:19:57",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 267,
@@ -2194,49 +2203,44 @@
   },
   {
     "id": 268,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 04:19:57",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 269,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:57"
   },
   {
-    "id": 270,
+    "id": 269,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:58"
   },
   {
-    "id": 271,
+    "id": 270,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:58"
   },
   {
-    "id": 272,
+    "id": 271,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:19:58"
   },
   {
-    "id": 273,
+    "id": 272,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:19:58"
+  },
+  {
+    "id": 273,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:19:58"
   },
   {
@@ -2248,34 +2252,27 @@
   },
   {
     "id": 275,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:19:58"
-  },
-  {
-    "id": 276,
     "content": "测试任务_1772569226",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:20:26"
   },
   {
-    "id": 277,
+    "id": 276,
     "content": "测试任务_1772569324",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:22:04"
   },
   {
-    "id": 278,
+    "id": 277,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:24:45"
   },
   {
-    "id": 279,
+    "id": 278,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2283,28 +2280,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 280,
+    "id": 279,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:24:45"
   },
   {
-    "id": 281,
+    "id": 280,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:24:45"
   },
   {
-    "id": 282,
+    "id": 281,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:24:45"
   },
   {
-    "id": 283,
+    "id": 282,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -2315,7 +2312,7 @@
     ]
   },
   {
-    "id": 284,
+    "id": 283,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -2328,35 +2325,35 @@
     ]
   },
   {
-    "id": 285,
+    "id": 284,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:24:46"
   },
   {
-    "id": 286,
+    "id": 285,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:24:46"
   },
   {
-    "id": 287,
+    "id": 286,
     "content": "测试任务_1772569521",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:25:22"
   },
   {
-    "id": 288,
+    "id": 287,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:25:48"
   },
   {
-    "id": 289,
+    "id": 288,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2364,28 +2361,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 290,
+    "id": 289,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:25:49"
   },
   {
-    "id": 291,
+    "id": 290,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:25:49"
   },
   {
-    "id": 292,
+    "id": 291,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:25:49"
   },
   {
-    "id": 293,
+    "id": 292,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -2396,7 +2393,7 @@
     ]
   },
   {
-    "id": 294,
+    "id": 293,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -2409,35 +2406,35 @@
     ]
   },
   {
-    "id": 295,
+    "id": 294,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:25:50"
   },
   {
-    "id": 296,
+    "id": 295,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:25:50"
   },
   {
-    "id": 297,
+    "id": 296,
     "content": "测试任务_1772569575",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:15"
   },
   {
-    "id": 298,
+    "id": 297,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:36"
   },
   {
-    "id": 299,
+    "id": 298,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2445,28 +2442,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 300,
+    "id": 299,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:26:36"
   },
   {
-    "id": 301,
+    "id": 300,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:36"
   },
   {
-    "id": 302,
+    "id": 301,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:26:36"
   },
   {
-    "id": 303,
+    "id": 302,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -2477,7 +2474,7 @@
     ]
   },
   {
-    "id": 304,
+    "id": 303,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -2490,49 +2487,49 @@
     ]
   },
   {
-    "id": 305,
+    "id": 304,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:37"
   },
   {
-    "id": 306,
+    "id": 305,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:37"
   },
   {
-    "id": 307,
+    "id": 306,
     "content": "测试任务_1772569611",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:26:51"
   },
   {
-    "id": 308,
+    "id": 307,
     "content": "测试任务_1772569730",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:28:50"
   },
   {
-    "id": 309,
+    "id": 308,
     "content": "测试任务_1772570039",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:33:59"
   },
   {
-    "id": 310,
+    "id": 309,
     "content": "测试任务_1772570162",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:02"
   },
   {
-    "id": 311,
+    "id": 310,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -2544,7 +2541,7 @@
     ]
   },
   {
-    "id": 312,
+    "id": 311,
     "content": "CLI 测试任务",
     "done": false,
     "priority": "高",
@@ -2556,38 +2553,45 @@
     ]
   },
   {
-    "id": 313,
+    "id": 312,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:26"
   },
   {
-    "id": 314,
+    "id": 313,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:26"
   },
   {
-    "id": 315,
+    "id": 314,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:26"
   },
   {
-    "id": 316,
+    "id": 315,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:26"
   },
   {
-    "id": 317,
+    "id": 316,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:36:26"
+  },
+  {
+    "id": 317,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:36:26"
   },
   {
@@ -2599,20 +2603,13 @@
   },
   {
     "id": 319,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:36:26"
-  },
-  {
-    "id": 320,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:27"
   },
   {
-    "id": 321,
+    "id": 320,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2620,28 +2617,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 322,
+    "id": 321,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:36:27"
   },
   {
-    "id": 323,
+    "id": 322,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:27"
   },
   {
-    "id": 324,
+    "id": 323,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:36:27"
   },
   {
-    "id": 325,
+    "id": 324,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -2652,7 +2649,7 @@
     ]
   },
   {
-    "id": 326,
+    "id": 325,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -2665,81 +2662,93 @@
     ]
   },
   {
-    "id": 327,
+    "id": 326,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:28"
   },
   {
-    "id": 328,
+    "id": 327,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:36:28"
   },
   {
-    "id": 329,
+    "id": 328,
     "content": "分析完成。CLI 测试覆盖率 98%，42 个测试全部通过。未覆盖的 6 行代码是边界情况：",
     "done": false,
     "created_at": "2026-03-04 04:37:24",
     "priority": "中"
   },
   {
-    "id": 330,
+    "id": 329,
     "content": "1. `list --tag` 有任务但无匹配标签的提示",
     "done": false,
     "created_at": "2026-03-04 04:37:24",
     "priority": "中"
   },
   {
-    "id": 331,
+    "id": 330,
     "content": "2. `list --priority` 有任务但无匹配优先级的提示",
     "done": false,
     "created_at": "2026-03-04 04:37:24",
     "priority": "中"
   },
   {
-    "id": 332,
+    "id": 331,
     "content": "3. `stats --tag` 有任务但无匹配标签的提示",
     "done": false,
     "created_at": "2026-03-04 04:37:24",
     "priority": "中"
   },
   {
-    "id": 333,
+    "id": 332,
     "content": "4. `stats --priority` 有任务但无匹配优先级的提示",
     "done": false,
     "created_at": "2026-03-04 04:37:24",
     "priority": "中"
   },
   {
-    "id": 334,
+    "id": 333,
     "content": "测试任务_1772570293",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:38:13"
   },
   {
-    "id": 335,
+    "id": 334,
     "content": "测试任务_1772570369",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:39:29"
   },
   {
-    "id": 336,
+    "id": 335,
     "content": "测试任务_1772570571",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:42:51"
   },
   {
-    "id": 337,
+    "id": 336,
     "content": "测试任务_1772570734",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:45:34"
+  },
+  {
+    "id": 337,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 04:46:06",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 338,
@@ -2755,49 +2764,44 @@
   },
   {
     "id": 339,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 04:46:06",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 340,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:06"
   },
   {
-    "id": 341,
+    "id": 340,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:06"
   },
   {
-    "id": 342,
+    "id": 341,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:06"
   },
   {
-    "id": 343,
+    "id": 342,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:06"
   },
   {
-    "id": 344,
+    "id": 343,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:46:06"
+  },
+  {
+    "id": 344,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:46:06"
   },
   {
@@ -2809,20 +2813,13 @@
   },
   {
     "id": 346,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:46:06"
-  },
-  {
-    "id": 347,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:07"
   },
   {
-    "id": 348,
+    "id": 347,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2830,28 +2827,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 349,
+    "id": 348,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:46:07"
   },
   {
-    "id": 350,
+    "id": 349,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:07"
   },
   {
-    "id": 351,
+    "id": 350,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:46:07"
   },
   {
-    "id": 352,
+    "id": 351,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -2862,7 +2859,7 @@
     ]
   },
   {
-    "id": 353,
+    "id": 352,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -2875,25 +2872,37 @@
     ]
   },
   {
-    "id": 354,
+    "id": 353,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:08"
   },
   {
-    "id": 355,
+    "id": 354,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:08"
   },
   {
-    "id": 356,
+    "id": 355,
     "content": "测试任务_1772570793",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:46:33"
+  },
+  {
+    "id": 356,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 04:52:22",
+    "due_date": "2026-12-31",
+    "tags": [
+      "测试",
+      "CLI"
+    ]
   },
   {
     "id": 357,
@@ -2909,49 +2918,44 @@
   },
   {
     "id": 358,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "高",
-    "created_at": "2026-03-04 04:52:22",
-    "due_date": "2026-12-31",
-    "tags": [
-      "测试",
-      "CLI"
-    ]
-  },
-  {
-    "id": 359,
     "content": "CLI 删除测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:22"
   },
   {
-    "id": 360,
+    "id": 359,
     "content": "CLI 完成测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:22"
   },
   {
-    "id": 361,
+    "id": 360,
     "content": "导出测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:22"
   },
   {
-    "id": 362,
+    "id": 361,
     "content": "优先级测试",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:23"
   },
   {
-    "id": 363,
+    "id": 362,
     "content": "统计测试",
     "done": false,
     "priority": "高",
+    "created_at": "2026-03-04 04:52:23"
+  },
+  {
+    "id": 363,
+    "content": "CLI 测试任务",
+    "done": false,
+    "priority": "中",
     "created_at": "2026-03-04 04:52:23"
   },
   {
@@ -2963,20 +2967,13 @@
   },
   {
     "id": 365,
-    "content": "CLI 测试任务",
-    "done": false,
-    "priority": "中",
-    "created_at": "2026-03-04 04:52:23"
-  },
-  {
-    "id": 366,
     "content": "测试任务_1772563059_基本添加",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:23"
   },
   {
-    "id": 367,
+    "id": 366,
     "content": "测试截止日期",
     "done": false,
     "priority": "中",
@@ -2984,28 +2981,28 @@
     "due_date": "2026-03-11"
   },
   {
-    "id": 368,
+    "id": 367,
     "content": "测试优先级_高",
     "done": false,
     "priority": "高",
     "created_at": "2026-03-04 04:52:23"
   },
   {
-    "id": 369,
+    "id": 368,
     "content": "测试优先级_中",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:23"
   },
   {
-    "id": 370,
+    "id": 369,
     "content": "测试优先级_低",
     "done": false,
     "priority": "低",
     "created_at": "2026-03-04 04:52:23"
   },
   {
-    "id": 371,
+    "id": 370,
     "content": "测试标签",
     "done": false,
     "priority": "中",
@@ -3016,7 +3013,7 @@
     ]
   },
   {
-    "id": 372,
+    "id": 371,
     "content": "多属性测试",
     "done": false,
     "priority": "高",
@@ -3029,21 +3026,21 @@
     ]
   },
   {
-    "id": 373,
+    "id": 372,
     "content": "测试特殊字符：@#$%&*()",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:25"
   },
   {
-    "id": 374,
+    "id": 373,
     "content": "测试 Unicode：日本語，한국어，العربية",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:52:25"
   },
   {
-    "id": 375,
+    "id": 374,
     "content": "CLI 测试验证任务",
     "done": false,
     "priority": "高",
@@ -3055,80 +3052,154 @@
     ]
   },
   {
-    "id": 376,
+    "id": 375,
     "content": "测试任务_1772571195",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:53:15"
   },
   {
-    "id": 377,
+    "id": 376,
     "content": "测试任务_1772571264",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:54:24"
   },
   {
-    "id": 378,
+    "id": 377,
     "content": "测试任务_1772571345",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:55:45"
   },
   {
-    "id": 379,
+    "id": 378,
     "content": "测试任务_1772571433",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:57:13"
   },
   {
-    "id": 380,
+    "id": 379,
     "content": "测试任务_1772571508",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:58:28"
   },
   {
-    "id": 381,
+    "id": 380,
     "content": "测试任务_1772571548",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:59:08"
   },
   {
-    "id": 382,
+    "id": 381,
     "content": "临时测试删除任务",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 04:59:53"
   },
   {
-    "id": 383,
+    "id": 382,
     "content": "测试任务_1772571607",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:00:07"
   },
   {
-    "id": 384,
+    "id": 383,
     "content": "测试任务_1772571691",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:01:31"
   },
   {
-    "id": 385,
+    "id": 384,
     "content": "测试任务_1772571762",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:02:42"
   },
   {
-    "id": 386,
+    "id": 385,
     "content": "测试任务_1772571820",
     "done": false,
     "priority": "中",
     "created_at": "2026-03-04 05:03:40"
+  },
+  {
+    "id": 386,
+    "content": "测试任务_1772563690_基本添加",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:10"
+  },
+  {
+    "id": 387,
+    "content": "测试截止日期",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:10",
+    "due_date": "2026-03-11"
+  },
+  {
+    "id": 388,
+    "content": "测试优先级_高",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 05:05:10"
+  },
+  {
+    "id": 389,
+    "content": "测试优先级_中",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:10"
+  },
+  {
+    "id": 390,
+    "content": "测试优先级_低",
+    "done": false,
+    "priority": "低",
+    "created_at": "2026-03-04 05:05:10"
+  },
+  {
+    "id": 391,
+    "content": "测试标签",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:10",
+    "tags": [
+      "测试",
+      "验证"
+    ]
+  },
+  {
+    "id": 392,
+    "content": "多属性测试",
+    "done": false,
+    "priority": "高",
+    "created_at": "2026-03-04 05:05:11",
+    "due_date": "2026-06-15",
+    "tags": [
+      "重要",
+      "紧急",
+      "工作"
+    ]
+  },
+  {
+    "id": 393,
+    "content": "测试特殊字符：@#$%&*()",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:11"
+  },
+  {
+    "id": 394,
+    "content": "测试 Unicode：日本語，한국어，العربية",
+    "done": false,
+    "priority": "中",
+    "created_at": "2026-03-04 05:05:11"
   }
 ]
