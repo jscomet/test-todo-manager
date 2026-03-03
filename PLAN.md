@@ -49,7 +49,7 @@
 | 🔴 高 | 创建 commands/base.py 定义 Command 基类 | 🔄 进行中 | AI | 1h | |
 | 🔴 高 | 拆分 commands/task_commands.py 实现增删改查 | 🔄 进行中 | AI | 2h | |
 | 🔴 高 | 拆分 commands/query_commands.py 实现 list/stats/due | 🔄 进行中 | AI | 2h | |
-| 🔴 高 | 重构 todo.py 入口 | ⏳ 待开始 | AI | 2h | |
+| 🔴 高 | 重构 todo.py 入口 | 🔄 进行中 | AI | 2h | |
 | 🟡 中 | 数据迁移脚本 | ⏳ 待开始 | AI | 1h | |
 
 ### 3.2 任务依赖关系
