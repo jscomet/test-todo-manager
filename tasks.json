@@ -351,12 +351,13 @@
     "content": "测试任务_1772560561",
     "done": true,
     "priority": "中",
-    "created_at": "2026-03-04 01:56:01"
+    "created_at": "2026-03-04 01:56:01",
+    "completed_at": "2026-03-04 03:02:33"
   },
   {
     "id": 43,
     "content": "测试任务_1772560713",
-    "done": false,
+    "done": true,
     "priority": "中",
     "created_at": "2026-03-04 01:58:33"
   },

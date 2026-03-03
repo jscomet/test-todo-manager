@@ -15998,3 +15998,468 @@ python3 test_task_1772559141.py
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:02:29][0m ========== 阶段 4: Git 提交推送 ==========
+[main 927d2f1] Feat: 测试任务_1772560561
+ 2 files changed, 190 insertions(+)
+[0;32m[✓][0m Git 提交成功
+ERROR: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure, transport failure reason: delayed connect error: Connection refused
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:02:33][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 42 已标记为完成
+[0;34m[2026-03-04 03:03:04][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:03:07][0m 
+[0;34m[2026-03-04 03:03:07][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:03:07][0m ║  第 46 轮执行                          ║
+[0;34m[2026-03-04 03:03:07][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:03:07][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 65
+[0;34m[2026-03-04 03:03:07][0m 获取到任务 ID=43: 测试任务_1772560713
+[0;34m[2026-03-04 03:03:07][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772560713
+[0;34m[2026-03-04 03:03:07][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我需要先了解任务需求和项目结构。让我读取相关文件来获取任务信息和代码结构。
+[0m→ [0mRead todo.py
+[0m→ [0mRead tasks.json
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/
+total 1220
+drwxr-xr-x 5 root root   4096 Mar  4 03:02 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root 741988 Mar  4 03:03 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 03:02 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 03:02 __pycache__
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  21727 Mar  4 03:02 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+我看到任务 ID 43 是"测试任务_1772560713"，状态为待完成。现在我需要查看是否有相关的测试文件或了解更多关于这个任务需要测试什么功能。让我搜索一下相关信息。
+[0m$ [0mgrep -r "1772560713" /root/.openclaw/workspace/test/todo-manager/ --include="*.py" --include="*.md" --include="*.txt" 2>/dev/null | head -50
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager/test_*.py
+-rw-r--r-- 1 root root 16775 Mar  4 02:00 /root/.openclaw/workspace/test/todo-manager/test_add_task.py
+-rw-r--r-- 1 root root 16716 Mar  4 02:56 /root/.openclaw/workspace/test/todo-manager/test_cli_commands.py
+-rw-r--r-- 1 root root 11165 Mar  4 02:13 /root/.openclaw/workspace/test/todo-manager/test_default_priority.py
+-rw-r--r-- 1 root root  6619 Mar  4 01:45 /root/.openclaw/workspace/test/todo-manager/test_due_date.py
+-rw-r--r-- 1 root root 14839 Mar  4 01:57 /root/.openclaw/workspace/test/todo-manager/test_export.py
+-rw-r--r-- 1 root root  8687 Mar  4 01:47 /root/.openclaw/workspace/test/todo-manager/test_no_due_date.py
+-rw-r--r-- 1 root root  8182 Mar  4 01:50 /root/.openclaw/workspace/test/todo-manager/test_tag_splitting.py
+-rw-r--r-- 1 root root 10193 Mar  4 01:54 /root/.openclaw/workspace/test/todo-manager/test_task_1772559141.py
+-rw-r--r-- 1 root root 14568 Mar  4 02:07 /root/.openclaw/workspace/test/todo-manager/test_task_1772559323.py
+-rw-r--r-- 1 root root 16951 Mar  4 02:16 /root/.openclaw/workspace/test/todo-manager/test_task_1772559366.py
+-rw-r--r-- 1 root root 16951 Mar  4 02:20 /root/.openclaw/workspace/test/todo-manager/test_task_1772559411.py
+-rw-r--r-- 1 root root 19735 Mar  4 02:33 /root/.openclaw/workspace/test/todo-manager/test_task_1772559903.py
+-rw-r--r-- 1 root root 30070 Mar  4 02:45 /root/.openclaw/workspace/test/todo-manager/test_task_1772559976.py
+[0m
+根据项目结构和已有测试文件，我可以看到这是一个测试任务，但还没有对应的测试文件 `test_task_1772560713.py`。让我查看最新的几个测试文件来了解测试模式，并确定任务 1772560713 需要测试什么功能。
+[0m$ [0mpython todo.py list 2>&1 | head -30
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m→ [0mRead test_task_1772559976.py[90m [limit=100][0m
+[0m
+[0m$ [0mpython3 --version
+Python 3.12.3
+[0m
+[0m$ [0mpython3 todo.py list 2>&1 | head -30
+📋 任务列表:
+--------------------------------------------------
+✅ [1] 🔴 测试任务 1
+✅ [3] 🔴 测试高优先级任务
+✅ [9] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [17] 🔴 测试添加功能 📅 2026-03-15 🔖 #测试 #验证
+✅ [32] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [41] 🔴 CLI 测试任务
+⭕ [63] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [65] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [68] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [73] 🔴 统计测试
+⭕ [74] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [79] 🔴 统计测试
+⭕ [80] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [85] 🔴 统计测试
+⭕ [87] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [92] 🔴 统计测试
+⭕ [94] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [99] 🔴 统计测试
+⭕ [104] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+✅ [4] 🟡 测试默认优先级任务
+✅ [5] 🟡 测试任务_1772558260
+✅ [6] 🟡 添加按优先级排序功能（高优先级任务排在前面）
+✅ [7] 🟡 添加按优先级过滤功能（支持 --priority 参数筛选）
+✅ [10] 🟡 测试无截止日期任务
+✅ [11] 🟡 测试任务_1772558695
+✅ [12] 🟡 测试标签分割 🔖 #工作，紧急
+✅ [13] 🟡 英文逗号测试 🔖 #test #urgent
+[0m
+现在我了解了项目情况。任务 ID 43 "测试任务_1772560713" 是一个待完成的测试任务。根据已有测试文件的模式，我需要创建一个测试文件来验证 Todo 管理器的功能。
+
+让我创建一个综合测试文件来测试 Todo 管理器的核心功能。
+[0m# [0mTodos
+[ ] 创建 test_task_1772560713.py 测试文件
+[ ] 运行测试验证功能
+[ ] 标记任务 43 为完成并提交
+[0m
+[0m← [0mWrite test_task_1772560713.py
+Wrote file successfully.
+[0m
+[0m# [0mTodos
+[x] 创建 test_task_1772560713.py 测试文件
+[ ] 运行测试验证功能
+[ ] 标记任务 43 为完成并提交
+[0m
+[0m$ [0mpython3 -m unittest test_task_1772560713 -v 2>&1 | tail -50
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py", line 108, in test_list_tasks_with_priority_sort
+    with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
+                                          ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'unittest.mock' has no attribute 'StringIO'
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.014s
+
+FAILED (errors=6)
+✅ 已添加任务：测试任务
+✅ 已导出 1 个任务到：test_export_1772560713.csv
+✅ 已添加任务：测试任务
+✅ 已导出 1 个任务到：test_export_1772560713.md
+✅ 已添加任务：中优先级任务
+✅ 任务 1 优先级已修改：中 → 高
+   内容：中优先级任务
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：中优先级任务
+✅ 已添加任务：低优先级任务
+✅ 任务 1 已完成: 高优先级任务
+✅ 已添加任务：带标签任务
+✅ 已为任务 1 添加标签：#测试
+✅ 已添加任务：带标签任务
+✅ 已从任务 1 移除标签：#工作
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：基本任务
+✅ 已添加任务：带截止日期任务
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：中优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：带标签任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：时间戳任务
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+🗑️  已删除任务：任务 2
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：中优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：低优先级
+✅ 已添加任务：高优先级
+✅ 已添加任务：中优先级
+[0m
+测试运行了，但有 6 个错误，是因为 `unittest.mock.StringIO` 的使用方式不正确。让我修复这个问题。
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -6,9 +6,11 @@
+ 
+ import json
+ import os
+ import subprocess
++import sys
+ import unittest
++from io import StringIO
+ from unittest.mock import patch
+ 
+ import todo
+ 
+@@ -94,9 +96,9 @@
+             os.remove(self.test_file)
+ 
+     def test_list_empty_tasks(self):
+         """测试列出空任务列表"""
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.list_tasks()
+             output = mock_stdout.getvalue()
+             self.assertIn("暂无任务", output)
+ 
+@@ -104,9 +106,9 @@
+         """测试按优先级排序列出任务"""
+         todo.add_task("低优先级", "低")
+         todo.add_task("高优先级", "高")
+         todo.add_task("中优先级", "中")
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.list_tasks(sort_by="priority")
+             output = mock_stdout.getvalue()
+             high_pos = output.find("高优先级")
+             medium_pos = output.find("中优先级")
+@@ -118,9 +120,9 @@
+         """测试按优先级过滤任务"""
+         todo.add_task("高优先级任务", "高")
+         todo.add_task("中优先级任务", "中")
+         todo.add_task("低优先级任务", "低")
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.list_tasks(priority_filter="高")
+             output = mock_stdout.getvalue()
+             self.assertIn("高优先级任务", output)
+             self.assertNotIn("中优先级任务", output)
+@@ -152,9 +154,9 @@
+         self.assertTrue(tasks[0]["done"])
+ 
+     def test_mark_nonexistent_task_done(self):
+         """测试标记不存在的任务完成"""
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.done_task(999)
+             output = mock_stdout.getvalue()
+             self.assertIn("未找到任务", output)
+ 
+@@ -271,9 +273,9 @@
+             os.remove(self.test_file)
+ 
+     def test_stats_empty(self):
+         """测试空任务列表的统计"""
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.stats()
+             output = mock_stdout.getvalue()
+             self.assertIn("暂无任务", output)
+ 
+@@ -282,9 +284,9 @@
+         todo.add_task("高优先级任务", "高")
+         todo.add_task("中优先级任务", "中")
+         todo.add_task("低优先级任务", "低")
+         todo.done_task(1)
+-        with patch('sys.stdout', new_callable=unittest.mock.StringIO) as mock_stdout:
++        with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
+             todo.stats()
+             output = mock_stdout.getvalue()
+             self.assertIn("总计：3 个任务", output)
+             self.assertIn("高优先级", output)
+@@ -354,9 +356,9 @@
+         old_task = {
+             "id": 1,
+             "content": "老任务",
+             "done": False,
+-            "created_at": "2026-01-01 00:00:00"
++            "created_at": "2026-01-01 00:00:00",
+         }
+         with open(self.test_file, "w", encoding="utf-8") as f:
+             json.dump([old_task], f, ensure_ascii=False, indent=2)
+         tasks = todo.load_tasks()
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -96,9 +96,9 @@
+         os.remove(self.test_file)
+ 
+ def test_list_empty_tasks(self):
+     """测试列出空任务列表"""
+-    with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++    with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+         todo.list_tasks()
+         output = mock_stdout.getvalue()
+         self.assertIn("暂无任务", output)
+ 
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -96,9 +96,9 @@
+         os.remove(self.test_file)
+ 
+ def test_list_empty_tasks(self):
+     """测试列出空任务列表"""
+-    with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
++    with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+         todo.list_tasks()
+         output = mock_stdout.getvalue()
+         self.assertIn("暂无任务", output)
+ 
+@@ -106,9 +106,9 @@
+     """测试按优先级排序列出任务"""
+     todo.add_task("低优先级", "低")
+     todo.add_task("高优先级", "高")
+     todo.add_task("中优先级", "中")
+-    with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++    with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+         todo.list_tasks(sort_by="priority")
+         output = mock_stdout.getvalue()
+         high_pos = output.find("高优先级")
+         medium_pos = output.find("中优先级")
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -120,9 +120,9 @@
+ """测试按优先级过滤任务"""
+ todo.add_task("高优先级任务", "高")
+ todo.add_task("中优先级任务", "中")
+ todo.add_task("低优先级任务", "低")
+-with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+     todo.list_tasks(priority_filter="高")
+     output = mock_stdout.getvalue()
+     self.assertIn("高优先级任务", output)
+     self.assertNotIn("中优先级任务", output)
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -154,9 +154,9 @@
+     self.assertTrue(tasks[0]["done"])
+ 
+ def test_mark_nonexistent_task_done(self):
+     """测试标记不存在的任务完成"""
+-    with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++    with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+         todo.done_task(999)
+         output = mock_stdout.getvalue()
+         self.assertIn("未找到任务", output)
+ 
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -273,9 +273,9 @@
+         os.remove(self.test_file)
+ 
+ def test_stats_empty(self):
+     """测试空任务列表的统计"""
+-    with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++    with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+         todo.stats()
+         output = mock_stdout.getvalue()
+         self.assertIn("暂无任务", output)
+ 
+
+[0m
+[0m← [0mEdit test_task_1772560713.py
+Index: /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+===================================================================
+--- /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
++++ /root/.openclaw/workspace/test/todo-manager/test_task_1772560713.py
+@@ -273,9 +273,9 @@
+         os.remove(self.test_file)
+ 
+ def test_stats_empty(self):
+     """测试空任务列表的统计"""
+-    with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
++    with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+         todo.stats()
+         output = mock_stdout.getvalue()
+         self.assertIn("暂无任务", output)
+ 
+@@ -284,9 +284,9 @@
+     todo.add_task("高优先级任务", "高")
+     todo.add_task("中优先级任务", "中")
+     todo.add_task("低优先级任务", "低")
+     todo.done_task(1)
+-    with patch("sys.stdout", new_callable=unittest.mock.StringIO) as mock_stdout:
++    with patch("sys.stdout", new_callable=StringIO) as mock_stdout:
+         todo.stats()
+         output = mock_stdout.getvalue()
+         self.assertIn("总计：3 个任务", output)
+         self.assertIn("高优先级", output)
+
+[0m
+还有几处需要修复。让我读取剩余的错误位置并修复。
+[0m→ [0mRead test_task_1772560713.py[90m [offset=150, limit=20][0m
+[0m→ [0mRead test_task_1772560713.py[90m [limit=30, offset=270][0m
+LSP 错误是缓存问题，实际代码已经正确。让我运行测试看看结果。
+[0m
+[0m$ [0mpython3 -m unittest test_task_1772560713 -v 2>&1 | tail -30
+✅ 已添加任务：低优先级任务
+✅ 任务 1 已完成: 高优先级任务
+✅ 已添加任务：带标签任务
+✅ 已为任务 1 添加标签：#测试
+✅ 已添加任务：带标签任务
+✅ 已从任务 1 移除标签：#工作
+✅ 已添加任务：待完成任务
+✅ 任务 1 已完成: 待完成任务
+✅ 已添加任务：基本任务
+✅ 已添加任务：带截止日期任务
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：中优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：带标签任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+✅ 已添加任务：时间戳任务
+✅ 已添加任务：待删除任务
+🗑️  已删除任务：待删除任务
+✅ 已添加任务：任务 1
+✅ 已添加任务：任务 2
+✅ 已添加任务：任务 3
+🗑️  已删除任务：任务 2
+✅ 已添加任务：高优先级任务
+✅ 已添加任务：中优先级任务
+✅ 已添加任务：低优先级任务
+✅ 已添加任务：低优先级
+✅ 已添加任务：高优先级
+✅ 已添加任务：中优先级
+[0m
+[0m$ [0mpython3 -m unittest test_task_1772560713 2>&1 | grep -E "^(OK|Ran|FAILED|ERROR)"
+Ran 21 tests in 0.009s
+OK
+[0m
+所有 21 个测试都通过了！现在让我标记任务 43 为完成并提交。
+[0m# [0mTodos
+[x] 创建 test_task_1772560713.py 测试文件
+[x] 运行测试验证功能
+[ ] 标记任务 43 为完成并提交
+[0m
+[0m$ [0mpython3 todo.py done 43
+✅ 任务 43 已完成: 测试任务_1772560713
+[0m
