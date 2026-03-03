@@ -1,41 +1,5 @@
 [
   {
-    "id": 1,
-    "content": "测试任务_1772559903",
-    "done": true,
-    "priority": "高",
-    "created_at": "2026-03-04 01:45:03",
-    "completed_at": "2026-03-04 02:35:24",
-    "due_date": null,
-    "tags": [],
-    "is_test": true
-  },
-  {
-    "id": 2,
-    "content": "测试任务_1772560300",
-    "done": true,
-    "priority": "中",
-    "created_at": "2026-03-04 01:51:40",
-    "completed_at": "2026-03-04 02:58:23",
-    "due_date": null,
-    "tags": [],
-    "is_test": true
-  },
-  {
-    "id": 3,
-    "content": "测试任务_1772560348",
-    "done": true,
-    "priority": "中",
-    "created_at": "2026-03-04 01:52:28",
-    "completed_at": "2026-03-04 02:59:35",
-    "due_date": null,
-    "tags": [
-      "重复标签",
-      "新标签"
-    ],
-    "is_test": true
-  },
-  {
     "id": 4,
     "content": "CLI 测试任务",
     "done": true,

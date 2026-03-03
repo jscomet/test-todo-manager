@@ -21,10 +21,15 @@ class TestAddTaskFunctionality(unittest.TestCase):
 
     def setUp(self):
         """测试前准备：创建干净的测试环境"""
-        self.test_file = "test_tasks_add.json"
-        todo.TASKS_FILE = self.test_file
-        if os.path.exists(self.test_file):
-            os.remove(self.test_file)
+        self.test_data_dir = Path("test-output/test_add_task")
+        self.test_data_dir.mkdir(parents=True, exist_ok=True)
+        todo._test_data_dir = str(self.test_data_dir)
+
+        tasks_file = self.test_data_dir / "tasks.json"
+        test_tasks_file = self.test_data_dir / "test-tasks.json"
+        for f in [tasks_file, test_tasks_file]:
+            if f.exists():
+                f.unlink()
 
     def tearDown(self):
         """测试后清理：删除测试文件"""

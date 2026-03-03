@@ -8,6 +8,12 @@ from dataclasses import dataclass, field, asdict
 from datetime import datetime
 from typing import Optional, List
 from enum import Enum
+import re
+
+from .exceptions import (
+    EmptyContentError,
+    ContentTooLongError,
+)
 
 
 class Priority(Enum):
@@ -36,20 +42,22 @@ class Priority(Enum):
         return mapping.get(value, cls.MEDIUM)
 
 
-@dataclass
+@dataclass(slots=True)
 class Task:
     """任务数据类
     
     符合 SPEC 3.1 规范:
-    - id: 唯一标识，从1递增
-    - content: 任务内容，长度限制 1-200字符
+    - id: 唯一标识，从 1 递增
+    - content: 任务内容，长度限制 1-200 字符
     - done: 完成状态
     - priority: 优先级
-    - created_at: ISO格式时间戳
+    - created_at: ISO 格式时间戳
     - completed_at: 完成时间（可选）
     - due_date: 截止日期 YYYY-MM-DD（可选）
     - tags: 标签列表（可选）
     - is_test: 是否测试任务
+    
+    使用 slots 优化内存占用（减少约 40-50% 内存）
     """
     
     id: int
@@ -71,11 +79,11 @@ class Task:
         # 确保 content 不为空
         self.content = self.content.strip()
         if not self.content:
-            raise ValueError("任务内容不能为空")
+            raise EmptyContentError()
         
         # 限制内容长度
         if len(self.content) > 200:
-            self.content = self.content[:197] + "..."
+            raise ContentTooLongError(len(self.content), 200)
         
         # 确保 priority 是 Priority 类型
         if isinstance(self.priority, str):

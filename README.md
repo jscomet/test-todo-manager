@@ -1,6 +1,8 @@
 # Simple Todo Manager + BabyAGI Executor
 
-基于 BabyAGI 思想的自动化任务执行项目。
+基于 BabyAGI 思想开发的自动化任务执行项目。
+
+📖 **详细使用指南**: [USAGE.md](./USAGE.md)
 
 ## 🚀 快速开始
 
@@ -36,6 +38,10 @@ python todo.py delete 1
 
 ## 📋 命令说明
 
+**完整命令文档**: [查看 USAGE.md](./USAGE.md#命令详解)
+
+### 基础命令
+
 ### todo.py 命令
 | 命令 | 说明 | 示例 |
 |------|------|------|
@@ -50,6 +56,8 @@ python todo.py delete 1
 | `./babyagi-executor.sh` | 启动自动任务执行循环 |
 
 ## 🏗️ 项目结构
+
+**详细架构说明**: [查看 SPEC.md](./SPEC.md#2-系统架构)
 
 ```
 todo-manager/
@@ -126,9 +134,20 @@ todo-manager/
 本项目采用 BabyAGI 的核心思想：
 1. **任务列表**：明确定义需要完成的功能
 2. **循环执行**：逐个获取并执行任务
-3. **AI 驱动**：使用 opencode 自动编写代码
+3. **AI 驱动**：使用 opencode AI 自动编写代码
 4. **持续集成**：每个任务完成后自动提交
 5. **反馈优化**：根据结果调整后续任务
+
+---
+
+## 📚 文档导航
+
+| 文档 | 用途 |
+|------|------|
+| [USAGE.md](./USAGE.md) | **使用指南** - 命令详解、示例、FAQ |
+| [SPEC.md](./SPEC.md) | 技术规范 - 架构设计、接口定义 |
+| [PLAN.md](./PLAN.md) | 项目计划 - 任务分解、进度跟踪 |
+| [AGENTS.md](./AGENTS.md) | Agent 规范 - 工作流程、最佳实践 |
 
 ---
 

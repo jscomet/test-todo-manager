@@ -175,6 +175,7 @@ class Priority(Enum):
 | `stats` | `--tag`, `--priority` | 统计信息 | `todo stats --tag 工作` |
 | `due` | `--days`, `--sort` | 即将到期 | `todo due --days 7` |
 | `cleanup` | `--max-age`, `--duplicates` | 清理测试任务 | `todo cleanup --max-age 24` |
+| `coverage` | `--format`, `--output-dir`, `--threshold` | 生成测试覆盖率报告 | `todo coverage -f html` |
 
 ### 4.2 Storage 接口
 
