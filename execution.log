@@ -17064,3 +17064,199 @@ no changes added to commit (use "git add" and/or "git commit -a")
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:14:42][0m ========== 阶段 4: Git 提交推送 ==========
+[main 77018bb] Feat: 运行测试验证覆盖情况：
+ 3 files changed, 704 insertions(+), 130 deletions(-)
+ create mode 100644 .coverage
+[0;32m[✓][0m Git 提交成功
+ERROR: no healthy upstream
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:14:46][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 44 已标记为完成
+[0;34m[2026-03-04 03:14:49][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:14:52][0m 
+[0;34m[2026-03-04 03:14:52][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:14:52][0m ║  第 48 轮执行                          ║
+[0;34m[2026-03-04 03:14:52][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:14:52][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 86
+[0;34m[2026-03-04 03:14:52][0m 获取到任务 ID=41: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:14:52][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 运行测试验证覆盖情况：
+[0;34m[2026-03-04 03:14:52][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+[0m✱ [0mGlob "**/*test*.py"[90m 14 matches[0m
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la
+total 1348
+drwxr-xr-x 7 root root   4096 Mar  4 03:14 .
+drwxr-xr-x 3 root root   4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root      0 Mar  4 01:08 1
+-rw-r--r-- 1 root root   3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root   8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root  53248 Mar  4 03:14 .coverage
+drwxr-xr-x 2 root root   4096 Mar  4 03:14 cov_html
+-rw-r--r-- 1 root root 793360 Mar  4 03:14 execution.log
+-rw-r--r-- 1 root root      6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root  12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root   4096 Mar  4 03:14 .git
+-rw-r--r-- 1 root root    170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root   4096 Mar  4 03:14 __pycache__
+drwxr-xr-x 3 root root   4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root   3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root   4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root    630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root 163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root  25273 Mar  4 03:14 tasks.json
+-rw-r--r-- 1 root root  16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root  16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root  11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root   6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root  14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root   8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root   8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root  10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root  14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root  16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root  19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root  30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root  12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root  17763 Mar  4 02:29 todo.py
+[0m
+[0m$ [0mpython -m pytest --cov=todo --cov-report=term-missing 2>&1 | head -200
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=term-missing 2>&1 | head -250
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collected 369 items
+
+test_add_task.py ..............................                          [  8%]
+test_cli_commands.py ...........................                         [ 15%]
+test_default_priority.py ..................                              [ 20%]
+test_due_date.py ............                                            [ 23%]
+test_export.py .........................                                 [ 30%]
+test_no_due_date.py ................                                     [ 34%]
+test_tag_splitting.py ........                                           [ 36%]
+test_task_1772559141.py .....................                            [ 42%]
+test_task_1772559323.py ............................                     [ 50%]
+test_task_1772559366.py ..................................               [ 59%]
+test_task_1772559411.py ..................................               [ 68%]
+test_task_1772559903.py ....................................             [ 78%]
+test_task_1772559976.py ................................................ [ 91%]
+...........                                                              [ 94%]
+test_task_1772560713.py .....................                            [100%]
+
+=============================== warnings summary ===============================
+test_tag_splitting.py::test_chinese_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_chinese_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_english_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_english_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_mixed_comma_splitting
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_mixed_comma_splitting returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_single_tag
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_single_tag returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_with_spaces
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_with_spaces returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_tag_filtering
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_tag_filtering returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     256      5    98%   117, 406, 408, 597, 601
+---------------------------------------
+TOTAL       256      5    98%
+======================= 369 passed, 8 warnings in 1.88s ========================
+[0m
+[0m$ [0mpython3 -m pytest --cov=todo --cov-report=html 2>&1 | tail -20
+warnings.warn(
+
+test_tag_splitting.py::test_add_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_add_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+test_tag_splitting.py::test_remove_tag_command
+  /usr/local/lib/python3.12/dist-packages/_pytest/python.py:170: PytestReturnNotNoneWarning: Test functions should return None, but test_tag_splitting.py::test_remove_tag_command returned <class 'bool'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+_______________ coverage: platform linux, python 3.12.3-final-0 ________________
+
+Coverage HTML written to dir htmlcov
+======================= 369 passed, 8 warnings in 1.91s ========================
+[0m
+[0m→ [0mRead cov_html/index.html[90m [limit=100][0m
+[0m
+[0m$ [0mpython3 -m coverage report --show-missing 2>&1
+Name      Stmts   Miss  Cover   Missing
+---------------------------------------
+todo.py     256      5    98%   117, 406, 408, 597, 601
+---------------------------------------
+TOTAL       256      5    98%
+[0m
+[0m$ [0mgit status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   execution.log
+	modified:   tasks.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[0m
