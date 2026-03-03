@@ -25288,3 +25288,2395 @@ python3 todo.py stats --priority 高
 [0;32m[✓][0m 列出功能正常
 [0;32m[✓][0m 所有测试通过
 [0;34m[2026-03-04 03:49:06][0m ========== 阶段 4: Git 提交推送 ==========
+[main b3a8eec] Feat: 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+ 2 files changed, 669 insertions(+)
+[0;32m[✓][0m Git 提交成功
+To github.com:jscomet/test-todo-manager.git
+   61656d7..b3a8eec  main -> main
+[0;32m[✓][0m 推送到 GitHub 成功
+[0;34m[2026-03-04 03:49:10][0m ========== 阶段 5: 更新任务状态 ==========
+[0;32m[✓][0m 任务 42 已标记为完成
+[0;34m[2026-03-04 03:49:13][0m 等待 3 秒后继续下一轮...
+[0;34m[2026-03-04 03:49:16][0m 
+[0;34m[2026-03-04 03:49:16][0m ╔════════════════════════════════════════════════╗
+[0;34m[2026-03-04 03:49:16][0m ║  第 64 轮执行                          ║
+[0;34m[2026-03-04 03:49:16][0m ╚════════════════════════════════════════════════╝
+[0;34m[2026-03-04 03:49:16][0m ========== 阶段 1: 获取任务 ==========
+[0;36m[INFO][0m 待完成任务数: 198
+[0;34m[2026-03-04 03:49:16][0m 获取到任务 ID=43: 测试任务_1772562229
+[0;34m[2026-03-04 03:49:16][0m ========== 阶段 2: OpenCode 执行任务 ==========
+[0;36m[INFO][0m 任务内容: 测试任务_1772562229
+[0;34m[2026-03-04 03:49:16][0m 调用 opencode...
+[0m
+> build · qwen3.5-plus
+[0m
+我将开始执行测试任务_1772562229。首先让我分析项目结构和任务需求。
+[0m→ [0mRead todo.py
+[0m
+[0m$ [0mls -la /root/.openclaw/workspace/test/todo-manager
+total 1856
+drwxr-xr-x 9 root root    4096 Mar  4 03:49 .
+drwxr-xr-x 3 root root    4096 Mar  4 00:47 ..
+-rw-r--r-- 1 root root       0 Mar  4 01:08 1
+-rw-r--r-- 1 root root    3039 Mar  4 01:04 AGENTS.md
+-rwxr-xr-x 1 root root    8530 Mar  4 01:02 babyagi-executor.sh
+-rw-r--r-- 1 root root   53248 Mar  4 03:20 .coverage
+drwxr-xr-x 2 root root    4096 Mar  4 03:14 cov_html
+drwxr-xr-x 2 root root    4096 Mar  4 03:17 cov_report
+-rw-r--r-- 1 root root 1224943 Mar  4 03:49 execution.log
+-rw-r--r-- 1 root root       6 Mar  4 01:09 executor.pid
+-rwxr-xr-x 1 root root   12597 Mar  4 01:06 executor.sh
+drwxr-xr-x 8 root root    4096 Mar  4 03:49 .git
+-rw-r--r-- 1 root root     170 Mar  4 00:48 .gitignore
+drwxr-xr-x 2 root root    4096 Mar  4 03:19 htmlcov
+drwxr-xr-x 2 root root    4096 Mar  4 03:49 __pycache__
+drwxr-xr-x 3 root root    4096 Mar  4 03:14 .pytest_cache
+-rw-r--r-- 1 root root    3644 Mar  4 01:06 README.md
+drwxr-xr-x 3 root root    4096 Mar  4 01:10 .ruff_cache
+-rwxr-xr-x 1 root root     630 Mar  4 01:09 run-in-background.sh
+-rw-r--r-- 1 root root  163116 Mar  4 01:40 runtime.log
+-rw-r--r-- 1 root root   45537 Mar  4 03:49 tasks.json
+-rw-r--r-- 1 root root   16775 Mar  4 02:00 test_add_task.py
+-rw-r--r-- 1 root root   16716 Mar  4 02:56 test_cli_commands.py
+-rw-r--r-- 1 root root   11165 Mar  4 02:13 test_default_priority.py
+-rw-r--r-- 1 root root    6619 Mar  4 01:45 test_due_date.py
+-rw-r--r-- 1 root root   14839 Mar  4 01:57 test_export.py
+-rw-r--r-- 1 root root    8687 Mar  4 01:47 test_no_due_date.py
+-rw-r--r-- 1 root root    8182 Mar  4 01:50 test_tag_splitting.py
+-rw-r--r-- 1 root root   10193 Mar  4 01:54 test_task_1772559141.py
+-rw-r--r-- 1 root root   14568 Mar  4 02:07 test_task_1772559323.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:16 test_task_1772559366.py
+-rw-r--r-- 1 root root   16951 Mar  4 02:20 test_task_1772559411.py
+-rw-r--r-- 1 root root   19735 Mar  4 02:33 test_task_1772559903.py
+-rw-r--r-- 1 root root   30070 Mar  4 02:45 test_task_1772559976.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:12 test_task_1772560713.py
+-rw-r--r-- 1 root root   12458 Mar  4 03:33 test_task_1772562060.py
+-rw-r--r-- 1 root root   17037 Mar  4 03:38 test_task_1772562098.py
+-rw-r--r-- 1 root root   17026 Mar  4 03:45 test_task_1772562169.py
+-rw-r--r-- 1 root root   17763 Mar  4 02:29 todo.py
+[0m
+[0m$ [0mcat /root/.openclaw/workspace/test/todo-manager/tasks.json 2>/dev/null || echo "File does not exist"
+[
+  {
+    "id": 1,
+    "content": "\u4f4e\u4f18\u5148\u7ea7\u6d4b\u8bd5\u4efb\u52a1",
+    "done": true,
+    "priority": "\u4f4e",
+    "created_at": "2026-03-04 01:33:59"
+  },
+  {
+    "id": 2,
+    "content": "\u5e26\u622a\u6b62\u65e5\u671f\u7684\u4f4e\u4f18\u5148\u7ea7\u4efb\u52a1",
+    "done": true,
+    "priority": "\u4f4e",
+    "created_at": "2026-03-04 01:34:03",
+    "due_date": "2026-03-20",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "\u9a8c\u8bc1"
+    ]
+  },
+  {
+    "id": 3,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559260",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:34:20",
+    "completed_at": "2026-03-04 02:03:21"
+  },
+  {
+    "id": 4,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559323",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:35:23",
+    "completed_at": "2026-03-04 02:11:12"
+  },
+  {
+    "id": 5,
+    "content": "\u6d4b\u8bd5\u9ed8\u8ba4\u4f18\u5148\u7ea7 - \u65b0\u4efb\u52a1",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:35:44",
+    "completed_at": "2026-03-04 02:14:01"
+  },
+  {
+    "id": 6,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559366",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:36:06",
+    "completed_at": "2026-03-04 02:17:56"
+  },
+  {
+    "id": 7,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559411",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:36:51",
+    "completed_at": "2026-03-04 02:21:04"
+  },
+  {
+    "id": 8,
+    "content": "NONE",
+    "done": true,
+    "created_at": "2026-03-04 01:37:30",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 02:21:42"
+  },
+  {
+    "id": 9,
+    "content": "\"\u6d4b\u8bd5\u4efb\u52a1_1772558260\"\u662f\u4e00\u4e2a\u9a8c\u8bc1\u6d4b\u8bd5\u4efb\u52a1\uff0c\u7528\u4e8e\u6d4b\u8bd5\u4efb\u52a1\u4f18\u5148\u7ea7\u529f\u80fd\u3002\u8be5\u4efb\u52a1\u5df2\u5b8c\u6210\uff0c\u5176\u9a8c\u8bc1\u7684\u529f\u80fd\uff08\u4efb\u52a1\u4f18\u5148\u7ea7\uff09\u5df2\u5728\u4efb\u52a1 2 \u4e2d\u5b9e\u73b0\u3002\u76f8\u5173\u7684\u540e\u7eed\u6539\u8fdb\u4efb\u52a1\uff08\u6309\u4f18\u5148\u7ea7\u6392\u5e8f\u3001\u8fc7\u6ee4\u3001\u4fee\u6539\u4f18\u5148\u7ea7\uff09\u5df2\u5728\u4efb\u52a1 2 \u5b8c\u6210\u65f6\u81ea\u52a8\u521b\u5efa\uff08\u4efb\u52a1 ID 11, 12, 13\uff09\u3002\u65e0\u9700\u521b\u5efa\u65b0\u4efb\u52a1\u3002",
+    "done": true,
+    "created_at": "2026-03-04 01:37:30",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 02:22:10"
+  },
+  {
+    "id": 10,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559626",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:40:26",
+    "completed_at": "2026-03-04 02:22:53"
+  },
+  {
+    "id": 11,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559821",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:43:41",
+    "completed_at": "2026-03-04 02:23:53"
+  },
+  {
+    "id": 12,
+    "content": "\u4f18\u5148\u7ea7\u7edf\u8ba1\u529f\u80fd",
+    "done": true,
+    "created_at": "2026-03-04 01:44:03",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 02:30:06"
+  },
+  {
+    "id": 13,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559903",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:45:03",
+    "completed_at": "2026-03-04 02:35:24"
+  },
+  {
+    "id": 14,
+    "content": "\u6d4b\u8bd5\u622a\u6b62\u65e5\u671f\u529f\u80fd",
+    "done": true,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 01:45:29",
+    "due_date": "2026-03-10",
+    "completed_at": "2026-03-04 02:36:46"
+  },
+  {
+    "id": 15,
+    "content": "\u6d4b\u8bd5\u65e0\u622a\u6b62\u65e5\u671f",
+    "done": true,
+    "priority": "\u4f4e",
+    "created_at": "2026-03-04 01:45:29",
+    "completed_at": "2026-03-04 02:37:43"
+  },
+  {
+    "id": 16,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559976",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:46:16"
+  },
+  {
+    "id": 17,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560148",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:49:08",
+    "completed_at": "2026-03-04 02:51:12"
+  },
+  {
+    "id": 18,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560188",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:49:48",
+    "completed_at": "2026-03-04 02:52:22"
+  },
+  {
+    "id": 19,
+    "content": "\u6d4b\u8bd5\u6807\u7b7e\u5206\u5272\u529f\u80fd",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:50:12",
+    "tags": [
+      "\u5de5\u4f5c",
+      "\u7d27\u6025"
+    ],
+    "completed_at": "2026-03-04 02:48:14"
+  },
+  {
+    "id": 20,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560261",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:51:01",
+    "completed_at": "2026-03-04 02:57:05"
+  },
+  {
+    "id": 21,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560300",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:51:40",
+    "completed_at": "2026-03-04 02:58:23"
+  },
+  {
+    "id": 22,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560348",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:52:28",
+    "completed_at": "2026-03-04 02:59:35"
+  },
+  {
+    "id": 23,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": true,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 01:54:09",
+    "completed_at": "2026-03-04 03:00:36"
+  },
+  {
+    "id": 24,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560561",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:56:01",
+    "completed_at": "2026-03-04 03:02:33"
+  },
+  {
+    "id": 25,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560713",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 01:58:33",
+    "completed_at": "2026-03-04 03:13:46"
+  },
+  {
+    "id": 26,
+    "content": "\u8fd0\u884c\u6d4b\u8bd5\u9a8c\u8bc1\u8986\u76d6\u60c5\u51b5\uff1a",
+    "done": true,
+    "created_at": "2026-03-04 01:59:00",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:19:51"
+  },
+  {
+    "id": 27,
+    "content": "NONE",
+    "done": true,
+    "created_at": "2026-03-04 01:59:00",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:16:28"
+  },
+  {
+    "id": 28,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560897",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:01:37",
+    "completed_at": "2026-03-04 03:18:18"
+  },
+  {
+    "id": 29,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560937",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:02:17",
+    "completed_at": "2026-03-04 03:17:36"
+  },
+  {
+    "id": 30,
+    "content": "\u6211\u9700\u8981\u5148\u4e86\u89e3\u5df2\u5b8c\u6210\u4efb\u52a1\u7684\u5185\u5bb9\u548c\u9879\u76ee\u5f53\u524d\u72b6\u6001\u3002",
+    "done": true,
+    "created_at": "2026-03-04 02:02:38",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:21:27"
+  },
+  {
+    "id": 31,
+    "content": "NONE",
+    "done": true,
+    "created_at": "2026-03-04 02:02:38",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:22:41"
+  },
+  {
+    "id": 32,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772560995",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:03:15",
+    "completed_at": "2026-03-04 03:24:18"
+  },
+  {
+    "id": 33,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772561467",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:11:07"
+  },
+  {
+    "id": 34,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772561636",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:13:56",
+    "completed_at": "2026-03-04 03:27:07"
+  },
+  {
+    "id": 35,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772561872",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:17:52",
+    "completed_at": "2026-03-04 03:28:39"
+  },
+  {
+    "id": 36,
+    "content": "NONE",
+    "done": true,
+    "created_at": "2026-03-04 02:18:00",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:29:26"
+  },
+  {
+    "id": 37,
+    "content": "\uff08\u8981\u51c6\u786e\u5224\u65ad\u662f\u5426\u9700\u8981\u540e\u7eed\u4efb\u52a1\uff0c\u6211\u9700\u8981\u67e5\u770b\u4efb\u52a1_1772559366 \u7684\u5177\u4f53\u5185\u5bb9\u548c\u9879\u76ee\u5f53\u524d\u72b6\u6001\u3002\u4f46\u6839\u636e\u4efb\u52a1\u540d\u79f0\"\u6d4b\u8bd5\u4efb\u52a1\"\uff0c\u8fd9\u5f88\u53ef\u80fd\u662f\u4e00\u4e2a\u6d4b\u8bd5\u6027\u8d28\u7684\u4efb\u52a1\uff0c\u4e0d\u6d89\u53ca\u5b9e\u9645\u529f\u80fd\u5f00\u53d1\uff0c\u56e0\u6b64\u901a\u5e38\u4e0d\u9700\u8981\u540e\u7eed\u4efb\u52a1\u3002\uff09",
+    "done": true,
+    "created_at": "2026-03-04 02:18:00",
+    "priority": "\u4e2d",
+    "completed_at": "2026-03-04 03:30:00"
+  },
+  {
+    "id": 38,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562060",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:21:00",
+    "completed_at": "2026-03-04 03:34:12"
+  },
+  {
+    "id": 39,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562098",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:21:38",
+    "completed_at": "2026-03-04 03:45:00"
+  },
+  {
+    "id": 40,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562125",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:22:05",
+    "completed_at": "2026-03-04 03:40:38"
+  },
+  {
+    "id": 41,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562169",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:22:49",
+    "completed_at": "2026-03-04 03:47:50"
+  },
+  {
+    "id": 42,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772559821 \u662f\u4e00\u4e2a\u9a8c\u8bc1\u6d4b\u8bd5\u4efb\u52a1\uff0c\u7528\u4e8e\u6d4b\u8bd5\u6309\u4f18\u5148\u7ea7\u8fc7\u6ee4\u529f\u80fd\u3002\u8be5\u4efb\u52a1\u5df2\u5b8c\u6210\uff0c\u5176\u9a8c\u8bc1\u7684\u529f\u80fd\uff08\u6309\u4f18\u5148\u7ea7\u8fc7\u6ee4\uff09\u5df2\u5728\u4efb\u52a1 12 \u4e2d\u5b9e\u73b0\u3002\u65e0\u9700\u521b\u5efa\u65b0\u4efb\u52a1\u3002",
+    "done": true,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:23:34",
+    "completed_at": "2026-03-04 03:49:11"
+  },
+  {
+    "id": 43,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562229",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:23:49"
+  },
+  {
+    "id": 44,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562601",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:30:01"
+  },
+  {
+    "id": 45,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:34:14",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 46,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772562920",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:35:20"
+  },
+  {
+    "id": 47,
+    "content": "\u6d4b\u8bd5\u622a\u6b62\u65e5\u671f CLI",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:35:54",
+    "due_date": "2026-04-15",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "\u9a8c\u8bc1"
+    ]
+  },
+  {
+    "id": 48,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563000",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:36:40"
+  },
+  {
+    "id": 49,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563059",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:37:39"
+  },
+  {
+    "id": 50,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:44:57",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 51,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:44:57"
+  },
+  {
+    "id": 52,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:44:57"
+  },
+  {
+    "id": 53,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:44:57"
+  },
+  {
+    "id": 54,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:44:58"
+  },
+  {
+    "id": 55,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:44:58"
+  },
+  {
+    "id": 56,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:47:32",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 57,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:32"
+  },
+  {
+    "id": 58,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:32"
+  },
+  {
+    "id": 59,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:32"
+  },
+  {
+    "id": 60,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:32"
+  },
+  {
+    "id": 61,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:47:32"
+  },
+  {
+    "id": 62,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:47:35",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 63,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:35"
+  },
+  {
+    "id": 64,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:35"
+  },
+  {
+    "id": 65,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:35"
+  },
+  {
+    "id": 66,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:47:35"
+  },
+  {
+    "id": 67,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:47:35"
+  },
+  {
+    "id": 68,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563690",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:48:10"
+  },
+  {
+    "id": 69,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:48:33",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 70,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:48:33"
+  },
+  {
+    "id": 71,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:48:33"
+  },
+  {
+    "id": 72,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:48:33"
+  },
+  {
+    "id": 73,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:48:34"
+  },
+  {
+    "id": 74,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:48:34"
+  },
+  {
+    "id": 75,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563758",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:49:18"
+  },
+  {
+    "id": 76,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:49:50",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 77,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:49:50"
+  },
+  {
+    "id": 78,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:49:50"
+  },
+  {
+    "id": 79,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:49:50"
+  },
+  {
+    "id": 80,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:49:50"
+  },
+  {
+    "id": 81,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:49:50"
+  },
+  {
+    "id": 82,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563866",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:51:06"
+  },
+  {
+    "id": 83,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772563922",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:52:02"
+  },
+  {
+    "id": 84,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772564218",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:56:58"
+  },
+  {
+    "id": 85,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772564294",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:58:14"
+  },
+  {
+    "id": 86,
+    "content": "\u6d4b\u8bd5\u9a8c\u8bc1\u4efb\u52a1_1772564338",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 02:58:58",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "\u9a8c\u8bc1"
+    ]
+  },
+  {
+    "id": 87,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772564371",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 02:59:31"
+  },
+  {
+    "id": 88,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772564431",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:00:31"
+  },
+  {
+    "id": 89,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772564549",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:02:29"
+  },
+  {
+    "id": 90,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565221",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:13:41"
+  },
+  {
+    "id": 91,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:24",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 92,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:25",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 93,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:25"
+  },
+  {
+    "id": 94,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:25"
+  },
+  {
+    "id": 95,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:25"
+  },
+  {
+    "id": 96,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:25"
+  },
+  {
+    "id": 97,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:25"
+  },
+  {
+    "id": 98,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:29",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 99,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:30",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 100,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:30"
+  },
+  {
+    "id": 101,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:30"
+  },
+  {
+    "id": 102,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:30"
+  },
+  {
+    "id": 103,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:30"
+  },
+  {
+    "id": 104,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:30"
+  },
+  {
+    "id": 105,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:34",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 106,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:35",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 107,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:35"
+  },
+  {
+    "id": 108,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:35"
+  },
+  {
+    "id": 109,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:35"
+  },
+  {
+    "id": 110,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:35"
+  },
+  {
+    "id": 111,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:14:35"
+  },
+  {
+    "id": 112,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565281",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:14:41"
+  },
+  {
+    "id": 113,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:05",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 114,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:05",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 115,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 116,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 117,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 118,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 119,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:05"
+  },
+  {
+    "id": 120,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 121,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 122,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:09"
+  },
+  {
+    "id": 123,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:09"
+  },
+  {
+    "id": 124,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:09"
+  },
+  {
+    "id": 125,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:10"
+  },
+  {
+    "id": 126,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:10"
+  },
+  {
+    "id": 127,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565327",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:27"
+  },
+  {
+    "id": 128,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:41",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 129,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:41",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 130,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 131,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 132,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 133,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 134,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:15:41"
+  },
+  {
+    "id": 135,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 136,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 137,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:13"
+  },
+  {
+    "id": 138,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:13"
+  },
+  {
+    "id": 139,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:13"
+  },
+  {
+    "id": 140,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:13"
+  },
+  {
+    "id": 141,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:13"
+  },
+  {
+    "id": 142,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565384",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:24"
+  },
+  {
+    "id": 143,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:37",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 144,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:37",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 145,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 146,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 147,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 148,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 149,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:16:37"
+  },
+  {
+    "id": 150,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 151,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:09",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 152,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 153,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 154,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 155,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 156,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:09"
+  },
+  {
+    "id": 157,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 158,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:13",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 159,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:14"
+  },
+  {
+    "id": 160,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:14"
+  },
+  {
+    "id": 161,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:14"
+  },
+  {
+    "id": 162,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:14"
+  },
+  {
+    "id": 163,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:14"
+  },
+  {
+    "id": 164,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:21",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 165,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:22",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 166,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:22"
+  },
+  {
+    "id": 167,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:22"
+  },
+  {
+    "id": 168,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:22"
+  },
+  {
+    "id": 169,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:22"
+  },
+  {
+    "id": 170,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:22"
+  },
+  {
+    "id": 171,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565451",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:31"
+  },
+  {
+    "id": 172,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:57",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 173,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:57",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 174,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 175,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 176,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 177,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 178,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:17:57"
+  },
+  {
+    "id": 179,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:03",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 180,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:03",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 181,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:03"
+  },
+  {
+    "id": 182,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:03"
+  },
+  {
+    "id": 183,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:03"
+  },
+  {
+    "id": 184,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:03"
+  },
+  {
+    "id": 185,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:03"
+  },
+  {
+    "id": 186,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565492",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:13"
+  },
+  {
+    "id": 187,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:54",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 188,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:54",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 189,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:54"
+  },
+  {
+    "id": 190,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:54"
+  },
+  {
+    "id": 191,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:54"
+  },
+  {
+    "id": 192,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:18:54"
+  },
+  {
+    "id": 193,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:18:54"
+  },
+  {
+    "id": 194,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565586",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:19:46"
+  },
+  {
+    "id": 195,
+    "content": "\u8fc7\u6ee4\u6d4b\u8bd5\u4efb\u52a1 1",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:06",
+    "tags": [
+      "\u8fc7\u6ee4\u6d4b\u8bd5"
+    ]
+  },
+  {
+    "id": 196,
+    "content": "\u6d4b\u8bd5\u82f1\u6587\u9017\u53f7\u6807\u7b7e",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:06",
+    "tags": [
+      "work",
+      "urgent",
+      "important"
+    ]
+  },
+  {
+    "id": 197,
+    "content": "\u6d4b\u8bd5 add-tag \u547d\u4ee4",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:06"
+  },
+  {
+    "id": 198,
+    "content": "\u6d4b\u8bd5\u7a7a\u683c\u6807\u7b7e",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:06",
+    "tags": [
+      "\u5de5\u4f5c",
+      "\u7d27\u6025",
+      "\u91cd\u8981"
+    ]
+  },
+  {
+    "id": 199,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:06",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 200,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:07",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 201,
+    "content": "\u6d4b\u8bd5 remove-tag \u547d\u4ee4",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07",
+    "tags": [
+      "\u5de5\u4f5c",
+      "\u91cd\u8981"
+    ]
+  },
+  {
+    "id": 202,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 203,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 204,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 205,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 206,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:07",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 207,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:07",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 208,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 209,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 210,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 211,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 212,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:20:07"
+  },
+  {
+    "id": 213,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565683",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:21:23"
+  },
+  {
+    "id": 214,
+    "content": "\u6839\u636e\u5206\u6790\uff0c\u5df2\u5b8c\u6210\u7684\u4efb\u52a1\uff08\u4efb\u52a1 32\uff09\u662f\u4e00\u4e2a\u5206\u6790\u6027\u8d28\u7684\u4efb\u52a1\uff0c\u7528\u4e8e\u4e86\u89e3\u9879\u76ee\u72b6\u6001\u3002\u4ece\u9879\u76ee\u5f53\u524d\u72b6\u6001\u6765\u770b\uff1a",
+    "done": false,
+    "created_at": "2026-03-04 03:21:56",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 215,
+    "content": "**\u5df2\u5b8c\u6210\u529f\u80fd**:",
+    "done": false,
+    "created_at": "2026-03-04 03:21:56",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 216,
+    "content": "- \u2705 \u4efb\u52a1\u4f18\u5148\u7ea7\uff08\u9ad8/\u4e2d/\u4f4e\uff09",
+    "done": false,
+    "created_at": "2026-03-04 03:21:56",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 217,
+    "content": "- \u2705 \u4efb\u52a1\u622a\u6b62\u65e5\u671f",
+    "done": false,
+    "created_at": "2026-03-04 03:21:56",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 218,
+    "content": "- \u2705 \u4efb\u52a1\u6807\u7b7e\u7cfb\u7edf",
+    "done": false,
+    "created_at": "2026-03-04 03:21:56",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 219,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565756",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:22:36"
+  },
+  {
+    "id": 220,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772565854",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:24:14"
+  },
+  {
+    "id": 221,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:25:33",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 222,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:25:34",
+    "due_date": "2026-12-31",
+    "tags": [
+      "\u6d4b\u8bd5",
+      "CLI"
+    ]
+  },
+  {
+    "id": 223,
+    "content": "CLI \u5220\u9664\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:25:34"
+  },
+  {
+    "id": 224,
+    "content": "CLI \u5b8c\u6210\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:25:34"
+  },
+  {
+    "id": 225,
+    "content": "\u5bfc\u51fa\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:25:34"
+  },
+  {
+    "id": 226,
+    "content": "\u4f18\u5148\u7ea7\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:25:34"
+  },
+  {
+    "id": 227,
+    "content": "\u7edf\u8ba1\u6d4b\u8bd5",
+    "done": false,
+    "priority": "\u9ad8",
+    "created_at": "2026-03-04 03:25:34"
+  },
+  {
+    "id": 228,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566022",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:27:02"
+  },
+  {
+    "id": 229,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566115",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:28:35"
+  },
+  {
+    "id": 230,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566162",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:29:22"
+  },
+  {
+    "id": 231,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566192",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:29:52"
+  },
+  {
+    "id": 232,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566448",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:34:08"
+  },
+  {
+    "id": 233,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:38:31"
+  },
+  {
+    "id": 234,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:39:01"
+  },
+  {
+    "id": 235,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772566834",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:40:34"
+  },
+  {
+    "id": 236,
+    "content": "CLI \u6d4b\u8bd5\u4efb\u52a1",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:46:34"
+  },
+  {
+    "id": 237,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772567265",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:47:45"
+  },
+  {
+    "id": 238,
+    "content": "\u6211\u9700\u8981\u5148\u4e86\u89e3\u5df2\u5b8c\u6210\u4efb\u52a1\u7684\u5185\u5bb9\u548c\u9879\u76ee\u5f53\u524d\u72b6\u6001\uff0c\u624d\u80fd\u5224\u65ad\u662f\u5426\u9700\u8981\u521b\u5efa\u540e\u7eed\u4efb\u52a1\u3002",
+    "done": false,
+    "created_at": "2026-03-04 03:48:05",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 239,
+    "content": "NONE",
+    "done": false,
+    "created_at": "2026-03-04 03:48:05",
+    "priority": "\u4e2d"
+  },
+  {
+    "id": 240,
+    "content": "\u6d4b\u8bd5\u4efb\u52a1_1772567346",
+    "done": false,
+    "priority": "\u4e2d",
+    "created_at": "2026-03-04 03:49:06"
+  }
+]
+[0m
+让我查看现有的测试文件，了解测试模式和功能覆盖情况。
+[0m✱ [0mGlob "test_*.py"[90m in . · 17 matches[0m
+[0m→ [0mRead test_cli_commands.py[90m [limit=100][0m
+[0m→ [0mRead test_task_1772562169.py[90m [limit=100][0m
+[0m→ [0mRead test_task_1772562098.py[90m [limit=150][0m
+[0m→ [0mRead test_task_1772562060.py[90m [limit=150][0m
+让我查看还有哪些功能需要测试覆盖。
+[0m✱ [0mGrep "def test.*stats"[90m in . · 24 matches[0m
+[0m✱ [0mGrep "def test.*set_priority"[90m in . · 25 matches[0m
+[0m✱ [0mGrep "def test.*remove_tag"[90m in . · 15 matches[0m
+[0m✱ [0mGrep "def test.*delete"[90m in . · 32 matches[0m
+[0m→ [0mRead test_export.py[90m [limit=100][0m
+现在我理解了任务需求。我将创建一个综合性的测试文件来验证 Todo 管理器的核心功能。
+[0m
+[0m← [0mWrite test_task_1772562229.py
+Wrote file successfully.
+[0m
+现在运行测试验证功能：
+[0m$ [0mpython -m pytest test_task_1772562229.py -v
+/usr/bin/bash: line 1: python: command not found
+[0m
+[0m$ [0mpython3 -m pytest test_task_1772562229.py -v
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-9.0.2, pluggy-1.6.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /root/.openclaw/workspace/test/todo-manager
+plugins: cov-7.0.0
+collecting ... collected 32 items
+
+test_task_1772562229.py::TestTaskCreation::test_add_basic_task PASSED    [  3%]
+test_task_1772562229.py::TestTaskCreation::test_add_task_with_due_date PASSED [  6%]
+test_task_1772562229.py::TestTaskCreation::test_add_task_with_priority PASSED [  9%]
+test_task_1772562229.py::TestTaskCreation::test_add_task_with_tags PASSED [ 12%]
+test_task_1772562229.py::TestTaskCreation::test_task_auto_increment_id PASSED [ 15%]
+test_task_1772562229.py::TestTaskCreation::test_task_timestamp_creation PASSED [ 18%]
+test_task_1772562229.py::TestTaskListing::test_list_empty_tasks PASSED   [ 21%]
+test_task_1772562229.py::TestTaskListing::test_list_filter_by_priority PASSED [ 25%]
+test_task_1772562229.py::TestTaskListing::test_list_filter_by_tag PASSED [ 28%]
+test_task_1772562229.py::TestTaskListing::test_list_tasks_with_priority_sort PASSED [ 31%]
+test_task_1772562229.py::TestTaskCompletion::test_mark_nonexistent_task_done PASSED [ 34%]
+test_task_1772562229.py::TestTaskCompletion::test_mark_task_done PASSED  [ 37%]
+test_task_1772562229.py::TestTaskDeletion::test_delete_nonexistent_task PASSED [ 40%]
+test_task_1772562229.py::TestTaskDeletion::test_delete_task PASSED       [ 43%]
+test_task_1772562229.py::TestTaskDeletion::test_delete_task_renumbers PASSED [ 46%]
+test_task_1772562229.py::TestTagManagement::test_add_tag PASSED          [ 50%]
+test_task_1772562229.py::TestTagManagement::test_remove_tag PASSED       [ 53%]
+test_task_1772562229.py::TestPriorityManagement::test_set_priority PASSED [ 56%]
+test_task_1772562229.py::TestPriorityManagement::test_set_priority_nonexistent_task PASSED [ 59%]
+test_task_1772562229.py::TestExport::test_export_csv PASSED              [ 62%]
+test_task_1772562229.py::TestExport::test_export_markdown PASSED         [ 65%]
+test_task_1772562229.py::TestStats::test_stats_empty PASSED              [ 68%]
+test_task_1772562229.py::TestStats::test_stats_with_tasks PASSED         [ 71%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_add PASSED         [ 75%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_delete PASSED      [ 78%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_done PASSED        [ 81%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_export_csv PASSED  [ 84%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_list PASSED        [ 87%]
+test_task_1772562229.py::TestCLIIntegration::test_cli_stats PASSED       [ 90%]
+test_task_1772562229.py::TestLoadSaveTasks::test_backward_compatibility PASSED [ 93%]
+test_task_1772562229.py::TestLoadSaveTasks::test_load_nonexistent_file PASSED [ 96%]
+test_task_1772562229.py::TestLoadSaveTasks::test_save_and_load PASSED    [100%]
+
+============================== 32 passed in 0.08s ==============================
+[0m
+所有 32 个测试通过。现在提交代码：
+[0m$ [0mgit add test_task_1772562229.py && git commit -m "Test: 添加测试任务_1772562229 综合功能验证
+
+- 添加 32 个单元测试覆盖所有核心功能
+- 测试任务创建（基本/优先级/截止日期/标签）
+- 测试任务列表（排序/过滤）
+- 测试任务完成和删除
+- 测试标签管理（添加/移除）
+- 测试优先级管理
+- 测试导出功能（CSV/Markdown）
+- 测试统计功能
+- 测试 CLI 集成
+- 测试数据加载保存和向后兼容性" && git push origin main
+[main 40595bf] Test: 添加测试任务_1772562229 综合功能验证
+ 1 file changed, 492 insertions(+)
+ create mode 100644 test_task_1772562229.py
+To github.com:jscomet/test-todo-manager.git
+   b3a8eec..40595bf  main -> main
+[0m
+## ✅ 任务完成报告
+
+### 完成的功能
+- **测试任务_1772562229** - Todo 管理器综合功能验证
+
+### 测试覆盖（32 个测试全部通过）
+| 测试类别 | 测试数量 | 功能 |
+|---------|---------|------|
+| TestTaskCreation | 6 | 任务创建（基本/优先级/截止日期/标签/ID 递增/时间戳） |
+| TestTaskListing | 4 | 任务列表（空列表/优先级排序/优先级过滤/标签过滤） |
+| TestTaskCompletion | 2 | 任务完成（正常/不存在任务） |
+| TestTaskDeletion | 3 | 任务删除（正常/重新编号/不存在任务） |
+| TestTagManagement | 2 | 标签管理（添加/移除） |
+| TestPriorityManagement | 2 | 优先级管理（修改/不存在任务） |
+| TestExport | 2 | 导出功能（CSV/Markdown） |
+| TestStats | 2 | 统计功能（空列表/有任务） |
+| TestCLIIntegration | 6 | CLI 集成（add/list/done/delete/stats/export） |
+| TestLoadSaveTasks | 3 | 数据持久化（加载/保存/向后兼容） |
+
+### 修改的文件
+- `test_task_1772562229.py` (新增，492 行)
+
+### 测试方法
+```bash
+python3 -m pytest test_task_1772562229.py -v
+```
+[0;32m[✓][0m OpenCode 执行完成
+[0;34m[2026-03-04 03:53:40][0m ========== 阶段 3: 测试验证 ==========
+[0;36m[INFO][0m 测试 1: Python 语法检查
+[0;32m[✓][0m 语法检查通过
+[0;36m[INFO][0m 测试 2: 功能测试
+✅ 已添加任务：测试任务_1772567620
+[0;32m[✓][0m 添加功能正常
+
+📋 任务列表:
+--------------------------------------------------
+✅ [14] 🔴 测试截止日期功能 📅 2026-03-10
+✅ [23] 🔴 CLI 测试任务
+⭕ [45] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [47] 🔴 测试截止日期 CLI 📅 2026-04-15 🔖 #测试 #验证
+⭕ [50] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [55] 🔴 统计测试
+⭕ [56] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [61] 🔴 统计测试
+⭕ [62] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [67] 🔴 统计测试
+⭕ [69] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [74] 🔴 统计测试
+⭕ [76] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [81] 🔴 统计测试
+⭕ [86] 🔴 测试验证任务_1772564338 📅 2026-12-31 🔖 #测试 #验证
+⭕ [91] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [92] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [97] 🔴 统计测试
+⭕ [98] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [99] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [104] 🔴 统计测试
+⭕ [105] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [106] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [111] 🔴 统计测试
+⭕ [113] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [114] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [119] 🔴 统计测试
+⭕ [120] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [121] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [126] 🔴 统计测试
+⭕ [128] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [129] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [134] 🔴 统计测试
+⭕ [135] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [136] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [141] 🔴 统计测试
+⭕ [143] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [144] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [149] 🔴 统计测试
+⭕ [150] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [151] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [156] 🔴 统计测试
+⭕ [157] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [158] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [163] 🔴 统计测试
+⭕ [164] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [165] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [170] 🔴 统计测试
+⭕ [172] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [173] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [178] 🔴 统计测试
+⭕ [179] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [180] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [185] 🔴 统计测试
+⭕ [187] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [188] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [193] 🔴 统计测试
+⭕ [199] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [200] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [205] 🔴 统计测试
+⭕ [206] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [207] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [212] 🔴 统计测试
+⭕ [221] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [222] 🔴 CLI 测试任务 📅 2026-12-31 🔖 #测试 #CLI
+⭕ [227] 🔴 统计测试
+✅ [3] 🟡 测试任务_1772559260
+✅ [4] 🟡 测试任务_1772559323
+✅ [5] 🟡 测试默认优先级 - 新任务
+✅ [6] 🟡 测试任务_1772559366
+✅ [7] 🟡 测试任务_1772559411
+✅ [8] 🟡 NONE
+✅ [9] 🟡 "测试任务_1772558260"是一个验证测试任务，用于测试任务优先级功能。该任务已完成，其验证的功能（任务优先级）已在任务 2 中实现。相关的后续改进任务（按优先级排序、过滤、修改优先级）已在任务 2 完成时自动创建（任务 ID 11, 12, 13）。无需创建新任务。
+✅ [10] 🟡 测试任务_1772559626
+✅ [11] 🟡 测试任务_1772559821
+✅ [12] 🟡 优先级统计功能
+✅ [13] 🟡 测试任务_1772559903
+✅ [16] 🟡 测试任务_1772559976
+✅ [17] 🟡 测试任务_1772560148
+✅ [18] 🟡 测试任务_1772560188
+✅ [19] 🟡 测试标签分割功能 🔖 #工作 #紧急
+✅ [20] 🟡 测试任务_1772560261
+✅ [21] 🟡 测试任务_1772560300
+✅ [22] 🟡 测试任务_1772560348
+✅ [24] 🟡 测试任务_1772560561
+✅ [25] 🟡 测试任务_1772560713
+✅ [26] 🟡 运行测试验证覆盖情况：
+✅ [27] 🟡 NONE
+✅ [28] 🟡 测试任务_1772560897
+✅ [29] 🟡 测试任务_1772560937
+✅ [30] 🟡 我需要先了解已完成任务的内容和项目当前状态。
+✅ [31] 🟡 NONE
+✅ [32] 🟡 测试任务_1772560995
+✅ [33] 🟡 测试任务_1772561467
+✅ [34] 🟡 测试任务_1772561636
+✅ [35] 🟡 测试任务_1772561872
+✅ [36] 🟡 NONE
+✅ [37] 🟡 （要准确判断是否需要后续任务，我需要查看任务_1772559366 的具体内容和项目当前状态。但根据任务名称"测试任务"，这很可能是一个测试性质的任务，不涉及实际功能开发，因此通常不需要后续任务。）
+✅ [38] 🟡 测试任务_1772562060
+✅ [39] 🟡 测试任务_1772562098
+✅ [40] 🟡 测试任务_1772562125
+✅ [41] 🟡 测试任务_1772562169
+✅ [42] 🟡 测试任务_1772559821 是一个验证测试任务，用于测试按优先级过滤功能。该任务已完成，其验证的功能（按优先级过滤）已在任务 12 中实现。无需创建新任务。
+⭕ [43] 🟡 测试任务_1772562229
+⭕ [44] 🟡 测试任务_1772562601
+⭕ [46] 🟡 测试任务_1772562920
+⭕ [48] 🟡 测试任务_1772563000
+⭕ [49] 🟡 测试任务_1772563059
+⭕ [51] 🟡 CLI 删除测试
+⭕ [52] 🟡 CLI 完成测试
+⭕ [53] 🟡 导出测试
+⭕ [54] 🟡 优先级测试
+⭕ [57] 🟡 CLI 删除测试
+⭕ [58] 🟡 CLI 完成测试
+⭕ [59] 🟡 导出测试
+⭕ [60] 🟡 优先级测试
+⭕ [63] 🟡 CLI 删除测试
+⭕ [64] 🟡 CLI 完成测试
+⭕ [65] 🟡 导出测试
+⭕ [66] 🟡 优先级测试
+⭕ [68] 🟡 测试任务_1772563690
+⭕ [70] 🟡 CLI 删除测试
+⭕ [71] 🟡 CLI 完成测试
+⭕ [72] 🟡 导出测试
+⭕ [73] 🟡 优先级测试
+⭕ [75] 🟡 测试任务_1772563758
+⭕ [77] 🟡 CLI 删除测试
+⭕ [78] 🟡 CLI 完成测试
+⭕ [79] 🟡 导出测试
+⭕ [80] 🟡 优先级测试
+⭕ [82] 🟡 测试任务_1772563866
+⭕ [83] 🟡 测试任务_1772563922
+⭕ [84] 🟡 测试任务_1772564218
+⭕ [85] 🟡 测试任务_1772564294
+⭕ [87] 🟡 测试任务_1772564371
+⭕ [88] 🟡 测试任务_1772564431
+⭕ [89] 🟡 测试任务_1772564549
+⭕ [90] 🟡 测试任务_1772565221
+⭕ [93] 🟡 CLI 删除测试
+⭕ [94] 🟡 CLI 完成测试
+⭕ [95] 🟡 导出测试
+⭕ [96] 🟡 优先级测试
+⭕ [100] 🟡 CLI 删除测试
+⭕ [101] 🟡 CLI 完成测试
+⭕ [102] 🟡 导出测试
+⭕ [103] 🟡 优先级测试
+⭕ [107] 🟡 CLI 删除测试
+⭕ [108] 🟡 CLI 完成测试
+⭕ [109] 🟡 导出测试
+⭕ [110] 🟡 优先级测试
+⭕ [112] 🟡 测试任务_1772565281
+⭕ [115] 🟡 CLI 删除测试
+⭕ [116] 🟡 CLI 完成测试
+⭕ [117] 🟡 导出测试
+⭕ [118] 🟡 优先级测试
+⭕ [122] 🟡 CLI 删除测试
+⭕ [123] 🟡 CLI 完成测试
+⭕ [124] 🟡 导出测试
+⭕ [125] 🟡 优先级测试
+⭕ [127] 🟡 测试任务_1772565327
+⭕ [130] 🟡 CLI 删除测试
+⭕ [131] 🟡 CLI 完成测试
+⭕ [132] 🟡 导出测试
+⭕ [133] 🟡 优先级测试
+⭕ [137] 🟡 CLI 删除测试
+⭕ [138] 🟡 CLI 完成测试
+⭕ [139] 🟡 导出测试
+⭕ [140] 🟡 优先级测试
+⭕ [142] 🟡 测试任务_1772565384
+⭕ [145] 🟡 CLI 删除测试
+⭕ [146] 🟡 CLI 完成测试
+⭕ [147] 🟡 导出测试
+⭕ [148] 🟡 优先级测试
+⭕ [152] 🟡 CLI 删除测试
+⭕ [153] 🟡 CLI 完成测试
+⭕ [154] 🟡 导出测试
+⭕ [155] 🟡 优先级测试
+⭕ [159] 🟡 CLI 删除测试
+⭕ [160] 🟡 CLI 完成测试
+⭕ [161] 🟡 导出测试
+⭕ [162] 🟡 优先级测试
+⭕ [166] 🟡 CLI 删除测试
+⭕ [167] 🟡 CLI 完成测试
+⭕ [168] 🟡 导出测试
+⭕ [169] 🟡 优先级测试
+⭕ [171] 🟡 测试任务_1772565451
+⭕ [174] 🟡 CLI 删除测试
+⭕ [175] 🟡 CLI 完成测试
+⭕ [176] 🟡 导出测试
+⭕ [177] 🟡 优先级测试
+⭕ [181] 🟡 CLI 删除测试
+⭕ [182] 🟡 CLI 完成测试
+⭕ [183] 🟡 导出测试
+⭕ [184] 🟡 优先级测试
+⭕ [186] 🟡 测试任务_1772565492
+⭕ [189] 🟡 CLI 删除测试
+⭕ [190] 🟡 CLI 完成测试
+⭕ [191] 🟡 导出测试
+⭕ [192] 🟡 优先级测试
+⭕ [194] 🟡 测试任务_1772565586
+⭕ [195] 🟡 过滤测试任务 1 🔖 #过滤测试
+⭕ [196] 🟡 测试英文逗号标签 🔖 #work #urgent #important
+⭕ [197] 🟡 测试 add-tag 命令
+⭕ [198] 🟡 测试空格标签 🔖 #工作 #紧急 #重要
+⭕ [201] 🟡 测试 remove-tag 命令 🔖 #工作 #重要
+⭕ [202] 🟡 CLI 完成测试
+⭕ [203] 🟡 导出测试
+⭕ [204] 🟡 优先级测试
+⭕ [208] 🟡 CLI 删除测试
+⭕ [209] 🟡 CLI 完成测试
+⭕ [210] 🟡 导出测试
+⭕ [211] 🟡 优先级测试
+⭕ [213] 🟡 测试任务_1772565683
+⭕ [214] 🟡 根据分析，已完成的任务（任务 32）是一个分析性质的任务，用于了解项目状态。从项目当前状态来看：
+⭕ [215] 🟡 **已完成功能**:
+⭕ [216] 🟡 - ✅ 任务优先级（高/中/低）
+⭕ [217] 🟡 - ✅ 任务截止日期
+⭕ [218] 🟡 - ✅ 任务标签系统
+⭕ [219] 🟡 测试任务_1772565756
+⭕ [220] 🟡 测试任务_1772565854
+⭕ [223] 🟡 CLI 删除测试
+⭕ [224] 🟡 CLI 完成测试
+⭕ [225] 🟡 导出测试
+⭕ [226] 🟡 优先级测试
+⭕ [228] 🟡 测试任务_1772566022
+⭕ [229] 🟡 测试任务_1772566115
+⭕ [230] 🟡 测试任务_1772566162
+⭕ [231] 🟡 测试任务_1772566192
+⭕ [232] 🟡 测试任务_1772566448
+⭕ [233] 🟡 CLI 测试任务
+⭕ [234] 🟡 CLI 测试任务
+⭕ [235] 🟡 测试任务_1772566834
+⭕ [236] 🟡 CLI 测试任务
+⭕ [237] 🟡 测试任务_1772567265
+⭕ [238] 🟡 我需要先了解已完成任务的内容和项目当前状态，才能判断是否需要创建后续任务。
+⭕ [239] 🟡 NONE
+⭕ [240] 🟡 测试任务_1772567346
+⭕ [241] 🟡 测试任务_1772567620
+✅ [1] 🟢 低优先级测试任务
+✅ [2] 🟢 带截止日期的低优先级任务 📅 2026-03-20 🔖 #测试 #验证
+✅ [15] 🟢 测试无截止日期
+--------------------------------------------------
+总计：241 个任务
+
+[0;32m[✓][0m 列出功能正常
+[0;32m[✓][0m 所有测试通过
+[0;34m[2026-03-04 03:53:40][0m ========== 阶段 4: Git 提交推送 ==========
