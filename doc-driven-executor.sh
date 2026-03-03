@@ -22,6 +22,7 @@ LOCK_FILE="/tmp/doc-driven-executor.lock"
 
 # 确保目录存在
 mkdir -p "$PROJECT_DIR/logs"
+mkdir -p "$PROJECT_DIR/logs/thinking"
 mkdir -p "$PROJECT_DIR/core"
 mkdir -p "$PROJECT_DIR/commands"
 
@@ -53,6 +54,88 @@ error() {
 
 warn() {
     echo -e "${YELLOW}[!]${NC} $1" | tee -a "$LOG_FILE"
+}
+
+# ==================== 加载最近 2 个 Thinking 文档 ====================
+
+load_recent_thinking() {
+    log "加载最近 2 个 Thinking 文档..."
+    
+    local thinking_dir="$PROJECT_DIR/logs/thinking"
+    local thinking_content=""
+    local count=0
+    
+    if [ -d "$thinking_dir" ]; then
+        # 获取最近修改的 2 个 md 文件
+        while IFS= read -r file; do
+            if [ -f "$file" ] && [ $count -lt 2 ]; then
+                info "加载: $(basename "$file")"
+                thinking_content+="\n\n=== $(basename "$file") ===\n\n"
+                thinking_content+=$(cat "$file")
+                count=$((count + 1))
+            fi
+        done < <(ls -t "$thinking_dir"/task-*.md 2>/dev/null | head -2)
+    fi
+    
+    if [ $count -eq 0 ]; then
+        info "没有找到 Thinking 文档，跳过加载"
+        echo ""
+    else
+        success "已加载 $count 个 Thinking 文档"
+        echo "$thinking_content"
+    fi
+}
+
+# ==================== 创建 Thinking 文档 ====================
+
+create_thinking_doc() {
+    local task_name="$1"
+    local task_id="$2"
+    
+    log "创建 Thinking 文档..."
+    
+    # 生成文件名（简化任务名）
+    local safe_name=$(echo "$task_name" | sed 's/[^a-zA-Z0-9\u4e00-\u9fa5]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
+    local thinking_file="$PROJECT_DIR/logs/thinking/task-${task_id}-${safe_name}.md"
+    
+    # 创建文档内容
+    cat > "$thinking_file" << THINKING_EOF
+# 任务 ${task_id} 思考记录
+
+**任务**: ${task_name}  
+**时间**: $(date '+%Y-%m-%d %H:%M:%S')  
+**状态**: 已完成
+
+---
+
+## 分析过程
+
+（执行过程中自动记录...）
+
+## 关键决策
+
+- 技术方案选择
+- 实现细节考虑
+
+## 遇到的问题
+
+- 问题描述
+- 解决方案
+
+## 结论
+
+任务已完成，相关文件已创建。
+
+---
+
+*记录时间: $(date '+%Y-%m-%d')*
+THINKING_EOF
+    
+    success "Thinking 文档已创建: $(basename "$thinking_file")"
+    
+    # Git 提交 Thinking 文档
+    git add "$thinking_file" 2>/dev/null || true
+    git commit -m "Docs: 添加任务 ${task_id} 思考记录" 2>/dev/null || true
 }
 
 # ==================== 文档检查 ====================
@@ -234,17 +317,24 @@ PROMPT_EOF
     echo "$duration"
 }
 
-# ==================== 阶段 6: 更新 PLAN ====================
+# ==================== 阶段 6: 更新 PLAN & Thinking ====================
 
 phase_6_update_plan() {
     local task_name="$1"
     local duration="$2"
+    local task_id="$3"
     
-    log "========== 阶段 6: 更新 PLAN =========="
+    log "========== 阶段 6: 更新 PLAN & Thinking =========="
     
+    # 创建 Thinking 文档
+    if [ -n "$task_id" ]; then
+        create_thinking_doc "$task_name" "$task_id"
+    fi
+    
+    # 更新 PLAN
     update_plan_status "$task_name" "✅ 已完成" "${duration}m"
     
-    success "PLAN 更新完成"
+    success "PLAN 和 Thinking 更新完成"
 }
 
 # ==================== 主循环 ====================
@@ -294,12 +384,18 @@ main_loop() {
         
         info "获取到任务: [$priority] $task_name"
         
+        # 生成任务 ID
+        local task_id=$((iteration * 1000 + 1))
+        
         # 执行六阶段流程
+        # 阶段 0.5: 加载最近 2 个 Thinking 文档
+        load_recent_thinking
+        
         phase_1_analyze "$task_name"
         
         local duration
         if duration=$(phase_2_to_5_execute "$task_name"); then
-            phase_6_update_plan "$task_name" "$duration"
+            phase_6_update_plan "$task_name" "$duration" "$task_id"
         else
             error "任务执行失败: $task_name"
             # 标记为失败，避免无限重试
