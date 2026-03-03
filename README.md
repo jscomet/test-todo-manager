@@ -54,8 +54,10 @@ python todo.py delete 1
 ```
 todo-manager/
 ├── todo.py               # 主程序
-├── babyagi-executor.sh   # BabyAGI 风格自动执行器 ⭐
+├── executor.sh           # BabyAGI 任务执行器 ⭐
+├── babyagi-executor.sh   # BabyAGI 风格自动执行器
 ├── tasks.json            # 任务数据
+├── AGENTS.md             # Agent 工作规范
 ├── README.md             # 说明文档
 └── execution.log         # 执行日志
 ```
