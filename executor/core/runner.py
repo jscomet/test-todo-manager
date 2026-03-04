@@ -34,48 +34,45 @@ class ExecutionRunner:
         self.long_memory = LongTermMemory()
         self.thinking = ThinkingRecorder()
     
-    def run(self):
-        """主循环"""
+    def run_single(self):
+        """执行单个任务后退出"""
         self.running = True
+        self.iteration += 1
         
-        while self.running:
-            self.iteration += 1
-            print(f"\n{'='*60}")
-            print(f"🔄 第 {self.iteration} 轮执行")
-            print(f"{'='*60}")
-            
-            # 1. 获取任务
-            task = self.queue.get_next()
-            
-            if not task:
-                print("✨ 所有任务完成！")
-                break
-            
-            print(f"📝 任务: [{task.priority}] {task.objective[:50]}...")
-            
-            # 2. 加载记忆
-            context = self._load_context(task)
-            print(f"💾 加载上下文: {len(context['recent_thinking'])} 个思考记录")
-            
-            # 3. 构建 Prompt
-            prompt = self._build_prompt(task, context)
-            
-            # 4. 执行
-            result = self._execute_task(task, prompt)
-            
-            # 5. 处理结果
-            if result.status == "success":
-                self._handle_success(task, result)
-            else:
-                self._handle_failure(task, result)
-            
-            # 6. 保存记忆
-            self._save_memory(task, result)
-            
-            # 7. 休眠
-            interval = self.config.get("executor", {}).get("poll_interval", 5)
-            print(f"⏳ 等待 {interval} 秒...")
-            time.sleep(interval)
+        print(f"\n{'='*60}")
+        print(f"🔄 第 {self.iteration} 轮执行 (单任务模式)")
+        print(f"{'='*60}")
+        
+        # 1. 获取任务
+        task = self.queue.get_next()
+        
+        if not task:
+            print("✨ 没有待处理任务！")
+            return False
+        
+        print(f"📝 任务: [{task.priority}] {task.objective[:50]}...")
+        
+        # 2. 加载记忆
+        context = self._load_context(task)
+        print(f"💾 加载上下文: {len(context['recent_thinking'])} 个思考记录")
+        
+        # 3. 构建 Prompt
+        prompt = self._build_prompt(task, context)
+        
+        # 4. 执行
+        result = self._execute_task(task, prompt)
+        
+        # 5. 处理结果
+        if result.status == "success":
+            self._handle_success(task, result)
+        else:
+            self._handle_failure(task, result)
+        
+        # 6. 保存记忆
+        self._save_memory(task, result)
+        
+        print(f"\n✅ 任务执行完成，退出")
+        return True
     
     def _load_context(self, task: Task) -> dict:
         """加载上下文记忆"""

@@ -15,7 +15,7 @@ from config import load_config
 
 def main():
     """主入口"""
-    print("🚀 BabyAGI Executor 启动")
+    print("🚀 BabyAGI Executor 启动 (单任务模式)")
     
     # 加载配置
     config = load_config()
@@ -29,9 +29,9 @@ def main():
     # 初始化执行器
     runner = ExecutionRunner(config, queue)
     
-    # 启动主循环
+    # 执行单个任务
     try:
-        runner.run()
+        runner.run_single()
     except KeyboardInterrupt:
         print("\n👋 用户中断，保存状态...")
         runner.save_state()
