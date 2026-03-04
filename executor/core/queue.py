@@ -2,7 +2,7 @@
 import re
 from pathlib import Path
 from typing import List, Optional
-from .task import Task, TaskStatus
+from .task import Task, TaskStatus, TaskType
 
 class TaskQueue:
     """任务队列"""
@@ -44,15 +44,15 @@ class TaskQueue:
             if task.status == TaskStatus.PENDING:
                 self.tasks.append(task)
     
-    def _infer_task_type(self, objective: str) -> str:
+    def _infer_task_type(self, objective: str) -> TaskType:
         """推断任务类型"""
         obj_lower = objective.lower()
         if "修复" in objective or "fix" in obj_lower:
-            return "repair"
+            return TaskType.REPAIR
         elif "分解" in objective or "plan" in obj_lower:
-            return "planner"
+            return TaskType.PLANNER
         else:
-            return "coder"
+            return TaskType.CODER
     
     def get_next(self) -> Optional[Task]:
         """获取下一个最高优先级任务"""
