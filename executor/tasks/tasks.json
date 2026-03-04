@@ -1,176 +1,349 @@
 {
   "version": "2.0",
-  "updated_at": "2026-03-04T14:20:00",
+  "updated_at": "2026-03-04T14:25:00",
+  "description": "Todo Manager CLI 工具功能开发任务",
   "tasks": [
     {
       "id": "task-001",
-      "objective": "【核心】测试执行器完整工作流 - 运行 executor/main.py 验证端到端执行",
+      "objective": "【核心】优化 Task 数据模型 - 添加优先级、截止日期、分类标签字段",
       "type": "coder",
       "priority": "🔴",
       "status": "pending",
       "assignee": "AI",
-      "estimated_hours": 1.0,
+      "estimated_hours": 2.0,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "当前执行器已实现基础框架，需要完整测试从任务加载→OpenCode执行→结果解析→状态更新的全流程",
+        "description": "当前 Task 模型只有基础字段(title, completed, created_at)，需要扩展支持更丰富的任务管理功能",
+        "changes": [
+          "添加 priority 字段: 高/中/低 (high/medium/low)",
+          "添加 due_date 字段: 截止日期 (ISO 8601 格式)",
+          "添加 tags 字段: 分类标签列表 (字符串数组)",
+          "添加 description 字段: 任务详细描述 (长文本)",
+          "更新 Task.to_dict() 和 from_dict() 方法",
+          "确保向后兼容：旧数据没有新字段时给出默认值"
+        ],
         "acceptance_criteria": [
-          "能正常启动并加载 tasks.json",
-          "成功调用 OpenCode 执行任务",
-          "正确解析 XML 结果输出",
-          "任务状态正确更新为 completed/failed",
-          "生成 thinking 文档记录执行过程"
-        ]
+          "Task 类包含 priority, due_date, tags, description 字段",
+          "JSON 序列化和反序列化正常工作",
+          "旧数据文件能正确加载（兼容性测试）",
+          "字段验证：priority 只能是 high/medium/low",
+          "due_date 格式验证（YYYY-MM-DD）"
+        ],
+        "files_to_modify": ["core/models.py"],
+        "test_files": ["tests/unit/test_models.py"]
       },
-      "tags": ["executor", "testing", "e2e"]
+      "tags": ["core", "model", "priority", "deadline", "tags"]
     },
     {
       "id": "task-002",
-      "objective": "【优化】修复执行器已知问题并完善异常处理机制",
-      "type": "repair",
+      "objective": "【核心】实现任务筛选和排序功能 - 按优先级、截止日期、标签筛选",
+      "type": "coder",
       "priority": "🔴",
       "status": "pending",
       "assignee": "AI",
-      "estimated_hours": 1.0,
+      "estimated_hours": 2.0,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "测试过程中发现的各类问题修复，包括边界情况处理、异常捕获、超时处理等",
-        "known_issues": [
-          "OpenCode 服务器启动失败的处理",
-          "XML 解析失败的 fallback 机制完善",
-          "网络超时和重试机制",
-          "任务队列为空时的优雅退出"
-        ]
+        "description": "实现强大的任务查询功能，支持多条件筛选和自定义排序",
+        "features": [
+          "按优先级筛选: --priority high/medium/low",
+          "按截止日期筛选: --due today/week/overdue",
+          "按标签筛选: --tag work --tag urgent",
+          "按完成状态筛选: --status done/pending/all",
+          "多字段排序: --sort priority,due_date",
+          "组合条件: todo list --priority high --due today --tag work"
+        ],
+        "acceptance_criteria": [
+          "list 命令支持 --priority, --due, --tag, --status 筛选参数",
+          "支持多标签筛选（AND 关系）",
+          "支持排序参数 --sort，可指定多个字段",
+          "筛选结果正确统计并显示",
+          "筛选无结果时给出友好提示"
+        ],
+        "cli_examples": [
+          "todo list --priority high",
+          "todo list --due today",
+          "todo list --tag work --tag urgent",
+          "todo list --status pending --sort priority,due_date"
+        ],
+        "files_to_modify": ["commands/query_commands.py", "core/storage.py"],
+        "test_files": ["tests/unit/test_query.py"]
       },
-      "tags": ["executor", "bugfix", "robustness"]
+      "tags": ["commands", "filter", "sort", "query"]
     },
     {
       "id": "task-003",
-      "objective": "【增强】实现任务并发执行和优先级动态调整机制",
+      "objective": "【功能】实现任务搜索功能 - 全文搜索标题和描述",
+      "type": "coder",
+      "priority": "🔴",
+      "status": "pending",
+      "assignee": "AI",
+      "estimated_hours": 1.5,
+      "actual_hours": null,
+      "created_at": "2026-03-04T14:20:00",
+      "started_at": null,
+      "completed_at": null,
+      "parent_id": null,
+      "context": {
+        "description": "添加 search 命令，支持在任务标题和描述中搜索关键词",
+        "features": [
+          "基本搜索: todo search '关键词'",
+          "多关键词搜索（OR 关系）: todo search 'bug fix'",
+          "精确匹配: todo search --exact '会议'",
+          "正则搜索: todo search --regex '^\[URGENT\]'",
+          "搜索结果高亮显示匹配的关键词"
+        ],
+        "acceptance_criteria": [
+          "search 命令能搜索 title 和 description 字段",
+          "支持大小写不敏感搜索",
+          "--exact 选项启用精确匹配",
+          "--regex 选项启用正则匹配",
+          "搜索结果按相关度排序",
+          "无结果时给出提示"
+        ],
+        "cli_examples": [
+          "todo search '项目'",
+          "todo search 'bug fix'",
+          "todo search --exact '周会'",
+          "todo search --regex '2026-03'"
+        ],
+        "files_to_modify": ["commands/query_commands.py"],
+        "test_files": ["tests/unit/test_search.py"]
+      },
+      "tags": ["commands", "search", "fulltext"]
+    },
+    {
+      "id": "task-004",
+      "objective": "【功能】实现数据导入导出 - 支持 JSON/CSV/Markdown 格式",
       "type": "coder",
       "priority": "🟡",
       "status": "pending",
       "assignee": "AI",
       "estimated_hours": 2.0,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "当前执行器是单任务顺序执行，需要支持多任务并发和动态优先级调整",
-        "features": [
-          "支持同时执行多个无依赖任务",
-          "实现 worker 线程池管理",
-          "支持运行时调整任务优先级",
-          "添加任务依赖关系检测和等待"
-        ]
+        "description": "实现数据的导入导出功能，支持与其他工具的数据交换",
+        "export_features": [
+          "导出为 JSON: todo export --format json --output tasks.json",
+          "导出为 CSV: todo export --format csv --output tasks.csv",
+          "导出为 Markdown: todo export --format md --output tasks.md",
+          "按筛选条件导出: todo export --priority high --format json",
+          "导出模板自定义（Markdown 格式）"
+        ],
+        "import_features": [
+          "从 JSON 导入: todo import tasks.json",
+          "从 CSV 导入: todo import tasks.csv",
+          "导入时合并或覆盖: todo import --merge tasks.json",
+          "字段映射: CSV 列名与 Task 字段对应"
+        ],
+        "acceptance_criteria": [
+          "支持 JSON/CSV/Markdown 三种格式的导入导出",
+          "导出支持筛选条件",
+          "导入支持合并模式（不删除现有任务）",
+          "导入时验证数据格式，错误给出提示",
+          "CSV 导入支持标准列名自动映射"
+        ],
+        "cli_examples": [
+          "todo export --format json --output backup.json",
+          "todo export --priority high --format md",
+          "todo import --merge backup.json",
+          "todo import tasks.csv --dry-run"
+        ],
+        "files_to_modify": ["commands/export_commands.py", "core/storage.py"],
+        "test_files": ["tests/unit/test_export.py", "tests/unit/test_import.py"]
       },
-      "tags": ["executor", "concurrency", "performance"]
+      "tags": ["commands", "export", "import", "data"]
     },
     {
-      "id": "task-004",
-      "objective": "【功能】添加任务暂停/恢复、取消和手动重试功能",
+      "id": "task-005",
+      "objective": "【功能】实现任务统计和报表 - 完成率、趋势分析",
       "type": "coder",
       "priority": "🟡",
       "status": "pending",
       "assignee": "AI",
       "estimated_hours": 1.5,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "增强任务控制能力，支持人工干预执行流程",
+        "description": "添加 stats 命令，展示任务完成情况的统计信息",
         "features": [
-          "暂停/恢复执行器主循环",
-          "取消正在执行的任务",
-          "手动触发失败任务重试",
-          "跳过当前任务继续下一个"
-        ]
+          "基础统计: 总任务数、完成数、待办数、完成率",
+          "按优先级统计: 各优先级的任务分布",
+          "按标签统计: 各标签的任务数量",
+          "时间趋势: 最近7天/30天的完成情况",
+          "逾期任务统计: 已过期未完成的任务",
+          "可视化输出: ASCII 图表展示"
+        ],
+        "acceptance_criteria": [
+          "stats 命令显示完整的统计信息",
+          "支持按时间范围筛选: --days 7/30/all",
+          "ASCII 图表展示趋势（可选依赖: matplotlib/ascii-chart）",
+          "支持导出统计报表: --export report.md",
+          "统计信息实时计算，基于当前数据"
+        ],
+        "cli_examples": [
+          "todo stats",
+          "todo stats --days 7",
+          "todo stats --priority high",
+          "todo stats --export report.md"
+        ],
+        "files_to_modify": ["commands/query_commands.py"],
+        "test_files": ["tests/unit/test_stats.py"]
       },
-      "tags": ["executor", "control", "interactive"]
+      "tags": ["commands", "stats", "report", "analytics"]
     },
     {
-      "id": "task-005",
-      "objective": "【监控】实现 Web 可视化监控面板实时查看执行状态",
+      "id": "task-006",
+      "objective": "【增强】实现配置文件支持 - 用户自定义设置和主题",
+      "type": "coder",
+      "priority": "🟢",
+      "status": "pending",
+      "assignee": "AI",
+      "estimated_hours": 1.5,
+      "actual_hours": null,
+      "created_at": "2026-03-04T14:20:00",
+      "started_at": null,
+      "completed_at": null,
+      "parent_id": null,
+      "context": {
+        "description": "添加配置文件支持，让用户可以自定义 todo 工具的行为",
+        "config_features": [
+          "配置文件位置: ~/.config/todo/config.yaml",
+          "默认优先级设置",
+          "日期格式配置",
+          "输出主题/颜色方案",
+          "自定义数据文件路径",
+          "快捷命令别名"
+        ],
+        "config_options": [
+          "default.priority: medium",
+          "date.format: YYYY-MM-DD",
+          "theme: default/dark/light",
+          "data.path: ~/.local/share/todo/tasks.json",
+          "alias: 自定义命令简写"
+        ],
+        "acceptance_criteria": [
+          "支持 YAML 格式配置文件",
+          "配置加载有合理的默认值",
+          "配置错误时给出清晰提示",
+          "支持配置热重载（可选）",
+          "文档说明所有配置项"
+        ],
+        "cli_examples": [
+          "todo config --init  # 初始化配置",
+          "todo config --show  # 显示当前配置",
+          "todo config --edit  # 编辑配置"
+        ],
+        "files_to_modify": ["core/config.py", "todo.py"],
+        "test_files": ["tests/unit/test_config.py"]
+      },
+      "tags": ["core", "config", "customization"]
+    },
+    {
+      "id": "task-007",
+      "objective": "【增强】实现任务提醒功能 - 截止日期通知和重复任务",
       "type": "coder",
       "priority": "🟢",
       "status": "pending",
       "assignee": "AI",
       "estimated_hours": 2.0,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "基于 executor 的 HTTP API 实现 Web 界面，可视化展示任务执行状态",
-        "features": [
-          "任务队列可视化（待执行/执行中/已完成）",
-          "实时日志输出展示",
-          "任务执行历史统计图表",
-          "支持 Web 界面控制暂停/恢复"
+        "description": "添加任务提醒功能，支持临期提醒和重复任务",
+        "reminder_features": [
+          "临期提醒: todo reminder --check 检查即将到期的任务",
+          "桌面通知: 使用系统通知 API（可选）",
+          "重复任务: 支持 daily/weekly/monthly 重复",
+          "提醒时间配置: 提前 1 天/3 天/1 周提醒"
         ],
-        "tech_stack": ["Flask/FastAPI", "WebSocket", "Chart.js"]
+        "recurring_features": [
+          "创建重复任务: todo add '每日站会' --repeat daily",
+          "重复类型: daily/weekly/monthly/yearly/weekday",
+          "重复结束: --until 2026-12-31 或 --count 10",
+          "完成任务时自动生成下一次任务"
+        ],
+        "acceptance_criteria": [
+          "reminder 命令能列出即将到期（24h内）的任务",
+          "支持 --days 参数指定提前天数",
+          "重复任务完成时自动创建下一个实例",
+          "重复任务支持结束条件（日期或次数）",
+          "提醒输出清晰显示剩余时间"
+        ],
+        "cli_examples": [
+          "todo add '每周报告' --due 2026-03-10 --repeat weekly",
+          "todo reminder --check",
+          "todo reminder --days 3",
+          "todo add '每日打卡' --repeat daily --count 30"
+        ],
+        "files_to_modify": ["commands/task_commands.py", "core/models.py"],
+        "test_files": ["tests/unit/test_reminder.py", "tests/unit/test_recurring.py"]
       },
-      "tags": ["executor", "web", "monitoring", "visualization"]
+      "tags": ["commands", "reminder", "recurring", "notification"]
     },
     {
-      "id": "task-006",
-      "objective": "【文档】编写完整的执行器使用文档和 API 参考手册",
-      "type": "docs",
+      "id": "task-008",
+      "objective": "【增强】实现任务模板和批量操作 - 快速创建相似任务",
+      "type": "coder",
       "priority": "🟢",
       "status": "pending",
       "assignee": "AI",
-      "estimated_hours": 1.0,
+      "estimated_hours": 1.5,
       "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
+      "created_at": "2026-03-04T14:20:00",
       "started_at": null,
       "completed_at": null,
       "parent_id": null,
       "context": {
-        "description": "补充执行器的使用说明、配置指南、API 文档和故障排查手册",
-        "documents": [
-          "README.md - 快速开始指南",
-          "CONFIG.md - 配置项详解",
-          "API.md - TaskManager API 文档",
-          "TROUBLESHOOTING.md - 常见问题解决"
-        ]
+        "description": "添加任务模板和批量操作功能，提高批量任务管理效率",
+        "template_features": [
+          "创建模板: todo template save '会议' --title '{日期}周会' --tag meeting",
+          "使用模板: todo add --template '会议' --date 2026-03-10",
+          "模板变量: {日期}, {月份}, {周几} 等",
+          "模板列表: todo template list",
+          "模板删除: todo template remove '会议'"
+        ],
+        "batch_features": [
+          "批量完成: todo done 1 2 3 4 5",
+          "批量删除: todo delete --filter --priority low --confirm",
+          "批量修改优先级: todo set-priority high --filter --tag urgent",
+          "批量添加标签: todo tag add '紧急' --filter --due today"
+        ],
+        "acceptance_criteria": [
+          "支持创建和使用任务模板",
+          "模板支持变量替换",
+          "支持批量完成/删除任务",
+          "批量操作支持筛选条件",
+          "批量删除需要 --confirm 确认"
+        ],
+        "cli_examples": [
+          "todo template save '项目任务' --tag project --priority medium",
+          "todo add --template '项目任务' --title '完成API设计'",
+          "todo done 1 2 3",
+          "todo delete --priority low --tag archived --confirm"
+        ],
+        "files_to_modify": ["commands/task_commands.py", "commands/template_commands.py"],
+        "test_files": ["tests/unit/test_template.py", "tests/unit/test_batch.py"]
       },
-      "tags": ["executor", "documentation"]
-    },
-    {
-      "id": "task-007",
-      "objective": "【扩展】支持更多 LLM 执行后端（除 OpenCode 外支持 Aider、Claude Code 等）",
-      "type": "planner",
-      "priority": "🟢",
-      "status": "pending",
-      "assignee": "AI",
-      "estimated_hours": 3.0,
-      "actual_hours": null,
-      "created_at": "2026-03-04T14:00:00",
-      "started_at": null,
-      "completed_at": null,
-      "parent_id": null,
-      "context": {
-        "description": "抽象执行器接口，支持多种 AI 编程助手作为执行后端",
-        "backends": [
-          "Aider - 支持多文件的 AI 编程助手",
-          "Claude Code - Anthropic 官方 CLI",
-          "GitHub Copilot CLI - Copilot 命令行",
-          "Local LLM - 本地模型支持"
-        ]
-      },
-      "tags": ["executor", "integration", "multi-backend"]
+      "tags": ["commands", "template", "batch", "productivity"]
     }
   ]
 }
