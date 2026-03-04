@@ -20,10 +20,11 @@ def main():
     # 加载配置
     config = load_config()
     
-    # 初始化任务队列
-    plan_path = Path(__file__).parent.parent / "docs" / "PLAN.md"
-    queue = TaskQueue(str(plan_path))
-    print(f"📋 从 PLAN.md 加载 {len(queue.tasks)} 个任务")
+    # 初始化任务队列 (从 JSON 加载)
+    tasks_path = Path(__file__).parent / "tasks" / "tasks.json"
+    queue = TaskQueue(str(tasks_path))
+    stats = queue.get_stats()
+    print(f"📋 从 tasks.json 加载: {stats['pending']} 个待处理 / {stats['total']} 个总计")
     
     # 初始化执行器
     runner = ExecutionRunner(config, queue)

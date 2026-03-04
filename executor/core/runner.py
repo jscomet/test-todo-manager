@@ -14,7 +14,6 @@ from opencode.client import OpenCodeClient
 from memory.short_term import ShortTermMemory
 from memory.long_term import LongTermMemory
 from memory.thinking import ThinkingRecorder
-from plan.writer import PlanWriter
 
 class ExecutionRunner:
     """执行引擎"""
@@ -33,7 +32,6 @@ class ExecutionRunner:
         self.short_memory = ShortTermMemory()
         self.long_memory = LongTermMemory()
         self.thinking = ThinkingRecorder()
-        self.plan_writer = PlanWriter()
     
     def run(self):
         """主循环"""
@@ -130,7 +128,7 @@ class ExecutionRunner:
         
         # 更新状态为执行中
         task.status = TaskStatus.EXECUTING
-        self.plan_writer.update_status(task.id, "🔄 进行中")
+        self.queue.update_status(task.id, TaskStatus.EXECUTING)
         
         # 调用 OpenCode
         result = self.opencode.execute(prompt)
@@ -147,9 +145,6 @@ class ExecutionRunner:
         
         # 更新队列状态
         self.queue.update_status(task.id, TaskStatus.COMPLETED)
-        
-        # 更新 PLAN.md
-        self.plan_writer.update_status(task.id, "✅ 已完成")
         
         # 保存思考记录
         self.thinking.save(task, result["output"])
@@ -184,7 +179,6 @@ class ExecutionRunner:
         else:
             print(f"   超过最大重试次数，标记为失败")
             self.queue.update_status(task.id, TaskStatus.FAILED)
-            self.plan_writer.update_status(task.id, "❌ 失败")
         
         # 记录失败经验
         self.long_memory.record(
