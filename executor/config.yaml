@@ -1,0 +1,23 @@
+# BabyAGI Executor 配置
+
+executor:
+  # 运行配置
+  poll_interval: 5              # 轮询间隔（秒）
+  max_attempts: 3               # 单任务最大尝试次数
+  continue_on_error: true       # 错误后继续执行
+  
+  # OpenCode 配置
+  opencode:
+    timeout: 300                # OpenCode 调用超时（秒）
+    model: "qwen3.5-plus"       # 默认模型
+    
+  # 记忆配置
+  memory:
+    short_term_file: "memory/context.json"
+    long_term_file: "memory/experiences.json"
+    max_thinking_files: 50      # 保留最近 50 个思考记录
+    
+  # 日志配置
+  logging:
+    level: "INFO"
+    file: "logs/executor.log"
