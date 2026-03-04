@@ -1,19 +1,18 @@
 {
-  "version": "2.0",
-  "updated_at": "2026-03-04T14:25:00",
-  "description": "Todo Manager CLI 工具功能开发任务",
+  "version": "1.0",
+  "updated_at": "2026-03-04T14:29:15.154477",
   "tasks": [
     {
       "id": "task-001",
       "objective": "【核心】优化 Task 数据模型 - 添加优先级、截止日期、分类标签字段",
       "type": "coder",
       "priority": "🔴",
-      "status": "pending",
+      "status": "executing",
       "assignee": "AI",
       "estimated_hours": 2.0,
       "actual_hours": null,
       "created_at": "2026-03-04T14:20:00",
-      "started_at": null,
+      "started_at": "2026-03-04T14:29:15.154602",
       "completed_at": null,
       "parent_id": null,
       "context": {
@@ -33,22 +32,33 @@
           "字段验证：priority 只能是 high/medium/low",
           "due_date 格式验证（YYYY-MM-DD）"
         ],
-        "files_to_modify": ["core/models.py"],
-        "test_files": ["tests/unit/test_models.py"]
+        "files_to_modify": [
+          "core/models.py"
+        ],
+        "test_files": [
+          "tests/unit/test_models.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["core", "model", "priority", "deadline", "tags"]
+      "tags": [
+        "core",
+        "model",
+        "priority",
+        "deadline",
+        "tags"
+      ]
     },
     {
       "id": "task-002",
       "objective": "【核心】实现任务筛选和排序功能 - 按优先级、截止日期、标签筛选",
       "type": "coder",
       "priority": "🔴",
-      "status": "pending",
+      "status": "executing",
       "assignee": "AI",
       "estimated_hours": 2.0,
       "actual_hours": null,
       "created_at": "2026-03-04T14:20:00",
-      "started_at": null,
+      "started_at": "2026-03-04T14:29:15.154712",
       "completed_at": null,
       "parent_id": null,
       "context": {
@@ -74,10 +84,21 @@
           "todo list --tag work --tag urgent",
           "todo list --status pending --sort priority,due_date"
         ],
-        "files_to_modify": ["commands/query_commands.py", "core/storage.py"],
-        "test_files": ["tests/unit/test_query.py"]
+        "files_to_modify": [
+          "commands/query_commands.py",
+          "core/storage.py"
+        ],
+        "test_files": [
+          "tests/unit/test_query.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "filter", "sort", "query"]
+      "tags": [
+        "commands",
+        "filter",
+        "sort",
+        "query"
+      ]
     },
     {
       "id": "task-003",
@@ -98,7 +119,7 @@
           "基本搜索: todo search '关键词'",
           "多关键词搜索（OR 关系）: todo search 'bug fix'",
           "精确匹配: todo search --exact '会议'",
-          "正则搜索: todo search --regex '^\[URGENT\]'",
+          "正则搜索: todo search --regex '^\\[URGENT\\]'",
           "搜索结果高亮显示匹配的关键词"
         ],
         "acceptance_criteria": [
@@ -115,10 +136,19 @@
           "todo search --exact '周会'",
           "todo search --regex '2026-03'"
         ],
-        "files_to_modify": ["commands/query_commands.py"],
-        "test_files": ["tests/unit/test_search.py"]
+        "files_to_modify": [
+          "commands/query_commands.py"
+        ],
+        "test_files": [
+          "tests/unit/test_search.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "search", "fulltext"]
+      "tags": [
+        "commands",
+        "search",
+        "fulltext"
+      ]
     },
     {
       "id": "task-004",
@@ -161,10 +191,22 @@
           "todo import --merge backup.json",
           "todo import tasks.csv --dry-run"
         ],
-        "files_to_modify": ["commands/export_commands.py", "core/storage.py"],
-        "test_files": ["tests/unit/test_export.py", "tests/unit/test_import.py"]
+        "files_to_modify": [
+          "commands/export_commands.py",
+          "core/storage.py"
+        ],
+        "test_files": [
+          "tests/unit/test_export.py",
+          "tests/unit/test_import.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "export", "import", "data"]
+      "tags": [
+        "commands",
+        "export",
+        "import",
+        "data"
+      ]
     },
     {
       "id": "task-005",
@@ -202,10 +244,20 @@
           "todo stats --priority high",
           "todo stats --export report.md"
         ],
-        "files_to_modify": ["commands/query_commands.py"],
-        "test_files": ["tests/unit/test_stats.py"]
+        "files_to_modify": [
+          "commands/query_commands.py"
+        ],
+        "test_files": [
+          "tests/unit/test_stats.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "stats", "report", "analytics"]
+      "tags": [
+        "commands",
+        "stats",
+        "report",
+        "analytics"
+      ]
     },
     {
       "id": "task-006",
@@ -249,10 +301,20 @@
           "todo config --show  # 显示当前配置",
           "todo config --edit  # 编辑配置"
         ],
-        "files_to_modify": ["core/config.py", "todo.py"],
-        "test_files": ["tests/unit/test_config.py"]
+        "files_to_modify": [
+          "core/config.py",
+          "todo.py"
+        ],
+        "test_files": [
+          "tests/unit/test_config.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["core", "config", "customization"]
+      "tags": [
+        "core",
+        "config",
+        "customization"
+      ]
     },
     {
       "id": "task-007",
@@ -294,10 +356,22 @@
           "todo reminder --days 3",
           "todo add '每日打卡' --repeat daily --count 30"
         ],
-        "files_to_modify": ["commands/task_commands.py", "core/models.py"],
-        "test_files": ["tests/unit/test_reminder.py", "tests/unit/test_recurring.py"]
+        "files_to_modify": [
+          "commands/task_commands.py",
+          "core/models.py"
+        ],
+        "test_files": [
+          "tests/unit/test_reminder.py",
+          "tests/unit/test_recurring.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "reminder", "recurring", "notification"]
+      "tags": [
+        "commands",
+        "reminder",
+        "recurring",
+        "notification"
+      ]
     },
     {
       "id": "task-008",
@@ -340,10 +414,22 @@
           "todo done 1 2 3",
           "todo delete --priority low --tag archived --confirm"
         ],
-        "files_to_modify": ["commands/task_commands.py", "commands/template_commands.py"],
-        "test_files": ["tests/unit/test_template.py", "tests/unit/test_batch.py"]
+        "files_to_modify": [
+          "commands/task_commands.py",
+          "commands/template_commands.py"
+        ],
+        "test_files": [
+          "tests/unit/test_template.py",
+          "tests/unit/test_batch.py"
+        ],
+        "attempts": 0
       },
-      "tags": ["commands", "template", "batch", "productivity"]
+      "tags": [
+        "commands",
+        "template",
+        "batch",
+        "productivity"
+      ]
     }
   ]
 }
