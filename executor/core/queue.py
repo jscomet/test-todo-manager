@@ -20,7 +20,7 @@ class TaskQueue:
         content = self.plan_file.read_text(encoding='utf-8')
         
         # 解析任务表格
-        # 格式: | 优先级 | 开发任务 | 状态 | ... |
+        # 格式: | 优先级 | 任务 | 状态 | ... |
         task_pattern = r'\|\s*([🔴🟡🟢])\s*\|\s*([^|]+?)\s*\|\s*(⏳|🔄|✅|❌)'
         matches = re.findall(task_pattern, content)
         
