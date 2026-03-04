@@ -9,6 +9,7 @@ executor:
   # OpenCode 配置
   opencode:
     timeout: 300                # OpenCode 调用超时（秒）
+    server_url: "http://localhost:4096"  # OpenCode 服务器地址
     model: "qwen3.5-plus"       # 默认模型
     
   # 记忆配置

@@ -26,8 +26,10 @@ class ExecutionRunner:
         self.running = False
         
         # 初始化组件
-        timeout = config.get("opencode", {}).get("timeout", 300)
-        self.opencode = OpenCodeClient(timeout=timeout)
+        opencode_config = config.get("opencode", {})
+        timeout = opencode_config.get("timeout", 300)
+        server_url = opencode_config.get("server_url", "http://localhost:4096")
+        self.opencode = OpenCodeClient(server_url=server_url, timeout=timeout)
         self.short_memory = ShortTermMemory()
         self.long_memory = LongTermMemory()
         self.thinking = ThinkingRecorder()
