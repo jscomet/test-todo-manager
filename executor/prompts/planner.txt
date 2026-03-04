@@ -9,10 +9,35 @@
 - 是否有依赖关系？
 - 是否可以并行执行？
 
-## 输出要求
-请将任务分解为 2-5 个子任务，每个子任务应该：
-- 目标明确
-- 可独立执行
-- 有明确的验收标准
+## 输出格式要求（必须遵循）
 
-按优先级输出子任务列表。
+分析完成后，必须输出以下 XML 格式的子任务列表：
+
+```xml
+<result>
+  <status>success|failed</status>
+  <summary>任务分解总结</summary>
+  <complexity>low|medium|high</complexity>
+  <tasks>
+    <task>
+      <id>子任务编号（如 001, 002）</id>
+      <objective>子任务目标描述</objective>
+      <type>coder|repair|planner|docs</type>
+      <priority>🔴|🟡|🟢</priority>
+      <estimated_hours>预估工时（如 1.0）</estimated_hours>
+      <dependencies>依赖的其他子任务ID，无则填 none</dependencies>
+      <acceptance_criteria>明确的验收标准</acceptance_criteria>
+    </task>
+    <!-- 更多子任务... -->
+  </tasks>
+  <notes>其他说明</notes>
+</result>
+```
+
+**重要**:
+- 必须包含完整的 XML 格式结果
+- 子任务数量建议 2-5 个
+- 每个子任务必须可独立执行
+- priority: 🔴高 🟡中 🟢低
+
+请开始分析并分解任务。

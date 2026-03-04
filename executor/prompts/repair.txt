@@ -24,6 +24,36 @@
 3. 使用 edit 工具修复代码
 4. 运行 `pytest` 验证修复
 5. 运行 `git commit` 提交修复
-6. 报告修复结果
+6. 输出结果报告（见下方格式要求）
+
+## 输出格式要求（必须遵循）
+
+修复完成后，必须输出以下 XML 格式的结果报告：
+
+```xml
+<result>
+  <status>success|failed</status>
+  <summary>修复情况的简短总结</summary>
+  <root_cause>错误根本原因分析</root_cause>
+  <files_changed>
+    <file>修改的文件路径1</file>
+    <file>修改的文件路径2</file>
+  </files_changed>
+  <tests>
+    <passed>true|false</passed>
+    <details>测试结果详情</details>
+  </tests>
+  <git>
+    <committed>true|false</committed>
+    <commit_hash>提交的 hash（如果有）</commit_hash>
+  </git>
+  <notes>其他需要说明的信息</notes>
+</result>
+```
+
+**重要**: 
+- 必须包含完整的 XML 格式结果
+- status 必须是 "success" 或 "failed"
+- root_cause 必须说明错误的根本原因
 
 请开始调试。

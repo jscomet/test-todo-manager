@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 from core.task import Task, TaskStatus, TaskType
 from core.queue import TaskQueue
 from opencode.client import OpenCodeClient
+from opencode.parser import ResultParser, ParsedResult
 from memory.short_term import ShortTermMemory
 from memory.long_term import LongTermMemory
 from memory.thinking import ThinkingRecorder
@@ -63,7 +64,7 @@ class ExecutionRunner:
             result = self._execute_task(task, prompt)
             
             # 5. 处理结果
-            if result["success"]:
+            if result.status == "success":
                 self._handle_success(task, result)
             else:
                 self._handle_failure(task, result)
@@ -122,7 +123,7 @@ class ExecutionRunner:
         
         return prompt
     
-    def _execute_task(self, task: Task, prompt: str) -> dict:
+    def _execute_task(self, task: Task, prompt: str) -> ParsedResult:
         """执行单个任务"""
         print(f"🤖 调用 OpenCode 执行任务...")
         
@@ -131,32 +132,65 @@ class ExecutionRunner:
         self.queue.update_status(task.id, TaskStatus.EXECUTING)
         
         # 调用 OpenCode
-        result = self.opencode.execute(prompt)
+        raw_result = self.opencode.execute(prompt)
         
-        print(f"   执行结果: {'成功' if result['success'] else '失败'}")
-        if result.get("error"):
-            print(f"   错误: {result['error'][:100]}...")
+        # 解析 XML 结果
+        parser = ResultParser()
+        parsed = parser.parse(raw_result.get("output", ""))
         
-        return result
+        print(f"   执行结果: {parsed.status}")
+        print(f"   摘要: {parsed.summary[:100]}...")
+        
+        if parsed.files_changed:
+            print(f"   修改文件: {', '.join(parsed.files_changed)}")
+        
+        if parsed.tests_passed is not None:
+            print(f"   测试: {'通过' if parsed.tests_passed else '失败'}")
+        
+        if parsed.git_committed:
+            print(f"   Git 提交: {parsed.commit_hash or '已提交'}")
+        
+        if parsed.notes and 'XML 解析失败' in parsed.notes:
+            print(f"   ⚠️ 警告: {parsed.notes}")
+        
+        return parsed
     
-    def _handle_success(self, task: Task, result: dict):
+    def _handle_success(self, task: Task, result: ParsedResult):
         """处理成功"""
         print("✅ 任务完成")
         
         # 更新队列状态
         self.queue.update_status(task.id, TaskStatus.COMPLETED)
         
-        # 保存思考记录
-        self.thinking.save(task, result["output"])
+        # 保存思考记录（包含原始输出）
+        self.thinking.save(task, result.raw_xml)
         
         # 记录成功经验
         self.long_memory.record(
             pattern=task.objective[:50],
-            solution=result["output"][:200],
+            solution=result.summary[:200],
             success=True
         )
+        
+        # 如果有子任务（planner 类型），添加到队列
+        if task.task_type.value == "planner":
+            sub_tasks = ResultParser.parse_planner_tasks(result.raw_xml)
+            for sub in sub_tasks:
+                new_task = Task(
+                    id=f"{task.id}-{sub['id']}",
+                    objective=sub['objective'],
+                    task_type=TaskType(sub['type']),
+                    priority=sub['priority'],
+                    context={
+                        'parent_id': task.id,
+                        'acceptance_criteria': sub['acceptance_criteria'],
+                        'dependencies': sub['dependencies']
+                    }
+                )
+                self.queue.add(new_task)
+                print(f"   添加子任务: {new_task.id} - {new_task.objective[:40]}...")
     
-    def _handle_failure(self, task: Task, result: dict):
+    def _handle_failure(self, task: Task, result: ParsedResult):
         """处理失败"""
         print("❌ 任务失败")
         task.attempts += 1
@@ -172,7 +206,7 @@ class ExecutionRunner:
                 objective=f"修复: {task.objective}",
                 task_type=TaskType.REPAIR,
                 priority="🔴",
-                context={"error": result.get("error", ""), "parent_id": task.id}
+                context={"error": result.notes, "parent_id": task.id}
             )
             self.queue.add(repair_task)
             print(f"   生成修复任务: {repair_task.id}")
@@ -183,17 +217,19 @@ class ExecutionRunner:
         # 记录失败经验
         self.long_memory.record(
             pattern=task.objective[:50],
-            solution=result.get("error", "")[:200],
+            solution=result.notes[:200],
             success=False
         )
     
-    def _save_memory(self, task: Task, result: dict):
+    def _save_memory(self, task: Task, result: ParsedResult):
         """保存记忆"""
         # 更新短期记忆
         self.short_memory.save({
             "current_task": task.id,
             "last_thinking": f"thinking/task-{task.id}.md",
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
+            "last_result_status": result.status,
+            "files_changed": result.files_changed
         })
     
     def save_state(self):
