@@ -21,7 +21,8 @@ def main():
     config = load_config()
     
     # 初始化任务队列
-    queue = TaskQueue("docs/PLAN.md")
+    plan_path = Path(__file__).parent.parent / "docs" / "PLAN.md"
+    queue = TaskQueue(str(plan_path))
     print(f"📋 从 PLAN.md 加载 {len(queue.tasks)} 个任务")
     
     # 初始化执行器

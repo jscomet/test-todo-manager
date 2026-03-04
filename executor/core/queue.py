@@ -1,8 +1,14 @@
 """任务队列管理"""
 import re
+import sys
 from pathlib import Path
 from typing import List, Optional
-from .task import Task, TaskStatus, TaskType
+
+# 添加父目录到路径
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from core.task import Task, TaskStatus, TaskType
+
 
 class TaskQueue:
     """任务队列"""
@@ -20,8 +26,9 @@ class TaskQueue:
         content = self.plan_file.read_text(encoding='utf-8')
         
         # 解析任务表格
-        # 格式: | 优先级 | 任务 | 状态 | ... |
-        task_pattern = r'\|\s*([🔴🟡🟢])\s*\|\s*([^|]+?)\s*\|\s*(⏳|🔄|✅|❌)'
+        # 格式: | 🔴 高 | 任务内容 | ⏳ 待开始 | AI | ... |
+        # 匹配优先级图标、任务描述和状态
+        task_pattern = r'\|\s*([🔴🟡🟢])[^|]*\|\s*([^|]+?)\s*\|\s*(⏳|🔄|✅|❌)[^|]*\|'
         matches = re.findall(task_pattern, content)
         
         for idx, (priority, objective, status_str) in enumerate(matches, 1):

@@ -1,16 +1,20 @@
 """执行引擎 - BabyAGI 核心循环"""
 import time
+import sys
 from datetime import datetime
 from typing import Optional
 from pathlib import Path
 
-from .task import Task, TaskStatus, TaskType
-from .queue import TaskQueue
-from ..opencode.client import OpenCodeClient
-from ..memory.short_term import ShortTermMemory
-from ..memory.long_term import LongTermMemory
-from ..memory.thinking import ThinkingRecorder
-from ..plan.writer import PlanWriter
+# 添加父目录到路径
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from core.task import Task, TaskStatus, TaskType
+from core.queue import TaskQueue
+from opencode.client import OpenCodeClient
+from memory.short_term import ShortTermMemory
+from memory.long_term import LongTermMemory
+from memory.thinking import ThinkingRecorder
+from plan.writer import PlanWriter
 
 class ExecutionRunner:
     """执行引擎"""
