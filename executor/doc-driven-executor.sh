@@ -6,23 +6,24 @@ set -e
 
 # ==================== 配置 ====================
 PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
-SPEC_FILE="$PROJECT_DIR/SPEC.md"
-PLAN_FILE="$PROJECT_DIR/PLAN.md"
+SPEC_FILE="$PROJECT_DIR/docs/SPEC.md"
+PLAN_FILE="$PROJECT_DIR/docs/PLAN.md"
 DATA_TASKS_FILE="$PROJECT_DIR/data/tasks.json"
-LOG_FILE="$PROJECT_DIR/logs/executor.log"
+LOG_FILE="$PROJECT_DIR/executor/executor.log"
 LOCK_FILE="/tmp/doc-driven-executor.lock"
+THINKING_DIR="$PROJECT_DIR/executor/thinking"
 
 # ==================== 配置 ====================
 PROJECT_DIR="/root/.openclaw/workspace/test/todo-manager"
-SPEC_FILE="$PROJECT_DIR/SPEC.md"
-PLAN_FILE="$PROJECT_DIR/PLAN.md"
+SPEC_FILE="$PROJECT_DIR/docs/SPEC.md"
+PLAN_FILE="$PROJECT_DIR/docs/PLAN.md"
 DATA_TASKS_FILE="$PROJECT_DIR/data/tasks.json"
-LOG_FILE="$PROJECT_DIR/logs/executor.log"
+LOG_FILE="$PROJECT_DIR/executor/executor.log"
 LOCK_FILE="/tmp/doc-driven-executor.lock"
+THINKING_DIR="$PROJECT_DIR/executor/thinking"
 
 # 确保目录存在
-mkdir -p "$PROJECT_DIR/logs"
-mkdir -p "$PROJECT_DIR/logs/thinking"
+mkdir -p "$PROJECT_DIR/executor/thinking"
 mkdir -p "$PROJECT_DIR/core"
 mkdir -p "$PROJECT_DIR/commands"
 
@@ -61,7 +62,7 @@ warn() {
 load_recent_thinking() {
     log "加载最近 2 个 Thinking 文档..."
     
-    local thinking_dir="$PROJECT_DIR/logs/thinking"
+    local thinking_dir="$THINKING_DIR"
     local thinking_content=""
     local count=0
     
@@ -96,7 +97,7 @@ create_thinking_doc() {
     
     # 生成文件名（简化任务名）
     local safe_name=$(echo "$task_name" | sed 's/[^a-zA-Z0-9\u4e00-\u9fa5]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
-    local thinking_file="$PROJECT_DIR/logs/thinking/task-${task_id}-${safe_name}.md"
+    local thinking_file="$THINKING_DIR/task-${task_id}-${safe_name}.md"
     
     # 创建文档内容
     cat > "$thinking_file" << THINKING_EOF
