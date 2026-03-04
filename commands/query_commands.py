@@ -6,10 +6,11 @@
 
 from argparse import ArgumentParser, Namespace
 from datetime import datetime, timedelta
+import re
 
 from .base import Command
 from core.storage import JSONStorage
-from core.models import Priority
+from core.models import Priority, Task
 
 
 class ListCommand(Command):
@@ -263,3 +264,159 @@ class DueCommand(Command):
         if overdue_count > 0:
             print(f" | ⚠️ 已过期：{overdue_count} 个", end="")
         print()
+
+
+class SearchCommand(Command):
+    """搜索任务命令"""
+
+    name = "search"
+    help = "搜索任务（全文搜索标题和描述）"
+
+    def add_arguments(self, parser: ArgumentParser) -> None:
+        parser.add_argument(
+            "keywords",
+            type=str,
+            nargs="+",
+            help="搜索关键词（支持多个，OR 关系）"
+        )
+        parser.add_argument(
+            "--exact", "-e",
+            action="store_true",
+            help="精确匹配"
+        )
+        parser.add_argument(
+            "--regex", "-r",
+            action="store_true",
+            help="正则表达式匹配"
+        )
+        parser.add_argument(
+            "--tag",
+            type=str,
+            default=None,
+            help="按标签过滤"
+        )
+        parser.add_argument(
+            "--priority", "-p",
+            type=str,
+            default=None,
+            choices=["高", "中", "低"],
+            help="按优先级过滤"
+        )
+
+    def execute(self, args: Namespace) -> None:
+        storage = JSONStorage()
+        tasks = storage.load(include_test=False)
+
+        if not tasks:
+            print("📭 暂无任务")
+            return
+
+        keywords = args.keywords
+        search_query = " ".join(keywords)
+
+        matched_tasks = []
+
+        for task in tasks:
+            if self._match_task(task, search_query, keywords, args.exact, args.regex):
+                matched_tasks.append(task)
+
+        if args.tag:
+            matched_tasks = [t for t in matched_tasks if args.tag in t.tags]
+
+        if args.priority:
+            priority = Priority.from_string(args.priority)
+            matched_tasks = [t for t in matched_tasks if t.priority == priority]
+
+        if not matched_tasks:
+            print(f"📭 没有找到匹配 '{search_query}' 的任务")
+            return
+
+        priority_icons = {
+            Priority.HIGH: "🔴",
+            Priority.MEDIUM: "🟡",
+            Priority.LOW: "🟢",
+        }
+
+        print(f"\n🔍 搜索结果：'{search_query}'")
+        if args.exact:
+            print("（精确匹配）")
+        elif args.regex:
+            print("（正则匹配）")
+        print("-" * 60)
+
+        for task in matched_tasks:
+            status = "✅" if task.done else "⭕"
+            priority_icon = priority_icons.get(task.priority, "🟡")
+            due_str = f" 📅 {task.due_date}" if task.due_date else ""
+            tags_str = f" 🔖 {' '.join([f'#{t}' for t in task.tags])}" if task.tags else ""
+            
+            highlighted_content = self._highlight_matches(
+                task.content, keywords, args.exact, args.regex
+            )
+            
+            print(
+                f"{status} [{task.id}] {priority_icon} {highlighted_content}{due_str}{tags_str}"
+            )
+        print("-" * 60)
+        print(f"找到 {len(matched_tasks)} 个匹配的任务\n")
+
+    def _match_task(
+        self,
+        task: Task,
+        query: str,
+        keywords: list,
+        exact: bool,
+        regex: bool
+    ) -> bool:
+        """检查任务是否匹配搜索条件"""
+        content = task.content
+
+        if exact:
+            return query in content
+
+        if regex:
+            try:
+                pattern = re.compile(query, re.IGNORECASE)
+                return bool(pattern.search(content))
+            except re.error:
+                return False
+
+        for keyword in keywords:
+            if keyword.lower() in content.lower():
+                return True
+        return False
+
+    def _highlight_matches(
+        self,
+        text: str,
+        keywords: list,
+        exact: bool,
+        regex: bool
+    ) -> str:
+        """高亮显示匹配的关键词"""
+        if exact:
+            pattern = re.escape(keywords[0] if len(keywords) == 1 else " ".join(keywords))
+            return re.sub(
+                f"({pattern})",
+                r"**\1**",
+                text,
+                flags=re.IGNORECASE
+            )
+
+        if regex:
+            try:
+                pattern = re.compile(f"({query})", re.IGNORECASE)
+                return pattern.sub(r"**\1**", text)
+            except re.error:
+                return text
+
+        result = text
+        for keyword in keywords:
+            pattern = re.escape(keyword)
+            result = re.sub(
+                f"({pattern})",
+                r"**\1**",
+                result,
+                flags=re.IGNORECASE
+            )
+        return result
