@@ -15,7 +15,7 @@ BabyAGI Executor 是一个**极简的 AI 驱动开发执行器**，通过 Prompt
 
 ### 1.3 系统边界
 
-- **输入**: `docs/PLAN.md` 中的开发任务
+- **输入**: `tasks/tasks.json` 中的开发任务
 - **输出**: 代码修改、测试验证、Git 提交
 - **不处理**: 用户业务数据（`data/tasks.json`）
 
@@ -37,7 +37,7 @@ BabyAGI Executor 是一个**极简的 AI 驱动开发执行器**，通过 Prompt
    ┌────────┐  ┌────────┐  ┌────────┐
    │  Task  │  │ Prompt │  │ Memory │
    │ Queue  │──│ Engine │──│ Store  │
-   │(PLAN)  │  │(OpenCo)│  │(Files) │
+   │(tasks) │  │(OpenCo)│  │(Files) │
    └────────┘  └────────┘  └────────┘
                     │
                     ▼
@@ -51,10 +51,10 @@ BabyAGI Executor 是一个**极简的 AI 驱动开发执行器**，通过 Prompt
 
 | 模块 | 职责 | 关键文件 |
 |------|------|----------|
-| **Task Queue** | 从 PLAN.md 读取任务，维护状态 | `plan_io.py` |
-| **Prompt Engine** | 根据任务类型选择 Prompt 模板 | `prompts.py` |
-| **Memory Store** | 保存/加载上下文和经验 | `memory.py` |
-| **OpenCode Client** | 调用 OpenCode CLI 执行任务 | `opencode.py` |
+| **Task Queue** | 从 tasks.json 读取任务，维护状态 | `tasks/manager.py` |
+| **Prompt Engine** | 根据任务类型选择 Prompt 模板 | `prompts/*.txt` |
+| **Memory Store** | 保存/加载上下文和经验 | `memory/*.py` |
+| **OpenCode Client** | 调用 OpenCode CLI 执行任务 | `opencode/client.py` |
 
 ---
 
@@ -67,14 +67,28 @@ BabyAGI Executor 是一个**极简的 AI 驱动开发执行器**，通过 Prompt
 class Task:
     id: str                    # 唯一标识，如 "task-001"
     objective: str             # 目标描述
-    task_type: TaskType        # coder / repair / planner
+    task_type: TaskType        # coder / repair / planner / docs
     priority: str              # 🔴🟡🟢
     status: TaskStatus         # pending / executing / completed / failed
-    context: Dict              # 额外上下文
-    attempts: int              # 尝试次数
-    parent_id: Optional[str]   # 父任务（用于修复任务）
-    created_at: datetime
-    completed_at: Optional[datetime]
+    context: Dict              # 额外上下文（包含 attempts）
+
+# tasks.json 中的完整字段
+{
+  "id": "task-001",
+  "objective": "实现功能",
+  "type": "coder",
+  "priority": "🔴",
+  "status": "pending",
+  "assignee": "AI",
+  "estimated_hours": 1.0,
+  "actual_hours": null,
+  "created_at": "2026-03-04T13:00:00",
+  "started_at": null,
+  "completed_at": null,
+  "parent_id": null,
+  "context": {},
+  "tags": ["feature", "core"]
+}
 ```
 
 ### 3.2 TaskType 枚举
@@ -153,8 +167,8 @@ def main_loop():
 ```python
 def handle_success(task: Task, result: ExecutionResult):
     """任务成功处理"""
-    # 更新 PLAN.md 状态
-    plan_io.update_status(task.id, "✅ 已完成")
+    # 更新任务状态
+    queue.update_status(task.id, TaskStatus.COMPLETED)
     
     # 保存思考记录
     thinking.save(task, result.output)
@@ -189,10 +203,10 @@ def handle_failure(task: Task, result: ExecutionResult):
             }
         )
         task_queue.add(repair_task)
-        plan_io.update_status(task.id, "🔄 修复中")
+        queue.update_status(task.id, TaskStatus.EXECUTING)
     else:
         # 超过最大尝试次数
-        plan_io.update_status(task.id, "❌ 失败")
+        queue.update_status(task.id, TaskStatus.FAILED)
         memory.record_experience(task, result, success=False)
 ```
 
@@ -291,75 +305,52 @@ def handle_failure(task: Task, result: ExecutionResult):
 
 ## 6. OpenCode 集成
 
-### 6.1 调用方式
+### 6.1 调用方式（Serve + Attach 模式）
 
 ```python
 class OpenCodeClient:
-    """OpenCode CLI 封装"""
+    """OpenCode CLI 封装 - 使用 serve + attach 模式"""
     
-    def execute(self, prompt: str, timeout: int = 300) -> ExecutionResult:
+    def __init__(self, server_url="http://localhost:4096", timeout=300):
+        self.server_url = server_url
+        self.timeout = timeout
+        self.server_process = None
+    
+    def start_server(self) -> bool:
+        """启动 headless OpenCode 服务器"""
+        # 检查服务器是否已在运行
+        # 启动 opencode serve --port 4096
+        # 等待服务器就绪
+    
+    def execute(self, prompt: str) -> ExecutionResult:
         """
-        调用 OpenCode 执行 Prompt
-        
-        Args:
-            prompt: 完整的 Prompt 内容
-            timeout: 超时时间（秒）
-            
-        Returns:
-            ExecutionResult: 执行结果
+        执行 Prompt - 使用 attach 模式
+        连接到运行中的 OpenCode 服务器，避免每次冷启动
         """
-        # 创建临时 prompt 文件
-        prompt_file = self._create_prompt_file(prompt)
+        # 1. 确保服务器在运行
+        if not self.start_server():
+            return ExecutionResult(success=False, error="服务器启动失败")
         
-        try:
-            # 调用 OpenCode
-            result = subprocess.run(
-                ["opencode", "run", prompt_file],
-                capture_output=True,
-                text=True,
-                timeout=timeout
-            )
-            
-            # 解析结果
-            return self._parse_result(result)
-            
-        except subprocess.TimeoutExpired:
-            return ExecutionResult(
-                success=False,
-                error="Execution timeout",
-                output=""
-            )
-        finally:
-            os.unlink(prompt_file)
+        # 2. 使用 attach 模式执行
+        result = subprocess.run(
+            ["opencode", "run", "--attach", self.server_url, prompt],
+            capture_output=True,
+            text=True,
+            timeout=self.timeout
+        )
+        
+        # 3. 解析结果
+        return ExecutionResult(
+            success=result.returncode == 0,
+            output=result.stdout,
+            error=result.stderr if result.returncode != 0 else None
+        )
 ```
 
-### 6.2 结果解析
-
-```python
-def _parse_result(self, result: subprocess.CompletedProcess) -> ExecutionResult:
-    """解析 OpenCode 执行结果"""
-    
-    # 检查退出码
-    success = result.returncode == 0
-    
-    # 解析输出
-    output = result.stdout
-    
-    # 检测错误信息
-    error = None
-    if not success:
-        error = self._extract_error(result.stderr)
-    
-    # 检测是否建议后续任务
-    suggests_followup = "建议后续任务" in output or "后续可以" in output
-    
-    return ExecutionResult(
-        success=success,
-        output=output,
-        error=error,
-        suggests_followup=suggests_followup
-    )
-```
+**优势**：
+- 避免 MCP 服务器冷启动（每次可节省 10-30 秒）
+- 非交互式执行，适合自动化
+- 服务器保持运行，多任务复用
 
 ---
 
@@ -467,17 +458,19 @@ executor:
 
 ```
 executor/
-├── __init__.py
 ├── main.py                    # 入口：BabyAGI 循环
 ├── config.py                  # 配置加载
 ├── config.yaml                # 配置文件
 │
 ├── core/                      # 核心模块
-│   ├── __init__.py
 │   ├── task.py                # Task 数据模型
-│   ├── queue.py               # 任务队列管理
-│   ├── runner.py              # 执行引擎
-│   └── result.py              # 结果处理
+│   ├── queue.py               # 任务队列管理（使用 TaskManager）
+│   └── runner.py              # 执行引擎
+│
+├── tasks/                     # 任务管理
+│   ├── __init__.py
+│   ├── manager.py             # TaskManager - JSON 任务管理
+│   └── tasks.json             # 任务数据文件
 │
 ├── prompts/                   # Prompt 模板
 │   ├── __init__.py
@@ -487,13 +480,7 @@ executor/
 │
 ├── opencode/                  # OpenCode 集成
 │   ├── __init__.py
-│   ├── client.py              # OpenCode 调用封装
-│   └── parser.py              # 结果解析
-│
-├── plan/                      # PLAN.md 操作
-│   ├── __init__.py
-│   ├── reader.py              # 读取任务
-│   └── writer.py              # 更新状态
+│   └── client.py              # OpenCode 调用封装（serve+attach 模式）
 │
 ├── memory/                    # 记忆系统
 │   ├── __init__.py
@@ -583,18 +570,18 @@ python main.py
 
 ```
 🚀 BabyAGI Executor 启动
-📋 从 docs/PLAN.md 加载 5 个任务
+📋 从 tasks.json 加载: 12 个待处理 / 12 个总计
 
 🔄 第 1 轮
-📝 任务: [🔴] 实现 add 命令
-💾 加载上下文: thinking/task-001.md, thinking/task-002.md
+📝 任务: [🔴] 设计执行器技术架构
+💾 加载上下文: 1 个思考记录
 🤖 调用 OpenCode...
     [OpenCode] 读取 SPEC.md...
-    [OpenCode] 创建 commands/add.py...
+    [OpenCode] 创建代码文件...
     [OpenCode] 运行 pytest...
     [OpenCode] git commit...
 ✅ 任务完成
-📝 保存思考: thinking/task-003.md
+📝 保存思考: thinking/task-task-029.md
 ⏳ 等待 5 秒...
 
 🔄 第 2 轮
